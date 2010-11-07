@@ -1,0 +1,10 @@
+<p>
+    <label for="${_attr}">${_attr.capitalizeWords()}: </label>
+     ${_objs}
+    <select name="${_attr}" id="${_attr}">
+        <option value="">-</option>
+        #{list items: _items, as:'item'}
+            <option ${item.equals('value') ? 'selected' : ''} value="${item.id}">${item.name}</option>
+        #{/list}
+    </select>
+</p>

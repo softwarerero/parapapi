@@ -1,0 +1,36 @@
+*{ You can use plain selenium command using the selenium tag }*
+#{fixture delete:'all', load:'data.yml' /}
+
+#{selenium}
+    clearSession()
+
+    // Open the home page, and check that no error occured
+    open('/')
+    waitForPageToLoad(1000)
+
+    assertNotTitle('Application error')
+	
+	// Check that it is the form
+    assertTextPresent('Para Papi')
+    
+    // Submit the form
+    clickAndWait('css=input[type=submit]')
+    
+    // Check the error
+    assertTextPresent('Oops, please enter your search criteria!')
+    
+    // Type the name and submit
+    type('css=input[type=text]', 'bob')
+    clickAndWait('css=input[type=submit]')
+    
+    // Check the result
+    assertTextPresent('Not implemented yet, Papi!')
+    assertTextPresent('Para Papi')
+    
+    // Check the back link
+   // clickAndWait('link=Back to form')
+    
+    // Home page?
+    assertTextNotPresent('Hello bob!')
+
+#{/selenium}

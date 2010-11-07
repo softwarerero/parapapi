@@ -1,0 +1,17 @@
+#{extends 'main.html' /}
+#{set title: category.name /}
+
+#{if flash.error}
+    <p style="color:#c00">
+        ${flash.error}
+    </p>
+#{/if}
+
+<div class="adList">
+    <h3>Category ${category.name}</h3>
+
+    #{list items: category.ads, as:'ad'}
+       #{renderAd ad: ad, as: 'teaser'/}
+        <br/>
+    #{/list}
+</div>

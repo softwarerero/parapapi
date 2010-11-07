@@ -1,0 +1,64 @@
+#{extends 'main.html' /}
+#{set title: 'Edit Ad' /}
+
+        
+#{ifnot object?.id}
+    <h3>Create <span>an Ad</span></h3>
+#{/ifnot}
+#{else}
+    <h3>Edit <span>this Ad</span></h3>
+#{/else}
+
+
+#{form @Application.saveAd(ad)}
+<!--
+    #{ifErrors}
+        <p class="error">
+            ${errors[0]}
+        </p>
+    #{/ifErrors}
+-->
+
+
+%{
+    def currentType = _('controllers.CRUD$ObjectType').forClass(object.getClass().getName())
+}%
+
+    #{crud.textField name: "title", value: object.title /}
+    #{crud.longtextField name: "content", value: object.content /}
+    <p></p>    
+    <div>
+        <div style="width: 50%; float: left;">
+            #{form/renderEnum name: "offer", value: object.offer, enum: models.Ad.Offer/}
+            #{crud.textField name: "prize", value: object.prize /}
+            #{crud.textField name: "phone", value: object.phone /}
+            #{crud.textField name: "mobile_phone", value: object.mobile_phone /}
+            #{crud.textField name: "email", value: object.email /}
+        </div>
+        <div >
+            #{crud.checkField name: "sell", value: object.sell /}
+            #{crud.checkField name: "fixedPrice", value: object.fixedPrice /}
+            #{crud.textField name: "zone", value: object.zone /}
+            #{crud.textField name: "department", value: object.department /}
+            #{crud.textField name: "city", value: object.city /}
+        </div>
+    </div>
+    <div style="clear: both;">
+        #{crud.relationField name: "category", value: object.category, field: currentType.getField('category') /}
+    </div>
+
+    <p>
+        <label for="code">Please type the code below: </label>
+        <img src="@{Application.captcha(randomID)}" />
+        <br />
+        <input type="text" name="code" id="code" size="18" value="" />
+        <input type="hidden" name="randomID" value="${randomID}" />
+        #{ifError 'code'}
+            <span class="error">${errors[0]}</span>
+        #{/ifError}
+    </p>
+
+    <p>
+        <input type="submit" value="Submit your comment" />
+    </p>
+#{/form}

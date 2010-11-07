@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+        #{get 'moreScripts' /}
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="@{Application.index()}">Para Papi! <span>Y claro, para Mami también!</span></a>
+            </div>
+            <div >
+                <ul id="tools">
+                    <li>
+                        #{if controllers.Security.isConnected()}
+                            Hi, <input type="button" onclick="location.href='@{Users.dashboard()}'" value="${controllers.Security.connected()}" /> &nbsp;&nbsp;
+                            <input type="button" onclick="location.href='@{Secure.logout()}'" value="&{'views.main.tools.logout'}" />
+                        #{/if}
+                        #{else}
+                            <input type="button" onclick="location.href='@{Secure.login()}'" value="&{'views.main.tools.login'}" />
+                        #{/else}
+                    </li>
+                </ul>
+            </div>
+        </div>
+            #{doLayout /}
+        </div>
+
+        <p id="footer">
+            Copyright &#169; 2010 SUNCOM Systems Ltd.
+        </p>
+
+    </body>
+</html>

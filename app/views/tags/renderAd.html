@@ -1,0 +1,42 @@
+*{ Display an Ad in one of these modes: 'full', 'home' or 'teaser' }*
+
+<div class="ad ${_as == 'teaser' ? 'teaser' : ''}">
+    <h3 class="ad-title">
+        <a href="@{Application.adDetail(_ad.id)}">${_ad.title}</a>
+    </h3>
+    <div class="ad-metadata">
+        <span class="ad-price">Price: ${_ad.price}</span>
+        &nbsp;&nbsp;
+        <span class="ad-date">${_ad.postedAt?.format('dd MMM yy')}</span>
+    </div>
+    #{if _as != 'teaser'}
+
+        <div class="ad-content">
+            <div class="about"></div>
+            ${_ad.content.nl2br()}
+        </div>
+    #{/if}
+</div>
+
+#{if _as == 'full'}
+    <span class="ad-details">
+        Department: ${_ad.department}
+        &nbsp;|&nbsp;
+        City: ${_ad.city}
+        &nbsp;|&nbsp;
+        Zone: ${_ad.zone}
+        <br/>
+        Phone: ${_ad.phone}
+        &nbsp;|&nbsp;
+        Mobile_phone: ${_ad.mobile_phone}
+        &nbsp;|&nbsp;
+        Email: ${_ad.email}
+        <br/>
+        NoOfVisits: ${_ad.noOfVisits}
+        &nbsp;|&nbsp;
+        sell: ${_ad.sell}
+        &nbsp;|&nbsp;
+        offer: ${_ad.offer}
+    </span>
+
+#{/if}

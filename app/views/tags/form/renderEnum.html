@@ -1,0 +1,22 @@
+#{field 'object.' + _name}
+    <label for="${field.id}">
+        &{_name}
+        #{ifError field.name}
+            <span class="error">${field.error}</span>
+        #{/ifError}
+    </label>
+
+        %{ _enum.values().each() { }%
+        %{
+                selected = false;
+                if(field.error?.message != 'validation.required') {
+                    selected = it == _value;
+                }
+                label = it.toString()
+
+        }%
+            <input type="radio" name="${field.name}" value="${it.name()}" ${selected ? 'checked' : ''} > &{label} </input>
+        %{ } }%
+
+#{/field}
+

@@ -1,0 +1,25 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+
+GET     /category/{id}                          Application.adList
+
+GET     /ad/{id}                                Application.adDetail
+
+GET     /captcha                                Application.captcha
+
+# Import CRUD routes
+*      /admin              module:crud
+
+# Import Secure routes
+*       /                                       module:secure
+
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

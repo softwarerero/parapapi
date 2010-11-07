@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set title: ad.title /}
+
+#{if flash.error}
+    <p style="color:#c00">
+        ${flash.error}
+    </p>
+#{/if}
+
+<div class="adDetail">
+    #{renderAd ad: ad, as: 'full'/}
+</div>

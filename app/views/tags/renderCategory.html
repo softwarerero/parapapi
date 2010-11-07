@@ -1,0 +1,11 @@
+#{if _isChild}
+    &nbsp;&nbsp;&nbsp;
+#{/if}
+
+
+<span class="category-child">
+    <a href="@{Application.adList(_category.id)}">
+        ${_category.name}
+        <span class="category-adCount">(${_category.adCount})</span>
+    </a>
+</span>

@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+
+<h3>Welcome ${user}, <span>you have written ${ads.size() ?: 'no'} ${ads.pluralize('post', 'ads')} so far</span></h3>
+
+#{list items: ads, as:'ad'}
+   #{renderAd ad: ad, as: 'teaser'/}
+<br/>
+#{/list}
+
+<p id="newAd" >
+    <input type="button" onclick="location.href='@{Application.createAd()}'" value="Create Ad" />
+</p>

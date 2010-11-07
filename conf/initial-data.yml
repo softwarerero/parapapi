@@ -1,0 +1,76 @@
+# you describe your data using the YAML notation here
+# and then load them using Fixtures.load("data.yml")
+
+User(bob):
+  email: bob@gmail.com
+  password: secret
+  fullname: Bob
+  isAdmin: true
+
+User(jeff):
+    email:          jeff@gmail.com
+    password:       secret
+    fullname:       Jeff
+
+
+Category(inmuebles):
+    name:   inmuebles
+
+Category(casa):
+    name: casa
+    parent: inmuebles
+Category(residencias):
+    name: residencias
+    parent: inmuebles
+Category(residencias / mansiones):
+    name: residencias / mansiones
+    parent: inmuebles
+
+Category(medio de transporte):
+    name:   medio de transporte
+
+Category(automotores):
+    name: automotores
+    parent: medio de transporte
+Category(motos):
+    name: motos
+    parent: medio de transporte
+Category(bicicletas):
+    name: bicicletas
+    parent: medio de transporte
+
+
+Ad(firstBobAd):
+    title:          About the model layer
+    postedAt:       2009-06-14
+    author:         bob
+    price:          19.99
+    category:       casa
+    content:        >
+                    The model has a central position in a Play! application. It is the domain-specific
+                    representation of the information on which the application operates.
+
+                    Martin fowler defines it as:
+
+                    Responsible for representing concepts of the business, information about the
+                    business situation, and business rules. State that reflects the business situation
+                    is controlled and used here, even though the technical details of storing it are
+                    delegated to the infrastructure. This layer is the heart of business software.
+
+Ad(2ndBobAd):
+    title:          Casa linda
+    postedAt:       2010-09-14
+    author:         bob
+    price:          319.99
+    category:       casa
+    content:        >
+                    Una linda casa
+
+Ad(3rdBobAd):
+    title:          Casa volando
+    postedAt:       2010-09-19
+    author:         bob
+    price:          344419.99
+    category:       motos
+    content:        Una linda casa que vuele
+

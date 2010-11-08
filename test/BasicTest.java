@@ -16,7 +16,7 @@ public class BasicTest extends UnitTest {
 
       // Count things
       assertEquals(2, User.count());
-      assertEquals(2, Category.count());
+      assertEquals(2, MainCategory.count());
       assertEquals(1, Ad.count());
 
       // Try to connect as users
@@ -26,7 +26,7 @@ public class BasicTest extends UnitTest {
       assertNull(User.connect("tom@gmail.com", "secret"));
 
       // Find all of Bob's posts
-      List<Category> cat1List = Category.find("parent.name", "firstCat").fetch();
+      List<MainCategory> cat1List = MainCategory.find("parent.name", "firstCat").fetch();
       assertEquals(1, cat1List.size());
 
       // Find all comments related to Bob's posts
@@ -34,7 +34,7 @@ public class BasicTest extends UnitTest {
       assertEquals(1, bobAds.size());
 
       // Find the most recent post
-      Category cat2 = Category.find("order by name desc").first();
+      MainCategory cat2 = MainCategory.find("order by name desc").first();
       assertNotNull(cat2);
       assertNotNull(cat2.parent);
       assertEquals("firstCat", cat2.parent.name);

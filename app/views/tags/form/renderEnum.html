@@ -5,7 +5,7 @@
             <span class="error">${field.error}</span>
         #{/ifError}
     </label>
-
+    <div class="enum">
         %{ _enum.values().each() { }%
         %{
                 selected = false;
@@ -17,6 +17,6 @@
         }%
             <input type="radio" name="${field.name}" value="${it.name()}" ${selected ? 'checked' : ''} > &{label} </input>
         %{ } }%
-
+     </div>
 #{/field}
 

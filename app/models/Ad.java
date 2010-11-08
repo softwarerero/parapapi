@@ -1,6 +1,5 @@
 package models;
 
-import java.io.File;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -19,8 +18,9 @@ import javax.persistence.*;
 @Entity
 public class Ad extends Model {
 
-  public enum Offer { offer, search }
-  
+  public enum OfferType { offer, search }
+  public enum HandOver { sell, rent, exchange, donate }
+  public enum PriceType { fixedPrice, negociable }
 
   @Required public String title;
   @Temporal(TemporalType.DATE)
@@ -35,13 +35,16 @@ public class Ad extends Model {
   @Required @Email
   public String email;
   public long noOfVisits;
-  @Required @Enumerated public Offer offer; // or search
-  @Required public boolean sell; // or rent
-  @Required public boolean fixedPrice; // or nogiciable
+  @Required @Enumerated public OfferType offer; // or search
+  @Required @Enumerated public HandOver handOver; // or rent
+  @Enumerated public PriceType priceType; // or nogiciable
 
   @ManyToOne @Required
-  public Category category;
-  
+  public MainCategory mainCategory;
+
+  @ManyToOne @Required
+  public SubCategory subCategory;
+
   @Lob @Required @MaxSize(10000)
   public String content;
 
@@ -49,6 +52,8 @@ public class Ad extends Model {
   public User author;
   
   //List<File> fotos;
+  @Lob
+  public Picture picture;
 
   public Ad() {
     postedAt = new Date();

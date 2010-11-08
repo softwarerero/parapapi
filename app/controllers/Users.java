@@ -1,7 +1,6 @@
 package controllers;
 
 import models.Ad;
-import models.Category;
 import play.mvc.With;
 
 import java.util.List;

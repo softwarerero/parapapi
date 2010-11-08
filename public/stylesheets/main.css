@@ -485,3 +485,16 @@ tr.odd {
 .hasError {
     background: pink;
 }
+
+form  .enum {
+    color: white;
+}
+
+/**
+form .enum {
+    background: pink !important;
+    border: 0 !important;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 16px;
+}
+**/

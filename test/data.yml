@@ -12,12 +12,31 @@ User(jeff):
     fullname:       Jeff
 
 
-Category(cat1):
-    name:   firstCat
+MainCategory(inmuebles):
+    name:   inmuebles
 
-Category(cat2):
-    name: secondCat
-    parent: cat1
+SubCategory(casa):
+    name: casa
+    parent: inmuebles
+SubCategory(residencias):
+    name: residencias
+    parent: inmuebles
+SubCategory(residencias / mansiones):
+    name: residencias / mansiones
+    parent: inmuebles
+
+MainCategory(medio de transporte):
+    name:   medio de transporte
+
+SubCategory(automotores):
+    name: automotores
+    parent: medio de transporte
+SubCategory(motos):
+    name: motos
+    parent: medio de transporte
+SubCategory(bicicletas):
+    name: bicicletas
+    parent: medio de transporte
     
 
 Ad(firstBobAd):

@@ -15,14 +15,15 @@ import play.data.validation.*;
 
 public class Application extends Controller {
 
-    public static void index() {
+  public static void index() {
 //        render();
-      List<Category> categories = Category.find(
-          "parent is null order by id desc"
-      ).fetch(100);
-      render(categories);
+    List<MainCategory> mainCategory = MainCategory.find(
+        "order by id desc"
+    ).fetch(100);
+    System.out.println("mainCategory: " + mainCategory);
+    render(mainCategory);
+  }
 
-    }
 
 	public static void search(@Required String searchString) {
 		//if(myName.equals("")) render("nada");
@@ -35,11 +36,18 @@ public class Application extends Controller {
 		//render(myName);
 	}
 
-  public static void adList(Long id) {
-    Category category = Category.findById(id);
-		render(category);
+  public static void maincategoryList(Long id) {
+    MainCategory category = MainCategory.findById(id);
+    List<Ad> ads = category.ads;
+		render("Application/adList.html", category);
 	}
 
+  public static void subcategoryList(Long id) {
+    SubCategory category = SubCategory.findById(id);
+    List<Ad> ads = category.ads;
+    System.out.println( "ads: " + ads);
+    render("Application/adList.html", category);
+	}
 
   public static void adDetail(Long id) {
     Ad ad = Ad.findById(id);
@@ -58,15 +66,16 @@ public class Application extends Controller {
     object.title = "Title " + no;
     object.content = "Content " + no;
     object.phone = "123" + no;
-    //ad.category = Category.findById(2L);
-    List<Category> categories = Category.findAll();
-//    Category cat = categories.get(0);
-//    ad.category = cat;
-//    System.out.println(ad.category);
+    //ad.mainCategory = MainCategory.findById(2L);
+    List<MainCategory> mainCategories = MainCategory.findAll();
+    List<SubCategory> subCategories = SubCategory.findAll();
+//    MainCategory cat = categories.get(0);
+//    ad.mainCategory = cat;
+//    System.out.println(ad.mainCategory);
     no++;
     String randomID = Codec.UUID();
     //renderTemplate("Application/editAd.html", ad, categories, randomID);
-    render("Application/editAd.html", Ad.class, object, categories, randomID);
+    render("Application/editAd.html", Ad.class, object, mainCategories, subCategories, randomID);
 
 	}
 
@@ -81,16 +90,19 @@ public class Application extends Controller {
   
   public static void saveAd(@Valid Ad object,
                             @Required(message="Please type the code") String code,
-                            String randomID) {
+                            String randomID,
+                            Picture picture) {
    // Binder.bind(ad, "ad", params.all());
 //    System.out.println(ad.validateAndSave());
     System.out.println("params: " + params.allSimple());
     System.out.println("ad.prize: " + params.get("object.prize"));
     System.out.println("ad.prize: " + object.prize);
-    System.out.println("ad.category: " + params.get("object.category"));
-    System.out.println("ad.category: " + object.category);
+    System.out.println("ad.mainCategory: " + params.get("object.mainCategory"));
+    System.out.println("ad.mainCategory: " + object.mainCategory);
     System.out.println("ad.offer: " + params.get("object.offer"));
     System.out.println("ad.offer: " + object.offer);
+    System.out.println("ad.picture: " + params.get("object.picture"));
+    System.out.println("ad.picture: " + object.picture);
 
     if(!Play.id.equals("test")) {
       validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");
@@ -98,9 +110,10 @@ public class Application extends Controller {
 
     if(validation.hasErrors()) {
       System.out.println("we have an error: " + validation.errorsMap());
-      //List<Category> categories = Category.findAll();
+      //List<MainCategory> categories = MainCategory.findAll();
 //      render("Application/editAd.html", ad);
-      List<Category> categories = Category.findAll();
+      List<MainCategory> mainCategories = MainCategory.findAll();
+      List<SubCategory> subCategories = SubCategory.findAll();
       Object currentType = null;
       try {
         currentType = CRUD.ObjectType.get(getControllerClass());
@@ -108,7 +121,7 @@ public class Application extends Controller {
         e.printStackTrace();
       }
 
-      render("Application/editAd.html", Ad.class, object, categories, randomID, currentType);
+      render("Application/editAd.html", Ad.class, object, mainCategories, subCategories, randomID, currentType);
     }
 
 

@@ -13,29 +13,29 @@ User(jeff):
     fullname:       Jeff
 
 
-Category(inmuebles):
+MainCategory(inmuebles):
     name:   inmuebles
 
-Category(casa):
+SubCategory(casa):
     name: casa
     parent: inmuebles
-Category(residencias):
+SubCategory(residencias):
     name: residencias
     parent: inmuebles
-Category(residencias / mansiones):
+SubCategory(residencias / mansiones):
     name: residencias / mansiones
     parent: inmuebles
 
-Category(medio de transporte):
+MainCategory(medio de transporte):
     name:   medio de transporte
 
-Category(automotores):
+SubCategory(automotores):
     name: automotores
     parent: medio de transporte
-Category(motos):
+SubCategory(motos):
     name: motos
     parent: medio de transporte
-Category(bicicletas):
+SubCategory(bicicletas):
     name: bicicletas
     parent: medio de transporte
 
@@ -45,7 +45,8 @@ Ad(firstBobAd):
     postedAt:       2009-06-14
     author:         bob
     price:          19.99
-    category:       casa
+    mainCategory:   inmuebles
+    subCategory:    casa
     content:        >
                     The model has a central position in a Play! application. It is the domain-specific
                     representation of the information on which the application operates.
@@ -62,7 +63,8 @@ Ad(2ndBobAd):
     postedAt:       2010-09-14
     author:         bob
     price:          319.99
-    category:       casa
+    mainCategory:   inmuebles
+    subCategory:    casa
     content:        >
                     Una linda casa
 
@@ -71,6 +73,7 @@ Ad(3rdBobAd):
     postedAt:       2010-09-19
     author:         bob
     price:          344419.99
-    category:       motos
+    mainCategory:   medio de transporte
+    subCategory:    motos
     content:        Una linda casa que vuele
 

@@ -24,8 +24,11 @@ public class AdTest extends UnitTest {
     // Create a new user and save it
     User bob = new User("bob@gmail.com", "secret", "Bob").save();
 
-    // Create a new post
-    new Ad(bob, "My first post", "Hello world").save();
+    Ad ad = new Ad();
+    ad.author = bob;
+    ad.title = "My first post";
+    ad.content = "Hello world";
+    ad.save();
 
     // Test that the post has been created
     assertEquals(1, Ad.count());
@@ -50,11 +53,19 @@ public class AdTest extends UnitTest {
     User bob = new User("bob@gmail.com", "secret", "Bob").save();
 
     // Create a new post
-    Category firstCategory = new Category("My first category").save();
+    MainCategory firstCategory = new MainCategory("My first mainCategory").save();
 
     // Post a first comment
-    new Ad(bob, "Jeff", "Nice post", firstCategory).save();
-    new Ad(bob, "Tom", "I knew that !").save();
+    Ad ad = new Ad();
+    ad.author = bob;
+    ad.title = "Jeff";
+    ad.content = "Nice post";
+    ad.save();
+    ad = new Ad();
+    ad.author = bob;
+    ad.title = "Tom";
+    ad.content = "I knew that !";
+    ad.save();
 
     // Retrieve all comments
     List<Ad> bobAds = Ad.find("byAuthor", bob).fetch();

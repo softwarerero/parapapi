@@ -10,8 +10,10 @@
 <div class="adList">
     <h3>Category ${category.name}</h3>
 
-    #{list items: category.ads, as:'ad'}
-       #{renderAd ad: ad, as: 'teaser'/}
-        <br/>
-    #{/list}
+    #{paginate.list items:paginator, as: 'ad'}
+        #{renderAd ad: ad, as: 'teaser'/}
+    #{/paginate.list}
+    <p></p>
+    #{paginate.controls items:paginator /}
+
 </div>

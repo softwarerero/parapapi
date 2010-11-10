@@ -3,6 +3,7 @@
 html, body {
     background: #364B66 !important;
     font-family: Helvetica, Arial, Sans !important;
+    color: #869AB1;
 }
 
 body {
@@ -114,7 +115,7 @@ body {
 
 .ad .ad-title a {
     font-size: 26px;
-    color: #82A346;
+    color: #B8C569;
     text-decoration: none;
 }
 
@@ -155,6 +156,9 @@ body {
 	left: 24px;
 }
 
+#newAd {
+	margin-left: 24px;
+}
 
 /** Category **/
 
@@ -510,3 +514,60 @@ form .enum {
     -moz-border-radius: 16px;
 }
 **/
+
+
+/** Pagination **/
+# based on http: //woork.blogspot.com /2008/03/perfect-pagination-style-using-css.html
+
+div.pagination-container {
+	margin-bottom: 10px;
+	clear: both;
+}
+
+ul.pagination {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+.pagination li {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border: solid 1px #869AB1;
+	float: left;
+	margin-right : 2px;
+}
+
+.pagination .previous-off a,
+.pagination .next-off a,
+.pagination .off a:link,
+.pagination .off a:visited {
+	color: #869AB1;
+	font-weight: bold;
+}
+
+.pagination .next a, .pagination .previous a, .pagination .first a, .pagination .last a {
+	font-weight: bold;
+	color: #00000;
+}
+
+.pagination .active {
+	color: #00000;
+	background-color: #DEDEDE;
+	font-weight : bold;
+}
+
+.pagination a:link, .pagination a:visited {
+	color: #B8C569;
+	display : block;
+	float: left;
+	padding: 3px 6px;
+	text-decoration: none;
+}
+
+.pagination a:hover {
+	text-decoration: none;
+}

@@ -2,6 +2,7 @@
 
 <div class="ad ${_as == 'teaser' ? 'teaser' : ''}">
     <h3 class="ad-title">
+        <img src="@{Application.renderPicture(_ad.id)}" />
         <a href="@{Application.adDetail(_ad.id)}">${_ad.title}</a>
     </h3>
     <div class="ad-metadata">

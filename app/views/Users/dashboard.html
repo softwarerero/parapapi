@@ -1,12 +1,14 @@
 #{extends 'main.html' /}
 
-<h3>${user}, <span>you have written ${ads.size() ?: 'no'} ${ads.pluralize('post', 'ads')} so far</span></h3>
+<h3>${user}, <span>you have written ${ads.size() ?: 'no'} ${ads.pluralize('post', 'ads')} so far</span>
+<span id="newAd" >
+    <input type="button" onclick="location.href='@{Application.createAd()}'" value="Create new Ad" />
+</span>
+</h3>
 
-#{list items: ads, as:'ad'}
-   #{renderAd ad: ad, as: 'teaser'/}
-<br/>
-#{/list}
+#{paginate.list items:paginator, as: 'ad'}
+    #{renderAd ad: ad, as: 'teaser'/}
+#{/paginate.list}
+<p></p>
+#{paginate.controls items:paginator /}
 
-<p id="newAd" >
-    <input type="button" onclick="location.href='@{Application.createAd()}'" value="Create Ad" />
-</p>

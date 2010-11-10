@@ -14,15 +14,19 @@ import java.util.*;
 
 import models.*;
 import play.data.validation.*;
+import play.modules.paginate.ValuePaginator;
+
 
 public class Application extends Controller {
+
+  static public int pageSize = Integer.parseInt(Play.configuration.getProperty("pagesize"));
+
 
   public static void index() {
 //        render();
     List<MainCategory> mainCategory = MainCategory.find(
         "order by id asc"
     ).fetch(100);
-    System.out.println("mainCategory: " + mainCategory);
     render(mainCategory);
   }
 
@@ -41,20 +45,23 @@ public class Application extends Controller {
   public static void maincategoryList(Long id) {
     MainCategory category = MainCategory.findById(id);
     List<Ad> ads = category.ads;
-		render("Application/adList.html", category);
+    ValuePaginator paginator = new ValuePaginator(ads);
+    paginator.setPageSize(pageSize);
+		render("Application/adList.html", category, ads, paginator);
 	}
 
   public static void subcategoryList(Long id) {
     SubCategory category = SubCategory.findById(id);
     List<Ad> ads = category.ads;
-    System.out.println( "ads: " + ads);
-    render("Application/adList.html", category);
+    ValuePaginator paginator = new ValuePaginator(ads);
+    paginator.setPageSize(pageSize);
+    render("Application/adList.html", category, ads, paginator);
 	}
 
-//  public static void adDetail(Long id) {
-//    Ad ad = Ad.findById(id);
-//		render(ad);
-//	}
+  public static void adDetail(Long id) {
+    Ad ad = Ad.findById(id);
+		render(ad);
+	}
 
 
   static int no = 0;
@@ -125,7 +132,7 @@ public class Application extends Controller {
     savePicture(object, picture4);
 
     Cache.delete(randomID);
-    Application.index();
+    Users.dashboard();
   }
 
 

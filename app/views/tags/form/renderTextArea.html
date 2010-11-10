@@ -1,5 +1,10 @@
-<p>
-    <label for="${_attr}">${_attr.capitalizeWords()}: </label>
-    <textarea name="${_attr}" id="${_attr}" 
-           cols="${_cols ? _cols : 180}" rows="${_rows ? _rows : 50}">${_value}</textarea>
-</p>
+%{
+    objectName = _object.class.simpleName;
+    value = _object."${_attr}";
+    clazz = ""
+}%
+#{ifError 'object.' + _attr}
+    %{ clazz = "error" }%
+#{/ifError}
+<label for="object_${_attr}">&{objectName+'.'+_attr}</label>
+<textarea id="object_${_attr}" name="object.${_attr}" cols="${_cols ? _cols : 180}" rows="${_rows ? _rows : 50}" class="${clazz}">${value}</textarea>

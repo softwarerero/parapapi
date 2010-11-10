@@ -1,22 +1,23 @@
-#{field 'object.' + _name}
-    <label for="${field.id}">
-        &{_name}
-        #{ifError field.name}
-            <span class="error">${field.error}</span>
-        #{/ifError}
-    </label>
-    <div class="enum">
+%{
+    objectName = _object.class.simpleName;
+    value = _object."${_attr}";
+}%
+#{field 'object.' + _attr}
+        <label for="object_${_attr}">&{objectName+'.'+_attr}</label>
+    %{
+        clazz = field.error ? "error" : "";
+    }%
+    <span class="${clazz}">
         %{ _enum.values().each() { }%
         %{
-                selected = false;
-                if(field.error?.message != 'validation.required') {
-                    selected = it == _value;
-                }
-                label = it.toString()
-
+            selected = false;
+            if(field.error?.message != 'validation.required') {
+                selected = it == value;
+            }
+            label = it.toString()
         }%
-            <input type="radio" name="${field.name}" value="${it.name()}" ${selected ? 'checked' : ''} > &{label} </input>
+            <input type="radio" name="${field.name}" value="${it.name()}" ${selected ? 'checked' : ''}/> <span class="label"> &{label}</span> 
         %{ } }%
-     </div>
+     </span>
 #{/field}
 

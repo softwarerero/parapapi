@@ -5,3 +5,6 @@ views.main.tools.logout=Salir
 
 offer=Ofreczo
 search=Busco
+
+Ad = Clasificado
+Ad.title = Titulo

@@ -1,6 +1,6 @@
 #{extends 'main.html' /}
 
-<h3>Welcome ${user}, <span>you have written ${ads.size() ?: 'no'} ${ads.pluralize('post', 'ads')} so far</span></h3>
+<h3>${user}, <span>you have written ${ads.size() ?: 'no'} ${ads.pluralize('post', 'ads')} so far</span></h3>
 
 #{list items: ads, as:'ad'}
    #{renderAd ad: ad, as: 'teaser'/}

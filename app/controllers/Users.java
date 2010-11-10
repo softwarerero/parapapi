@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Ad;
+import models.User;
 import play.mvc.With;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class Users extends CRUD {
 
   public static void dashboard() {
     List<Ad> ads = Ad.find("author.email", Security.connected()).fetch();
-    render(ads);
+    User user = User.find("byEmail", Security.connected()).<User>first();
+    render(ads, user);
   }
 }

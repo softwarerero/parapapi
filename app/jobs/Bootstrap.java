@@ -1,10 +1,13 @@
 package jobs;
 
 import play.*;
+import play.db.jpa.JPA;
 import play.jobs.*;
 import play.test.*;
 
 import models.*;
+
+import javax.persistence.Query;
 
 /**
  * Created by IntelliJ IDEA.

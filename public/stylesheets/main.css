@@ -159,6 +159,7 @@ body {
 /** Category **/
 
 .categories {
+    margin-top: 30px;
     margin-bottom: 30px;
 }
 
@@ -171,6 +172,11 @@ h3 {
 h3 span {
     font-size: 80%;
     font-weight: normal;
+}
+
+
+.category {
+    margin-top: 10px;
 }
 
 .category a {
@@ -233,6 +239,12 @@ form label {
     font-size: 90%;
     color: #aaa;
     margin-bottom: 3px;
+    margin-top: 7px;
+}
+
+form .label {
+    font-size: 90%;
+    color: #aaa;
 }
 
 #captcha{

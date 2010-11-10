@@ -1,7 +1,9 @@
 package controllers;
 
+import play.Logger;
 import play.Play;
 import play.cache.Cache;
+import play.db.jpa.Blob;
 import play.libs.Codec;
 import play.libs.Images;
 import play.mvc.*;
@@ -18,7 +20,7 @@ public class Application extends Controller {
   public static void index() {
 //        render();
     List<MainCategory> mainCategory = MainCategory.find(
-        "order by id desc"
+        "order by id asc"
     ).fetch(100);
     System.out.println("mainCategory: " + mainCategory);
     render(mainCategory);
@@ -49,91 +51,108 @@ public class Application extends Controller {
     render("Application/adList.html", category);
 	}
 
-  public static void adDetail(Long id) {
-    Ad ad = Ad.findById(id);
-		render(ad);
-	}
+//  public static void adDetail(Long id) {
+//    Ad ad = Ad.findById(id);
+//		render(ad);
+//	}
 
 
   static int no = 0;
   public static void createAd() {
     // TODO find a better user
-    User user = User.findById(0L);
     Ad object = new Ad();
-    object.author = user;
-    object.prize = new BigDecimal("99.77");
+    object.author = (User) User.findAll().get(0);
+    object.price = new BigDecimal("99.77");
     object.postedAt = new Date();
     object.title = "Title " + no;
     object.content = "Content " + no;
+    object.email = "test@test.de";
+    object.offer = Ad.OfferType.offer;
+    object.handOver = Ad.HandOver.sell;
+    object.priceType = Ad.PriceType.fixedPrice;
     object.phone = "123" + no;
-    //ad.mainCategory = MainCategory.findById(2L);
+    object.mainCategory = (MainCategory) MainCategory.findAll().get(0);
+    object.subCategory = object.mainCategory.children.get(0);
+    System.out.println("object.subCategory: " + object.subCategory);
     List<MainCategory> mainCategories = MainCategory.findAll();
-    List<SubCategory> subCategories = SubCategory.findAll();
-//    MainCategory cat = categories.get(0);
-//    ad.mainCategory = cat;
-//    System.out.println(ad.mainCategory);
+    List<SubCategory> subCategories = object.mainCategory.children;
     no++;
     String randomID = Codec.UUID();
-    //renderTemplate("Application/editAd.html", ad, categories, randomID);
     render("Application/editAd.html", Ad.class, object, mainCategories, subCategories, randomID);
-
 	}
 
 
-  @Before
-  public static void addType() throws Exception {
+  public static void editAd(Long id) {
+    Ad object = Ad.findById(id);
+    List<MainCategory> mainCategories = MainCategory.findAll();
+    List<SubCategory> subCategories = object.mainCategory.children;
+    String randomID = Codec.UUID();
+    render("Application/editAd.html", Ad.class, object, mainCategories, subCategories, randomID);
+	}
 
-      CRUD.ObjectType type = CRUD.ObjectType.get(getControllerClass());
-      renderArgs.put("type", type);
-  }
+//  @Before
+//  public static void addType() throws Exception {
+//      CRUD.ObjectType type = CRUD.ObjectType.get(getControllerClass());
+//      renderArgs.put("type", type);
+//  }
 
   
   public static void saveAd(@Valid Ad object,
                             @Required(message="Please type the code") String code,
                             String randomID,
-                            Picture picture) {
-   // Binder.bind(ad, "ad", params.all());
-//    System.out.println(ad.validateAndSave());
+                            Picture picture, Picture picture1, Picture picture2, Picture picture3, Picture picture4) {
+
     System.out.println("params: " + params.allSimple());
-    System.out.println("ad.prize: " + params.get("object.prize"));
-    System.out.println("ad.prize: " + object.prize);
-    System.out.println("ad.mainCategory: " + params.get("object.mainCategory"));
-    System.out.println("ad.mainCategory: " + object.mainCategory);
-    System.out.println("ad.offer: " + params.get("object.offer"));
-    System.out.println("ad.offer: " + object.offer);
-    System.out.println("ad.picture: " + params.get("object.picture"));
-    System.out.println("ad.picture: " + object.picture);
 
     if(!Play.id.equals("test")) {
       validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");
     }
 
     if(validation.hasErrors()) {
-      System.out.println("we have an error: " + validation.errorsMap());
-      //List<MainCategory> categories = MainCategory.findAll();
-//      render("Application/editAd.html", ad);
+      Logger.debug("validation error: " + validation.errorsMap());
       List<MainCategory> mainCategories = MainCategory.findAll();
-      List<SubCategory> subCategories = SubCategory.findAll();
-      Object currentType = null;
-      try {
-        currentType = CRUD.ObjectType.get(getControllerClass());
-      } catch(Exception e) {
-        e.printStackTrace();
-      }
-
-      render("Application/editAd.html", Ad.class, object, mainCategories, subCategories, randomID, currentType);
+      List<SubCategory> subCategories = object.mainCategory.children;
+      render("Application/editAd.html", Ad.class, object, mainCategories, subCategories, randomID);
     }
 
-
-    System.out.println("try to save: " + object.title);
+    Logger.debug("about to save: " + object.title);
     object.save();
+
+    savePicture(object, picture);
+    savePicture(object, picture1);
+    savePicture(object, picture2);
+    savePicture(object, picture3);
+    savePicture(object, picture4);
+
     Cache.delete(randomID);
     Application.index();
   }
 
 
-  public static void uploadPhoto(String title, File photo) {
-      
+  private static void savePicture(Ad ad, Picture picture) {
+    picture.ad = ad;
+    Validation.ValidationResult res = validation.valid(picture);
+    if(res.ok) {
+      System.out.println("try to save picture ");
+      picture.save();
+    } else {
+      System.out.println("no picture: " + res.error);
+    }
+  }
+
+
+//  public static void uploadPicture(Picture picture, Long ad_id) {
+//    System.out.println("try to upload picture: " + picture.getClass());
+//    System.out.println("try to upload picture: " + picture);
+//    System.out.println("ad_id: " + ad_id);
+//    assert(null != ad_id);
+//    //renderBinary(photo.image.get());
+//    editAd(ad_id);
+//  }
+
+  public static void renderPicture(long id) {
+    Ad ad = Ad.findById(id);
+    renderBinary(ad.pictures.get(0).image.get());
   }
 
 

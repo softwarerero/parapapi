@@ -20,7 +20,6 @@ public class SubCategory extends Model {
   public String name;
 
   @ManyToOne
-// @JoinColumn(name="parent")
   public MainCategory parent;
 
   @OneToMany(mappedBy="subCategory", cascade= CascadeType.ALL, fetch = FetchType.LAZY)

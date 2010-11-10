@@ -1,4 +1,10 @@
-<p>
-    <label for="${_attr}">${_attr.capitalizeWords()}: </label>
-    <input type="text" name="${_attr}" id="${_attr}" value="${_value}" size="${_length ? _length : 30}"/>
-</p>
+%{
+    objectName = _object.class.simpleName;
+    value = _object."${_attr}";
+    clazz = ""
+}%
+#{ifError 'object.' + _attr}
+    %{ clazz = "error" }%
+#{/ifError}
+<label for="object_${_attr}">&{objectName+'.'+_attr}</label>
+<input type="text" id="object_${_attr}" name="object.${_attr}" value="${value}" size="${_size ? _size : 50}" class="${clazz}"/>

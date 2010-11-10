@@ -26,7 +26,6 @@ public class Ad extends Model {
   @Temporal(TemporalType.DATE)
   public Date postedAt;
   public BigDecimal price;
-  public BigDecimal prize;
   public String department;
   public String city;
   public String zone;
@@ -42,21 +41,21 @@ public class Ad extends Model {
   @ManyToOne @Required
   public MainCategory mainCategory;
 
-  @ManyToOne @Required
+  @ManyToOne 
   public SubCategory subCategory;
 
   @Lob @Required @MaxSize(10000)
   public String content;
 
-  @ManyToOne
+  @ManyToOne @Required
   public User author;
   
-  //List<File> fotos;
-  @Lob
-  public Picture picture;
+  @OneToMany(mappedBy="ad", cascade= CascadeType.ALL)
+  public List<Picture> pictures;
 
   public Ad() {
     postedAt = new Date();
+    //picture = new Picture();
     //  fotos = new ArrayList<File>();
   }
 

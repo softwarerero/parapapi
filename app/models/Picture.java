@@ -1,9 +1,10 @@
 package models;
 
+import play.data.validation.Required;
 import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 
 /**
@@ -15,5 +16,11 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Picture extends Model {
+
+  @ManyToOne
+  @Required
+  public Ad ad;
+
+  @Required
   public Blob image;
 }

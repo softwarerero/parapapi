@@ -17,6 +17,11 @@
 #{form @Application.saveAd(ad), enctype:'multipart/form-data'}
     <div style="width: 100%;" class="form">
 
+    <noscript style="font-family:Verdana;font-size:10px;font-weight:bold;color:red;width:100%;">
+        <p class="error">
+        Javascript must be enabled to properly navigate this site.
+        </p>
+    </noscript>
     #{ifErrors}
         <p class="error">
             ${errors[0]}
@@ -27,6 +32,7 @@
         def currentType = _('controllers.CRUD$ObjectType').forClass(object.getClass().getName())
     }%
 
+    <input type="hidden" id="object_id" name="object.id" value="${object.id}" />
     <input type="hidden" id="object_author" name="object.author.id" value="${object.author.id}" />
     #{form/renderText object: object, attr: "title", size: 100/}
     #{form/renderTextArea object: object, attr: "content"/}
@@ -77,27 +83,18 @@
             </div>
         </div>
     </div>
-    <div style="clear: both;">&nbsp;</div>
+    <div style="clear: both;"></div>          
 #{/form}
 
 
-#{ifnot object?.id}
-#{/ifnot}
-#{else}
-<p></p>
-<p></p>
-        <p></p>
-    #{form @Application.uploadPicture(), enctype:'multipart/form-data', id: 'uploadPhoto'}
-    <div style="clear: both;">
-        <input type="hidden" id="ad_id" name="ad.id" value="${object.id}" />
-        <input type="file" name="picture.image"/>
-    </div>
-    <p>
-        <input type="submit" value="Upload Photo" />
-    </p>
-    <img src="@{Application.renderPicture(object.id)}" />
-    #{/form}
-#{/else}
+%{
+    //for(Long id: object.pictures*.id) {
+    for(int i = 0; i < object.pictures.size(); i++) {
+}%
+        <img src="@{Application.renderPicture(object.id, i)}" /> 
+%{
+    }
+}%
 
 <script type="text/javascript">
 
@@ -109,9 +106,5 @@
 
     // wait for the DOM to be loaded
     $(document).ready(function() {
-        // bind 'myForm' and provide a simple callback function
-        $('#uploadPhoto').ajaxForm(function() {
-            alert("Thank you for your comment!");
-        });
     });
 </script>

@@ -15,12 +15,12 @@ import java.util.List;
  * Time: 13:56:02
  * Copyright.
  */
-//@OnApplicationStart
-//@Every("60s")
+@OnApplicationStart
+@Every("60s")
 public class UpdateCategoryCount extends Job {
 
     public void doJob() {
-      Logger.info("Update mainCategory count");
+      //Logger.info("Update category stats");
 
       Query query = JPA.em().createNativeQuery("update MainCategory set adCount = 0");
       query.executeUpdate();

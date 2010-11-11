@@ -2,16 +2,15 @@
 
 <div class="ad ${_as == 'teaser' ? 'teaser' : ''}">
     <h3 class="ad-title">
-        <img src="@{Application.renderPicture(_ad.id)}" />
+        <img src="@{Application.renderFirstPicture(_ad.id)}" />
         <a href="@{Application.adDetail(_ad.id)}">${_ad.title}</a>
     </h3>
     <div class="ad-metadata">
-        <span class="ad-price">Price: ${_ad.price}</span>
-        &nbsp;&nbsp;
         <span class="ad-date">${_ad.postedAt?.format('dd MMM yy')}</span>
+        &nbsp;&nbsp;
+        <span class="ad-price">Price: ${_ad.price}</span>
     </div>
     #{if _as != 'teaser'}
-
         <div class="ad-content">
             <div class="about"></div>
             ${_ad.content.nl2br()}
@@ -39,9 +38,7 @@
         &nbsp;|&nbsp;
         offer: ${_ad.offer}
         &nbsp;|&nbsp;
-        picture: <img src="@{Application.renderPicture(_ad.id)}" />
-
-
+        picture: <img src="@{Application.renderFirstPicture(_ad.id)}" />
     </span>
 
 #{/if}

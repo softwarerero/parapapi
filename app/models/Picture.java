@@ -21,6 +21,9 @@ public class Picture extends Model {
   @Required
   public Ad ad;
 
-  @Required
-  public Blob image;
+  // 50px max for width and height
+  @Required public Blob thumbnail50;
+
+  // 500px max for width and height 
+  @Required public Blob image;
 }

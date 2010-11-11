@@ -156,9 +156,29 @@ body {
 	left: 24px;
 }
 
-#newAd {
-	margin-left: 24px;
+.actions {
+    float: right;
+    margin-right: 25px;
 }
+
+.createAction {
+    margin: 5px;
+    background: url(/public/images/add.png) center right no-repeat;
+    padding: 10px;
+}
+
+.editAction {
+    margin: 5px;
+    background: url(/public/images/pencil.png) center right no-repeat;
+    padding: 10px;
+}
+
+.deleteAction {
+	margin: 5px;
+    background: url(/public/images/delete.png) center right no-repeat;
+    padding: 10px;
+}
+
 
 /** Category **/
 

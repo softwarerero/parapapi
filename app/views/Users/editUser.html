@@ -1,0 +1,61 @@
+#{extends 'main.html' /}
+#{set title:'User' /}
+
+#{ifnot object?.id}
+    <h3>Create <span>a User</span></h3>
+#{/ifnot}
+#{else}
+    <h3>Edit <span>a User</span></h3>
+#{/else}
+
+
+#{form @Register.saveUser(user), enctype:'multipart/form-data'}
+    <div class="form">
+
+    <noscript style="font-family:Verdana;font-size:10px;font-weight:bold;color:red;width:100%;">
+        <p class="error">
+        Javascript must be enabled to properly navigate this site.
+        </p>
+    </noscript>
+    #{ifErrors}
+        <p class="error">
+            ${errors[0]}
+        </p>
+    #{/ifErrors}
+
+    <input type="hidden" id="object_id" name="object.id" value="${object.id}" />
+    <div style="width: 48%; float: left;">
+    #{form/renderText object: object, attr: "nickname"/}
+    #{form/renderText object: object, attr: "email"/}
+    #{form/renderText object: object, attr: "password"/}
+    #{form/renderText object: object, attr: "passwordConfirmation"/}
+    #{form/renderText object: object, attr: "firstNames"/}
+    #{form/renderText object: object, attr: "lastNames"/}
+    </div>
+    <div style="width: 4%; float: left;">&nbsp;</div>
+    <div style="width: 48%; float: left;">
+    #{form/renderText object: object, attr: "postCode"/}
+    #{form/renderText object: object, attr: "street"/}
+    #{form/renderText object: object, attr: "city"/}
+    #{form/renderText object: object, attr: "country"/}
+    #{form/renderText object: object, attr: "mobilePhone"/}
+    #{form/renderText object: object, attr: "landLine"/}
+    </div>
+    <div style="clear: both;"></div>
+    <p>&nbsp;</p>
+    <span style="float: left;"><input id="aceptConditionsCB" type="checkbox" name="" />&nbsp;&nbsp;</span>
+    <label for="aceptConditions" id="aceptConditions">Ich akzeptiere die <a href="/public/documents/agb.txt" onclick="javascript:openWin(this, 'AGB', 400, 480, 'scrollbars=yes'); return false;" >Allgemeinen Geschäftsbedingungen</a> und die <a href="" onclick="javascript:openWin(this, 'Nutzungsbestimmungen', 450, 480, 'scrollbars=yes'); return false;">Datenschutzbestimmungen</a>.</label>
+    <p>&nbsp;</p>
+
+
+    <div> <!-- Captcha -->
+        <label for="code">Please type the code below: </label>
+        <img src="@{Application.captcha(randomID)}" />
+        <br />
+        <input type="text" name="code" id="code" size="18" value="" />
+        <input type="hidden" name="randomID" value="${randomID}" />
+        <input type="submit" value="Save" />
+    </div>
+    </div>
+#{/form}
+

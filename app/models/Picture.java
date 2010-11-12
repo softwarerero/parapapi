@@ -22,7 +22,7 @@ public class Picture extends Model {
   public Ad ad;
 
   // 50px max for width and height
-  @Required public Blob thumbnail50;
+  public Blob thumbnail50;
 
   // 500px max for width and height 
   @Required public Blob image;

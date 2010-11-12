@@ -1,16 +1,22 @@
 *{ Display an Ad in one of these modes: 'full', 'home' or 'teaser' }*
 
 <div class="ad ${_as == 'teaser' ? 'teaser' : ''}">
-    <h3 class="ad-title">
-        <img src="@{Application.renderFirstPicture(_ad.id)}" />
-        <a href="@{Application.adDetail(_ad.id)}">${_ad.title}</a>
-    </h3>
-    <div class="ad-metadata">
-        <span class="ad-date">${_ad.postedAt?.format('dd MMM yy')}</span>
-        &nbsp;&nbsp;
-        <span class="ad-price">Price: ${_ad.price}</span>
+    <div class="ad-thumb">
+        <img src="@{Pictures.renderThumbnail(_ad.id, 0)}" />
+    </div>
+    <div class="ad-teaser-data">
+        <div class="ad-title">
+            <a href="@{Application.adDetail(_ad.id)}">${_ad.title}</a>
+        </div>
+        <br/>
+        <div class="ad-metadata">
+            <span class="ad-date">${_ad.postedAt?.format('dd MMM yy')}</span>
+            &nbsp;&nbsp;
+            <span class="ad-price">Price: ${_ad.price}</span>
+        </div>
     </div>
     #{if _as != 'teaser'}
+    <div style="clear: both;"></div>
         <div class="ad-content">
             <div class="about"></div>
             ${_ad.content.nl2br()}
@@ -37,8 +43,18 @@
         handOver: ${_ad.handOver}
         &nbsp;|&nbsp;
         offer: ${_ad.offer}
-        &nbsp;|&nbsp;
-        picture: <img src="@{Application.renderFirstPicture(_ad.id)}" />
     </span>
+<div class="pcitures">
+    %{
+        //for(Long id: _ad.pictures*.id) {
+        if(null != _ad.pictures) {
+            for(int i = 0; i < _ad.pictures.size(); i++) {
+    }%
+            <img src="@{Pictures.renderPicture(_ad.id, i)}" />
+    %{
+            }
+        }
+    }%
+</div>
 
 #{/if}

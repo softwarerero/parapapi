@@ -23,17 +23,20 @@
                             <input type="button" onclick="location.href='@{Secure.logout()}'" value="&{'views.main.tools.logout'}" />
                         #{/if}
                         #{else}
+                            <input type="button" onclick="location.href='@{Register.register()}'" value="&{'views.main.tools.register'}" />
                             <input type="button" onclick="location.href='@{Secure.login()}'" value="&{'views.main.tools.login'}" />
                         #{/else}
                     </li>
                 </ul>
             </div>
         </div>
+        <div id="content">
             #{doLayout /}
         </div>
 
         <p id="footer">
-            Copyright &#169; 2010 SUNCOM Systems Ltd.
+            &{'Version'}:  ${play.configuration.getProperty("version")} build on Play ${play.version}  &nbsp;&nbsp;&nbsp; &{'Your language'}: ${play.i18n.Lang.get()} 
+            <br/>Copyright &#169; 2010 SUNCOM Systems Ltd. 
         </p>
 
     </body>

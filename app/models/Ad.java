@@ -22,7 +22,7 @@ public class Ad extends Model {
   public enum HandOver { sell, rent, exchange, donate }
   public enum PriceType { fixedPrice, negociable }
 
-  @Required public String title;
+  @Required @MaxSize(80) public String title;
   @Temporal(TemporalType.DATE)
   public Date postedAt;
   public BigDecimal price;

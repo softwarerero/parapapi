@@ -1,0 +1,31 @@
+#{extends 'main.html' /}
+
+#{if play.i18n.Lang.get().equals("de")}
+    <h1>Danke für Ihre erfolgreiche Registrierung.</h1>
+    
+    <p>Sie erhalten nun eine E-Mail mit deren Hilfe Sie Ihren Zugang freischalten können.</p>
+    
+    <p>1. Bitte rufen Sie Ihre E-Mail ab.</p>
+    
+    <p>2. Bitte öffnen Sie die E-Mail mit dem Betreff: "Bitte aktivieren Sie Ihr Benutzerkonto bei Para Papi"</p>
+    
+    <p>Sollten Sie diese E-Mail nicht in Ihrem Posteingang finden, prüfen Sie bitte, ob die E-Mail versehentlich in den Spam-Ordner sortiert wurde.</p>
+    
+    <p>Klicken Sie bitte den in der E-Mail enthaltenen Link, um Ihre Registrierung bzw. Aktualisierung abzuschließen.</p>
+    
+#{/if}
+#{else}
+
+    <h1>Gracias para registrarse aqui.</h1>
+
+    <p>Usted va a recibir un email para confirmar su cuenta dentro un rato.</p>
+
+    <p>1. Pro favor, lea su email con el titulo: "Activar su cuenta con Para Papi".</p>
+
+    <p>2. En el email hay un enlace. Si lo aprete ya esta con nosotros.</p>
+
+    <p>En caso de no recibir el email por favor revisa su carpeta de Spam.</p>
+
+#{/else}
+
+ 

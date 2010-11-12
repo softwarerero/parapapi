@@ -1,13 +1,8 @@
 #{extends 'main.html' /}
 #{set title:'Ad' /}
 
-#{set 'moreScripts'}
-    #{script 'jquery.form.js' /}
-#{/set}
-
-
 #{ifnot object?.id}
-    <h3>Create <span>an Ad</span></h3>
+    <h3>Create <span>an Ad</span> <blink>This is an alpha version. Please do not expect your data to persist. We will delete them!</blink></h3>
 #{/ifnot}
 #{else}
     <h3>Edit <span>this Ad</span></h3>
@@ -89,19 +84,32 @@
 
 %{
     //for(Long id: object.pictures*.id) {
-    for(int i = 0; i < object.pictures.size(); i++) {
+    if(null != object.pictures) {
+        for(int i = 0; i < object.pictures.size(); i++) {
 }%
-        <img src="@{Application.renderPicture(object.id, i)}" /> 
+        <div id="picture_${i}">
+            <img src="@{Pictures.renderPicture(object.id, i)}" />
+            <input type="button" class="pictureDelete" id="pictureDelete_${i}" value="&{'delete'}" />
+            <br/>
+        </div>
 %{
+        }
     }
 }%
 
 <script type="text/javascript">
 
     var getSubCategories = #{jsAction @MainCategories.getSubCategories(':id') /}
-    
+
     $('#object_mainCategory').change(function() {
         $('#object_subCategory').load(getSubCategories({id: $(this).val()}));
+    });
+
+    var pictureDelete = #{jsAction @Pictures.delete(':adId', ':id') /}
+    $('.pictureDelete').click(function() {
+        var id = this.id.substring("pictureDelete_".length);
+        alert("hola: " + id);
+        $("#picture_"+ id).load(pictureDelete({adId: "${object.id}", id: id}));
     });
 
     // wait for the DOM to be loaded

@@ -1,10 +1,14 @@
 package controllers;
 
-import models.Ad;
-import models.User;
+import models.*;
+import play.Logger;
 import play.Play;
+import play.cache.Cache;
+import play.data.validation.Required;
+import play.data.validation.Valid;
 import play.mvc.With;
 
+import java.io.IOException;
 import java.util.List;
 import play.modules.paginate.ValuePaginator;
 
@@ -16,7 +20,7 @@ import play.modules.paginate.ValuePaginator;
  * Time: 00:45:02
  * Copyright.
  */
-@Check("admin")
+//@Check("admin")
 @With(Secure.class)
 public class Users extends CRUD {
 
@@ -30,4 +34,6 @@ public class Users extends CRUD {
     paginator.setPageSize(pageSize);
     render(ads, user, paginator);
   }
+
+
 }

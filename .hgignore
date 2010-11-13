@@ -8,3 +8,5 @@ test-result
 tmp
 attachments
 db
+precompiled
+public\images\candidates

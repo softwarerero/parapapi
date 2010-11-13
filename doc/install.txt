@@ -1,0 +1,58 @@
+# Install on fresh Ubuntu 10.10 server
+sudo apt-get update
+sudo apt-get upgrade
+sudo aptitude install java6-sdk
+# Java
+echo deb http://archive.canonical.com lucid partner | sudo tee /etc/apt/sources.list.d/java.list
+sudo apt-get update
+sudo apt-get install sun-java6-jdk
+# Glassfish (http://www.marlonj.com/blog/2010/10/instalacion-de-glassfish-3-0-1-en-ubuntu-10-10/)
+mkdir install/develop
+cd install/develop
+wget http://download.java.net/glassfish/3.0.1/release/glassfish-3.0.1.zip
+cd opt
+sudo apt-get install unzip
+sudo unzip /home/user/install/develop/glassfish-3.0.1.zip
+sudo useradd --system glassfish -d /opt/glassfishv3
+sudo chgrp -R admin /opt/glassfishv3
+sudo chown -R glassfish glassfishv3
+sudo chmod -R +x glassfishv3/bin/
+sudo chmod -R +x glassfishv3/glassfish/bin/
+cd glassfishv3
+sudo -u glassfish bin/asadmin start-domain domain1
+sudo vi /etc/init.d/glassfish  # copy content of glassfish
+sudo chmod a+x /etc/init.d/glassfish
+sudo /etc/init.d/glassfish stop
+sudo update-rc.d glassfish defaults 90 10
+
+#Play
+cd /home/user/install/develop
+wget http://download.playframework.org/releases/play-1.1.zip
+sudo mkdir /opt/play
+cd /opt/play
+unzip /home/user/install/develop /opt/play
+sudo cp play-1.1.zip /opt/play
+ln -s play1.1 play
+edit /home/user/.bashrc
+	PATH=$PATH:/opt/play
+	export PATH
+source .bashrc
+
+# MySQL
+sudo apt-get install mysql
+	root/j6Sv0;-g3$gH
+sudo mysql_install_db
+sudo /usr/bin/mysql_secure_installation
+cd /usr ; /usr/bin/mysqld_safe &
+
+# Mercurial
+sudo apt-get install mercurial
+
+#  - drop Glassfish
+
+
+
+
+
+
+

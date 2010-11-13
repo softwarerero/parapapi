@@ -6,6 +6,7 @@ User(bob):
   password: secret
   fullname: Bob
   isAdmin: true
+  isActive: true
 
 User(jeff):
     email:          jeff@gmail.com

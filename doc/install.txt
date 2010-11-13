@@ -44,12 +44,31 @@ sudo apt-get install mysql
 sudo mysql_install_db
 sudo /usr/bin/mysql_secure_installation
 cd /usr ; /usr/bin/mysqld_safe &
+mysql -u root -p
+	CREATE USER 'parapapi'@'localhost' IDENTIFIED BY '9Kb!Snv^aoP[sAm';
+	GRANT ALL PRIVILEGES ON parapapi.* TO 'parapapi'@'localhost' WITH GRANT OPTION;
 
 # Mercurial
 sudo apt-get install mercurial
+hg clone https://parapapi@bitbucket.org/parapapi/parapapi
+sudo /opt/play/play install paginate-head
+sudo /opt/play/play id alpha
+play run
 
-#  - drop Glassfish
+# Lighttpd - drop Glassfish
+sudo apt-get install lighttpd
+	server.modules = (
+		  "mod_access",
+		  "mod_proxy",
+		  "mod_accesslog" 
+	)
+	...
+	$HTTP["host"] =~ "alpha.parapapi.com" {
+		proxy.balance = "round-robin" proxy.server = ( "/" =>
+			( ( "host" => "127.0.0.1", "port" => 9001 ) ) )
+	}
 
+sudo /etc/init.d/lighttpd restart
 
 
 

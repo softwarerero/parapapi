@@ -2,6 +2,7 @@ views.dateFormat=dd.MM.yyyy
 views.index.title.header=Kleinanzeigen in und um Asunción herum
 views.main.tools.login=Anmelden
 views.main.tools.logout=Abmelden
+views.main.tools.register=Registrieren
 
 offer=Biete
 search=Suche

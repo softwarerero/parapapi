@@ -1,7 +1,7 @@
 # Install on fresh Ubuntu 10.10 server
 sudo apt-get update
 sudo apt-get upgrade
-sudo aptitude install java6-sdk
+sudo apt-get install unzip
 # Java
 echo deb http://archive.canonical.com lucid partner | sudo tee /etc/apt/sources.list.d/java.list
 sudo apt-get update
@@ -11,7 +11,6 @@ mkdir install/develop
 cd install/develop
 wget http://download.java.net/glassfish/3.0.1/release/glassfish-3.0.1.zip
 cd opt
-sudo apt-get install unzip
 sudo unzip /home/user/install/develop/glassfish-3.0.1.zip
 sudo useradd --system glassfish -d /opt/glassfishv3
 sudo chgrp -R admin /opt/glassfishv3
@@ -29,17 +28,17 @@ sudo update-rc.d glassfish defaults 90 10
 cd /home/user/install/develop
 wget http://download.playframework.org/releases/play-1.1.zip
 sudo mkdir /opt/play
-cd /opt/play
-unzip /home/user/install/develop /opt/play
-sudo cp play-1.1.zip /opt/play
+cd /opt
+unzip /home/user/install/develop -d /opt/play
+sudo mv play/ play-1.1
 ln -s play1.1 play
-edit /home/user/.bashrc
+sudo nano /home/user/.bashrc
 	PATH=$PATH:/opt/play
 	export PATH
 source .bashrc
 
 # MySQL
-sudo apt-get install mysql
+sudo apt-get install mysql-server
 	root/j6Sv0;-g3$gH
 sudo mysql_install_db
 sudo /usr/bin/mysql_secure_installation
@@ -57,6 +56,7 @@ play run
 
 # Lighttpd - drop Glassfish
 sudo apt-get install lighttpd
+sudo nano /etc/lighttpd/lighttpd.conf
 	server.modules = (
 		  "mod_access",
 		  "mod_proxy",

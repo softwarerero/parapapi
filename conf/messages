@@ -2,6 +2,7 @@
 # For example, for French create a messages.fr file
 #
 views.index.title.header=Publish Ads in Asunción, Paraguay
+views.main.tools.register=Register
 
 validation.required=%s is required
 mobile_phone=Moblie Phone

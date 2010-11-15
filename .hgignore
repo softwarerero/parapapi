@@ -10,3 +10,4 @@ attachments
 db
 precompiled
 public\images\candidates
+conf\application.conf

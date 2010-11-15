@@ -51,9 +51,9 @@ public class User extends Model {
 
   public static User connect(String email, String password) {
     User user = find("byEmailAndPassword", email, password).first();
-    if(null != user && !user.isActive) {
-      return null;
-    }
+//    if(null != user && !user.isActive) {
+//      return null;
+//    }
     return user;
   }
 

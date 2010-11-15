@@ -67,10 +67,13 @@ sudo nano /etc/lighttpd/lighttpd.conf
 		proxy.balance = "round-robin" proxy.server = ( "/" =>
 			( ( "host" => "127.0.0.1", "port" => 9001 ) ) )
 	}
+	server.max-request-size=
 
 sudo /etc/init.d/lighttpd restart
+# docs in /var/www
 
-
+# Redmine (http://www.hiddentao.com/archives/2008/12/06/redmine-svn-mysql-5-lighttpd-15/)
+http://howto.landure.fr/gnu-linux/debian-4-0-etch-en/install-the-redmine-project-management-application-on-debian-4-0-etch
 
 
 

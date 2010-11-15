@@ -39,14 +39,7 @@
             #{form/renderText object: object, attr: "mobile_phone"/}
             #{form/renderText object: object, attr: "email"/}
             #{crud.relationField name: "mainCategory", value: object.mainCategory, field: currentType.getField('mainCategory') /}
-            <div> <!-- Captcha -->
-                <label for="code">Please type the code below: </label>
-                <img src="@{Application.captcha(randomID)}" />
-                <br />
-                <input type="text" name="code" id="code" size="18" value="" />
-                <input type="hidden" name="randomID" value="${randomID}" />
-                <input type="submit" value="Submit your Ad" />
-            </div>
+            <input type="submit" value="Submit your Ad" />
         </div>
         <div style="width: 4%; float: left;">&nbsp;</div>
         <div style="width: 48%; float: left;">

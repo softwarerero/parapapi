@@ -39,6 +39,7 @@ public class Register extends CRUD {
                             @Required(message="Please type the code") String code,
                             String randomID) throws EmailException {
 
+    getLang();
     if(!Play.id.equals("test")) {
       validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");
     }
@@ -59,8 +60,8 @@ public class Register extends CRUD {
     User user = User.find("byEmail", object.email).<User>first();
     SimpleEmail email = new SimpleEmail();
     email.setFrom("noreply@suncom.com.py");
-    //email.addTo(user.email);
-    email.addTo("test@suncom.com.py");
+    email.addTo(user.email);
+    email.addTo("register@suncom.com.py");
     String path = request.path;
     email.setSubject("Activar su cuenta con Para Papi");
     String msg = "Siguese este link para empiezar: ";
@@ -79,6 +80,11 @@ public class Register extends CRUD {
     Mail.send(email);
 
     render("Users/registrationConfirmation.html");
+  }
+
+
+  static public String getLang() {
+    return request.headers.get("accept-language").value().substring(0,2);
   }
 
 

@@ -1,8 +1,15 @@
-# You can specialize this file for each language.
-# For example, for French create a messages.fr file
-#
 views.index.title.header=Publish Ads in Asunción, Paraguay
+views.dateFormat=dd.MM.yyyy
+views.main.tools.login=Login
+views.main.tools.logout=Logout
 views.main.tools.register=Register
+
+offer=Offer
+search=Search
+
+Ad = Ad
+Ad.title = Title
+
 
 validation.required=%s is required
 mobile_phone=Moblie Phone

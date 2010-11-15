@@ -89,27 +89,26 @@ public class Application extends Controller {
   private static void render4editAd(Ad object) {
     List<MainCategory> mainCategories = MainCategory.findAll();
     List<SubCategory> subCategories = object.mainCategory.children;
-    String randomID = Codec.UUID();
-    render("Application/editAd.html", Ad.class, object, mainCategories, subCategories, randomID);
+//    String randomID = Codec.UUID();
+    render("Application/editAd.html", Ad.class, object, mainCategories, subCategories);
 	}
 
 
-  static int no = 0;
   private static Ad populateTestAd(Ad object) {
-    // TODO find a better user
-    object.author = (User) User.findAll().get(0);
+    User user = User.find("byEmail", Security.connected()).first();
+    long no = Ad.count() + 1;
+    object.author = user;
     object.price = new BigDecimal("99.77");
     object.postedAt = new Date();
     object.title = "Title " + no;
     object.content = "Content " + no;
-    object.email = "test@test.de";
+    object.email = user.email;
     object.offer = Ad.OfferType.offer;
     object.handOver = Ad.HandOver.sell;
     object.priceType = Ad.PriceType.fixedPrice;
     object.phone = "123" + no;
     object.mainCategory = (MainCategory) MainCategory.findAll().get(0);
     object.subCategory = object.mainCategory.children.get(0);
-    System.out.println("object.subCategory: " + object.subCategory);
     return object;
   }
 
@@ -121,22 +120,20 @@ public class Application extends Controller {
 
   
   public static void saveAd(@Valid Ad object,
-                            @Required(message="Please type the code") String code,
-                            String randomID,
                             Picture picture, Picture picture1, Picture picture2, Picture picture3, Picture picture4) throws IOException {
 
     System.out.println("params: " + params.allSimple());
     System.out.println("id: " + object.id);
 
-    if(!Play.id.equals("test")) {
-      validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");
-    }
+//    if(!Play.id.equals("test")) {
+//      validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");
+//    }
 
     if(validation.hasErrors()) {
       Logger.debug("validation error: " + validation.errorsMap());
       List<MainCategory> mainCategories = MainCategory.findAll();
       List<SubCategory> subCategories = object.mainCategory.children;
-      render("Application/editAd.html", Ad.class, object, mainCategories, subCategories, randomID);
+      render("Application/editAd.html", Ad.class, object, mainCategories, subCategories);
     }
 
     Logger.debug("about to save: " + object.title);
@@ -148,7 +145,6 @@ public class Application extends Controller {
     Pictures.savePicture(object, picture3);
     Pictures.savePicture(object, picture4);
 
-    Cache.delete(randomID);
     Users.dashboard();
   }
 

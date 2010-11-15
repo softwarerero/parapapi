@@ -3,7 +3,6 @@ package controllers;
 import models.Ad;
 import models.Picture;
 import play.Logger;
-import play.Play;
 import play.data.validation.Validation;
 import play.db.jpa.Blob;
 import play.libs.Codec;
@@ -11,7 +10,6 @@ import play.libs.Images;
 import play.mvc.Controller;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;

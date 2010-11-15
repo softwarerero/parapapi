@@ -34,7 +34,7 @@ module.paginate=${play.path}/modules/paginate-head
 # ~~~~~
 # Define locales used by your application.
 # You can then place localized messages in conf/messages.{locale} files
-application.langs=en,de,es
+application.langs=de,es
 
 # Date format
 # ~~~~~

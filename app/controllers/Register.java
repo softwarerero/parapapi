@@ -28,7 +28,6 @@ public class Register extends CRUD {
 
 
   public static void editUser() {
-//    User user = User.find("byEmail", Security.connected()).<User>first();
     User object = new User();
     String randomID = Codec.UUID();
     renderTemplate("Users/editUser.html", object, randomID);

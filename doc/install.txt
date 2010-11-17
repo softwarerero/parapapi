@@ -74,8 +74,118 @@ sudo /etc/init.d/lighttpd restart
 
 # Redmine (http://www.hiddentao.com/archives/2008/12/06/redmine-svn-mysql-5-lighttpd-15/)
 # http://howto.landure.fr/gnu-linux/debian-4-0-etch-en/install-the-redmine-project-management-application-on-debian-4-0-etch
+/usr/bin/apt-get install ruby rake librmagick-ruby libmysql-ruby mysql-client rubygems
+/usr/bin/apt-get install libfcgi-ruby1.8
+SOURCE_URL=http://rubyforge.org/frs/download.php/73140/redmine-1.0.3.tar.gz
+cd install/develop
+/usr/bin/wget $SOURCE_URL --output-document=redmine.tar.gz
+/bin/tar -xzf redmine.tar.gz
+mv redmine-1.0.3/ /opt/
+cd /opt
+ln -s redmine-1.0.3/ redmine
+# Install Redmine db in /opt/redmine/config/database.yml
+MYSQL_DB=redmine
+MYSQL_USERNAME=redmine
+MYSQL_USERPWD=kM2S*js%vc09
+cd /opt/redmine
+gem install rack -v=1.0.1
+# add the following lines to config/environment.rb
+	ENV['PATH'] = "#{ENV['PATH']}:/usr/local/bin"
+	config.action_controller.session = { :key => "_myapp_session", :secret => "Das Wandern macht den Mueller schnuddelig." }
+mysql -u root -p
+	create database redmine;
+	CREATE USER 'redmine'@'localhost' IDENTIFIED BY 'kM2S*js%vc09';
+	GRANT ALL PRIVILEGES ON redmine.* TO 'redmine'@'localhost';
+/usr/bin/rake db:migrate RAILS_ENV="production"
+/usr/bin/rake redmine:load_default_data RAILS_ENV="production"
+mkdir /var/www/redmine
+/bin/chmod -R go-w /var/www/redmine
+/bin/mkdir --parent /var/lib/redmine
+/bin/mv /opt/redmine/log /var/lib/redmine
+/bin/mv /opt/redmine/tmp /var/lib/redmine
+/bin/mv /opt/redmine/files /var/lib/redmine
+/bin/ln -s /var/lib/redmine/log /opt/redmine/log
+/bin/ln -s /var/lib/redmine/tmp /opt/redmine/tmp
+/bin/ln -s /var/lib/redmine/files /opt/redmine/files
+mkdir tmp public/plugin_assets
+chown -R www-data:www-data files log tmp public/plugin_assets
+sudo chmod -R 755 files log tmp public/plugin_assets
 
+/bin/chown -R www-data:www-data /var/lib/redmine
+# configure smtp in conf/environment.rb - add the following lines for a local server
+	# SMTP server configuration
+			config.action_mailer.smtp_settings = {
+					:address => "127.0.0.1",
+					:port => 25,
+	               :domain => "mail.your-server.de",
+	               :authentication => :login,
+	               :user_name => "webmaster@suncom.de",
+	               :password => "secret",
+				   "c5ccuq9a"
+			}
+			
+production:
+  delivery_method: :smtp
+  smtp_settings:
+    address: 213.133.104.91
+    port: 25
+    domain: mail.your-server.de
+    authentication: :login
+    user_name: "webmaster@suncom.de"
+    password: "c5ccuq9a"
+			
 
+/bin/cp /opt/redmine/public/dispatch.fcgi.example /opt/redmine/public/dispatch.fcgi			
+/bin/sed -i -e 's/\(127\.0\.0\.1.*\)/\1 redmine/' /etc/hosts
+
+echo '## Redmine virtual hosting
+
+server.modules += ( "mod_simple_vhost" , "mod_rewrite" , "mod_fastcgi" )
+
+# execute:
+	$HTTP["host"] == "redmine.parapapi.com" {
+	  server.document-root = "/opt/redmine/public/"
+	  server.follow-symlink = "enable"
+
+	  alias.url = ()
+
+	  server.indexfiles = ( "dispatch.fcgi" )
+	  server.error-handler-404 = "/dispatch.fcgi"
+	  url.rewrite-once = (
+		"^/(.*\..+(?!html))$" => "$0",
+		"^/(.*)\.(.*)"        => "$0",
+	  )
+
+	  fastcgi.server =  (
+		".fcgi" => (
+		  "redmine" => (
+			"bin-path" => "/usr/bin/ruby /opt/redmine/public/dispatch.fcgi",
+			"socket" => "/tmp/redmine.socket",
+			"min-procs" => 1,
+			"max-procs" => 4,
+			"idle-timeout" => 120,
+			"check-local" => "disable",
+			"bin-environment" => ( "RAILS_ENV" => "production" ),
+		  )
+		)
+	  )
+	}' > /etc/lighttpd/conf-available/10-redmine.conf
+  
+/usr/sbin/lighty-enable-mod redmine
+/etc/init.d/lighttpd force-reload
+
+# Redmine Backup (has to be done manually)
+## Database
+/usr/bin/mysqldump -u <username> -p<password> <redmine_database> | gzip > /path/to/backup/db/redmine_`date +%y_%m_%d`.gz
+
+## Attachments
+rsync -a /path/to/redmine/files /path/to/backup/files
+
+# Redmine theme
+cd /opt/redmine/public/themes
+wget http://www.modula.fi/downloads/ModulaMartini.zip
+unzip ModulaMartini.zip
+sudo /etc/init.d/lighttpd restart
 
 
 

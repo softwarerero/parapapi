@@ -12,7 +12,7 @@
 #{form @Application.saveAd(ad), enctype:'multipart/form-data'}
     <div style="width: 100%;" class="form">
 
-    <noscript style="font-family:Verdana;font-size:10px;font-weight:bold;color:red;width:100%;">
+    <noscript class="noscript">
         <p class="error">
         Javascript must be enabled to properly navigate this site.
         </p>
@@ -29,6 +29,7 @@
 
     <input type="hidden" id="object_id" name="object.id" value="${object.id}" />
     <input type="hidden" id="object_author" name="object.author.id" value="${object.author.id}" />
+    #{form/renderEnum object: object, attr: "language", enum: models.Ad.Language/}
     #{form/renderText object: object, attr: "title", size: 100/}
     #{form/renderTextArea object: object, attr: "content"/}
     <p></p>
@@ -101,7 +102,6 @@
     var pictureDelete = #{jsAction @Pictures.delete(':adId', ':id') /}
     $('.pictureDelete').click(function() {
         var id = this.id.substring("pictureDelete_".length);
-        alert("hola: " + id);
         $("#picture_"+ id).load(pictureDelete({adId: "${object.id}", id: id}));
     });
 

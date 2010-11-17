@@ -9,5 +9,8 @@ tmp
 attachments
 db
 precompiled
-public\images\candidates
-conf\application.conf
+public/images/candidates
+conf/application.conf
+doc/css/screens
+doc/css/login
+doc/css/*.zip

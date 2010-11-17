@@ -21,8 +21,9 @@ public class Ad extends Model {
   public enum OfferType { offer, search }
   public enum HandOver { sell, rent, exchange, donate }
   public enum PriceType { fixedPrice, negociable }
+  public enum Language { de, en, es }
 
-  @Required @MaxSize(180) public String title;
+  @Required @MaxSize(100) public String title;
   @Temporal(TemporalType.DATE)
   public Date postedAt;
   public BigDecimal price;
@@ -34,9 +35,11 @@ public class Ad extends Model {
   @Required @Email
   public String email;
   public long noOfVisits;
-  @Required @Enumerated public OfferType offer; // or search
-  @Required @Enumerated public HandOver handOver; // or rent
-  @Enumerated public PriceType priceType; // or nogiciable
+  @Required @Enumerated public OfferType offer;
+  @Required @Enumerated public HandOver handOver;
+  @Enumerated public PriceType priceType;
+
+  @Required @Enumerated public Language language;
 
   @ManyToOne @Required
   public MainCategory mainCategory;
@@ -58,6 +61,13 @@ public class Ad extends Model {
     //picture = new Picture();
     //  fotos = new ArrayList<File>();
   }
+
+
+  public String getHtmlSecuredEmail() {
+    if(null == email) return null;
+    return email.replace("@", "<code>@</code>");
+  }
+
 
   public String toString() {
     return title;

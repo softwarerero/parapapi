@@ -31,12 +31,14 @@
         City: ${_ad.city}
         &nbsp;|&nbsp;
         Zone: ${_ad.zone}
-        <br/>
-        Phone: ${_ad.phone}
-        &nbsp;|&nbsp;
-        Mobile_phone: ${_ad.mobile_phone}
-        &nbsp;|&nbsp;
-        Email: ${_ad.email}
+        #{if controllers.Security.isConnected()}
+            <br/>
+            Phone: ${_ad.phone}
+            &nbsp;|&nbsp;
+            Mobile_phone: ${_ad.mobile_phone}
+            &nbsp;|&nbsp;
+            Email: ${_ad.getHtmlSecuredEmail().raw()}
+        #{/if}
         <br/>
         NoOfVisits: ${_ad.noOfVisits}
         &nbsp;|&nbsp;

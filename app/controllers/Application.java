@@ -1,5 +1,7 @@
 package controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
@@ -88,9 +90,11 @@ public class Application extends Controller {
   
   private static void render4editAd(Ad object) {
     List<MainCategory> mainCategories = MainCategory.findAll();
+//    Gson gson = new Gson();
+//    String mainCategoriesJson = gson.toJson(mainCategories);
     List<SubCategory> subCategories = object.mainCategory.children;
 //    String randomID = Codec.UUID();
-    render("Application/editAd.html", Ad.class, object, mainCategories, subCategories);
+    render("Application/editAd.html", Ad.class, object, subCategories);
 	}
 
 
@@ -106,8 +110,12 @@ public class Application extends Controller {
     object.offer = Ad.OfferType.offer;
     object.handOver = Ad.HandOver.sell;
     object.priceType = Ad.PriceType.fixedPrice;
-    object.phone = "123" + no;
-    object.mainCategory = (MainCategory) MainCategory.findAll().get(0);
+    object.phone = user.phone;
+    object.mobilePhone = user.mobilePhone;
+    object.zone = user.zone;
+    object.department = user.department;
+    object.city = user.city;
+    object.mainCategory = (MainCategory) MainCategory.findAll().get(3);
     object.subCategory = object.mainCategory.children.get(0);
     return object;
   }

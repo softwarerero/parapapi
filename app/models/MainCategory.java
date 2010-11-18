@@ -1,5 +1,7 @@
 package models;
 
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
 import play.data.validation.*;
 import play.db.jpa.Model;
 
@@ -16,23 +18,34 @@ import java.util.List;
  */
 @Entity
 public class MainCategory extends Model {
-  @Required
+
+  @Required @Expose
   public String name;
 
-  @OneToMany(mappedBy="parent")
+  @OneToMany(mappedBy="parent") @Expose
   public List<SubCategory> children;
 
   @OneToMany(mappedBy="mainCategory", cascade= CascadeType.ALL, fetch = FetchType.LAZY)
   public List<Ad> ads;
 
+  @Expose
   public long adCount = 0;
+
 
   public MainCategory(String name) {
      this.name = name;
   }
 
-
   public String toString() {
     return name;
+  }
+
+
+  public String toJson() {
+    //TODO: inject
+    GsonBuilder gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+    String ret = gson.create().toJson(this);
+    System.out.println("toJson: " + ret);
+    return ret;
   }
 }

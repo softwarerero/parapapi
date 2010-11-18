@@ -31,9 +31,11 @@ public class User extends Model {
   public String postCode;
   public String street;
   public String city;
+  public String zone;
+  public String department;
   public String country;
   public String mobilePhone;
-  public String landLine;
+  public String phone;
   public boolean isAdmin = false;
   public boolean isActive = false;
   public String confirmationToken;

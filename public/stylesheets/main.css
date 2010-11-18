@@ -618,11 +618,3 @@ ul.pagination {
 .pagination a:hover {
 	text-decoration: none;
 }
-
-.noscript {
-    font-family:Verdana;
-    font-size:10px;
-    font-weight:bold;
-    color:red;
-    width:100%;
-}

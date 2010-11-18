@@ -22,6 +22,8 @@ public class Ad extends Model {
   public enum HandOver { sell, rent, exchange, donate }
   public enum PriceType { fixedPrice, negociable }
   public enum Language { de, en, es }
+  public enum Country { py }
+  public enum Currency { pyg, usd, eur }
 
   @Required @MaxSize(100) public String title;
   @Temporal(TemporalType.DATE)
@@ -31,15 +33,16 @@ public class Ad extends Model {
   public String city;
   public String zone;
   @Required public String phone;
-  public String mobile_phone;
+  public String mobilePhone;
   @Required @Email
   public String email;
   public long noOfVisits;
   @Required @Enumerated public OfferType offer;
   @Required @Enumerated public HandOver handOver;
   @Enumerated public PriceType priceType;
-
-  @Required @Enumerated public Language language;
+  @Required @Enumerated public Language language = Language.de;
+  @Required @Enumerated public Country country = Country.py;
+  @Required @Enumerated public Currency currency = Currency.pyg;
 
   @ManyToOne @Required
   public MainCategory mainCategory;
@@ -52,6 +55,8 @@ public class Ad extends Model {
 
   @ManyToOne @Required
   public User author;
+
+  public boolean allowBids;
   
   @OneToMany(mappedBy="ad", cascade= CascadeType.ALL)
   public List<Picture> pictures;

@@ -1,5 +1,7 @@
 package controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import models.*;
 import play.mvc.*;
 
@@ -45,4 +47,25 @@ public class MainCategories extends CRUD {
     System.out.println("optionString: " + optionString);
     return optionString.toString();
   }
+
+
+  public static String categoriesAsJson() {
+
+    List<MainCategory> mainCategories = MainCategory.findAll();
+//    render(mainCategories);
+
+    //TODO: inject
+    GsonBuilder gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+    String ret = gson.create().toJson(mainCategories);
+    System.out.println("categoriesAsJson: " + ret);
+    return ret;
+  }
+
+  public static String categoriesTestAsJson() {
+    return "[" +
+       "{'name': 'Great Category', 'adCount': '403'}" +
+     "]";
+  }
+
+
 }

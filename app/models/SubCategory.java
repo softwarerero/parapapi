@@ -1,5 +1,6 @@
 package models;
 
+import com.google.gson.annotations.Expose;
 import play.data.validation.*;
 import play.db.jpa.Model;
 
@@ -16,7 +17,7 @@ import java.util.List;
 @Entity
 public class SubCategory extends Model {
   
-  @Required
+  @Required @Expose
   public String name;
 
   @ManyToOne
@@ -25,6 +26,7 @@ public class SubCategory extends Model {
   @OneToMany(mappedBy="subCategory", cascade= CascadeType.ALL, fetch = FetchType.LAZY)
   public List<Ad> ads;
 
+  @Expose
   public long adCount = 0;
 
   public SubCategory(String name) {

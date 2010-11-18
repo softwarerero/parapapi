@@ -12,7 +12,7 @@
 #{form @Application.saveAd(ad), enctype:'multipart/form-data'}
     <div style="width: 100%;" class="form">
 
-    <noscript class="noscript">
+    <noscript>
         <p class="error">
         Javascript must be enabled to properly navigate this site.
         </p>
@@ -37,10 +37,11 @@
             #{form/renderEnum object: object, attr: "offer", enum: models.Ad.OfferType/}
             #{form/renderText object: object, attr: "price"/}
             #{form/renderText object: object, attr: "phone"/}
-            #{form/renderText object: object, attr: "mobile_phone"/}
+            #{form/renderText object: object, attr: "mobilePhone"/}
             #{form/renderText object: object, attr: "email"/}
             #{crud.relationField name: "mainCategory", value: object.mainCategory, field: currentType.getField('mainCategory') /}
-            <input type="submit" value="Submit your Ad" />
+            Cat: <select data-bind="options: availableMainCategories, optionsText: 'name', value: chosenMainCategory"></select>
+            
         </div>
         <div style="width: 4%; float: left;">&nbsp;</div>
         <div style="width: 48%; float: left;">
@@ -72,7 +73,10 @@
             </div>
         </div>
     </div>
-    <div style="clear: both;"></div>          
+    <div style="clear: both; text-align: left;">
+        <br/>
+        <input type="submit" value="Submit your Ad" />
+    </div>
 #{/form}
 
 
@@ -93,7 +97,13 @@
 
 <script type="text/javascript">
 
-    var getSubCategories = #{jsAction @MainCategories.getSubCategories(':id') /}
+    var viewModel = {
+        availableMainCategories : ko.observableArray(${controllers.MainCategories.categoriesAsJson().raw()}),
+        chosenMainCategory : ko.observable(${object.mainCategory?.toJson().raw()})
+    };
+    ko.applyBindings(viewModel); // Makes Knockout get to work
+
+    var getSubCategories = #{jsAction @MainCategories.getSubCategories(':id') /}         
 
     $('#object_mainCategory').change(function() {
         $('#object_subCategory').load(getSubCategories({id: $(this).val()}));

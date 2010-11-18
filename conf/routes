@@ -13,6 +13,7 @@ GET     /captcha                                Application.captcha
 
 GET     /confirmRegistration/{email}/{confirmationToken} Register.confirmRegistration
 
+GET     /mainCategories/categoriesAsJson     MainCategories.categoriesAsJson(format:'json')
 
 # Import CRUD routes
 *      /admin              module:crud

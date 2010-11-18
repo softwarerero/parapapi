@@ -40,8 +40,6 @@
             #{form/renderText object: object, attr: "mobilePhone"/}
             #{form/renderText object: object, attr: "email"/}
             #{crud.relationField name: "mainCategory", value: object.mainCategory, field: currentType.getField('mainCategory') /}
-            Cat: <select data-bind="options: availableMainCategories, optionsText: 'name', value: chosenMainCategory"></select>
-            
         </div>
         <div style="width: 4%; float: left;">&nbsp;</div>
         <div style="width: 48%; float: left;">
@@ -97,13 +95,7 @@
 
 <script type="text/javascript">
 
-    var viewModel = {
-        availableMainCategories : ko.observableArray(${controllers.MainCategories.categoriesAsJson().raw()}),
-        chosenMainCategory : ko.observable(${object.mainCategory?.toJson().raw()})
-    };
-    ko.applyBindings(viewModel); // Makes Knockout get to work
-
-    var getSubCategories = #{jsAction @MainCategories.getSubCategories(':id') /}         
+    var getSubCategories = #{jsAction @MainCategories.getSubCategories(':id') /}
 
     $('#object_mainCategory').change(function() {
         $('#object_subCategory').load(getSubCategories({id: $(this).val()}));

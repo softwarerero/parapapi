@@ -89,9 +89,7 @@ public class Application extends Controller {
 
   
   private static void render4editAd(Ad object) {
-    List<MainCategory> mainCategories = MainCategory.findAll();
-//    Gson gson = new Gson();
-//    String mainCategoriesJson = gson.toJson(mainCategories);
+//    List<MainCategory> mainCategories = MainCategory.findAll();
     List<SubCategory> subCategories = object.mainCategory.children;
 //    String randomID = Codec.UUID();
     render("Application/editAd.html", Ad.class, object, subCategories);

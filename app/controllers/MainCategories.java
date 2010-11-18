@@ -48,24 +48,4 @@ public class MainCategories extends CRUD {
     return optionString.toString();
   }
 
-
-  public static String categoriesAsJson() {
-
-    List<MainCategory> mainCategories = MainCategory.findAll();
-//    render(mainCategories);
-
-    //TODO: inject
-    GsonBuilder gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
-    String ret = gson.create().toJson(mainCategories);
-    System.out.println("categoriesAsJson: " + ret);
-    return ret;
-  }
-
-  public static String categoriesTestAsJson() {
-    return "[" +
-       "{'name': 'Great Category', 'adCount': '403'}" +
-     "]";
-  }
-
-
 }

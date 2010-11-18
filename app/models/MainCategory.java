@@ -39,13 +39,4 @@ public class MainCategory extends Model {
   public String toString() {
     return name;
   }
-
-
-  public String toJson() {
-    //TODO: inject
-    GsonBuilder gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
-    String ret = gson.create().toJson(this);
-    System.out.println("toJson: " + ret);
-    return ret;
-  }
 }

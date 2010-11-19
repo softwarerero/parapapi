@@ -40,6 +40,18 @@
             #{form/renderText object: object, attr: "mobilePhone"/}
             #{form/renderText object: object, attr: "email"/}
             #{crud.relationField name: "mainCategory", value: object.mainCategory, field: currentType.getField('mainCategory') /}
+            <div> <!-- 1st Picture -->
+                <label for="picture">1st Foto</label>
+                <input type="file" id="picture" name="picture"/>
+            </div>
+            <div> <!-- 2nd Picture -->
+                <label for="picture1">2nd Foto</label>
+                <input type="file" id="picture1" name="picture1"/>
+            </div>
+            <div> <!-- 3rd Picture -->
+                <label for="picture2">3rd Foto</label>
+                <input type="file" id="picture2" name="picture2"/>
+            </div>
         </div>
         <div style="width: 4%; float: left;">&nbsp;</div>
         <div style="width: 48%; float: left;">
@@ -49,25 +61,17 @@
             #{form/renderText object: object, attr: "department"/}
             #{form/renderText object: object, attr: "city"/}
             #{form/renderSelect name: "subCategory", value: object.subCategory, items: subCategories /}
-            <div> <!-- 1st Picture -->
-                <label for="picture_image">1st Foto</label>
-                <input type="file" id="picture_image" name="picture.image"/>
-            </div>
-            <div> <!-- 2nd Picture -->
-                <label for="picture1_image">2nd Foto</label>
-                <input type="file" id="picture1_image" name="picture1.image"/>
-            </div>
-            <div> <!-- 3rd Picture -->
-                <label for="picture2_image">3rd Foto</label>
-                <input type="file" id="picture2_image" name="picture2.image"/>
-            </div>
             <div> <!-- 4th Picture -->
-                <label for="picture3_image">4th Foto</label>
-                <input type="file" id="picture3_image" name="picture3.image"/>
+                <label for="picture3">4th Foto</label>
+                <input type="file" id="picture3" name="picture3"/>
             </div>
             <div> <!-- 5th Picture -->
-                <label for="picture4_image">5th Foto</label>
-                <input type="file" id="picture4_image" name="picture4.image"/>
+                <label for="picture4">5th Foto</label>
+                <input type="file" id="picture4" name="picture4"/>
+            </div>
+            <div> <!-- 6th Picture -->
+                <label for="picture5">6th Foto</label>
+                <input type="file" id="picture5" name="picture5"/>
             </div>
         </div>
     </div>
@@ -85,7 +89,7 @@
 }%
         <div id="picture_${i}">
             <img src="@{Pictures.renderPicture(object.id, i)}" />
-            <input type="button" class="pictureDelete" id="pictureDelete_${i}" value="&{'delete'}" />
+            <input type="button" class="pictureDelete" id="pictureDelete_${object.pictures.get(i).id}" value="&{'delete'}" />
             <br/>
         </div>
 %{
@@ -103,8 +107,9 @@
 
     var pictureDelete = #{jsAction @Pictures.delete(':adId', ':id') /}
     $('.pictureDelete').click(function() {
+        var divId = this.parentNode.id.substring("picture_".length);
         var id = this.id.substring("pictureDelete_".length);
-        $("#picture_"+ id).load(pictureDelete({adId: "${object.id}", id: id}));
+        $("#picture_"+ divId).load(pictureDelete({adId: "${object.id}", id: id}));
     });
 
     // wait for the DOM to be loaded

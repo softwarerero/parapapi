@@ -12,6 +12,8 @@ Ad.title = Title
 
 
 validation.required=%s is required
+validation.invalid=Incorrect value %s
+
 mobile_phone=Moblie Phone
 
 secure.username=Your email:

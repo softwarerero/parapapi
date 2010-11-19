@@ -9,6 +9,7 @@ import play.libs.Codec;
 import play.libs.Images;
 import play.mvc.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
@@ -126,7 +127,8 @@ public class Application extends Controller {
 
   
   public static void saveAd(@Valid Ad object,
-                            Picture picture, Picture picture1, Picture picture2, Picture picture3, Picture picture4) throws IOException {
+                            File picture, File picture1, File picture2, File picture3,
+                            File picture4, File picture5) throws IOException {
 
     System.out.println("params: " + params.allSimple());
     System.out.println("id: " + object.id);
@@ -150,6 +152,7 @@ public class Application extends Controller {
     Pictures.savePicture(object, picture2);
     Pictures.savePicture(object, picture3);
     Pictures.savePicture(object, picture4);
+    Pictures.savePicture(object, picture5);
 
     Users.dashboard();
   }

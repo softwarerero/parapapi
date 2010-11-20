@@ -38,7 +38,6 @@ public class Register extends CRUD {
                             @Required(message="Please type the code") String code,
                             String randomID) throws EmailException {
 
-    getLang();
     if(!Play.id.equals("test")) {
       validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");
     }
@@ -54,7 +53,8 @@ public class Register extends CRUD {
     registrationConfirmation(object);
   }
 
-  
+
+  // TODO parametrize hard coded values
   public static void registrationConfirmation(User object) throws EmailException {
     User user = User.find("byEmail", object.email).<User>first();
     SimpleEmail email = new SimpleEmail();
@@ -96,7 +96,6 @@ public class Register extends CRUD {
       Logger.fatal("user confirmation failed: " + email);
       Application.index();
     }
-    System.out.println("user.confirmationToken: " + user.confirmationToken);
     if(user.confirmationToken.equals(confirmationToken)) {
       Logger.info("activate user: " + user.id);
       user.isActive = true;

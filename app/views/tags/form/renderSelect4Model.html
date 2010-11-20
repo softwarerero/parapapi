@@ -1,0 +1,10 @@
+<label for="object_${_name}">${_name.capitalizeWords()}: </label>
+#{ifError 'object.' + _name}
+    %{ clazz = "error" }%
+#{/ifError}
+<select id="object_${_name}" name="object.${_name}.id" class="${clazz}">
+    <option value="">(None)</option>
+    #{list items: _items, as:'item'}
+        <option value="${item.id}" ${item.equals(_value) ? 'selected="true"'.raw() : ''} >${item.toString()}</option>
+    #{/list}
+</select>

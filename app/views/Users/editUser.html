@@ -27,23 +27,28 @@
     <div style="width: 48%; float: left;">
     #{form/renderText object: object, attr: "nickname"/}
     #{form/renderText object: object, attr: "email"/}
-    #{form/renderText object: object, attr: "password"/}
-    #{form/renderText object: object, attr: "passwordConfirmation"/}
+    #{form/renderPassword object: object, attr: "password"/}
+    #{form/renderPassword object: object, attr: "passwordConfirmation"/}
     #{form/renderText object: object, attr: "firstNames"/}
     #{form/renderText object: object, attr: "lastNames"/}
+    #{form/renderRadio object: object, attr: "currency", enum: models.Ad.Currency/}
+    #{form/renderText object: object, attr: "documentNo"/}
+    #{form/renderRadio object: object, attr: "documentType", enum: models.User.DocumentType/}
     </div>
     <div style="width: 4%; float: left;">&nbsp;</div>
     <div style="width: 48%; float: left;">
+    #{form/renderSelect4Enum name: "country", value: object.country, items: models.Ad.Country.values(), optional: false/}
+    #{form/renderSelect4Enum name: "department", value: object.department, items: models.Ad.Department.values() /}
+    #{form/renderText object: object, attr: "city"/}
     #{form/renderText object: object, attr: "postCode"/}
     #{form/renderText object: object, attr: "street"/}
-    #{form/renderText object: object, attr: "city"/}
-    #{form/renderText object: object, attr: "country"/}
+    #{form/renderText object: object, attr: "zone"/}
     #{form/renderText object: object, attr: "mobilePhone"/}
     #{form/renderText object: object, attr: "phone"/}
     </div>
     <div style="clear: both;"></div>
     <p>&nbsp;</p>
-    <span style="float: left;"><input id="aceptConditionsCB" type="checkbox" name="" />&nbsp;&nbsp;</span>
+    <span style="float: left;">#{form/renderCheckbox object: object, attr: "acceptConditions"/}&nbsp;&nbsp;</span>
         <label for="aceptConditions" id="aceptConditions">I accept the <a href="/public/documents/agb.txt" onclick="javascript:openWin(this, 'AGB', 400, 480, 'scrollbars=yes'); return false;" >Terms of use</a> and the <a href="" onclick="javascript:openWin(this, 'Nutzungsbestimmungen', 450, 480, 'scrollbars=yes'); return false;">data policy</a>.</label>
     <p>&nbsp;</p>
 

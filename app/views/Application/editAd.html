@@ -29,12 +29,18 @@
 
     <input type="hidden" id="object_id" name="object.id" value="${object.id}" />
     <input type="hidden" id="object_author" name="object.author.id" value="${object.author.id}" />
-    #{form/renderEnum object: object, attr: "language", enum: models.Ad.Language/}
+    <div style="width: 48%; float: left;">
+    #{form/renderRadio object: object, attr: "language", enum: models.Ad.Language/}
+    </div>
+    <div style="width: 4%; float: left;">&nbsp;</div>
+    <div style="width: 48%; float: left;">
+        #{form/renderRadio object: object, attr: "offer", enum: models.Ad.OfferType/}
+    </div>
     #{form/renderText object: object, attr: "title", size: 100/}
     #{form/renderTextArea object: object, attr: "content"/}
     <p></p>
         <div style="width: 48%; float: left;">
-            #{form/renderEnum object: object, attr: "offer", enum: models.Ad.OfferType/}
+            #{form/renderRadio object: object, attr: "handOver", enum: models.Ad.HandOver/}
             #{form/renderText object: object, attr: "price"/}
             #{form/renderText object: object, attr: "phone"/}
             #{form/renderText object: object, attr: "mobilePhone"/}
@@ -55,12 +61,12 @@
         </div>
         <div style="width: 4%; float: left;">&nbsp;</div>
         <div style="width: 48%; float: left;">
-            #{form/renderEnum object: object, attr: "handOver", enum: models.Ad.HandOver/}
-            #{form/renderEnum object: object, attr: "priceType", enum: models.Ad.PriceType/}
-            #{form/renderText object: object, attr: "zone"/}
-            #{form/renderText object: object, attr: "department"/}
+            #{form/renderRadio object: object, attr: "priceType", enum: models.Ad.PriceType/}
+            #{form/renderRadio object: object, attr: "currency", enum: models.Ad.Currency/}
+            #{form/renderSelect4Enum name: "department", value: object.department, items: models.Ad.Department.values() /}
             #{form/renderText object: object, attr: "city"/}
-            #{form/renderSelect name: "subCategory", value: object.subCategory, items: subCategories /}
+            #{form/renderText object: object, attr: "zone"/}
+            #{form/renderSelect4Model name: "subCategory", value: object.subCategory, items: subCategories /}
             <div> <!-- 4th Picture -->
                 <label for="picture3">4th Foto</label>
                 <input type="file" id="picture3" name="picture3"/>

@@ -19,7 +19,7 @@
                 <ul id="tools">
                     <li>
                         #{if controllers.Security.isConnected()}
-                            Hi, <input type="button" onclick="location.href='@{Users.dashboard()}'" value="${controllers.Security.connected()}" /> &nbsp;&nbsp;
+                            <input type="button" onclick="location.href='@{Users.dashboard()}'" value="${session.nickname}" /> 
                             <input type="button" onclick="location.href='@{Secure.logout()}'" value="&{'views.main.tools.logout'}" />
                         #{/if}
                         #{else}

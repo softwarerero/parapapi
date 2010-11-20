@@ -1,4 +1,4 @@
-﻿views.index.title.header=Publish Ads in Asunción, Paraguay
+views.index.title.header=Publish Ads in Asunción, Paraguay
 views.dateFormat=dd.MM.yyyy
 views.main.tools.login=Login
 views.main.tools.logout=Logout
@@ -19,3 +19,22 @@ mobile_phone=Moblie Phone
 secure.username=Your email:
 secure.password=Your password:
 secure.signin=Log in now
+
+
+ce=Central
+ap=Alto Paraguay
+an=Alto Paraná
+am=Amambay
+bo=Boquerón
+ca=Caaguazú
+cz=Caazapá
+cn=Canindeyú
+co=Concepción
+cd=Cordillera 
+gu=Guariá
+it=Itapúa
+pa=Paraguarí
+pr=Presidente Hayes
+sp=San Pedro
+ne=Ñeembucú
+mi=Missiones

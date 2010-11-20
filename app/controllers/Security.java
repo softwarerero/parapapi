@@ -15,13 +15,22 @@ public class Security extends Secure.Security {
     return User.connect(username, password) != null;
   }
 
+  static void onAuthenticated() {
+    session.put("nickname", User.find("byEmail", connected()).<User>first().nickname);
+  }
+
   static void onDisconnected() {
-      Application.index();
+    session.remove("nickname");
+    Application.index();
   }
 
   static boolean check(String profile) {
+    System.out.println("con: "+connected());
       if("admin".equals(profile)) {
-          return User.find("byEmail", connected()).<User>first().isAdmin;
+        User user = User.find("byEmail", connected()).<User>first();
+        if(null != user) {
+          return user.isAdmin;
+        }
       }
       return false;
   }

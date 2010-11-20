@@ -1,0 +1,70 @@
+#{extends 'main.html' /}
+#{set title: 'Search' /}
+
+<h3>Search <span>an Ad</span></h3>
+
+
+#{form @Application.saveAd(ad), enctype:'multipart/form-data'}
+    <div style="width: 100%;" class="form">
+
+    <noscript>
+        <p class="error">
+        Javascript must be enabled to properly navigate this site.
+        </p>
+    </noscript>
+    #{ifErrors}
+        <p class="error">
+            ${errors[0]}
+        </p>
+    #{/ifErrors}
+
+    %{
+        def currentType = _('controllers.CRUD$ObjectType').forClass(object.getClass().getName())
+    }%
+
+    <div style="width: 48%; float: left;">
+    #{form/renderRadio object: object, attr: "language", enum: models.Ad.Language/}
+    </div>
+    <div style="width: 4%; float: left;">&nbsp;</div>
+    <div style="width: 48%; float: left;">
+        #{form/renderRadio object: object, attr: "offer", enum: models.Ad.OfferType/}
+    </div>
+    #{form/renderText object: object, attr: "text", size: 127/}
+    <p></p>
+        <div style="width: 48%; float: left;">
+
+            #{form/renderRadio object: object, attr: "handOver", enum: models.Ad.HandOver/}
+            #{form/renderText object: object, attr: "price"/}
+            #{crud.relationField name: "mainCategory", value: object.mainCategory, field: currentType.getField('mainCategory') /}
+            #{form/renderSelect4Enum name: "department", value: object.department, items: models.Ad.Department.values() /}
+        </div>
+        <div style="width: 4%; float: left;">&nbsp;</div>
+        <div style="width: 48%; float: left;">
+            #{form/renderRadio object: object, attr: "priceType", enum: models.Ad.PriceType/}
+            #{form/renderRadio object: object, attr: "currency", enum: models.Ad.Currency/}
+            #{form/renderSelect4Model name: "subCategory", value: object.subCategory, items: subCategories /}
+            #{form/renderText object: object, attr: "city"/}
+            #{form/renderText object: object, attr: "zone"/}
+        </div>
+    </div>
+    <div style="clear: both; text-align: left;">
+        <br/>
+        <input type="submit" value="Search" />
+    </div>
+#{/form}
+
+
+<script type="text/javascript">
+
+    var getSubCategories = #{jsAction @MainCategories.getSubCategories(':id') /}
+
+    $('#object_mainCategory').change(function() {
+        $('#object_subCategory').load(getSubCategories({id: $(this).val()}));
+    });
+
+    $('#object_city').autocomplete({ source: ["c++", "java", "php", "coldfusion", "javascript", "asp", "ruby"] });
+
+    // wait for the DOM to be loaded
+    $(document).ready(function() {
+    });
+</script>

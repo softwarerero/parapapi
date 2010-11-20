@@ -1,11 +1,9 @@
 package controllers;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
-import play.libs.Codec;
+import play.i18n.Messages;
 import play.libs.Images;
 import play.mvc.*;
 
@@ -24,13 +22,13 @@ public class Application extends Controller {
 
   static public int pageSize = Integer.parseInt(Play.configuration.getProperty("pagesize"));
 
-  @Before
-  static void setConnectedUser() {
-    if(Security.isConnected()) {
-        User user = User.find("byEmail", Security.connected()).first();
-        renderArgs.put("user", user.nickname);
-    }
-  }
+//  @Before
+//  static void setConnectedUser() {
+//    if(Security.isConnected()) {
+//        User user = User.find("byEmail", Security.connected()).first();
+//        renderArgs.put("user", user.nickname);
+//    }
+//  }
 
 
   public static void index() {
@@ -39,14 +37,40 @@ public class Application extends Controller {
   }
 
 
-	public static void search(@Required String searchString) {
+	public static void search(String searchString) {
+    validation.required(searchString).message("Oops, please enter your search criteria!");
+    validation.minSize(searchString, 3).message("Please enter more criteria!");
+
 		if(validation.hasErrors()) {
-			flash.error("Oops, please enter your search criteria!");
+      params.flash(); // add http parameters to the flash scope
+      validation.keep(); // keep the errors for the next request
 			index();
 		}
-    flash.error("Not implemented yet, Papi!");
-    index();
+
+    String searchTerm = '%' + searchString.toLowerCase() + '%';
+    List<Ad> ads = Ad.find("lower(title) like ? or lower(content) like ?",
+            searchTerm, searchTerm).fetch();
+    System.out.println("ads: " + ads.size());
+    long noFound = ads.size();
+    ValuePaginator paginator = new ValuePaginator(ads);
+    paginator.setPageSize(pageSize);
+		render("Application/adList.html", searchString, ads, paginator, noFound);
 	}
+
+
+  public static void advancedSearch(AdSearch adSearch) {
+    System.out.println("adSearch: " + adSearch.getClass());
+//    validation.valid(adSearch).message("Not implemented yet, Papi!");
+//    if(validation.hasErrors()) {
+//      validation.clear();
+//      AdSearch object = adSearch;
+//      render(object);
+//    }
+    //validation.required(ad).message("Not implemented yet, Papi!");
+//    validation.keep(); // keep the errors for the next request
+    AdSearch object = adSearch;
+    render(object);
+  }
 
   
   public static void maincategoryList(Long id) {
@@ -114,7 +138,7 @@ public class Application extends Controller {
     object.zone = user.zone;
     object.department = user.department;
     object.city = user.city;
-    object.mainCategory = (MainCategory) MainCategory.findAll().get(3);
+    object.mainCategory = (MainCategory) MainCategory.findAll().get(0);
     object.subCategory = object.mainCategory.children.get(0);
     return object;
   }
@@ -130,12 +154,7 @@ public class Application extends Controller {
                             File picture, File picture1, File picture2, File picture3,
                             File picture4, File picture5) throws IOException {
 
-    System.out.println("params: " + params.allSimple());
-    System.out.println("id: " + object.id);
-
-//    if(!Play.id.equals("test")) {
-//      validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");
-//    }
+    System.out.println(params.allSimple());
 
     if(validation.hasErrors()) {
       Logger.debug("validation error: " + validation.errorsMap());

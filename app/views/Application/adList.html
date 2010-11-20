@@ -1,14 +1,19 @@
 #{extends 'main.html' /}
-#{set title: category.name /}
+#{set title: 'Ads' /}
 
-#{if flash.error}
-    <p style="color:#c00">
-        ${flash.error}
+#{ifErrors}
+    <p class="error">
+        ${errors[0]}
     </p>
-#{/if}
-
+#{/ifErrors}
+        
 <div class="adList">
-    <h3>Category ${category.name}</h3>
+    #{if category}
+        <h3>Category ${category.name}</h3>
+    #{/if}
+    #{elseif searchString}
+        <h3>Search: ${searchString} <span style="float: right;">&{'Items found:'} ${noFound}</span></h3>
+    #{/elseif}
 
     #{paginate.list items:paginator, as: 'ad'}
         #{renderAd ad: ad, as: 'teaser'/}

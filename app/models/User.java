@@ -17,45 +17,46 @@ import play.db.jpa.*;
 @Entity
 public class User extends Model {
 
-  @Email
-  @Required @javax.persistence.Column(unique = true) 
-  public String email;
-  @Required @Equals("passwordConfirmation")
-  public String password;
-  @Required
-  public String passwordConfirmation;
-  @Required @javax.persistence.Column(unique = true) 
-  public String nickname;
-  public String firstNames;
-  public String lastNames;
+  public enum DocumentType { CID, PASSPORT }
+
+  @Required @javax.persistence.Column(unique = true) public String nickname;
+  @Email @Required @javax.persistence.Column(unique = true) public String email;
+  @Required @Equals("passwordConfirmation") @Password public String password;
+  @Required @Password public String passwordConfirmation;
+  @Required public String firstNames;
+  @Required public String lastNames;
+  @Required public Ad.Currency currency = Ad.Currency.pyg;
+  @Required public String documentNo;
+  @Required public DocumentType documentType = DocumentType.CID;
+  @Required public Ad.Country country = Ad.Country.py;
+  @Required public Ad.Department department = Ad.Department.ce;
+  @Required public String city = "Asunción";
   public String postCode;
   public String street;
-  public String city;
   public String zone;
-  public String department;
-  public String country;
   public String mobilePhone;
-  public String phone;
+  @Required public String phone;
   public boolean isAdmin = false;
   public boolean isActive = false;
   public String confirmationToken;
+  @Required @IsTrue public boolean acceptConditions = false;
   
 
   public User() {
   }
 
-  public User(String email, String password, String nickname) {
-      this.email = email;
-      this.password = password;
-      this.nickname = nickname;
-  }
+//  public User(String email, String password, String nickname) {
+//      this.email = email;
+//      this.password = password;
+//      this.nickname = nickname;
+//  }
 
 
   public static User connect(String email, String password) {
     User user = find("byEmailAndPassword", email, password).first();
-//    if(null != user && !user.isActive) {
-//      return null;
-//    }
+    if(null != user && !user.isActive) {
+      return null;
+    }
     return user;
   }
 

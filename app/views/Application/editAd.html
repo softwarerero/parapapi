@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Ad' /}
+#{set title: messages.get('Ad') /}
 
 #{set 'moreStyles'}
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/smoothness/jquery-ui-1.8.6.custom.css'}">
@@ -7,13 +7,6 @@
 #{set 'moreScripts'}
     <script src="@{'/public/javascripts/jquery-ui-1.8.6.custom.min.js'}" type="text/javascript" ></script>
 #{/set}
-
-#{ifnot object?.id}
-    <h3>Create <span>an Ad</span> <blink>This is an alpha version. Please do not expect your data to persist. We will delete them!</blink></h3>
-#{/ifnot}
-#{else}
-    <h3>Edit <span>this Ad</span></h3>
-#{/else}
 
 
 #{form @Application.saveAd(ad), enctype:'multipart/form-data'}
@@ -54,15 +47,15 @@
             #{form/renderText object: object, attr: "email"/}
             #{crud.relationField name: "mainCategory", value: object.mainCategory, field: currentType.getField('mainCategory') /}
             <div> <!-- 1st Picture -->
-                <label for="picture">1st Foto</label>
+                <label for="picture">${messages.get('picture')}</label>
                 <input type="file" id="picture" name="picture"/>
             </div>
             <div> <!-- 2nd Picture -->
-                <label for="picture1">2nd Foto</label>
+                <label for="picture1">${messages.get('picture1')}</label>
                 <input type="file" id="picture1" name="picture1"/>
             </div>
             <div> <!-- 3rd Picture -->
-                <label for="picture2">3rd Foto</label>
+                <label for="picture2">${messages.get('picture2')}</label>
                 <input type="file" id="picture2" name="picture2"/>
             </div>
         </div>
@@ -75,22 +68,22 @@
             #{form/renderText object: object, attr: "zone"/}
             #{form/renderSelect4Model name: "subCategory", value: object.subCategory, items: subCategories /}
             <div> <!-- 4th Picture -->
-                <label for="picture3">4th Foto</label>
+                <label for="picture3">${messages.get('picture3')}</label>
                 <input type="file" id="picture3" name="picture3"/>
             </div>
             <div> <!-- 5th Picture -->
-                <label for="picture4">5th Foto</label>
+                <label for="picture4">${messages.get('picture4')}</label>
                 <input type="file" id="picture4" name="picture4"/>
             </div>
             <div> <!-- 6th Picture -->
-                <label for="picture5">6th Foto</label>
+                <label for="picture5">${messages.get('picture5')}</label>
                 <input type="file" id="picture5" name="picture5"/>
             </div>
         </div>
     </div>
     <div style="clear: both; text-align: left;">
         <br/>
-        <input type="submit" value="Submit your Ad" />
+        <input type="submit" value="&{'Save'}" />
     </div>
 #{/form}
 

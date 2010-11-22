@@ -8,12 +8,7 @@
 #{/ifErrors}
         
 <div class="adList">
-    #{if category}
-        <h3>Category ${category.name}</h3>
-    #{/if}
-    #{elseif searchString}
-        <h3>Search: ${searchString} <span style="float: right;">&{'Items found:'} ${noFound}</span></h3>
-    #{/elseif}
+    <h3>&nbsp;<span style="float: right;">&{'items_found'}: ${noFound}</span></h3>
 
     #{paginate.list items:paginator, as: 'ad'}
         #{renderAd ad: ad, as: 'teaser'/}

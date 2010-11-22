@@ -26,15 +26,6 @@ public class Application extends Controller {
 
   static public int pageSize = Integer.parseInt(Play.configuration.getProperty("pagesize"));
 
-//  @Before
-//  static void setConnectedUser() {
-//    if(Security.isConnected()) {
-//        User user = User.find("byEmail", Security.connected()).first();
-//        renderArgs.put("user", user.nickname);
-//    }
-//  }
-
-
   public static void index() {
     List<MainCategory> mainCategory = MainCategory.find("order by id asc").fetch(100);
     render(mainCategory);
@@ -54,7 +45,6 @@ public class Application extends Controller {
     String searchTerm = '%' + searchString.toLowerCase() + '%';
     List<Ad> ads = Ad.find("lower(title) like ? or lower(content) like ?",
             searchTerm, searchTerm).fetch();
-    System.out.println("ads: " + ads.size());
     long noFound = ads.size();
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
@@ -66,7 +56,8 @@ public class Application extends Controller {
     System.out.println("params: " + params.allSimple());
 
     if(!params._contains("object.text")) {
-      render(object);
+      List<MainCategory> mainCategories = MainCategory.findAll();
+      render(object, mainCategories);
     }
 
     if(validation.hasErrors()) {
@@ -147,7 +138,7 @@ public class Application extends Controller {
     }
 
     String searchString = sb.getSearchString();
-    System.out.println("searchString: " + searchString);
+    Logger.info("searchString: " + searchString);
 
     List<Ad> ads = sb.exec();
     long noFound = ads.size();
@@ -162,7 +153,7 @@ public class Application extends Controller {
 
     public SearchBuilder like(String attr, String s) {
       search.append("lower(").append(attr).append(") like ");
-      search.append("'%" + escape(s.toLowerCase()) + "%'");
+      search.append("'%" + (s.toLowerCase()) + "%'");
       return this;
     }
 
@@ -233,7 +224,8 @@ public class Application extends Controller {
     List<Ad> ads = category.ads;
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
-		render("Application/adList.html", category, ads, paginator);
+    long noFound = ads.size();
+		render("Application/adList.html", category, ads, paginator, noFound);
 	}
 
   public static void subcategoryList(Long id) {
@@ -347,6 +339,15 @@ public class Application extends Controller {
       String code = captcha.getText("#E4EAFD");
       Cache.set(id, code, "10mn");
       renderBinary(captcha);
+  }
+
+
+  public static String termsOfUse() {
+    return "hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>";
+  }
+
+  public static String dataPolicy() {
+    return "dataPolicy hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>";
   }
 
 }

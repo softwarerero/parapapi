@@ -3,7 +3,9 @@ package controllers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import models.*;
+import play.i18n.Messages;
 import play.mvc.*;
+import play.templates.JavaExtensions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,18 +32,20 @@ public class MainCategories extends CRUD {
 
   public static String getOptionString4Category(Long id) {
     StringBuilder optionString = new StringBuilder();
-    optionString.append("<option value=''>(None)</option>");
+    optionString.append("<option value=''>").append(Messages.get("option.none")).append("</option>");
 
     if(null != id) {
       MainCategory mainCategory = MainCategory.findById(id);
       List<SubCategory> subCategories = mainCategory.children;
-      List<List<Object>> objects = new ArrayList<List<Object>>();
+//      List<List<Object>> objects = new ArrayList<List<Object>>();
       for(SubCategory cat: subCategories) {
-        List<Object> obj = new ArrayList<Object>();
-        obj.add(cat.id);
-        obj.add(cat.name);
-        objects.add(obj);
-        optionString.append("<option value='" + cat.id + "'>" + cat.name + "</option>");
+//        List<Object> obj = new ArrayList<Object>();
+//        obj.add(cat.id);
+//        obj.add(cat.name);
+//        objects.add(obj);
+        String name = JavaExtensions.noAccents(cat.name).replaceAll(" / ", "_").replaceAll(" ", "_");
+        name = Messages.get(name);
+        optionString.append("<option value='" + cat.id + "'>" + name + "</option>");
       }
     }
     System.out.println("optionString: " + optionString);

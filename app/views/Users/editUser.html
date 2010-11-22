@@ -49,23 +49,23 @@
     <div style="clear: both;"></div>
     <p>&nbsp;</p>
     <span style="float: left;">#{form/renderCheckbox object: object, attr: "acceptConditions"/}&nbsp;&nbsp;</span>
-        <label for="aceptConditions" id="aceptConditions">I accept the <a href="/public/documents/agb.txt" onclick="javascript:openWin(this, 'AGB', 400, 480, 'scrollbars=yes'); return false;" >Terms of use</a> and the <a href="" onclick="javascript:openWin(this, 'Nutzungsbestimmungen', 450, 480, 'scrollbars=yes'); return false;">data policy</a>.</label>
+        <label for="acceptConditions" id="acceptConditions">&{'views.editUser.acceptConditions', messages.get('views.editUser.termsOfUse'), messages.get('views.editUser.dataPolicy')}</label>
     <p>&nbsp;</p>
 
 
     <div> <!-- Captcha -->
-        <label for="code">Please type the code below: </label>
+        <label for="code">&{'views.editUser.code'}</label>
         <img src="@{Application.captcha(randomID)}" />
         <br />
         <input type="text" name="code" id="code" size="18" value="" />
         <input type="hidden" name="randomID" value="${randomID}" />
-        <input type="submit" value="Save" />
+        <input type="submit" value="&{'Save'}" />
     </div>
     </div>
 #{/form}
 
-
-        <div id="hoho"></div>
+<div id="termsOfUseDialog" title="${messages.get('views.editUser.termsOfUse')}">${controllers.Application.termsOfUse().raw()}</div>
+<div id="dataPolicyDialog" title="${messages.get('views.editUser.dataPolicy')}">${controllers.Application.dataPolicy().raw()}</div>
 
 
 <script type="text/javascript">
@@ -77,7 +77,6 @@
         $('#object_subCategory').load(getSubCategories({id: $(this).val()}));
     });
 
-
     var cities = ${models.City.toJSON().raw()};
     $(function() {
 		$("#object_city").autocomplete({
@@ -85,8 +84,14 @@
 		});
 	});
 
-        // wait for the DOM to be loaded
-    $(document).ready(function() {
+    $('#termsOfUse').click(function() {
+        $("#termsOfUseDialog").dialog({ height: 330, width: 500, modal: true });
+        return false;
+    });
+
+    $('#dataPolicy').click(function() {
+        $("#dataPolicyDialog").dialog({ height: 330, width: 500, modal: true });
+        return false;
     });
 
 </script>

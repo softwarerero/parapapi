@@ -1,10 +1,10 @@
-<label for="object_${_name}">${_name.capitalizeWords()}: </label>
+<label for="object_${_name}">&{_name}</label>
 #{ifError 'object.' + _name}
     %{ clazz = "error" }%
 #{/ifError}
 <select id="object_${_name}" name="object.${_name}" class="${clazz}">
     #{if false != _optional}
-        <option value="">(None)</option>
+        <option value="">&{'option.none'}</option>
     #{/if}
     #{list items: _items, as:'item'}
         <option value="${item}" ${item.equals(_value) ? 'selected="true"'.raw() : ''} >${play.i18n.Messages.get(item.toString())}</option>

@@ -27,7 +27,7 @@ public class UpdateCategoryCount extends Job {
       List<MainCategory> mainCategories = MainCategory.findAll();
       for(int i=0; i<mainCategories.size(); i++) {
       //for(MainCategory category: mainCategories) {
-        MainCategory category = mainCategories.get(i);
+        MainCategory category = (MainCategory) mainCategories.get(i);
         long adCount = Ad.count("mainCategory = ?", category);
         category.adCount += adCount;
         category.save();

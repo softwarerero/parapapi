@@ -9,9 +9,9 @@
         </div>
         <br/>
         <div class="ad-metadata">
-            <span class="ad-date">${_ad.postedAt?.since()}</span>
+            <span class="ad-date">&{'Published'} ${_ad.postedAt?.since()}</span>
             &nbsp;&nbsp;
-            <span class="ad-price">Price: ${_ad.price}</span>
+            <span class="ad-price">&{'Price'} ${_ad.price} &{_ad.currency}</span>
         </div>
     </div>
     #{if _as != 'teaser'}

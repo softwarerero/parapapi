@@ -2,9 +2,8 @@
 #{set title: 'Que quieres hoy?' /}
 
 <div id="application-title">
-    <span class="about">About this site</span>
     <h1>&{'views.index.title.header'}</h1>
-    <h2>You can use this site freely to publish everything you want to offer or find in or around Asunción, Papi.</h2>
+    <h2>&{'views.index.title.subheader'}</h2>
 </div>
 
         
@@ -17,11 +16,11 @@
 
 <form action="@{Application.search()}" method="GET">
     <input type="text" name="searchString" size="50"/> 
-    <input type="submit" value="Para Papi!" />
+    <input type="submit" value="&{'ParaPapi'}" />
 
     #{if controllers.Security.isConnected()}
-        <input type="button" onclick="location.href='@{Application.advancedSearch()}'" value="Advanced Search" />
-        <input style="float: right;" type="button" onclick="location.href='@{Application.createAd()}'" value="Create Ad" />
+        <input type="button" onclick="location.href='@{Application.advancedSearch()}'" value="&{'AdvancedSearch'}" />
+        <input style="float: right;" type="button" onclick="location.href='@{Application.createAd()}'" value="&{'CreateAd'}" />
     #{/if}
 </form>
                                                      

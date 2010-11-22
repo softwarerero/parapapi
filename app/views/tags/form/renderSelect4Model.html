@@ -1,10 +1,12 @@
-<label for="object_${_name}">${_name.capitalizeWords()}: </label>
+<label for="object_${_name}">&{_name}</label>
 #{ifError 'object.' + _name}
     %{ clazz = "error" }%
 #{/ifError}
 <select id="object_${_name}" name="object.${_name}.id" class="${clazz}">
-    <option value="">(None)</option>
+    <option value="">&{'option.none'}</option>
     #{list items: _items, as:'item'}
-        <option value="${item.id}" ${item.equals(_value) ? 'selected="true"'.raw() : ''} >${item.toString()}</option>
+        %{ def text = item.toString().noAccents().replaceAll(" / ", "_").replaceAll(" ", "_") }%
+        <option value="${item.id}" ${item.equals(_value) ? 'selected="true"'.raw() : ''}>
+    &{text}</option>
     #{/list}
 </select>

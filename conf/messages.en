@@ -1,0 +1,54 @@
+views.index.title.header=Publish Ads in Asunción, Paraguay
+views.index.title.subheader=You can use this site freely to publish everything you want to offer or find in or around Asunción, Papi.
+
+views.dateFormat=dd.MM.yyyy
+views.main.tools.login=Login
+views.main.tools.logout=Logout
+views.main.tools.register=Register
+
+option.none=-
+
+offer=Offer
+search=Search
+
+Ad = Ad
+Ad.title = Title
+
+
+validation.required=%s is required
+validation.invalid=Incorrect value %s
+
+mobile_phone=Moblie Phone
+
+secure.username=Your email:
+secure.password=Your password:
+secure.signin=Log in now
+
+
+ce=Central
+ap=Alto Paraguay
+an=Alto Paraná
+am=Amambay
+bo=Boquerón
+ca=Caaguazú
+cz=Caazapá
+cn=Canindeyú
+co=Concepción
+cd=Cordillera 
+gu=Guariá
+it=Itapúa
+pa=Paraguarí
+pr=Presidente Hayes
+sp=San Pedro
+ne=Ñeembucú
+mi=Missiones
+
+
+# Next 7 lines were automatically added by i18n-extract on 2010-11-22 09:47:55
+Items found: = 
+edit = 
+create = 
+Your language = 
+Version = 
+crud.title = 
+delete = 

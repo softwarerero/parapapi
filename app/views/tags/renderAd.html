@@ -1,6 +1,5 @@
 *{ Display an Ad in one of these modes: 'full', 'home' or 'teaser' }*
-
-<div class="ad ${_as == 'teaser' ? 'teaser' : ''}">
+<div class="ad ${_as == 'teaser' ? 'teaser' : ''} ">
     <div class="ad-thumb">
         <img src="@{Pictures.renderThumbnail(_ad.id, 0)}" />
     </div>
@@ -10,7 +9,7 @@
         </div>
         <br/>
         <div class="ad-metadata">
-            <span class="ad-date">${_ad.postedAt?.format('dd MMM yy')}</span>
+            <span class="ad-date">${_ad.postedAt?.since()}</span>
             &nbsp;&nbsp;
             <span class="ad-price">Price: ${_ad.price}</span>
         </div>
@@ -21,6 +20,12 @@
             <div class="about"></div>
             ${_ad.content.nl2br()}
         </div>
+    #{/if}
+    #{if controllers.Security.isConnected()}
+    <div class="actions">
+        <a href="@{Application.editAd(_ad.id)}" class="editAction" title="&{'edit'}"></a>
+        <a href="@{Application.deleteAd(_ad.id)}" class="deleteAction" title="&{'delete'}"></a>
+    </div>
     #{/if}
 </div>
 
@@ -37,7 +42,7 @@
             &nbsp;|&nbsp;
             Mobile_phone: ${_ad.mobilePhone}
             &nbsp;|&nbsp;
-            Email: ${_ad.getHtmlSecuredEmail().raw()}
+            Email: ${_ad.getHtmlSecuredEmail()?.raw()}
         #{/if}
         <br/>
         NoOfVisits: ${_ad.noOfVisits}

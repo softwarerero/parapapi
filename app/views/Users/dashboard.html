@@ -1,16 +1,12 @@
 #{extends 'main.html' /}
 
 <h3>${session.nickname}, <span>you have written ${ads.size() ?: 'no'} ${ads.pluralize('post', 'ads')} so far</span>
-<span class="actions" >
+<span id="createAction" >
     <a href="@{Application.createAd()}" class="createAction" title="&{'create'}"></a>
 </span>
 </h3>
 
 #{paginate.list items:paginator, as: 'ad'}
-    <span class="actions">
-        <a href="@{Application.editAd(ad.id)}" class="editAction" title="&{'edit'}"></a>
-        <a href="@{Application.deleteAd(ad.id)}" class="deleteAction" title="&{'delete'}"></a>
-    </span>
     #{renderAd ad: ad, as: 'teaser'/}
 #{/paginate.list}
 <p></p>

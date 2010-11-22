@@ -155,6 +155,7 @@ public class Pictures extends Controller {
       Images.resize(originalFile, newFile, w2, h2);
       long size = originalFile.length();
 //      System.out.println("orgi size: " + size + " new size: " + newFile.length());
+      Logger.info("save picture: " + newFile);
       return newFile;
     }
     return originalFile;

@@ -74,7 +74,7 @@ a {
     height: 0;
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
-	border-bottom: 10px solid #BAC36E;
+	border-bottom: 10px solid #B8C569;
 	border-top: 0;
 	position: absolute;
 	top: -10px;
@@ -131,10 +131,19 @@ a {
 .ad .ad-teaser-data {
     float: left;
     margin-left: 10px;
+    display:block;
+    line-height:22px;
+    width:800px;
 }
 
 .ad .ad-title {
     float: left;
+    width:830px;
+}
+
+.ad .ad-thumb {
+    float: left;
+    width: 50px;
 }
 
 .ad .ad-title a {
@@ -146,9 +155,7 @@ a {
 
 .ad .ad-metadata {
     color: #869AB1;
-    display: block;
     font-size: 75%;
-    display: inline-block;
 }
 
 .ad-details {
@@ -184,8 +191,11 @@ a {
 
 .actions {
     float: right;
-    margin-top: 15px;
-    margin-right: 25px;
+    margin-top: -35px;
+}
+
+#createAction {
+    float: right;
 }
 
 .createAction {
@@ -393,7 +403,7 @@ form .label {
 }
 
 #adminMenu li.selected a {
-    background: #82A346;
+    background: #B8C569;
 }
 
 #crudContent {
@@ -593,18 +603,18 @@ ul.pagination {
 .pagination .off a:link,
 .pagination .off a:visited {
 	color: #869AB1;
-	font-weight: bold;
+    font-size: 0.9em;
 }
 
 .pagination .next a, .pagination .previous a, .pagination .first a, .pagination .last a {
-	font-weight: bold;
+    font-size: 0.9em;
 	color: #000000;
 }
 
 .pagination .active {
 	color: #000000;
 	background-color: #DEDEDE;
-	font-weight : bold;
+    font-size: 0.9em;
 }
 
 .pagination a:link, .pagination a:visited {

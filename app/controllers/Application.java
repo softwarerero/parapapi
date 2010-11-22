@@ -3,6 +3,9 @@ package controllers;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
+import play.data.binding.As;
+import play.db.jpa.JPABase;
+import play.db.jpa.Model;
 import play.i18n.Messages;
 import play.libs.Images;
 import play.mvc.*;
@@ -16,6 +19,7 @@ import java.util.List;
 import models.*;
 import play.data.validation.*;
 import play.modules.paginate.ValuePaginator;
+import play.templates.JavaExtensions;
 
 
 public class Application extends Controller {
@@ -58,18 +62,169 @@ public class Application extends Controller {
 	}
 
 
-  public static void advancedSearch(AdSearch adSearch) {
-    System.out.println("adSearch: " + adSearch.getClass());
-//    validation.valid(adSearch).message("Not implemented yet, Papi!");
-//    if(validation.hasErrors()) {
-//      validation.clear();
-//      AdSearch object = adSearch;
-//      render(object);
-//    }
-    //validation.required(ad).message("Not implemented yet, Papi!");
-//    validation.keep(); // keep the errors for the next request
-    AdSearch object = adSearch;
-    render(object);
+  public static void advancedSearch(AdSearch object) {
+    System.out.println("params: " + params.allSimple());
+
+    if(!params._contains("object.text")) {
+      render(object);
+    }
+
+    if(validation.hasErrors()) {
+      params.flash(); // add http parameters to the flash scope
+      validation.keep(); // keep the errors for the next request
+      index();
+    }
+
+    SearchBuilder sb = new SearchBuilder();
+
+    sb.eq("1", 1);
+
+    String text = params.get("object.text");
+    if(null != text && !"".equals(text)) {
+      sb.and().like("title", text).or().like("content", text);
+    }
+
+    Enum language = object.language;
+    if(null != language && !"".equals(language)) {
+      sb.and().eqEnum("language", Ad.Language.values(), language);
+    }
+
+    Enum offer = object.offer;
+    if(null != offer && !"".equals(offer)) {
+      sb.and().eqEnum("offer", Ad.OfferType.values(), offer);
+    }
+
+    Enum handOver = object.handOver;
+    if(null != handOver && !"".equals(handOver)) {
+      sb.and().eqEnum("handOver", Ad.HandOver.values(), handOver);
+    }
+
+    Enum currency = object.currency;
+    if(null != currency && !"".equals(currency)) {
+      sb.and().eqEnum("currency", Ad.Currency.values(), currency);
+    }
+
+    Date postedAfter = object.postedAt;
+    String postedAt = params.get("object.postedAt");
+    System.out.println("postedAt: " + postedAt);
+    if(null != postedAt && !"".equals(postedAt)) {
+      sb.and().gte("postedAt", postedAt);
+    }
+
+    BigDecimal priceFrom = object.priceFrom;
+    if(null != priceFrom && !"".equals(priceFrom)) {
+      sb.and().gte("price", priceFrom);
+    }
+
+    BigDecimal priceTo = object.priceTo;
+    if(null != priceTo && !"".equals(priceTo)) {
+      sb.and().lte("price", priceTo);
+    }
+
+    MainCategory mainCategory = object.mainCategory;
+    if(null != mainCategory && !"".equals(mainCategory)) {
+      sb.and().eq("mainCategory", mainCategory.id);
+    }
+
+    SubCategory subCategory = object.subCategory;
+    if(null != subCategory && !"".equals(subCategory)) {
+      sb.and().eq("subCategory", subCategory.id);
+    }
+
+    Enum department = object.department;
+    if(null != department && !"".equals(department)) {
+      sb.and().eqEnum("department", Ad.Department.values(), department);
+    }
+
+    String city = params.get("object.city");
+    if(null != city && !"".equals(city)) {
+      sb.and().like("city", city);
+    }
+
+    String zone = params.get("object.zone");
+    if(null != zone && !"".equals(zone)) {
+      sb.and().like("zone", zone);
+    }
+
+    String searchString = sb.getSearchString();
+    System.out.println("searchString: " + searchString);
+
+    List<Ad> ads = sb.exec();
+    long noFound = ads.size();
+    ValuePaginator paginator = new ValuePaginator(ads);
+    paginator.setPageSize(pageSize);
+    render("Application/adList.html", ads, paginator, noFound);
+  }
+
+
+  static class SearchBuilder {
+    StringBuilder search = new StringBuilder();
+
+    public SearchBuilder like(String attr, String s) {
+      search.append("lower(").append(attr).append(") like ");
+      search.append("'%" + escape(s.toLowerCase()) + "%'");
+      return this;
+    }
+
+    public SearchBuilder eq(String attr, Object s) {
+      if(s instanceof String) {
+        s = escape((String) s);
+      }
+      search.append(attr).append("=").append(s);
+      return this;
+    }
+
+    public SearchBuilder gte(String attr, Object s) {
+      if(s instanceof String || s instanceof Date) {
+        s = "'" + escape(((String) s)) + "'";
+      }
+      search.append(attr).append(">=").append(s);
+      return this;
+    }
+
+
+    public SearchBuilder lte(String attr, Object s) {
+      if(s instanceof String || s instanceof Date) {
+        s = "'" + escape(((String) s)) + "'";
+      }
+      search.append(attr).append("<=").append(s);
+      return this;
+    }
+
+    public SearchBuilder eqEnum(String attr, Enum[] values, Enum enumValue) {
+      int val = -1;
+      for(int i=0; i<values.length; i++) {
+        Enum e = values[i];
+        if(e.name().equals(enumValue.name())) {
+          val = i;
+        }
+      }
+      search.append(attr).append("=").append(val);
+      return this;
+    }
+
+    public SearchBuilder and() {
+      search.append(" and ");
+      return this;
+    }
+
+    public SearchBuilder or() {
+      search.append(" or ");
+      return this;
+    }
+
+    public String getSearchString() {
+      return search.toString();
+    }
+
+    public String escape(String s) {
+      //search.append("'%" + escape(s.toLowerCase()) + "%'");
+      return JavaExtensions.escape(s).toString();
+    }
+
+    public List<Ad> exec() {
+      return Ad.find(search.toString()).fetch();
+    }
   }
 
   

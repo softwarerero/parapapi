@@ -210,3 +210,39 @@ Ad(3rdBobAd):
     subCategory:    motos
     content:        Una linda casa que vuele
 
+## Cities - TODO assign to departments
+City(Abaí):
+    name:          Abaí
+    country:       py
+    department:    ce
+City(Acahay):
+    name:          Acahay
+    country:       py
+    department:    ce
+City(Aguaray):
+    name:          Aguaray
+    country:       py
+    department:    ce
+City(Alberdi):
+    name:          Alberdi
+    country:       py
+    department:    ce
+City(Alto Verá):
+    name:          Alto Verá
+    country:       py
+    department:    ce
+City(Areguá):
+    name:          Areguá
+    country:       py
+    department:    ce
+City(Asunción):
+    name:          Asunción
+    country:       py
+    department:    ce
+
+
+
+
+
+
+

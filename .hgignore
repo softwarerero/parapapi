@@ -9,6 +9,7 @@ tmp
 attachments
 db
 precompiled
+push.bat
 public/images/candidates
 conf/application.conf
 doc/css/screens

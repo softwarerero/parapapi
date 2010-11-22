@@ -3,7 +3,7 @@
 html, body {
     background: #364B66 !important;
     font-family: Helvetica, Arial, Sans !important;
-    color: #869AB1;
+    color: #364B66;
 }
 
 body {
@@ -23,7 +23,7 @@ body {
     display: block;
     height: 49px;
     margin-left: 20px;
-    color: #fff;
+    color: #F0F3F7;
     font-size: 48px;
     font-weight: bold;
     text-decoration: none;
@@ -51,7 +51,7 @@ a {
 }
 
 #tools a {
-    color: #fff;
+    color: #F0F3F7;
     text-decoration: none;
 }
 
@@ -64,21 +64,6 @@ a {
     -webkit-border-radius: 16px;
     -webkit-box-shadow: 0 2px 0 #93A045;
     -moz-border-radius: 16px;
-}
-
-/** A little hacky to create arrows without images **/
-.about {
-    text-indent: -999em;
-    display: block;
-    width: 0;
-    height: 0;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
-	border-bottom: 10px solid #B8C569;
-	border-top: 0;
-	position: absolute;
-	top: -10px;
-	left: 60px;
 }
 
 #title .about {
@@ -167,7 +152,7 @@ a {
 .ad .ad-content {
     clear: both;
     position: relative;
-    background: #fff;
+    background: #F0F3F7;
     padding: 10px;
     margin: 20px 0 20px 0;
     -webkit-border-radius: 10px;
@@ -182,7 +167,7 @@ a {
     height: 0;
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
-	border-bottom: 10px solid #fff;
+	border-bottom: 10px solid #F0F3F7;
 	border-top: 0;
 	position: absolute;
 	top: -10px;
@@ -253,7 +238,7 @@ h3 span {
 }
 
 .category .category-metadata {
-    color: #ffffff;
+    color: #F0F3F7;
     font-size: 90%;
     width: 80px;
     text-align: right;

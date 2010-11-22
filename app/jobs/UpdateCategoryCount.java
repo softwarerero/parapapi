@@ -25,7 +25,9 @@ public class UpdateCategoryCount extends Job {
       Query query = JPA.em().createNativeQuery("update MainCategory set adCount = 0");
       query.executeUpdate();
       List<MainCategory> mainCategories = MainCategory.findAll();
-      for(MainCategory category: mainCategories) {
+      for(int i=0; i<mainCategories.size(); i++) {
+      //for(MainCategory category: mainCategories) {
+        MainCategory category = mainCategories.get(i);
         long adCount = Ad.count("mainCategory = ?", category);
         category.adCount += adCount;
         category.save();

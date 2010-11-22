@@ -1,0 +1,200 @@
+views.dateFormat=yyyy-MM-dd
+views.index.title.header=Kleinanzeigen in und um Asunción
+views.index.title.subheader=Hier inseriert Papi in Deutsch, Englisch oder Spanisch. Mami natürlich auch!
+views.main.tools.login=Anmelden
+views.main.tools.logout=Abmelden
+views.main.tools.register=Registrieren
+
+AdvancedSearch=Erweiterte Suche
+CreateAd=Anzeige aufgeben
+Save=Speichern
+ParaPapi=Para Papi!
+
+# For use in JavaExtensions.since tag
+since.seconds = vor %s Sekunden
+since.minutes = vor %s Minuten
+since.hours   = vor %s Stunden
+since.days    = vor %s Tagen
+since.months  = vor %s Monaten
+since.years   = vor %s Jahren
+since.format  = MMM d, yyyy
+
+# Validation messages
+validation.required=%s ist erforderlich
+validation.minSize=Der Mindestwert ist %2$d
+validation.maxSize=Der Maximalwert ist %2$d
+validation.email=Ungültige Email-Adresse
+validation.range=Der Wert muss zwischen %2$d und %3$d liegen
+validation.min=Der Wert darf nicht kleiner sein als %2$d
+validation.max=Der Wert darf nicht größer sein als %2$d
+validation.match=Der Wert muss gleich %2$s sein
+validation.isTrue=%s muss aktiviert werden
+validation.equals=%s muss gleich &{%2$s} sein
+validation.invalid=Der Wert %s ist ungültig
+validation.future=Das Datum muss in der Zukunft liegen
+validation.after=Das Datum muss nach dem %2$s liegen
+validation.past=Das Datum muss in der Vergangenheit liegen
+validation.before=Das Datum muss vor dem %2$s liegen
+validation.object=Die Validierung ist fehlgeschlagen
+validation.notFound=Für die ID %2$s gibt es kein Objekt
+validation.url=URL ungültig
+
+Ad=Anzeige
+Ad.title=Titel
+Ad.language=Sprache
+Ad.offer=Angebotstyp
+Ad.content=Text
+Ad.handOver=Anzeigentyp
+Ad.price=Preis
+Ad.phone=Telefon
+Ad.mobilePhone=Handy
+Ad.email=Email
+mainCategory=Kategorie
+Ad.priceType=Preistyp
+Ad.currency=Währung
+Department=Departament (Bundesland)
+Ad.city=Stadt
+Ad.zone=Stadtteil
+subCategory=Sub-Kategorie
+picture=Foto 1
+picture1=Foto 1
+picture2=Foto 2
+picture3=Foto 3
+picture4=Foto 4
+picture5=Foto 5
+picture6=Foto 6
+Published=Publiziert
+Price=Preis
+
+# Ad.offer
+offer=Biete
+search=Suche
+# Ad.handOver
+sell=Verkauf
+rent=Vermietung
+exchange=Tausch
+donate=Geschenk
+# Ad.priceType
+fixedPrice=Festpreis
+negociable=Verhandelbar
+# Ad.currency
+pyg=Guarani
+usd=US-Dollar
+eur=Euro
+
+# AdSearch
+AdSearch.text=Text
+language=Sprache
+AdSearch.postedAt=Datum seit
+handOver=Anzeigentyp
+AdSearch.priceFrom=Preis von
+AdSearch.priceTo=Preis bis
+department=Departament (Bundesland)
+priceType=Preistyp
+currency=Währung
+AdSearch.city=Stadt
+AdSearch.zone=Stadtteil
+Search=Suche
+
+User.acceptConditions=
+User.nickname=Benutzername
+User.email=Email
+User.password=Passwort
+User.passwordConfirmation=Passwort (Wiederholung)
+User.firstNames=Vornamen
+User.lastNames=Nachnamen
+User.currency=Währung (Standard)
+User.documentNo=Dokumentennummer
+User.documentType=Dokumententyp
+User.Country=Land
+User.Department=Departament (Bundesland)
+User.city=Stadt
+User.postCode=PLZ
+User.street=Straße
+User.zone=Stadtteil
+User.mobilePhone=Handy
+User.phone=Telefon
+views.editUser.acceptConditions=Ich habe die %s und die %s gelesen und akzeptiert
+views.editUser.termsOfUse=<a id="termsOfUse">Benutzungsvereinbarungen</a>
+views.editUser.dataPolicy=<a id="dataPolicy">Datenschutzbestimmungen</a>
+views.editUser.code=Bitte geben Sie den Sicherheitscode ein
+
+# Categories
+inmuebles=Möbel
+casa=Häuser
+residencias=Villen
+departamentos=Wohnungen
+duplex=Doppelhäuser
+locales_oficinas_salones=Gewerbeimmobilien
+deposito=Lager
+terrenos=Grundstücke
+tinglados=Hallen
+habitacion=Zimmer
+propriedades_ruales=Ländliche Immobilien
+
+medio_de_transporte=Transport
+automotores=Autos
+motos=Motorräder - überlegen Sie sich das
+bicicletas=Fahrräder
+nautica=Wasserfahrzeuge
+autopartes_accesorios=Autoteile / Zubehör
+repuestos=Reparaturen
+
+empleos=Stellenanzeigen
+personal_ofrecido=Suche Mitarbeiter
+personal_pedido=Suche Arbeit
+
+cursos_ensenanza=Schulungen / Kurse
+idiomas=Sprachen
+musica_teatro_danza=Musik / Theater / Tanz
+arte_y_manualidades=Kunst / Kunsthandwerk
+informatica_computacion=Informatik
+conduccion_manejo=Fortbewegung
+universitaria=Akademisches
+cursos_y_seminarios=Sonstiges
+deportes=Sport
+
+comprar_vender=Kauf / Verkauf
+informatica=Computer / Informatik
+celulares_electronica=Handys / Elektronik
+muebles_electrodemesticos=Möbel / Haushaltsgeräte
+deportes_equipos_de_gimnasia=Sport
+ropa_accesorios=Kleidung / Zubehör
+instrumentos_musicales=Musikinstrumente
+coleccionables=Sammeln
+regalos_juguetes=Geschenke / Spielzeug
+caza_y_pesca=Jagd / Fischerei
+mascotas=Haustiere
+
+servicios=Dienstleistungen
+animacion_de_fiestas=Animation
+servicios_de_discoteca=Diskothek / Partyausrüstung
+servicios_de_comidas=Essen
+custodio_seguridad=Bewachung / Sicherheit
+internet_multimedia=Internet / Multimedia
+mudanza_fletes=Umzug / Fracht
+prestamos=Finanzen
+turismo=Tourismus
+construccion_anexos=Bau
+
+clasificados_varios=Verschiedenes
+
+# Secure Module
+secure.title=
+secure.username=Email
+secure.password=Passwort
+secure.remember=Benutzer merken
+secure.signin=Anmelden
+secure.error=Der Benutzer ist unbekannt
+secure.logout=Sie sind abgemeldet
+
+
+# Next 7 lines were automatically added by i18n-extract on 2010-11-22 09:47:55
+items_found=Gefunden
+edit=
+create=
+your_language=Ihre Sprache
+Version=Version
+crud.title =
+delete =
+

@@ -1,6 +1,6 @@
 views.dateFormat=yyyy-MM-dd
 views.index.title.header=Clasificados en Asunción, Paraguay
-views.index.title.subheader=Hier inseriert Papi in Deutsch, Englisch oder Spanisch. Mami natürlich auch!
+views.index.title.subheader=Papi hace su publicidad gratis. Mami también!
 views.main.tools.login=Ingresar
 views.main.tools.logout=Salir
 views.main.tools.register=Registrar
@@ -185,8 +185,8 @@ secure.username=Email
 secure.password=Contraseña
 secure.remember=Recordar usario
 secure.signin=Ingresar
-secure.error=El usario es desconocido.
-secure.logout=Usted salio del sistema.
+secure.error=El usario es desconocido
+secure.logout=Usted salio del sistema
 
 
 # Next 7 lines were automatically added by i18n-extract on 2010-11-22 09:47:55

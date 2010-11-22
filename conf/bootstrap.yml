@@ -212,37 +212,500 @@ Ad(3rdBobAd):
 
 ## Cities - TODO assign to departments
 City(Abaí):
-    name:          Abaí
-    country:       py
-    department:    ce
+  name: Abaí
+  country: py
 City(Acahay):
-    name:          Acahay
-    country:       py
-    department:    ce
+  name: Acahay
+  country: py
 City(Aguaray):
-    name:          Aguaray
-    country:       py
-    department:    ce
+  name: Aguaray
+  country: py
 City(Alberdi):
-    name:          Alberdi
-    country:       py
-    department:    ce
+  name: Alberdi
+  country: py
 City(Alto Verá):
-    name:          Alto Verá
-    country:       py
-    department:    ce
+  name: Alto Verá
+  country: py
 City(Areguá):
-    name:          Areguá
-    country:       py
-    department:    ce
+  name: Areguá
+  country: py
 City(Asunción):
-    name:          Asunción
-    country:       py
-    department:    ce
-
-
-
-
-
-
-
+  name: Asunción
+  country: py
+City(Atyrá):
+  name: Atyrá
+  country: py
+City(Ayolas):
+  name: Ayolas
+  country: py
+City(Bella Vista):
+  name: Bella Vista
+  country: py
+City(Benjamín Aceval):
+  name: Benjamín Aceval
+  country: py
+City(Caacupé):
+  name: Caacupé
+  country: py
+City(Districto de Caaguazú):
+  name: Districto de Caaguazú
+  country: py
+City(Caapucú):
+  name: Caapucú
+  country: py
+City(Caazapá):
+  name: Caazapá
+  country: py
+City(Cambyreta):
+  name: Cambyreta
+  country: py
+City(Capiatá):
+  name: Capiatá
+  country: py
+City(Capiíbary):
+  name: Capiíbary
+  country: py
+City(Capitán Bado):
+  name: Capitán Bado
+  country: py
+City(Troche de Capitán Mauricio José):
+  name: Troche de Capitán Mauricio José
+  country: py
+City(Capitán Meza):
+  name: Capitán Meza
+  country: py
+City(Capitán Miranda):
+  name: Capitán Miranda
+  country: py
+City(Caraguatay):
+  name: Caraguatay
+  country: py
+City(Carayaó):
+  name: Carayaó
+  country: py
+City(Carmen del Paraná):
+  name: Carmen del Paraná
+  country: py
+City(Cerrito):
+  name: Cerrito
+  country: py
+City(Ciudad del Este):
+  name: Ciudad del Este
+  country: py
+City(Concepción):
+  name: Concepción
+  country: py
+City(Coronel Bogado):
+  name: Coronel Bogado
+  country: py
+City(Coronel Martínez):
+  name: Coronel Martínez
+  country: py
+City(Coronel Oviedo):
+  name: Coronel Oviedo
+  country: py
+City(Curuguaty):
+  name: Curuguaty
+  country: py
+City(Desmochados):
+  name: Desmochados
+  country: py
+City(El doctor Botrell):
+  name: El doctor Botrell
+  country: py
+City(El doctor Cecilio Báez):
+  name: El doctor Cecilio Báez
+  country: py
+City(El doctor Eulogio Estigarribia):
+  name: El doctor Eulogio Estigarribia
+  country: py
+City(El doctor Juan Manuel Frutos):
+  name: El doctor Juan Manuel Frutos
+  country: py
+City(El doctor Moisés Bertoni):
+  name: El doctor Moisés Bertoni
+  country: py
+City(El doctor Pedro P. Peña):
+  name: El doctor Pedro P. Peña
+  country: py
+City(Edelira):
+  name: Edelira
+  country: py
+City(Encarnación):
+  name: Encarnación
+  country: py
+City(Colonia de Fernheim):
+  name: Colonia de Fernheim
+  country: py
+City(Filadelfia):
+  name: Filadelfia
+  country: py
+City(Fuerte Olimpo):
+  name: Fuerte Olimpo
+  country: py
+City(General Artigas):
+  name: General Artigas
+  country: py
+City(General Delgado):
+  name: General Delgado
+  country: py
+City(General Elizardo Aquino):
+  name: General Elizardo Aquino
+  country: py
+City(General Eugenio A. Garay):
+  name: General Eugenio A. Garay
+  country: py
+City(General Francisco Álvarez):
+  name: General Francisco Álvarez
+  country: py
+City(General Higinio Morínigo):
+  name: General Higinio Morínigo
+  country: py
+City(General Isidro Resquín):
+  name: General Isidro Resquín
+  country: py
+City(General José Eduvigis Díaz):
+  name: General José Eduvigis Díaz
+  country: py
+City(Guarambaré):
+  name: Guarambaré
+  country: py
+City(Guayaibi):
+  name: Guayaibi
+  country: py
+City(Guazu-Cua):
+  name: Guazu-Cua
+  country: py
+City(Hernandaríaz):
+  name: Hernandaríaz
+  country: py
+City(Hohenhau):
+  name: Hohenhau
+  country: py
+City(Horqueta):
+  name: Horqueta
+  country: py
+City(Humaitá):
+  name: Humaitá
+  country: py
+City(Independencia):
+  name: Independencia
+  country: py
+City(Isla Pucu):
+  name: Isla Pucu
+  country: py
+City(Isla Umbú):
+  name: Isla Umbú
+  country: py
+City(La Cordillera de Itacurubí de):
+  name: La Cordillera de Itacurubí de
+  country: py
+City(Del Rosario de Itacurubí):
+  name: Del Rosario de Itacurubí
+  country: py
+City(Itanará):
+  name: Itanará
+  country: py
+City(Itapé):
+  name: Itapé
+  country: py
+City(Itapúa Poty):
+  name: Itapúa Poty
+  country: py
+City(Itaquyry):
+  name: Itaquyry
+  country: py
+City(Itauguá):
+  name: Itauguá
+  country: py
+City(Iturbe):
+  name: Iturbe
+  country: py
+City(José Falcón):
+  name: José Falcón
+  country: py
+City(José Fasardi):
+  name: José Fasardi
+  country: py
+City(José Ocampos):
+  name: José Ocampos
+  country: py
+City(Juan Emilio O'Leary):
+  name: Juan Emilio O'Leary
+  country: py
+City(Katueté):
+  name: Katueté
+  country: py
+City(La Pastoria):
+  name: La Pastoria
+  country: py
+City(Districto de Victoria del La):
+  name: Districto de Victoria del La
+  country: py
+City(Lambaré):
+  name: Lambaré
+  country: py
+City(Laureles):
+  name: Laureles
+  country: py
+City(Leandro Oviedo):
+  name: Leandro Oviedo
+  country: py
+City(Limpio):
+  name: Limpio
+  country: py
+City(Luque):
+  name: Luque
+  country: py
+City(Marechal Estigarribia):
+  name: Marechal Estigarribia
+  country: py
+City(Marechal Francisco Solano López):
+  name: Marechal Francisco Solano López
+  country: py
+City(Mariano Roque Alonso):
+  name: Mariano Roque Alonso
+  country: py
+City(Mariscal Estigarribia):
+  name: Mariscal Estigarribia
+  country: py
+City(Alcalde José Dejesús Martínez):
+  name: Alcalde José Dejesús Martínez
+  country: py
+City(Alcalde Otaño):
+  name: Alcalde Otaño
+  country: py
+City(Alcalde Pablo Lagerenza):
+  name: Alcalde Pablo Lagerenza
+  country: py
+City(Mbaracayú):
+  name: Mbaracayú
+  country: py
+City(Mbocayaty):
+  name: Mbocayaty
+  country: py
+City(Mbocayty del Yhaguy):
+  name: Mbocayty del Yhaguy
+  country: py
+City(Mbutuy):
+  name: Mbutuy
+  country: py
+City(Mbuyapey):
+  name: Mbuyapey
+  country: py
+City(Colonia de Menno):
+  name: Colonia de Menno
+  country: py
+City(Menno):
+  name: Menno
+  country: py
+City(Ñacunday):
+  name: Ñacunday
+  country: py
+City(Nanawa):
+  name: Nanawa
+  country: py
+City(Natalicio Talavera):
+  name: Natalicio Talavera
+  country: py
+City(Natalio):
+  name: Natalio
+  country: py
+City(Ñemby):
+  name: Ñemby
+  country: py
+City(Colonia de Neuland):
+  name: Colonia de Neuland
+  country: py
+City(Nueva Alborada):
+  name: Nueva Alborada
+  country: py
+City(Nueva Germania):
+  name: Nueva Germania
+  country: py
+City(Nueva Italia):
+  name: Nueva Italia
+  country: py
+City(Nueva Londres):
+  name: Nueva Londres
+  country: py
+City(Ñumí):
+  name: Ñumí
+  country: py
+City(Obligado):
+  name: Obligado
+  country: py
+City(Paso de Patria):
+  name: Paso de Patria
+  country: py
+City(Paso Yobai):
+  name: Paso Yobai
+  country: py
+City(Caballero de Pedro Juan):
+  name: Caballero de Pedro Juan
+  country: py
+City(Pilar):
+  name: Pilar
+  country: py
+City(Pirayú):
+  name: Pirayú
+  country: py
+City(Pozo Colorado):
+  name: Pozo Colorado
+  country: py
+City(Primero de Marzo):
+  name: Primero de Marzo
+  country: py
+City(Puerto Pinasco):
+  name: Puerto Pinasco
+  country: py
+City(Quiindy):
+  name: Quiindy
+  country: py
+City(Quyquyho):
+  name: Quyquyho
+  country: py
+City(Raúl Arsenio Oviedo):
+  name: Raúl Arsenio Oviedo
+  country: py
+City(Repatriación):
+  name: Repatriación
+  country: py
+City(Salto del Guairá):
+  name: Salto del Guairá
+  country: py
+City(San Alberto):
+  name: San Alberto
+  country: py
+City(San Bernardino):
+  name: San Bernardino
+  country: py
+City(San Cosme y Damián):
+  name: San Cosme y Damián
+  country: py
+City(San Ignacio):
+  name: San Ignacio
+  country: py
+City(San José de los Arroyos):
+  name: San José de los Arroyos
+  country: py
+City(San Juan Bautista de Ñeembucú):
+  name: San Juan Bautista de Ñeembucú
+  country: py
+City(San Juan Bautista):
+  name: San Juan Bautista
+  country: py
+City(San Juan del Paraná):
+  name: San Juan del Paraná
+  country: py
+City(San Lorenzo):
+  name: San Lorenzo
+  country: py
+City(Districto del San Pablo):
+  name: Districto del San Pablo
+  country: py
+City(San Pedro de Ycuamandiyú):
+  name: San Pedro de Ycuamandiyú
+  country: py
+City(San Pedro del Paraná):
+  name: San Pedro del Paraná
+  country: py
+City(San Pedro):
+  name: San Pedro
+  country: py
+City(San Rafael del Paraná):
+  name: San Rafael del Paraná
+  country: py
+City(Sapucaí):
+  name: Sapucaí
+  country: py
+City(Tacuaras):
+  name: Tacuaras
+  country: py
+City(Tacuatí):
+  name: Tacuatí
+  country: py
+City(Tavaí):
+  name: Tavaí
+  country: py
+City(Tebicuarymí):
+  name: Tebicuarymí
+  country: py
+City(Tomás Romero Pereira):
+  name: Tomás Romero Pereira
+  country: py
+City(Tres Corrales):
+  name: Tres Corrales
+  country: py
+City(Trinidad):
+  name: Trinidad
+  country: py
+City(Unión):
+  name: Unión
+  country: py
+City(Vaquería):
+  name: Vaquería
+  country: py
+City(Veinticinco de Diciembre):
+  name: Veinticinco de Diciembre
+  country: py
+City(Chalet Franca):
+  name: Chalet Franca
+  country: py
+City(Chalet Hayes):
+  name: Chalet Hayes
+  country: py
+City(Chalet Oliva):
+  name: Chalet Oliva
+  country: py
+City(Villalbín):
+  name: Villalbín
+  country: py
+City(Villarrica):
+  name: Villarrica
+  country: py
+City(Villeta):
+  name: Villeta
+  country: py
+City(Yabebyry):
+  name: Yabebyry
+  country: py
+City(Yaguarón):
+  name: Yaguarón
+  country: py
+City(Yataity):
+  name: Yataity
+  country: py
+City(Yataity del Norte):
+  name: Yataity del Norte
+  country: py
+City(Yatytay):
+  name: Yatytay
+  country: py
+City(Ybycuí):
+  name: Ybycuí
+  country: py
+City(Ybytimí):
+  name: Ybytimí
+  country: py
+City(Yegros):
+  name: Yegros
+  country: py
+City(Ygatimi):
+  name: Ygatimi
+  country: py
+City(Yhú):
+  name: Yhú
+  country: py
+City(Ypacaraí):
+  name: Ypacaraí
+  country: py
+City(Ypané):
+  name: Ypané
+  country: py
+City(Ypehú):
+  name: Ypehú
+  country: py
+City(Yuty):
+  name: Yuty
+  country: py

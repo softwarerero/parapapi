@@ -70,16 +70,6 @@
 
 <script type="text/javascript">
 
-    var data;
-    $.ajax({
-      url: '@{Cities.getAll()}',
-      cache: false,
-      success: function(cities){
-          $('#hoho').html('<p>' + cities + '</p>');
-         alert("JSON Data: " + cities);
-          data = cities;
-      }
-    });
 
     var getSubCategories = #{jsAction @MainCategories.getSubCategories(':id') /}
 
@@ -88,16 +78,10 @@
     });
 
 
+    var cities = ${models.City.toJSON().raw()};
     $(function() {
-		var availableTags = [
-			"ActionScript",
-			"AppleScript",
-			"Asp",
-			"BASIC",
-			"C",
-		];
 		$("#object_city").autocomplete({
-			source: availableTags
+			source: cities
 		});
 	});
 

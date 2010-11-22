@@ -261,10 +261,10 @@ public class Application extends Controller {
 
   
   private static void render4editAd(Ad object) {
-//    List<MainCategory> mainCategories = MainCategory.findAll();
-    List<SubCategory> subCategories = object.mainCategory.children;
+    List<MainCategory> mainCategories = MainCategory.findAll();
+    //List<SubCategory> subCategories = object.mainCategory.children;
 //    String randomID = Codec.UUID();
-    render("Application/editAd.html", Ad.class, object, subCategories);
+    render("Application/editAd.html", Ad.class, object, mainCategories);
 	}
 
 
@@ -307,7 +307,7 @@ public class Application extends Controller {
       Logger.debug("validation error: " + validation.errorsMap());
       List<MainCategory> mainCategories = MainCategory.findAll();
       List<SubCategory> subCategories = object.mainCategory.children;
-      render("Application/editAd.html", Ad.class, object, mainCategories, subCategories);
+      render("Application/editAd.html", Ad.class, object, mainCategories);
     }
 
     Logger.debug("about to save: " + object.title);

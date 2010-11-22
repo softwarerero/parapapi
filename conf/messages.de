@@ -1,4 +1,4 @@
-views.dateFormat=yyyy-MM-dd
+views.dateFormat=dd-MM-yyyy
 views.index.title.header=Kleinanzeigen in und um Asunción
 views.index.title.subheader=Hier inseriert Papi in Deutsch, Englisch oder Spanisch. Mami natürlich auch!
 views.main.tools.login=Anmelden
@@ -63,7 +63,7 @@ picture3=Foto 3
 picture4=Foto 4
 picture5=Foto 5
 picture6=Foto 6
-Published=Publiziert
+Published=Publiziert am
 Price=Preis
 
 # Ad.offer

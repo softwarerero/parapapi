@@ -37,12 +37,7 @@ public class MainCategories extends CRUD {
     if(null != id) {
       MainCategory mainCategory = MainCategory.findById(id);
       List<SubCategory> subCategories = mainCategory.children;
-//      List<List<Object>> objects = new ArrayList<List<Object>>();
       for(SubCategory cat: subCategories) {
-//        List<Object> obj = new ArrayList<Object>();
-//        obj.add(cat.id);
-//        obj.add(cat.name);
-//        objects.add(obj);
         String name = JavaExtensions.noAccents(cat.name).replaceAll(" / ", "_").replaceAll(" ", "_");
         name = Messages.get(name);
         optionString.append("<option value='" + cat.id + "'>" + name + "</option>");

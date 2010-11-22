@@ -30,7 +30,7 @@ public class Ad extends Model {
   // Cordillera, Guariá, Itapúa, Paraguarí, Presidente Hayes, San Pedro, Ñeembucú, Missiones
 
   @Required @MaxSize(100) public String title;
-  @Temporal(TemporalType.DATE) public Date postedAt = new Date();
+  @Temporal(TemporalType.TIMESTAMP) public Date postedAt = new Date();
   public BigDecimal price;
   @Required public Department department = Department.ce;
   public String city;

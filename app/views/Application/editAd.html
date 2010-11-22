@@ -45,7 +45,7 @@
             #{form/renderText object: object, attr: "phone"/}
             #{form/renderText object: object, attr: "mobilePhone"/}
             #{form/renderText object: object, attr: "email"/}
-            #{crud.relationField name: "mainCategory", value: object.mainCategory, field: currentType.getField('mainCategory') /}
+            #{form/renderSelect4Model name: "mainCategory", value: object.mainCategory, items: mainCategories /}
             <div> <!-- 1st Picture -->
                 <label for="picture">${messages.get('picture')}</label>
                 <input type="file" id="picture" name="picture"/>

@@ -22,6 +22,11 @@
             ${errors[0]}
         </p>
     #{/ifErrors}
+    #{elseif null != userExistsError}
+        <p class="error">
+            &{userExistsError}
+        </p>
+    #{/elseif}
 
     <input type="hidden" id="object_id" name="object.id" value="${object.id}" />
     <div style="width: 48%; float: left;">
@@ -83,15 +88,29 @@
 			source: cities
 		});
 	});
+    $(document).ready(function() {
+        $('#termsOfUseDialog').dialog({
+            autoOpen: false, modal: true,
+            width: 500, height: 330,
+            overlay: { backgroundColor: "#000", opacity: 0.5 },
+            close: function(ev, ui) { $(this).close(); }
+        });
+        $('#dataPolicyDialog').dialog({
+            autoOpen: false, modal: true,
+            width: 500, height: 330,
+            overlay: { backgroundColor: "#000", opacity: 0.5 },
+            close: function(ev, ui) { $(this).close(); }
+        });
 
-    $('#termsOfUse').click(function() {
-        $("#termsOfUseDialog").dialog({ height: 330, width: 500, modal: true });
-        return false;
-    });
+        $('#termsOfUse').click(function() {
+            $("#termsOfUseDialog").dialog('open');
+            return false;
+        });
 
-    $('#dataPolicy').click(function() {
-        $("#dataPolicyDialog").dialog({ height: 330, width: 500, modal: true });
-        return false;
+        $('#dataPolicy').click(function() {
+            $("#dataPolicyDialog").dialog('open');
+            return false;
+        });
     });
 
 </script>

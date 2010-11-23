@@ -26,8 +26,8 @@ public class User extends Model {
   @Required public String firstNames;
   @Required public String lastNames;
   @Required public Ad.Currency currency = Ad.Currency.pyg;
-  @Required public String documentNo;
-  @Required public DocumentType documentType = DocumentType.CID;
+  public String documentNo;
+  public DocumentType documentType = DocumentType.CID;
   @Required public Ad.Country country = Ad.Country.py;
   @Required public Ad.Department department = Ad.Department.ce;
   @Required public String city = "Asunción";

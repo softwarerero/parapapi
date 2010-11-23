@@ -8,9 +8,12 @@ import play.Play;
 import play.cache.Cache;
 import play.data.validation.Required;
 import play.data.validation.Valid;
+import play.i18n.Lang;
 import play.libs.Codec;
 import play.libs.Mail;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -42,9 +45,17 @@ public class Register extends CRUD {
       validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");
     }
 
-    if(validation.hasErrors()) {
+    long count = User.count("email = ? or nickname = ?", object.email, object.nickname);
+    System.out.println("count: " + count);
+    String userExistsError = "";
+    if(count > 0) {
+      userExistsError = "user.exists";
+    }
+
+    if(validation.hasErrors() || count > 0) {
+      System.out.println("validation error: " + validation.errorsMap());
       Logger.debug("validation error: " + validation.errorsMap());
-      render("Users/editUser.html", User.class, object, randomID);
+      render("Users/editUser.html", User.class, object, randomID, userExistsError);
     }
 
     Logger.debug("about to save: " + object.nickname);
@@ -64,11 +75,12 @@ public class Register extends CRUD {
     String path = request.path;
     email.setSubject("Activar su cuenta con Para Papi");
     String msg = "Siguese este link para empiezar: ";
-    if("noWayToGetTheLanguage".equals("de")) {
+    if(Lang.get().equals("de")) {
       email.setSubject("Bitte aktivieren Sie Ihr Benutzerkonto bei Para Papi");
       msg = "Bitte folgen Sie diesem Link um Ihr Benutzerkonto zu aktieren: ";
-    } else {
-
+    } else if(Lang.get().equals("en")) {
+      email.setSubject("Please activate your account with Para Papi");
+      msg = "Please follow this Link to activate your account: ";
     }
     String confirmationToken = UUID.randomUUID().toString();
     user.confirmationToken = confirmationToken;

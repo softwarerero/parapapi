@@ -116,10 +116,12 @@ User.street=Calle
 User.zone=Zona
 User.mobilePhone=Celular
 User.phone=Teléfono
-views.editUser.acceptConditions=Yo he leido los %s y %s estoy de acuerdo.
+views.editUser.acceptConditions=Yo he leido los %s y %s estoy de acuerdo
 views.editUser.termsOfUse=<a id="termsOfUse">Terminos de Uso</a>
 views.editUser.dataPolicy=<a id="dataPolicy">Politica de Privacidad</a>
-views.editUser.code=Por favor entre el codigo de seguridad.
+views.editUser.code=Por favor entre el codigo de seguridad
+user.exists=El usario ya existe
+
 
 # Categories
 inmuebles=Immuebles

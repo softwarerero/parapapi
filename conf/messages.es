@@ -65,6 +65,7 @@ picture5=Foto 5
 picture6=Foto 6
 Published=Publicado
 Price=Precio
+NoOfVisits=Visitas
 
 # Ad.offer
 offer=Ofreczo

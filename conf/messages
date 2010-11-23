@@ -1,1 +1,27 @@
 option.none=-
+
+
+# Ad.Department
+#  public enum Department { ce, ap, an, am, bo, ca, cz, cn, co, cd, gu, it, pa, pr , sp, ne, mi }
+#  // Central, Alto Paraguay,
+#  // Alto Paraná, Amambay, Boquerón, Caaguazú, Caazapá, Canindeyú, Concepción,
+#  // Cordillera, Guariá, Itapúa, Paraguarí, Presidente Hayes, San Pedro, Ñeembucú, Missiones
+
+ce=Central
+ap=Alto Paraguay
+an=Alto Paraná
+am=Amambay
+bo=Boquerón
+ca=Caaguazú
+cz=Caazapá
+cn=Canindeyú
+co=Concepción
+cd=Cordillera
+gu=Guariá
+it=Itapúa
+pa=Paraguarí
+pr=Presidente Hayes
+sp=San Pedro
+ne=Ñeembucú
+mi=Missiones
+

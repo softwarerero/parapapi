@@ -30,25 +30,25 @@
 
 #{if _as == 'full'}
     <span class="ad-details">
-        Department: ${_ad.department}
+        &{'department'}: &{_ad.department}
         &nbsp;|&nbsp;
-        City: ${_ad.city}
+        &{'Ad.city'}: ${_ad.city}
         &nbsp;|&nbsp;
-        Zone: ${_ad.zone}
+        &{'Ad.zone'}: ${_ad.zone}
         #{if controllers.Security.isConnected()}
             <br/>
-            Phone: ${_ad.phone}
+            &{'Ad.phone'}: ${_ad.phone}
             &nbsp;|&nbsp;
-            Mobile_phone: ${_ad.mobilePhone}
+            &{'Ad.mobilePhone'}: ${_ad.mobilePhone}
             &nbsp;|&nbsp;
-            Email: ${_ad.getHtmlSecuredEmail()?.raw()}
+            &{'Ad.email'}: ${_ad.getHtmlSecuredEmail()?.raw()}
         #{/if}
         <br/>
-        NoOfVisits: ${_ad.noOfVisits}
+        &{'NoOfVisits'}: ${_ad.noOfVisits}
         &nbsp;|&nbsp;
-        handOver: ${_ad.handOver}
+        &{'handOver'}: &{_ad.handOver}
         &nbsp;|&nbsp;
-        offer: ${_ad.offer}
+        &{'Ad.offer'}: &{_ad.offer}
     </span>
 
 <div style="height: 20px;"></div>

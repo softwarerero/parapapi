@@ -187,5 +187,8 @@ wget http://www.modula.fi/downloads/ModulaMartini.zip
 unzip ModulaMartini.zip
 sudo /etc/init.d/lighttpd restart
 
+# Timezone
+echo "America/Asuncion" | sudo tee /etc/timezone
+sudo dpkg-reconfigure --frontend noninteractive tzdata
 
 

@@ -6,49 +6,172 @@ views.main.tools.login=Login
 views.main.tools.logout=Logout
 views.main.tools.register=Register
 
-option.none=-
+views.dateFormat=dd-MM-yyyy
+views.index.title.header=Classified Ads in and around Asunción
+views.index.title.subheader=Papi can publish ads here in German, English or Spanish. Mami off course, too!
+views.main.tools.login=Login
+views.main.tools.logout=Logout
+views.main.tools.register=Register
 
+AdvancedSearch=Advanced Search
+CreateAd=Publish Ad
+Save=Save
+ParaPapi=Para Papi!
+
+
+Ad=Ad
+Ad.title=Title
+Ad.language=Language
+Ad.offer=Type of Offer
+Ad.content=Text
+Ad.handOver=Type of Ad
+Ad.price=Price
+Ad.phone=Phone
+Ad.mobilePhone=Mobile
+Ad.email=Email
+mainCategory=Category
+Ad.priceType=Price Type
+Ad.currency=Currency
+Department=Departament
+Ad.city=City
+Ad.zone=District
+subCategory=Sub-Category
+picture=Photo 1
+picture1=Photo 1
+picture2=Photo 2
+picture3=Photo 3
+picture4=Photo 4
+picture5=Photo 5
+Published=Published at
+Price=Price
+NoOfVisits=Visitors
+delete=Delete
+
+# Ad.offer
 offer=Offer
 search=Search
+# Ad.handOver
+sell=Sell
+rent=Rent
+exchange=Exchange
+donate=Donate
+# Ad.priceType
+fixedPrice=Fixed Price
+negociable=Negociable
+# Ad.currency
+pyg=Guarani
+usd=USD
+eur=Euro
 
-Ad = Ad
-Ad.title = Title
+# AdSearch
+AdSearch.text=Text
+language=Language
+AdSearch.postedAt=Date after
+handOver=Type of Ad
+AdSearch.priceFrom=Price from
+AdSearch.priceTo=Price to
+department=Departament
+priceType=Price Type
+currency=Currency
+AdSearch.city=City
+AdSearch.zone=District
+Search=Search
 
+User.acceptConditions=
+User.nickname=Username
+User.email=Email
+User.password=Password
+User.passwordConfirmation=Password (Repeat)
+User.firstNames=First Names
+User.lastNames=Last Names
+User.currency=Currency (Standard)
+User.documentNo=Dokument Number
+User.documentType=Document Type
+User.Country=Country
+User.Department=Departament
+User.city=City
+User.postCode=Postcode
+User.street=Street
+User.zone=District
+User.mobilePhone=Mobile Phone
+User.phone=Phone
+views.editUser.acceptConditions=I have read the %s and the %s and agree
+views.editUser.termsOfUse=<a id="termsOfUse">User Terms</a>
+views.editUser.dataPolicy=<a id="dataPolicy">Data Policy</a>
+views.editUser.code=Please enter the security code
 
-validation.required=%s is required
-validation.invalid=Incorrect value %s
+# Categories
+inmuebles=Real Estate
+casa=Houses
+residencias=Mansions
+departamentos=Apartment
+duplex=Twin Houses
+locales_oficinas_salones=Commercial Real Estate
+deposito=Storages
+terrenos=Plats
+tinglados=Halls
+habitacion=Rooms
+propriedades_ruales=Rural Properties
 
-mobile_phone=Moblie Phone
+medio_de_transporte=Transport
+automotores=Cars
+motos=Bikes - think!
+bicicletas=Bycicles
+nautica=Boats
+autopartes_accesorios=Carparts
+repuestos=Repairs
 
+empleos=Jobs
+personal_ofrecido=Search Staff
+personal_pedido=Search Work
+
+cursos_ensenanza=Training / Courses
+idiomas=Languages
+musica_teatro_danza=MusiC / Theatre / Dance
+arte_y_manualidades=Art / Handcraft
+informatica_computacion=Information Tecnology
+conduccion_manejo=Driving
+universitaria=Academics
+cursos_y_seminarios=Miscellaneous
+deportes=Sport
+
+comprar_vender=Bying / Selling
+informatica=Computers / IT
+celulares_electronica=Mobile Phones / Electronics
+muebles_electrodemesticos=Furniture / Hausehold Appliences
+deportes_equipos_de_gimnasia=Sport
+ropa_accesorios=Clothes / Accessories
+instrumentos_musicales=Musical Instruments
+coleccionables=Collections
+regalos_juguetes=Gifts / Toys
+caza_y_pesca=Hunting / Fishing
+mascotas=Domestic Animals
+
+servicios=Services
+animacion_de_fiestas=Party Animation
+servicios_de_discoteca=Club / Party Equipment
+servicios_de_comidas=Food
+custodio_seguridad=Custodity / Security
+internet_multimedia=Internet / Multimedia
+mudanza_fletes=Relocation / Cargo
+prestamos=Finances
+turismo=Tourism
+construccion_anexos=Construction
+
+clasificados_varios=Miscellaneous
+
+# Secure Module
+secure.title=
 secure.username=Your email:
 secure.password=Your password:
 secure.signin=Log in now
-
-
-ce=Central
-ap=Alto Paraguay
-an=Alto Paraná
-am=Amambay
-bo=Boquerón
-ca=Caaguazú
-cz=Caazapá
-cn=Canindeyú
-co=Concepción
-cd=Cordillera 
-gu=Guariá
-it=Itapúa
-pa=Paraguarí
-pr=Presidente Hayes
-sp=San Pedro
-ne=Ñeembucú
-mi=Missiones
+secure.remember=Remember User
+secure.error=Unknown User
+secure.logout=You are logged out
 
 
 # Next 7 lines were automatically added by i18n-extract on 2010-11-22 09:47:55
-Items found: = 
-edit = 
-create = 
-Your language = 
-Version = 
-crud.title = 
-delete = 
+items_found=Found
+your_language=Your language
+Version=Version
+

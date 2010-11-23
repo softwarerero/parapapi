@@ -66,6 +66,7 @@ picture6=Foto 6
 Published=Publiziert am
 Price=Preis
 NoOfVisits=Besucher
+delete=Löschen
 
 # Ad.offer
 offer=Biete
@@ -121,7 +122,7 @@ views.editUser.dataPolicy=<a id="dataPolicy">Datenschutzbestimmungen</a>
 views.editUser.code=Bitte geben Sie den Sicherheitscode ein
 
 # Categories
-inmuebles=Möbel
+inmuebles=Immobilien
 casa=Häuser
 residencias=Villen
 departamentos=Wohnungen
@@ -192,10 +193,6 @@ secure.logout=Sie sind abgemeldet
 
 # Next 7 lines were automatically added by i18n-extract on 2010-11-22 09:47:55
 items_found=Gefunden
-edit=
-create=
 your_language=Ihre Sprache
 Version=Version
-crud.title =
-delete =
 

@@ -66,6 +66,7 @@ picture6=Foto 6
 Published=Publicado
 Price=Precio
 NoOfVisits=Visitas
+delete=Borrar
 
 # Ad.offer
 offer=Ofreczo
@@ -192,10 +193,6 @@ secure.logout=Usted salio del sistema
 
 # Next 7 lines were automatically added by i18n-extract on 2010-11-22 09:47:55
 items_found=Encontrado
-edit=
-create=
 your_language=Su idioma
 Version=Version
-crud.title =
-delete =
 

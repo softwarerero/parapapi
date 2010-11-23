@@ -1,0 +1,114 @@
+/** Main layout **/
+
+html, body {
+    background: #364B66 !important;
+    font-family: Helvetica, Arial, Sans !important;
+    color: #ffffff;
+}
+
+body {
+    width: 900px;
+    padding: 0 30px;
+    margin: auto;
+}
+
+#header {
+    padding: 10px 0;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+#logo a {
+    display: block;
+    height: 49px;
+    margin-left: 20px;
+    color: #F0F3F7;
+    font-size: 48px;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: -3px;
+    text-shadow: 1px 2px 2px #000;
+}
+
+a {
+    color: #869AB1;
+}
+
+#logo span {
+    color: #B8C569;
+    font-size: 70%;
+}
+
+#application-title {
+    background: #B8C569;
+    padding: 20px 30px 30px 20px;
+    margin: 20px 0;
+    color: #3C4313;
+    position: relative;
+    -webkit-border-radius: 16px;
+    -webkit-box-shadow: 0 2px 0 #93A045;
+    -moz-border-radius: 16px;
+}
+
+#title .about {
+	color: #000000;
+}
+
+#application-title h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+#application-title h1 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#application-title h2 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: normal;
+}
+
+/** Main content **/
+
+#main {
+    background: #314660;
+    background: -webkit-gradient(linear, left top, left 30%, from(#314660), to(#364B66));
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    padding: 20px;
+}
+
+.applink {
+    font-size: 28px;
+}
+
+h3 {
+    color: #869AB1;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+h3 span {
+    font-size: 80%;
+    font-weight: normal;
+}
+
+
+/** Footer **/
+
+#footer {
+    border-top: 1px solid #45597A;
+    font-size: 70%;
+    padding: 10px 30px;
+    text-align: center;
+    color: #869AB1;
+    margin-top: 30px;
+}
+
+#footer a {
+    color: #869AB1;
+    font-weight: bold;
+}
+

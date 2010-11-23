@@ -53,7 +53,6 @@ public class Application extends Controller {
 
 
   public static void advancedSearch(AdSearch object) {
-    System.out.println("params: " + params.allSimple());
 
     if(!params._contains("object.text")) {
       List<MainCategory> mainCategories = MainCategory.findAll();
@@ -97,7 +96,6 @@ public class Application extends Controller {
 
     Date postedAfter = object.postedAt;
     String postedAt = params.get("object.postedAt");
-    System.out.println("postedAt: " + postedAt);
     if(null != postedAt && !"".equals(postedAt)) {
       sb.and().gte("postedAt", postedAt);
     }
@@ -300,8 +298,6 @@ public class Application extends Controller {
   public static void saveAd(@Valid Ad object,
                             File picture, File picture1, File picture2, File picture3,
                             File picture4, File picture5) throws IOException {
-
-    System.out.println(params.allSimple());
 
     if(validation.hasErrors()) {
       Logger.debug("validation error: " + validation.errorsMap());

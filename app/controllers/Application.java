@@ -268,12 +268,12 @@ public class Application extends Controller {
 
   private static Ad populateTestAd(Ad object) {
     User user = User.find("byEmail", Security.connected()).first();
-    long no = Ad.count() + 1;
+//    long no = Ad.count() + 1;
     object.author = user;
-    object.price = new BigDecimal("99.77");
+//    object.price = new BigDecimal("99.77");
     object.postedAt = new Date();
-    object.title = "Title " + no;
-    object.content = "Content " + no;
+//    object.title = "Title " + no;
+//    object.content = "Content " + no;
     object.email = user.email;
     object.offer = Ad.OfferType.offer;
     object.handOver = Ad.HandOver.sell;

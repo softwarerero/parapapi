@@ -65,6 +65,16 @@ public class Ad extends Model {
   }
 
 
+  public String formattedPrice() {
+    if(null == price) return "";
+    String ret = price.toString();
+    if(Currency.pyg.equals(currency)) {
+      ret = Long.valueOf(price.longValue()).toString();
+    }
+    return ret;
+  }
+
+
   public String toString() {
     return title;
   }

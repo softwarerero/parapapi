@@ -16,9 +16,9 @@
         </div>
         <br/>
         <div class="ad-metadata">
-            <span class="ad-date">&{'Published'} ${_ad.postedAt}</span>
+            <span class="ad-date">&{'Published'} ${_ad.postedAt.format("yyyy-MM-dd hh:mm")}</span>
             &nbsp;&nbsp;
-            <span class="ad-price">&{'Price'} ${_ad.price} &{_ad.currency}</span>
+            <span class="ad-price">#{if null != _ad.price}&{'Price'} ${_ad.formattedPrice()} &{_ad.currency}#{/if}</span>
         </div>
     </div>
     #{if _as != 'teaser'}
@@ -38,6 +38,9 @@
 
 #{if _as == 'full'}
     <span class="ad-details">
+        &{'mainCategory'}: &{_ad.mainCategory}
+        #{if null != _ad.subCategory}&{'subCategory'}: &{_ad.subCategory} #{/if}
+        <br/>
         &{'department'}: &{_ad.department}
         &nbsp;|&nbsp;
         &{'Ad.city'}: ${_ad.city}
@@ -52,8 +55,8 @@
             &{'Ad.email'}: ${_ad.getHtmlSecuredEmail()?.raw()}
         #{/if}
         <br/>
-        &{'NoOfVisits'}: ${_ad.noOfVisits}
-        &nbsp;|&nbsp;
+        <!-- &{'NoOfVisits'}: ${_ad.noOfVisits}
+        &nbsp;|&nbsp;  -->
         &{'handOver'}: &{_ad.handOver}
         &nbsp;|&nbsp;
         &{'Ad.offer'}: &{_ad.offer}

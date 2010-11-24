@@ -30,6 +30,8 @@ public class Pictures extends Controller {
   private static final String PUBLIC_IMAGES_CROSS_PNG = "public/images/cross.png";
   private static final String THUMB = "_thumb";
   private static final String WIDTH430 = "430";
+  private static final int W430 = 430;
+  private static final int H380 = 380;
 
 
   static void savePicture(Ad ad, File file) throws IOException {
@@ -43,10 +45,11 @@ public class Pictures extends Controller {
     String UUID = Codec.UUID();
     File newFile = new File(picturePath, UUID + THUMB + ending);
     File newThumbnail = resize(file, newFile, 50, 38);
+
     picture.thumbnail50 = newThumbnail.getCanonicalPath();
 
     newFile = new File(picturePath, UUID + WIDTH430 + ending);
-    File newImage = resize(file, newFile, 430, 380);
+    File newImage = resize(file, newFile, W430, H380);
     picture.image = newImage.getCanonicalPath();
 
     Validation.ValidationResult res = validation.valid(picture);
@@ -73,13 +76,16 @@ public class Pictures extends Controller {
   static String picturePath = null;
 
   public static String getPicturePath() {
+    String name = Play.configuration.getProperty("pictures.path");
+    System.out.println("pictures.path: " + name);
     if(null == picturePath) {
-      String name = Play.configuration.getProperty("pictures.path");
+//      String name = Play.configuration.getProperty("pictures.path");
+
       if(null == name || "".equals(name)) name = "pictures";
       if(new File(name).isAbsolute()) {
           picturePath = name;
       } else {
-          picturePath = Play.applicationPath.getAbsolutePath() + File.separator + ".." + File.separator + name;
+          picturePath = ".." + File.separator + name;
       }
     }
     return picturePath;

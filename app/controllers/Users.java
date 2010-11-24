@@ -27,15 +27,6 @@ public class Users extends CRUD {
 
   static public int pageSize = Integer.parseInt(Play.configuration.getProperty("pagesize"));
 
-//  @Before
-//  static void setConnectedUser() {
-//    if(Security.isConnected()) {
-//      User user = User.find("byEmail", Security.connected()).first();
-//      renderArgs.put("user", user.nickname);
-//    }
-//  }
-
-  
   public static void dashboard() {
     List<Ad> ads = Ad.find("author.email", Security.connected()).fetch();
     ValuePaginator paginator = new ValuePaginator(ads);

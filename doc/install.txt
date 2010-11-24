@@ -191,4 +191,11 @@ sudo /etc/init.d/lighttpd restart
 echo "America/Asuncion" | sudo tee /etc/timezone
 sudo dpkg-reconfigure --frontend noninteractive tzdata
 
+# Run Play under parapapi user
+useradd -U -m parapapi
+cd /home/parapapi
+cp /root/parapapi/pull.sh .
+cp -R /root/pictures/ .
+chown -R parapapi:parapapi pictures pull.sh
+
 

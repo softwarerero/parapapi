@@ -5,6 +5,9 @@ views.main.tools.login=Anmelden
 views.main.tools.logout=Abmelden
 views.main.tools.register=Registrieren
 
+message.delete.confirm.title=Was will Papi?
+message.delete.confirm.text=Wirklich löschen?
+
 AdvancedSearch=Erweiterte Suche
 CreateAd=Anzeige aufgeben
 Save=Speichern

@@ -260,9 +260,9 @@ public class Application extends Controller {
   
   private static void render4editAd(Ad object) {
     List<MainCategory> mainCategories = MainCategory.findAll();
-    //List<SubCategory> subCategories = object.mainCategory.children;
+    List<SubCategory> subCategories = object.mainCategory.children;
 //    String randomID = Codec.UUID();
-    render("Application/editAd.html", Ad.class, object, mainCategories);
+    render("Application/editAd.html", Ad.class, object, mainCategories, subCategories);
 	}
 
 

@@ -25,14 +25,13 @@ public class Security extends Secure.Security {
   }
 
   static boolean check(String profile) {
-    System.out.println("con: "+connected());
-      if("admin".equals(profile)) {
-        User user = User.find("byEmail", connected()).<User>first();
-        if(null != user) {
-          return user.isAdmin;
-        }
+    if("admin".equals(profile)) {
+      User user = User.find("byEmail", connected()).<User>first();
+      if(null != user) {
+        return user.isAdmin;
       }
-      return false;
+    }
+    return false;
   }
   
 }

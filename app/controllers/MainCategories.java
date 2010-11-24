@@ -43,7 +43,6 @@ public class MainCategories extends CRUD {
         optionString.append("<option value='" + cat.id + "'>" + name + "</option>");
       }
     }
-    System.out.println("optionString: " + optionString);
     return optionString.toString();
   }
 

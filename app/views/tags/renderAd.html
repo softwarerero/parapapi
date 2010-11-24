@@ -1,3 +1,10 @@
+#{set 'moreStyles'}
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/smoothness/jquery-ui-1.8.6.custom.css'}">
+#{/set}
+#{set 'moreScripts'}
+    <script src="@{'/public/javascripts/jquery-ui-1.8.6.custom.min.js'}" type="text/javascript" ></script>
+#{/set}
+
 *{ Display an Ad in one of these modes: 'full', 'home' or 'teaser' }*
 <div class="ad ${_as == 'teaser' ? 'teaser' : ''} ">
     <div class="ad-thumb">
@@ -22,6 +29,7 @@
     #{/if}
     #{if controllers.Security.isConnected()}
     <div class="actions">
+       
         <a href="@{Application.editAd(_ad.id)}" class="editAction" title="&{'edit'}"></a>
         <a href="@{Application.deleteAd(_ad.id)}" class="deleteAction" title="&{'delete'}"></a>
     </div>
@@ -64,5 +72,6 @@
         }
     }%
 </div>
-
 #{/if}
+
+

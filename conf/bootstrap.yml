@@ -8,9 +8,10 @@ User(bob):
   isActive: true
 
 User(jeff):
+    nickname: Jeff
     email:          jeff@gmail.com
     fullname:       Jeff
-
+    isActive: true
 
 MainCategory(inmuebles):
     name:   inmuebles

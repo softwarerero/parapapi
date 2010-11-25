@@ -105,7 +105,7 @@
 
 <script type="text/javascript">
 
-    var getSubCategories = #{jsAction @MainCategories.getSubCategories(':id') /}
+    var getSubCategories = #{jsAction @Application.getOptionString4Category(':id') /}       
 
     $('#object_mainCategory').change(function() {
         $('#object_subCategory').load(getSubCategories({id: $(this).val()}));

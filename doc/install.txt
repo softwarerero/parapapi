@@ -46,6 +46,7 @@ cd /usr ; /usr/bin/mysqld_safe &
 mysql -u root -p
 	CREATE USER 'parapapi'@'localhost' IDENTIFIED BY '9Kb!Snv^aoP[sAm';
 	GRANT ALL PRIVILEGES ON parapapi.* TO 'parapapi'@'localhost' WITH GRANT OPTION;
+	CREATE DATABASE parapapi;
 
 # Mercurial
 sudo apt-get install mercurial

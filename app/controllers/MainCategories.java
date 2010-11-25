@@ -25,25 +25,5 @@ import java.util.Map;
 @With(Secure.class)
 public class MainCategories extends CRUD {
 
-  public static void getSubCategories(Long id) {
-    renderText(getOptionString4Category(id));
-	}
-
-
-  public static String getOptionString4Category(Long id) {
-    StringBuilder optionString = new StringBuilder();
-    optionString.append("<option value=''>").append(Messages.get("option.none")).append("</option>");
-
-    if(null != id) {
-      MainCategory mainCategory = MainCategory.findById(id);
-      List<SubCategory> subCategories = mainCategory.children;
-      for(SubCategory cat: subCategories) {
-        String name = JavaExtensions.noAccents(cat.name).replaceAll(" / ", "_").replaceAll(" ", "_");
-        name = Messages.get(name);
-        optionString.append("<option value='" + cat.id + "'>" + name + "</option>");
-      }
-    }
-    return optionString.toString();
-  }
 
 }

@@ -29,10 +29,6 @@ public class SubCategory extends Model {
   @Expose
   public long adCount = 0;
 
-  public SubCategory(String name) {
-     this.name = name;
-  }
-
 
   public String toString() {
     return name;

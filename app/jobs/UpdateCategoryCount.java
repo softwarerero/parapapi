@@ -2,10 +2,15 @@ package jobs;
 
 import models.*;
 import play.Logger;
+import play.Play;
 import play.db.jpa.JPA;
 import play.jobs.*;
 
 import javax.persistence.Query;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 
 /**
@@ -20,14 +25,14 @@ import java.util.List;
 public class UpdateCategoryCount extends Job {
 
     public void doJob() {
-      //Logger.info("Update category stats");
+      Logger.info("Update category stats");
 
       Query query = JPA.em().createNativeQuery("update MainCategory set adCount = 0");
       query.executeUpdate();
       List<MainCategory> mainCategories = MainCategory.findAll();
-      for(int i=0; i<mainCategories.size(); i++) {
-      //for(MainCategory category: mainCategories) {
-        MainCategory category = (MainCategory) mainCategories.get(i);
+      //for(int i=0; i<mainCategories.size(); i++) {
+      for(MainCategory category: mainCategories) {
+        //MainCategory category = (MainCategory) mainCategories.get(i);
         long adCount = Ad.count("mainCategory = ?", category);
         category.adCount += adCount;
         category.save();

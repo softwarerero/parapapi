@@ -4,6 +4,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import play.data.validation.*;
 import play.db.jpa.Model;
+import play.i18n.Messages;
+import play.templates.JavaExtensions;
 
 import javax.persistence.*;
 import java.util.List;
@@ -31,12 +33,8 @@ public class MainCategory extends Model {
   @Expose
   public long adCount = 0;
 
-
-  public MainCategory(String name) {
-     this.name = name;
-  }
-
   public String toString() {
     return name;
   }
+
 }

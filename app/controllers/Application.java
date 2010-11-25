@@ -3,9 +3,7 @@ package controllers;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
-import play.data.binding.As;
-import play.db.jpa.JPABase;
-import play.db.jpa.Model;
+import play.i18n.Lang;
 import play.i18n.Messages;
 import play.libs.Images;
 import play.mvc.*;
@@ -13,7 +11,7 @@ import play.mvc.*;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.Date;
 import java.util.List;
 
 import models.*;
@@ -43,6 +41,8 @@ public class Application extends Controller {
 		}
 
     String searchTerm = '%' + searchString.toLowerCase() + '%';
+//    List<Ad> ads = Ad.find("language = ? and (lower(title) like ? or lower(content) like ?)",
+//            getLanguage(), searchTerm, searchTerm).fetch();
     List<Ad> ads = Ad.find("lower(title) like ? or lower(content) like ?",
             searchTerm, searchTerm).fetch();
     long noFound = ads.size();
@@ -51,6 +51,22 @@ public class Application extends Controller {
 		render("Application/adList.html", searchString, ads, paginator, noFound);
 	}
 
+
+  static public Ad.Language getLanguage() {
+    return Ad.Language.valueOf(Lang.get());
+  }
+
+//  //TODO this is bad
+//  static public int languageInt() {
+//    Ad.Language[] langs = Ad.Language.values();
+//    for(int i=0; i<langs.length; i++) {
+//      Enum e = langs[i];
+//      if(e.toString().equals(Lang.get())) {
+//        return i;
+//      }
+//    }
+//    return -1;
+//  }
 
   public static void advancedSearch(AdSearch object) {
 
@@ -67,11 +83,11 @@ public class Application extends Controller {
 
     SearchBuilder sb = new SearchBuilder();
 
-    sb.eq("1", 1);
+//    sb.eq("language", "'" + languageInt() + "'");
 
     String text = params.get("object.text");
     if(null != text && !"".equals(text)) {
-      sb.and().like("title", text).or().like("content", text);
+      sb.like("title", text).or().like("content", text);
     }
 
     Enum language = object.language;
@@ -219,7 +235,8 @@ public class Application extends Controller {
   
   public static void maincategoryList(Long id) {
     MainCategory category = MainCategory.findById(id);
-    List<Ad> ads = category.ads;
+//    List<Ad> ads = Ad.find("language = ? and mainCategory = ?)", getLanguage(), category).fetch();
+    List<Ad> ads = Ad.find("mainCategory = ?)", category).fetch();
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
     long noFound = ads.size();
@@ -228,7 +245,8 @@ public class Application extends Controller {
 
   public static void subcategoryList(Long id) {
     SubCategory category = SubCategory.findById(id);
-    List<Ad> ads = category.ads;
+//    List<Ad> ads = Ad.find("language = ? and subCategory = ?)", getLanguage(), category).fetch();
+    List<Ad> ads = Ad.find("subCategory = ?)", category).fetch();
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
     render("Application/adList.html", category, ads, paginator);
@@ -244,11 +262,6 @@ public class Application extends Controller {
     Ad object = new Ad();
     populateTestAd(object);
     render4editAd(object);
-//    List<MainCategory> mainCategories = MainCategory.findAll();
-//    List<SubCategory> subCategories = object.mainCategory.children;
-//    no++;
-//    String randomID = Codec.UUID();
-//    render("Application/editAd.html", Ad.class, object, mainCategories, subCategories, randomID);
 	}
 
 
@@ -261,7 +274,6 @@ public class Application extends Controller {
   private static void render4editAd(Ad object) {
     List<MainCategory> mainCategories = MainCategory.findAll();
     List<SubCategory> subCategories = object.mainCategory.children;
-//    String randomID = Codec.UUID();
     render("Application/editAd.html", Ad.class, object, mainCategories, subCategories);
 	}
 
@@ -287,12 +299,6 @@ public class Application extends Controller {
     object.subCategory = object.mainCategory.children.get(0);
     return object;
   }
-
-//  @Before
-//  public static void addType() throws Exception {
-//      CRUD.ObjectType type = CRUD.ObjectType.get(getControllerClass());
-//      renderArgs.put("type", type);
-//  }
 
   
   public static void saveAd(@Valid Ad object,
@@ -321,7 +327,6 @@ public class Application extends Controller {
 
   
   public static void deleteAd(Long id) {
-//  public static void deleteAd(Ad object) {
     Ad object = Ad.findById(id);
     Logger.debug("delete: " + object);
     object.delete();
@@ -338,6 +343,23 @@ public class Application extends Controller {
   }
 
 
+  public static String getOptionString4Category(Long id) {
+    StringBuilder optionString = new StringBuilder();
+    optionString.append("<option value=''>").append(Messages.get("option.none")).append("</option>");
+
+    if(null != id) {
+      MainCategory mainCategory = MainCategory.findById(id);
+      List<SubCategory> subCategories = mainCategory.children;
+      for(SubCategory cat: subCategories) {
+        String name = JavaExtensions.noAccents(cat.name).replaceAll(" / ", "_").replaceAll(" ", "_");
+        name = Messages.get(name);
+        optionString.append("<option value='" + cat.id + "'>" + name + "</option>");
+      }
+    }
+    return optionString.toString();
+  }
+  
+
   public static String termsOfUse() {
     return "hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>";
   }
@@ -346,4 +368,55 @@ public class Application extends Controller {
     return "dataPolicy hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>";
   }
 
+
+//  public static void test() {
+//    //Query query = JPA.em().createNativeQuery("update MainCategory set adCount = 0");
+//    //query.executeUpdate();
+////            + "join cat.ads as ad where ad.language = 1 group by cat.id, cat.name");
+//    System.out.println("noOfCats: " + JPA.em().createNativeQuery("select count(id) from MainCategory").getSingleResult());
+//    System.out.println("noOfAds: " + JPA.em().createNativeQuery("select count(id) from Ad").getSingleResult());
+//    Query query = JPA.em().createNativeQuery("select cat.id, cat.name, count(ad.id) from MainCategory as cat "
+//        + "join Ad as ad on ad.MAINCATEGORY_ID = cat.id group by cat.id, cat.name");
+//    List res = query.getResultList();
+//    System.out.println("size:" + res.size());
+//    for(int i=0; i<res.size(); i++) {
+//      System.out.println(String.valueOf(res.get(0)));
+//    }
+//    try {
+//     // Helper.checkData();
+//    } catch(Exception e) {
+//      e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//    }
+//  }
+
+
+//  public static void getMainCategories() throws Exception {
+//    Logger.info("Update category stats");
+//    Class.forName(Play.configuration.getProperty("db.driver"));
+//    Connection conn = DriverManager.getConnection(Play.configuration.getProperty("db.url"), Play.configuration.getProperty("db.user"), Play.configuration.getProperty("db.pass"));
+//    Statement st = conn.createStatement();
+//    String queryString = "select cat.id, cat.name, count(ad.id) from MainCategory as cat "
+//      + "join Ad as ad on ad.MAINCATEGORY_ID = cat.id group by cat.id, cat.name";
+//
+//    ResultSet rsCats = st.executeQuery(queryString);
+//    System.out.println(" Row: " + rsCats.getFetchSize());
+//    List<MainCategory> cats = new ArrayList<MainCategory>();
+//    while(rsCats.next()) {
+//      System.out.println(" Row:" + rsCats.getObject(1));
+//      System.out.println(" Row:" + rsCats.getObject(2));
+//      System.out.println(" noOfAds:" + rsCats.getObject(3));
+//      MainCategory cat = new MainCategory();
+//      cat.id = (Long) rsCats.getObject(1);
+//      cat.name = (String) rsCats.getObject(2);
+//      cat.adCount = (Long) rsCats.getObject(1);
+//      cats.add(cat);
+//
+//      String queryStringSub = "select cat.id, cat.name, count(ad.id) from SubCategory as cat "
+//        + "join Ad as ad on ad.MAINCATEGORY_ID = cat.id group by cat.id, cat.name";
+//
+//      ResultSet rsCats = st.executeQuery(queryString);
+//      System.out.println(" Row: " + rsCats.getFetchSize());
+//      List<MainCategory> cats = new ArrayList<MainCategory>();
+//    }
+//  }
 }

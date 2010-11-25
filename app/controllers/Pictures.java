@@ -76,11 +76,8 @@ public class Pictures extends Controller {
   static String picturePath = null;
 
   public static String getPicturePath() {
-    String name = Play.configuration.getProperty("pictures.path");
-    System.out.println("pictures.path: " + name);
     if(null == picturePath) {
-//      String name = Play.configuration.getProperty("pictures.path");
-
+      String name = Play.configuration.getProperty("pictures.path");
       if(null == name || "".equals(name)) name = "pictures";
       if(new File(name).isAbsolute()) {
           picturePath = name;

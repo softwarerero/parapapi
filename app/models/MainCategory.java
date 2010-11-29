@@ -37,4 +37,9 @@ public class MainCategory extends Model {
     return name;
   }
 
+
+  public String getDisplayName() {
+    String ret = JavaExtensions.noAccents(name).replaceAll(" / ", "_").replaceAll(" ", "_");
+    return Messages.get(ret);
+  }
 }

@@ -4,6 +4,9 @@ views.index.title.subheader=Papi hace su publicidad gratis. Mami también!
 views.main.tools.login=Ingresar
 views.main.tools.logout=Salir
 views.main.tools.register=Registrar
+views.main.tools.myAds=Mis Anuncios
+
+no.javascript=Por favor activa Javascript.
 
 AdvancedSearch=Busqueda avanzada
 CreateAd=Publicar Anuncio
@@ -120,6 +123,7 @@ views.editUser.acceptConditions=Yo he leido los %s y %s estoy de acuerdo
 views.editUser.termsOfUse=<a id="termsOfUse">Terminos de Uso</a>
 views.editUser.dataPolicy=<a id="dataPolicy">Politica de Privacidad</a>
 views.editUser.code=Por favor entre el codigo de seguridad
+views.editUser.code2=Codigo invalido. Por favor intenta de nuevo
 user.exists=El usario ya existe
 
 

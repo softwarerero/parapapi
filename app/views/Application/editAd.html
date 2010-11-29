@@ -13,19 +13,11 @@
     <div style="width: 100%;" class="form">
 
     <noscript>
-        <p class="error">
-        Javascript must be enabled to properly navigate this site.
-        </p>
+        <p class="error"> &{'no.javascript'} </p>
     </noscript>
     #{ifErrors}
-        <p class="error">
-            ${errors[0]}
-        </p>
+        <p class="error"> ${errors[0]} </p>
     #{/ifErrors}
-
-    %{
-        def currentType = _('controllers.CRUD$ObjectType').forClass(object.getClass().getName())
-    }%
 
     <input type="hidden" id="object_id" name="object.id" value="${object.id}" />
     <input type="hidden" id="object_author" name="object.author.id" value="${object.author.id}" />

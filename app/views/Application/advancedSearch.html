@@ -1,5 +1,6 @@
 #{extends 'main.html' /}
 #{set title: 'Search' /}
+
 #{set 'moreStyles'}
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/smoothness/jquery-ui-1.8.6.custom.css'}">
 #{/set}
@@ -7,24 +8,15 @@
     <script src="@{'/public/javascripts/jquery-ui-1.8.6.custom.min.js'}" type="text/javascript" ></script>
 #{/set}
 
-        
 #{form @Application.advancedSearch(adSearch), enctype:'multipart/form-data'}
     <div style="width: 100%;" class="form">
 
     <noscript>
-        <p class="error">
-        Javascript must be enabled to properly navigate this site.
-        </p>
+        <p class="error"> &{'no.javascript'} </p>
     </noscript>
     #{ifErrors}
-        <p class="error">
-            ${errors[0]}
-        </p>
+        <p class="error"> ${errors[0]} </p>
     #{/ifErrors}
-
-    %{
-        def currentType = _('controllers.CRUD$ObjectType').forClass(object.getClass().getName())
-    }%
 
     <p></p>
         <div style="width: 48%; float: left;">
@@ -38,6 +30,8 @@
         </div>
         <div style="width: 4%; float: left;">&nbsp;</div>
         <div style="width: 48%; float: left;">
+            <label>&nbsp;</label>
+            <label>&nbsp;</label>
             #{form/renderSelect4Enum name: "offer", value: object.offer, items: models.Ad.OfferType /}
             #{form/renderSelect4Enum name: "priceType", value: object.priceType, items: models.Ad.PriceType /}
             #{form/renderSelect4Enum name: "currency", value: object.currency, items: models.Ad.Currency /}
@@ -58,7 +52,7 @@
 
     $('#object_postedAt').datepicker({ dateFormat: 'yy-mm-dd'});
 
-    var getSubCategories = #{jsAction @MainCategories.getSubCategories(':id') /}
+    var getSubCategories = #{jsAction @Application.getOptionString4Category(':id') /}
 
     $('#object_mainCategory').change(function() {
         $('#object_subCategory').load(getSubCategories({id: $(this).val()}));

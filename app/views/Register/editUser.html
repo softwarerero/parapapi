@@ -12,20 +12,14 @@
 #{form @Register.saveUser(user), enctype:'multipart/form-data'}
     <div class="form">
 
-    <noscript style="font-family:Verdana;font-size:10px;font-weight:bold;color:red;width:100%;">
-        <p class="error">
-        Javascript must be enabled to properly navigate this site.
-        </p>
+    <noscript>
+        <p class="error"> &{'no.javascript'} </p>
     </noscript>
     #{ifErrors}
-        <p class="error">
-            ${errors[0]}
-        </p>
+        <p class="error"> ${errors[0]} </p>
     #{/ifErrors}
     #{elseif null != userExistsError}
-        <p class="error">
-            &{userExistsError}
-        </p>
+        <p class="error"> &{userExistsError} </p>
     #{/elseif}
 
     <input type="hidden" id="object_id" name="object.id" value="${object.id}" />
@@ -74,12 +68,6 @@
 
 
 <script type="text/javascript">
-
-    var getSubCategories = #{jsAction @MainCategories.getSubCategories(':id') /}
-
-    $('#object_mainCategory').change(function() {
-        $('#object_subCategory').load(getSubCategories({id: $(this).val()}));
-    });
 
     var cities = ${models.City.toJSON().raw()};
     $(function() {

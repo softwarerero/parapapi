@@ -4,9 +4,12 @@ views.index.title.subheader=Hier inseriert Papi in Deutsch, Englisch oder Spanis
 views.main.tools.login=Anmelden
 views.main.tools.logout=Abmelden
 views.main.tools.register=Registrieren
+views.main.tools.myAds=Meine Anzeigen
 
 message.delete.confirm.title=Was will Papi?
 message.delete.confirm.text=Wirklich löschen?
+
+no.javascript=Bitte aktivieren Sie Javascript.
 
 AdvancedSearch=Erweiterte Suche
 CreateAd=Anzeige aufgeben
@@ -123,6 +126,7 @@ views.editUser.acceptConditions=Ich habe die %s und die %s gelesen und akzeptier
 views.editUser.termsOfUse=<a id="termsOfUse">Benutzungsvereinbarungen</a>
 views.editUser.dataPolicy=<a id="dataPolicy">Datenschutzbestimmungen</a>
 views.editUser.code=Bitte geben Sie den Sicherheitscode ein
+views.editUser.code2=Falscher Code. Bitte versuchen Sie es noch einmal
 user.exists=Der Benutzer existiert bereits
 
 # Categories

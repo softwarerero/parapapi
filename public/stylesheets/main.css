@@ -22,7 +22,7 @@ body {
 #logo a {
     display: block;
     height: 49px;
-    margin-left: 20px;
+    margin-left: 0px;
     color: #F0F3F7;
     font-size: 48px;
     font-weight: bold;
@@ -37,7 +37,7 @@ a {
 
 #logo span {
     color: #B8C569;
-    font-size: 70%;
+    font-size: 65%;
 }
 
 #tools {
@@ -47,7 +47,7 @@ a {
     position: absolute;
     right: 0;
     top: 30px;
-    right: 20px;
+    right: 0px;
 }
 
 #tools a {
@@ -95,6 +95,9 @@ a {
     -moz-border-radius: 16px;
     padding: 20px;
 }
+
+noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; width:100%; }
+
 
 /** Ad **/
 

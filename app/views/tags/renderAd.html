@@ -18,7 +18,7 @@
         <div class="ad-metadata">
             <span class="ad-date">&{'Published'} ${_ad.postedAt.format("yyyy-MM-dd hh:mm")}</span>
             &nbsp;&nbsp;
-            <span class="ad-price">#{if null != _ad.price}&{'Price'} ${_ad.formattedPrice()} &{_ad.currency}#{/if}</span>
+            <span class="ad-price">#{if null != _ad.price}&{'Price'} ${_ad.price.doubleValue().formatCurrency(_ad.currency.name()).raw()}#{/if}</span>
         </div>
     </div>
     #{if _as != 'teaser'}
@@ -38,8 +38,8 @@
 
 #{if _as == 'full'}
     <span class="ad-details">
-        &{'mainCategory'}: &{_ad.mainCategory}
-        #{if null != _ad.subCategory}&{'subCategory'}: &{_ad.subCategory} #{/if}
+        &{'mainCategory'}: ${_ad.mainCategory.getDisplayName()}
+        #{if null != _ad.subCategory} &nbsp;|&nbsp; &{'subCategory'}: &{_ad.subCategory.getDisplayName()} #{/if}
         <br/>
         &{'department'}: &{_ad.department}
         &nbsp;|&nbsp;

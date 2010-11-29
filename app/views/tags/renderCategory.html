@@ -5,6 +5,6 @@
 
 <span class="category-child">
     <a href="${_isChild ? actionBridge.Application.subcategoryList(_category.id) : actionBridge.Application.maincategoryList(_category.id)}">
-        <span class="category-name">&{_category.name.noAccents().replaceAll(" / ", "_").replaceAll(" ", "_")}</span>
+        <span class="category-name">${_category.getDisplayName()}</span>
         <span class="category-adCount">(${_category.adCount})</span></a>
 </span>

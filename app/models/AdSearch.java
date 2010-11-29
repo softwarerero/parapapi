@@ -29,7 +29,7 @@ public class AdSearch extends Model {
   @Enumerated public Ad.PriceType priceType;
   @Enumerated public Ad.Language language = Ad.Language.de;
   @Enumerated public Ad.Country country = Ad.Country.py;
-  @Enumerated public Ad.Currency currency = Ad.Currency.pyg;
+  @Enumerated public Ad.Currency currency = Ad.Currency.PYG;
 
   @ManyToOne public MainCategory mainCategory;
 

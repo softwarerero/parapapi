@@ -19,7 +19,8 @@
                 <ul id="tools">
                     <li>
                         #{if controllers.Security.isConnected()}
-                            <input type="button" onclick="location.href='@{Users.dashboard()}'" value="${session.nickname}" /> 
+                            <input type="button" onclick="location.href='@{Users.dashboard()}'" value="&{'views.main.tools.myAds'}" />
+                            <input type="button" onclick="location.href='@{Register.editUser()}'" value="${session.nickname}" />
                             <input type="button" onclick="location.href='@{Secure.logout()}'" value="&{'views.main.tools.logout'}" />
                         #{/if}
                         #{else}

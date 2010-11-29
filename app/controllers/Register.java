@@ -12,8 +12,6 @@ import play.i18n.Lang;
 import play.libs.Codec;
 import play.libs.Mail;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -26,42 +24,56 @@ import java.util.UUID;
 public class Register extends CRUD {
   
   public static void register() {
-    editUser();
+    newUser();
   }
 
-
-  public static void editUser() {
+  public static void newUser() {
     User object = new User();
     String randomID = Codec.UUID();
-    renderTemplate("Users/editUser.html", object, randomID);
+    render("Register/editUser.html", object, randomID);
+  }
+
+  public static void editUser() {
+    User object = User.find("byEmail", Security.connected()).first();
+    object.passwordConfirmation = object.password;
+    String randomID = Codec.UUID();
+//    renderTemplate("tags/editUserForm.html", object, randomID);
+    render(object, randomID);
   }
 
 
   public static void saveUser(@Valid User object,
-                            @Required(message="Please type the code") String code,
+                            @Required(message="views.editUser.code") String code,
                             String randomID) throws EmailException {
 
     if(!Play.id.equals("test")) {
-      validation.equals(code, Cache.get(randomID)).message("Invalid code. Please type it again");
+      validation.equals(code, Cache.get(randomID)).message("views.editUser.code2");
     }
 
-    long count = User.count("email = ? or nickname = ?", object.email, object.nickname);
-    System.out.println("count: " + count);
+    System.out.println("id: " + object.id);
+    long count = 0;
     String userExistsError = "";
-    if(count > 0) {
-      userExistsError = "user.exists";
+    if(null == object.id) {
+      count = User.count("email = ? or nickname = ?", object.email, object.nickname);
+      if(count > 0) {
+        userExistsError = "user.exists";
+      }
     }
 
     if(validation.hasErrors() || count > 0) {
-      System.out.println("validation error: " + validation.errorsMap());
       Logger.debug("validation error: " + validation.errorsMap());
-      render("Users/editUser.html", User.class, object, randomID, userExistsError);
+      render("Register/editUser.html", User.class, object, randomID, userExistsError);
+//      render(User.class, object, randomID, userExistsError);
     }
 
     Logger.debug("about to save: " + object.nickname);
     object.save();
     Cache.delete(randomID);
-    registrationConfirmation(object);
+    if(null == object.id) {
+      registrationConfirmation(object);
+    } else {
+      Users.dashboard();
+    }
   }
 
 
@@ -91,11 +103,6 @@ public class Register extends CRUD {
     Mail.send(email);
 
     render("Users/registrationConfirmation.html");
-  }
-
-
-  static public String getLang() {
-    return request.headers.get("accept-language").value().substring(0,2);
   }
 
 

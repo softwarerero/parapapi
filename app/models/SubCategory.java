@@ -3,6 +3,8 @@ package models;
 import com.google.gson.annotations.Expose;
 import play.data.validation.*;
 import play.db.jpa.Model;
+import play.i18n.Messages;
+import play.templates.JavaExtensions;
 
 import javax.persistence.*;
 import java.util.List;
@@ -32,5 +34,10 @@ public class SubCategory extends Model {
 
   public String toString() {
     return name;
+  }
+
+  public String getDisplayName() {
+    String ret = JavaExtensions.noAccents(name).replaceAll(" / ", "_").replaceAll(" ", "_");
+    return Messages.get(ret);
   }
 }

@@ -6,9 +6,9 @@
 </span>
 </h3>
 
+
 #{paginate.list items:paginator, as: 'ad'}
     #{renderAd ad: ad, as: 'teaser'/}
 #{/paginate.list}
 <p></p>
 #{paginate.controls items:paginator /}
-

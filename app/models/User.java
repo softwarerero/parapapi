@@ -25,7 +25,7 @@ public class User extends Model {
   @Required @Password public String passwordConfirmation;
   @Required public String firstNames;
   @Required public String lastNames;
-  @Required public Ad.Currency currency = Ad.Currency.pyg;
+  @Required public Ad.Currency currency = Ad.Currency.PYG;
   public String documentNo;
   public DocumentType documentType = DocumentType.CID;
   @Required public Ad.Country country = Ad.Country.py;

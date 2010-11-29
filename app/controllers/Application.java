@@ -3,6 +3,7 @@ package controllers;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
+import play.db.jpa.JPA;
 import play.i18n.Lang;
 import play.i18n.Messages;
 import play.libs.Images;
@@ -18,6 +19,8 @@ import models.*;
 import play.data.validation.*;
 import play.modules.paginate.ValuePaginator;
 import play.templates.JavaExtensions;
+
+import javax.persistence.Query;
 
 
 public class Application extends Controller {
@@ -43,7 +46,7 @@ public class Application extends Controller {
     String searchTerm = '%' + searchString.toLowerCase() + '%';
 //    List<Ad> ads = Ad.find("language = ? and (lower(title) like ? or lower(content) like ?)",
 //            getLanguage(), searchTerm, searchTerm).fetch();
-    List<Ad> ads = Ad.find("lower(title) like ? or lower(content) like ?",
+    List<Ad> ads = Ad.find("lower(title) like ? or lower(content) like ? order by id desc",
             searchTerm, searchTerm).fetch();
     long noFound = ads.size();
     ValuePaginator paginator = new ValuePaginator(ads);
@@ -83,11 +86,11 @@ public class Application extends Controller {
 
     SearchBuilder sb = new SearchBuilder();
 
-//    sb.eq("language", "'" + languageInt() + "'");
+    sb.eq("1", 1);
 
     String text = params.get("object.text");
     if(null != text && !"".equals(text)) {
-      sb.like("title", text).or().like("content", text);
+      sb.and().like("title", text).or().like("content", text);
     }
 
     Enum language = object.language;
@@ -150,6 +153,8 @@ public class Application extends Controller {
     if(null != zone && !"".equals(zone)) {
       sb.and().like("zone", zone);
     }
+
+    sb.orderBy("id desc");
 
     String searchString = sb.getSearchString();
     Logger.info("searchString: " + searchString);
@@ -218,6 +223,11 @@ public class Application extends Controller {
       return this;
     }
 
+    public SearchBuilder orderBy(String orderBy) {
+      search.append(" order by " + orderBy);
+      return this;
+    }
+
     public String getSearchString() {
       return search.toString();
     }
@@ -236,7 +246,7 @@ public class Application extends Controller {
   public static void maincategoryList(Long id) {
     MainCategory category = MainCategory.findById(id);
 //    List<Ad> ads = Ad.find("language = ? and mainCategory = ?)", getLanguage(), category).fetch();
-    List<Ad> ads = Ad.find("mainCategory = ?)", category).fetch();
+    List<Ad> ads = Ad.find("mainCategory = ? order by id desc", category).fetch();
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
     long noFound = ads.size();
@@ -246,7 +256,7 @@ public class Application extends Controller {
   public static void subcategoryList(Long id) {
     SubCategory category = SubCategory.findById(id);
 //    List<Ad> ads = Ad.find("language = ? and subCategory = ?)", getLanguage(), category).fetch();
-    List<Ad> ads = Ad.find("subCategory = ?)", category).fetch();
+    List<Ad> ads = Ad.find("subCategory = ? order by id desc)", category).fetch();
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
     render("Application/adList.html", category, ads, paginator);
@@ -312,7 +322,7 @@ public class Application extends Controller {
       render("Application/editAd.html", Ad.class, object, mainCategories);
     }
 
-    Logger.debug("about to save: " + object.title);
+    Logger.debug("saving ad: " + object.id + ", " + object.title);
     object.save();
 
     Pictures.savePicture(object, picture);
@@ -351,8 +361,7 @@ public class Application extends Controller {
       MainCategory mainCategory = MainCategory.findById(id);
       List<SubCategory> subCategories = mainCategory.children;
       for(SubCategory cat: subCategories) {
-        String name = JavaExtensions.noAccents(cat.name).replaceAll(" / ", "_").replaceAll(" ", "_");
-        name = Messages.get(name);
+        String name = Messages.get(cat.getDisplayName());
         optionString.append("<option value='" + cat.id + "'>" + name + "</option>");
       }
     }
@@ -360,10 +369,12 @@ public class Application extends Controller {
   }
   
 
+  // TODO
   public static String termsOfUse() {
     return "hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>";
   }
 
+  // TODO
   public static String dataPolicy() {
     return "dataPolicy hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>";
   }
@@ -380,13 +391,17 @@ public class Application extends Controller {
 //    List res = query.getResultList();
 //    System.out.println("size:" + res.size());
 //    for(int i=0; i<res.size(); i++) {
-//      System.out.println(String.valueOf(res.get(0)));
+//      System.out.println(res.get(0)[0]);
 //    }
-//    try {
-//     // Helper.checkData();
-//    } catch(Exception e) {
-//      e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//    for(int i=0; i<res.size(); i++) {
+//          Object tab[] = res.get(i);
+//
+//          System.out.println("id : "+tab[0]);
+//          System.out.println("name : "+tab[1]);
+//          System.out.println("count : "+tab[2]);
+//
 //    }
+//
 //  }
 
 

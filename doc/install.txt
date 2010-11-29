@@ -69,6 +69,10 @@ sudo nano /etc/lighttpd/lighttpd.conf
 		proxy.balance = "round-robin" proxy.server = ( "/" =>
 			( ( "host" => "127.0.0.1", "port" => 9001 ) ) )
 	}
+	$HTTP["host"] =~ "loadtest.parapapi.com" {
+		proxy.balance = "round-robin" proxy.server = ( "/" =>
+			( ( "host" => "127.0.0.1", "port" => 9002 ) ) )
+	}
 	server.max-request-size=
 
 sudo /etc/init.d/lighttpd restart

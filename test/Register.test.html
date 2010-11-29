@@ -1,0 +1,32 @@
+#{selenium 'Test registration'}
+
+    clearSession()
+    open('/register/newuser')
+    waitForPageToLoad(100000)
+    clickAndWait('save')
+    assertTextPresent('object.nickname ist erforderlich')
+    assertText('css=.error', 'object.nickname ist erforderlich')
+
+    type('object.nickname', 'Carlito')
+//    type('password', 'secret')
+    clickAndWait('save')
+    assertText('css=.error', 'object.email ist erforderlich')
+
+    type('object.email', 'carlito@suncom.de')
+    type('object.password', 'carlito')
+    type('object.passwordConfirmation', 'carlito2')
+    clickAndWait('save')
+    assertText('css=.error', 'object.password muss gleich passwordConfirmation sein ')
+    type('object.passwordConfirmation', 'carlito')
+
+    type('object.firstNames', 'Carlos')
+    type('object.lastNames', 'Caneloni')
+    check('object.currency', 'USD')
+    clickAndWait('save')
+    assertText('css=.error', 'object.phone ist erforderlich')
+    type('object.phone', '021-12345')
+    check('object.acceptConditions', 'true')
+    clickAndWait('save')
+    //assertText('css=.error', 'Bitte geben Sie den Sicherheitscode ein')
+
+#{/selenium}

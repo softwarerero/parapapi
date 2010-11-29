@@ -21,7 +21,7 @@ import java.util.List;
  * Copyright.
  */
 @OnApplicationStart
-@Every("60s")
+//@Every("60s")
 public class UpdateCategoryCount extends Job {
 
     public void doJob() {

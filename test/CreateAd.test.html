@@ -1,0 +1,31 @@
+*{ You can use plain selenium command using the selenium tag }*
+#{fixture delete:'all', load:'data.yml' /}
+
+#{selenium 'Test ad creation'}
+
+    clearSession()
+    open('/login')
+    waitForPageToLoad(100000)
+    clickAndWait('signin')
+    assertText('css=.error', 'Der Benutzer ist unbekannt')
+
+    type('username', 'bob@gmail.com')
+    type('password', 'secret')
+    clickAndWait('signin')
+
+    assertTitle('Para Papi! - Que quieres hoy?')
+    assertLocation('http://localhost:9001/')
+
+    clickAndWait('createAd')
+    assertLocation('http://localhost:9001/application/createad')
+    type('object.title', 'Pusteblume')
+    type('object.content', 'Die Blume gehört der Gattung Pustimulis Blumis Fuetis an und ist eine der schönsten Pustblumen weltbreit')
+    clickAndWait('save')
+    assertText('css=.error', 'object.phone ist erforderlich')
+    type('object.price', '9999999.99')
+    type('object.phone', '12345')
+    clickAndWait('save')
+    assertLocation('http://localhost:9001/users/dashboard')
+
+
+#{/selenium}

@@ -21,22 +21,31 @@ public class UserTest extends UnitTest {
 
   @Test
   public void createAndRetrieveUser() {
-    // Create a new user and save it
-    new User("bob@gmail.com", "secret", "Bob").save();
+    createBob();
+    User bob;
 
     // Retrieve the user with e-mail address bob@gmail.com
-    User bob = User.find("byEmail", "bob@gmail.com").first();
+    bob = User.find("byEmail", "bob@gmail.com").first();
 
     // Test
     assertNotNull(bob);
-    assertEquals("Bob", bob.fullname);
+    assertEquals("Bob", bob.nickname);
   }
-  
+
+  public static User createBob() {
+    User bob = new User();
+    bob.email = "bob@gmail.com";
+    bob.password = "secret";
+    bob.nickname = "Bob";
+    bob.isActive = true;
+    bob.save();
+    return bob;
+  }
+
 
   @Test
   public void tryConnectAsUser() {
-    // Create a new user and save it
-    new User("bob@gmail.com", "secret", "Bob").save();
+    createBob();
 
     // Test
     assertNotNull(User.connect("bob@gmail.com", "secret"));

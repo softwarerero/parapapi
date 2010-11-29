@@ -21,8 +21,7 @@ public class AdTest extends UnitTest {
 
   @Test
   public void createAd() {
-    // Create a new user and save it
-    User bob = new User("bob@gmail.com", "secret", "Bob").save();
+    User bob = UserTest.createBob();
 
     Ad ad = new Ad();
     ad.author = bob;
@@ -49,11 +48,12 @@ public class AdTest extends UnitTest {
 
   @Test
   public void postAds() {
-    // Create a new user and save it
-    User bob = new User("bob@gmail.com", "secret", "Bob").save();
+    User bob = UserTest.createBob();
 
     // Create a new post
-    MainCategory firstCategory = new MainCategory("My first mainCategory").save();
+    MainCategory firstCategory = new MainCategory();
+    firstCategory.name = "My first mainCategory";
+    firstCategory.save();
 
     // Post a first comment
     Ad ad = new Ad();
@@ -75,7 +75,7 @@ public class AdTest extends UnitTest {
 
     Ad firstAd = bobAds.get(0);
     assertNotNull(firstAd);
-    assertEquals("Bob", firstAd.author.fullname);
+    assertEquals("Bob", firstAd.author.nickname);
     assertEquals("Jeff", firstAd.title);
     assertEquals("Nice post", firstAd.content);
     assertNotNull(firstAd.postedAt);

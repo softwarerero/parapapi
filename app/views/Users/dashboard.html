@@ -1,6 +1,6 @@
 #{extends 'main.html' /}
 
-<h3>${session.nickname}, <span>you have written ${ads.size() ?: 'no'} ${ads.pluralize('post', 'ads')} so far</span>
+<h3>${session.nickname}, <span>&{'views.main.adsWritten', ads.size() ?: 'no'}</span>
 <span id="createAction" >
     <a href="@{Application.createAd()}" class="createAction" title="&{'create'}"></a>
 </span>

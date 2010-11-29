@@ -47,6 +47,7 @@ mysql -u root -p
 	CREATE USER 'parapapi'@'localhost' IDENTIFIED BY '9Kb!Snv^aoP[sAm';
 	GRANT ALL PRIVILEGES ON parapapi.* TO 'parapapi'@'localhost' WITH GRANT OPTION;
 	CREATE DATABASE parapapi;
+	CREATE DATABASE parapapi_loadtest;
 
 # Mercurial
 sudo apt-get install mercurial

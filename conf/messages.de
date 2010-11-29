@@ -1,10 +1,14 @@
 views.dateFormat=dd-MM-yyyy
 views.index.title.header=Kleinanzeigen in und um Asunción
 views.index.title.subheader=Hier inseriert Papi in Deutsch, Englisch oder Spanisch. Mami natürlich auch!
+
 views.main.tools.login=Anmelden
 views.main.tools.logout=Abmelden
 views.main.tools.register=Registrieren
 views.main.tools.myAds=Meine Anzeigen
+views.main.adsWritten=Du hast bisher %s Anzeigen publiziert
+views.main.noSearchCriteria=Bitte geben Sie Ihre Suchkriterien ein!
+views.main.moreSearchCriteria=Bitte geben Sie mehr Suchkriterien ein!
 
 message.delete.confirm.title=Was will Papi?
 message.delete.confirm.text=Wirklich löschen?

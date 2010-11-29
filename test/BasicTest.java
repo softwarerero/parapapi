@@ -21,26 +21,22 @@ public class BasicTest extends UnitTest {
 
       // Try to connect as users
       assertNotNull(User.connect("bob@gmail.com", "secret"));
-      assertNotNull(User.connect("jeff@gmail.com", "secret"));
+      assertNull(User.connect("jeff@gmail.com", "secret"));
       assertNull(User.connect("jeff@gmail.com", "badpassword"));
       assertNull(User.connect("tom@gmail.com", "secret"));
 
-      // Find all of Bob's posts
-      List<MainCategory> cat1List = MainCategory.find("parent.name", "firstCat").fetch();
+      // Find all of Bob's cats
+      List<MainCategory> cat1List = MainCategory.find("name", "inmuebles").fetch();
       assertEquals(1, cat1List.size());
 
-      // Find all comments related to Bob's posts
       List<Ad> bobAds = Ad.find("author.email", "bob@gmail.com").fetch();
       assertEquals(1, bobAds.size());
 
       // Find the most recent post
-      MainCategory cat2 = MainCategory.find("order by name desc").first();
+      MainCategory cat2 = MainCategory.find("order by id asc").first();
       assertNotNull(cat2);
-      assertNotNull(cat2.parent);
-      assertEquals("firstCat", cat2.parent.name);
-
-      // Check that this post has two comments
-      assertEquals("secondCat", cat2.name);
+      assertNotNull(cat2.children);
+      assertEquals("inmuebles", cat2.name);
       assertEquals(1, cat2.ads.size());
 
       // Post a new comment

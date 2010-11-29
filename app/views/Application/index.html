@@ -19,8 +19,8 @@
     <input type="submit" value="&{'ParaPapi'}" />
 
     #{if controllers.Security.isConnected()}
-        <input type="button" onclick="location.href='@{Application.advancedSearch()}'" value="&{'AdvancedSearch'}" />
-        <input style="float: right;" type="button" onclick="location.href='@{Application.createAd()}'" value="&{'CreateAd'}" />
+        <input id="advancedSearch" type="button" onclick="location.href='@{Application.advancedSearch()}'" value="&{'AdvancedSearch'}" />
+        <input style="float: right;" id="createAd" type="button" onclick="location.href='@{Application.createAd()}'" value="&{'CreateAd'}" />
     #{/if}
 </form>
                                                      

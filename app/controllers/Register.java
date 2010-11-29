@@ -43,14 +43,17 @@ public class Register extends CRUD {
 
 
   public static void saveUser(@Valid User object,
-                            @Required(message="views.editUser.code") String code,
+                            String code,
                             String randomID) throws EmailException {
 
-    if(!Play.id.equals("test")) {
+    if(!Play.id.equals("test") && !Play.id.equals("loadtest")) {
+      validation.required(code).message("views.editUser.code");
       validation.equals(code, Cache.get(randomID)).message("views.editUser.code2");
     }
+    if(Play.id.equals("loadtest")) {
+      object.isActive = true;
+    }
 
-    System.out.println("id: " + object.id);
     long count = 0;
     String userExistsError = "";
     if(null == object.id) {
@@ -63,13 +66,12 @@ public class Register extends CRUD {
     if(validation.hasErrors() || count > 0) {
       Logger.debug("validation error: " + validation.errorsMap());
       render("Register/editUser.html", User.class, object, randomID, userExistsError);
-//      render(User.class, object, randomID, userExistsError);
     }
 
-    Logger.debug("about to save: " + object.nickname);
+    boolean isRegistration = null == object.id;
     object.save();
     Cache.delete(randomID);
-    if(null == object.id) {
+    if(isRegistration) {
       registrationConfirmation(object);
     } else {
       Users.dashboard();

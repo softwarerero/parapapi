@@ -1,10 +1,14 @@
 views.dateFormat=yyyy-MM-dd
 views.index.title.header=Clasificados en Asunción, Paraguay
 views.index.title.subheader=Papi hace su publicidad gratis. Mami también!
+
 views.main.tools.login=Ingresar
 views.main.tools.logout=Salir
 views.main.tools.register=Registrar
 views.main.tools.myAds=Mis Anuncios
+views.main.adsWritten=hasta ahora publicaste %s anuncios
+views.main.noSearchCriteria=Por favor entre sus crterias para buscar
+views.main.moreSearchCriteria=Por favor entre más criterias
 
 no.javascript=Por favor activa Javascript.
 

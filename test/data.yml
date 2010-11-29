@@ -4,12 +4,13 @@
 User(bob):
   email: bob@gmail.com
   password: secret
-  fullname: Bob
+  nickname: Bob
+  isActive: true
 
 User(jeff):
     email:          jeff@gmail.com
     password:       secret
-    fullname:       Jeff
+    nickname:       Jeff
 
 
 MainCategory(inmuebles):
@@ -44,7 +45,7 @@ Ad(firstBobAd):
     postedAt:       2009-06-14
     author:         bob
     price:          19,99
-    category:       cat2
+    mainCategory:   inmuebles
     content:        >
                     The model has a central position in a Play! application. It is the domain-specific
                     representation of the information on which the application operates.

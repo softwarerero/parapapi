@@ -34,8 +34,8 @@ public class Application extends Controller {
 
 
 	public static void search(String searchString) {
-    validation.required(searchString).message("Oops, please enter your search criteria!");
-    validation.minSize(searchString, 3).message("Please enter more criteria!");
+    validation.required(searchString).message(Messages.get("views.main.noSearchCriteria"));
+    validation.minSize(searchString, 3).message(Messages.get("views.main.moreSearchCriteria"));
 
 		if(validation.hasErrors()) {
       params.flash(); // add http parameters to the flash scope
@@ -54,22 +54,6 @@ public class Application extends Controller {
 		render("Application/adList.html", searchString, ads, paginator, noFound);
 	}
 
-
-  static public Ad.Language getLanguage() {
-    return Ad.Language.valueOf(Lang.get());
-  }
-
-//  //TODO this is bad
-//  static public int languageInt() {
-//    Ad.Language[] langs = Ad.Language.values();
-//    for(int i=0; i<langs.length; i++) {
-//      Enum e = langs[i];
-//      if(e.toString().equals(Lang.get())) {
-//        return i;
-//      }
-//    }
-//    return -1;
-//  }
 
   public static void advancedSearch(AdSearch object) {
 
@@ -245,7 +229,6 @@ public class Application extends Controller {
   
   public static void maincategoryList(Long id) {
     MainCategory category = MainCategory.findById(id);
-//    List<Ad> ads = Ad.find("language = ? and mainCategory = ?)", getLanguage(), category).fetch();
     List<Ad> ads = Ad.find("mainCategory = ? order by id desc", category).fetch();
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
@@ -255,7 +238,6 @@ public class Application extends Controller {
 
   public static void subcategoryList(Long id) {
     SubCategory category = SubCategory.findById(id);
-//    List<Ad> ads = Ad.find("language = ? and subCategory = ?)", getLanguage(), category).fetch();
     List<Ad> ads = Ad.find("subCategory = ? order by id desc)", category).fetch();
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
@@ -318,7 +300,7 @@ public class Application extends Controller {
     if(validation.hasErrors()) {
       Logger.debug("validation error: " + validation.errorsMap());
       List<MainCategory> mainCategories = MainCategory.findAll();
-      List<SubCategory> subCategories = object.mainCategory.children;
+      List<SubCategory> subCategories = null != object.mainCategory ? object.mainCategory.children : null;
       render("Application/editAd.html", Ad.class, object, mainCategories);
     }
 

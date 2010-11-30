@@ -47,6 +47,7 @@ mysql -u root -p
 	CREATE USER 'parapapi'@'localhost' IDENTIFIED BY '9Kb!Snv^aoP[sAm';
 	GRANT ALL PRIVILEGES ON parapapi.* TO 'parapapi'@'localhost' WITH GRANT OPTION;
 	CREATE DATABASE parapapi;
+	GRANT ALL PRIVILEGES ON parapapi_loadtest.* TO 'parapapi'@'localhost' WITH GRANT OPTION;
 	CREATE DATABASE parapapi_loadtest;
 
 # Mercurial
@@ -69,7 +70,7 @@ sudo nano /etc/lighttpd/lighttpd.conf
 		proxy.balance = "round-robin" proxy.server = ( "/" =>
 			( ( "host" => "127.0.0.1", "port" => 9001 ) ) )
 	}
-	$HTTP["host"] =~ "loadtest.parapapi.com" {
+	$HTTP["host"] == "loadtest.parapapi.com" {
 		proxy.balance = "round-robin" proxy.server = ( "/" =>
 			( ( "host" => "127.0.0.1", "port" => 9002 ) ) )
 	}

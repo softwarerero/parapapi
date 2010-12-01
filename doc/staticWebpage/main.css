@@ -3,7 +3,7 @@
 html, body {
     background: #364B66 !important;
     font-family: Helvetica, Arial, Sans !important;
-    color: #ffffff;
+    color: #F0F3F7;
 }
 
 body {
@@ -50,8 +50,33 @@ a {
     -moz-border-radius: 16px;
 }
 
+#rightColumn {
+    padding: 5px;
+	float: right;
+	width: 20%;
+}
+
+#rightColumn .link {
+    background: #869AB1;
+	padding: 3px;
+	text-align: center;
+	margin-bottom: 5px;
+	-webkit-border-radius: 16px;
+    -webkit-box-shadow: 0 2px 0 #93A045;
+    -moz-border-radius: 16px;
+}
+
+#rightColumn :hover {
+    background: #B8C569;
+}
+
+#rightColumn a {
+    color: #F0F3F7;
+	text-decoration: none;
+}
+
 #title .about {
-	color: #000000;
+	color: #F0F3F7;
 }
 
 #application-title h1 {

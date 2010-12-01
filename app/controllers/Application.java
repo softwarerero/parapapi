@@ -12,7 +12,9 @@ import play.mvc.*;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import models.*;
@@ -243,6 +245,29 @@ public class Application extends Controller {
     paginator.setPageSize(pageSize);
     render("Application/adList.html", category, ads, paginator);
 	}
+
+//  //TODO example how to cache page fragments
+//  public static void index(Long id){
+//        String key="controllers.index+"_"+id;
+//
+//        String content=Cache.get(key, String.class);
+//
+//        if(content == null)
+//        {
+//                MyData md = MyData.find("byId",id).first();
+//                notFoundIfNull(md);
+//
+//                Map args = new HashMap();
+//                args.put("stuff", stuff);
+//
+//                Template t = TemplateLoader.load(template()); //Template laden
+//                content = t.render(args); //Template mit args rendern
+//
+//                Cache.set(key, content, "30mn");
+//        }
+//        renderHtml(content);
+//
+//} 
 
   public static void adDetail(Long id) {
     Ad ad = Ad.findById(id);

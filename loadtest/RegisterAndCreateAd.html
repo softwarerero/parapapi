@@ -1,0 +1,76 @@
+﻿var selenium = browserMob.openBrowser();
+var c = browserMob.getActiveHttpClient();
+var userNum = browserMob.getUserNum();
+var txCount = browserMob.getTxCount();
+var nickname = "jim";
+var firstname = "Jim";
+
+c.blacklistRequests("http(s)?://www\\.google-analytics\\.com/.*", 200);
+c.blacklistRequests("http://.*\\.quantserve.com/.*", 200);
+c.blacklistRequests("http://www\\.quantcast.com/.*", 200);
+c.blacklistRequests("http://c\\.compete\\.com/.*", 200);
+c.blacklistRequests("http(s)?://s?b\\.scorecardresearch\\.com/.*", 200);
+c.blacklistRequests("http://s\\.stats\\.wordpress\\.com/.*", 200);
+c.blacklistRequests("http://partner\\.googleadservices\\.com/.*", 200);
+c.blacklistRequests("http://ad\\.adtegrity\\.net/.*", 200);
+c.blacklistRequests("http://ad\\.doubleclick\\.net/.*", 200);
+c.blacklistRequests("http(s)?://connect\\.facebook\\.net/.*", 200);
+c.blacklistRequests("http://platform\\.twitter\\.com/.*", 200);
+c.blacklistRequests("http://.*\\.addthis\\.com/.*", 200);
+c.blacklistRequests("http://widgets\\.digg\\.com/.*", 200);
+c.blacklistRequests("http://www\\.google\\.com/buzz/.*", 200);
+
+var timeout = 30000;
+selenium.setTimeout(timeout);
+
+var tx = browserMob.beginTransaction();
+
+var step = browserMob.beginStep("Step 1");
+selenium.open("http://loadtest.parapapi.com/register/newuser");
+browserMob.endStep();
+
+browserMob.beginStep("Step 2");
+selenium.waitForPageToLoad(timeout);
+selenium.type("object_nickname", nickname + userNum);
+selenium.type("object_email", nickname  + userNum + "@gmail.com");
+selenium.type("object_password", nickname);
+selenium.type("object_passwordConfirmation", nickname);
+selenium.type("object_firstNames", firstname + userNum);
+selenium.type("object_lastNames", "Tester");
+selenium.type("object_phone", "021-12345");
+selenium.click("object_acceptConditions");
+browserMob.endStep();
+
+browserMob.beginStep("Step 3");
+selenium.click("save");
+selenium.waitForPageToLoad(timeout);
+browserMob.endStep();
+
+browserMob.beginStep("Step 4");
+selenium.open("http://loadtest.parapapi.com/login");
+selenium.waitForPageToLoad(timeout);
+selenium.type("username", nickname + userNum + "@gmail.com");
+selenium.type("password", nickname);
+browserMob.endStep();
+
+browserMob.beginStep("Step 5");
+selenium.click("signin");
+selenium.waitForPageToLoad(timeout);
+browserMob.endStep();
+
+browserMob.beginStep("Step 6");
+selenium.click("createAd");
+selenium.waitForPageToLoad(timeout);
+selenium.type("object_title", "Anzeige" + userNum);
+selenium.type("object_content", "Anzeigentext" + userNum);
+selenium.type("object_price", 100.99 * userNum);
+selenium.select("object_mainCategory", "label=Real Estate");
+selenium.select("object_subCategory", "label=Halls");
+browserMob.endStep();
+
+browserMob.beginStep("Step 7");
+selenium.click("save");
+selenium.waitForPageToLoad(timeout);
+browserMob.endStep();
+
+browserMob.endTransaction();

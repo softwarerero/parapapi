@@ -1,0 +1,29 @@
+Immobilien
+	Haus, Wohnung, Doppelhaus, Zimmer, Gewerbe, Land-Immobilie
+Transport
+	Auto, Mottorrad, Fahrrad, Wasserfahrzeug, Autoteile, Flugzeug
+Stelle / Job
+	Gesundheit, Ausbildung, Finanzen
+Landwirtschaft
+	Pflanze, Tiere, Geräte
+Gewerbe
+	Büromöbel, Bürogeräte, Büromaterial, Firmenverkäufe
+Haushalt
+	Möbel, Antiquität, Haushaltsgeräte
+Leben
+	Gesundheit, Kleidung, Kosmetik, Geschenke, Spielzeug, Baby / Kind, Nahrung
+Freizeit / Hobby
+	Haus, Garten, Foto / Optik, Sport, Jagen, Fischen, Musikinstrumente, Sonstiges
+Elektronik
+	Computer, Software, Notebook, Apple, Drucker, Zubehör, Handy, TV, Video, Sonstiges
+Veranstaltung
+	Flohmarkt, Party, Messe, Markt, Kino, Theater, Sport, Konzert, Sonstiges
+Kontaktsuche
+	Freundschaft, Club, 
+Ausbildung / Kurse
+	Informatik, Nachhilfe, Sport, Sprachen, Kunst, Fortbewegung, Akademisches, Sonstiges
+Dienstleistung
+	Gesundheit, Werkstatt, Finanz, Transport, Bauen, Animation, Veranstaltungstechnik,
+	Sicherheit, Multimedia, Tourismus
+Verschiedenes
+	Sammlung, Haustiere

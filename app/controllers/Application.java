@@ -3,8 +3,6 @@ package controllers;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
-import play.db.jpa.JPA;
-import play.i18n.Lang;
 import play.i18n.Messages;
 import play.libs.Images;
 import play.mvc.*;
@@ -19,18 +17,15 @@ import play.data.validation.*;
 import play.modules.paginate.ValuePaginator;
 import play.templates.JavaExtensions;
 
-import javax.persistence.Query;
-
 
 public class Application extends Controller {
 
   static public int pageSize = Integer.parseInt(Play.configuration.getProperty("pagesize"));
 
   public static void index() {
-    Enum[] mainCategories = Category.Main.values();
+    String[] mainCategories = Category.main;
     System.out.println("mainCategories: " + mainCategories);
-    String test = "hi";
-    render(mainCategories, test);
+    render("Application/index.html", mainCategories);
   }
 
 
@@ -57,8 +52,9 @@ public class Application extends Controller {
   public static void advancedSearch(AdSearch object) {
 
     if(!params._contains("object.text")) {
-      Enum[] mainCategories = Category.Main.values();
+//      Enum[] mainCategories = Category.Main.values();
 //      List<MainCategory> mainCategories = MainCategory.findAll();
+      String[] mainCategories = Category.main;
       render(object, mainCategories);
     }
 
@@ -114,15 +110,15 @@ public class Application extends Controller {
     }
 
 //    MainCategory mainCategory = object.mainCategory;
-    Category.Main mainCategory = object.mainCategory;
+    String mainCategory = object.mainCategory;
     if(null != mainCategory && !"".equals(mainCategory)) {
-      sb.and().eq("mainCategory", mainCategory.ordinal());
+      sb.and().eq("mainCategory",  "'" + mainCategory + "'");
     }
 
 //    SubCategory subCategory = object.subCategory;
-    Category.Sub subCategory = object.subCategory;
+    String subCategory = object.subCategory;
     if(null != subCategory && !"".equals(subCategory)) {
-      sb.and().eq("subCategory", subCategory.ordinal());
+      sb.and().eq("subCategory",  "'" + subCategory + "'");
     }
 
     Enum department = object.department;
@@ -229,7 +225,7 @@ public class Application extends Controller {
   }
 
   
-  public static void maincategoryList(Category.Main category) {
+  public static void maincategoryList(String category) {
     List<Ad> ads = Ad.find("mainCategory = ? order by id desc", category).fetch();
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
@@ -237,7 +233,7 @@ public class Application extends Controller {
 		render("Application/adList.html", ads, paginator, noFound);
 	}
 
-  public static void subcategoryList(Category.Sub category) {
+  public static void subcategoryList(String category) {
     List<Ad> ads = Ad.find("subCategory = ? order by id desc)", category).fetch();
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
@@ -287,8 +283,8 @@ public class Application extends Controller {
 
   
   private static void render4editAd(Ad object) {
-    Enum[] mainCategories = Category.Main.values();
-    Enum[] subCategories = null != object.mainCategory ?
+    String[] mainCategories = Category.main;
+    String[] subCategories = null != object.mainCategory ?
             Category.getSubCategory(object.mainCategory) : null;
     render("Application/editAd.html", Ad.class, object, mainCategories, subCategories);
 	}
@@ -324,8 +320,8 @@ public class Application extends Controller {
     System.out.println("params: " + params.allSimple());
     if(validation.hasErrors()) {
       Logger.debug("validation error: " + validation.errorsMap());
-      List<MainCategory> mainCategories = MainCategory.findAll();
-      Enum[] subCategories = null != object.mainCategory ? Category.getSubCategory(object.mainCategory) : null;
+      String[] mainCategories = Category.main;
+      String[] subCategories = null != object.mainCategory ? Category.getSubCategory(object.mainCategory) : null;
       render("Application/editAd.html", Ad.class, object, mainCategories);
     }
 
@@ -361,12 +357,12 @@ public class Application extends Controller {
 
 
   public static String getOptionString4Category(String mainCategory) {
-    Enum[] subCategories = Category.getSubCategory(mainCategory);
+    String[] subCategories = Category.getSubCategory(mainCategory);
     StringBuilder optionString = new StringBuilder();
     optionString.append("<option value=''>").append(Messages.get("option.none")).append("</option>");
 
     if(null != mainCategory) {
-      for(Enum cat: subCategories) {
+      for(String cat: subCategories) {
         String name = Messages.get(Messages.get(cat));
         optionString.append("<option value='" + cat + "'>" + name + "</option>");
       }

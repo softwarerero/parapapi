@@ -46,8 +46,8 @@ public class Ad extends Model {
   @Required @Enumerated public Country country = Country.py;
   @Required @Enumerated public Currency currency = Currency.PYG;
 
-  @Required public Category.Main mainCategory;
-  public Category.Sub subCategory;
+  @Required public String mainCategory;
+  public String subCategory;
 
   @Lob @Required @MaxSize(10000) public String content;
 

@@ -32,8 +32,8 @@ public class AdSearch extends Model {
   @Enumerated public Ad.Country country = Ad.Country.py;
   @Enumerated public Ad.Currency currency = Ad.Currency.PYG;
 
-  public Category.Main mainCategory;
-  public Category.Sub subCategory;
+  public String mainCategory;
+  public String subCategory;
   
   @ManyToOne public User author;
 

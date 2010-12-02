@@ -132,64 +132,111 @@ user.exists=El usario ya existe
 
 
 # Categories
-inmuebles=Immuebles
-casa=Casas
-residencias=Residencias
-departamentos=Departamentos
-duplex=Dúplexes
-locales_oficinas_salones=Locales / Oficinas / Salones
-deposito=Depósitos
-terrenos=Terrenos
-tinglados=Tinglados
-habitacion=Habitación / Dormitorio
-propriedades_ruales=Propiedades Rurales
+realEstate=Inmuebles
+house=Casa
+apartment=Departamento
+twinHouse=Dúplex
+room=Habitación
+commercial=Comercial
+rural=Rural
 
-medio_de_transporte=Transporte
-automotores=Automotores
-motos=Motos - piensalo bien
-bicicletas=Bicicletas
-nautica=Náuticas
-autopartes_accesorios=Autopartes / Accesorios
-repuestos=Repuestos
+transport=Transporte
+auto=Automotor
+bike=Moto - piensalo!
+bicycle=Bicicleta
+water=Náutica
+autoparts=Autoparte
+airplane=Avión
 
-empleos=Empleos
-personal_ofrecido=Busco empleado
-personal_pedido=Busco trabajo
+job=Empleo
+healthjob=Salud
+education=Educación
+industry=Industria
+office=Oficina
+household=Domestica
 
-cursos_ensenanza=Cursos / Enseñanza
-idiomas=Idiomas
-musica_teatro_danza=Música / Teatro / Danza
-arte_y_manualidades=Arte y Manualidades
-informatica_computacion=Informática / Computación
-conduccion_manejo=Conducción / Manejo
-universitaria=Universitaria
-cursos_y_seminarios=Cursos y Seminarios
-deportes=Deportes
+farming=Agricultura
+equipment=Máquina
+plant=Planta
+animal=Animal
 
-comprar_vender=Comprar / Vender
-informatica=Computadoras / Informática
-celulares_electronica=Celulares / Electrónica
-muebles_electrodemesticos=Muebles / Electrodomésticos
-deportes_equipos_de_gimnasia=Deportes / Equipos de Gimnasia
-ropa_accesorios=Ropa / Accesorios
-instrumentos_musicales=Instrumentos Musicales
-coleccionables=Colecionables
-regalos_juguetes=Regalos / Juguetes
-caza_y_pesca=Caza y Pesca
-mascotas=Mascotas
+business=Empresarial
+machine=Máquina
+officefurniture=Mueble
+officesupply=Accesorios
 
-servicios=Servicios
-animacion_de_fiestas=Animación de Fiestas
-servicios_de_discoteca=Discoteca
-servicios_de_comidas=Comida
-custodio_seguridad=Custodio / Seguridad
-internet_multimedia=Internet / Multimedia
-mudanza_fletes=Mudanza / Fletes
-prestamos=Finanzas
-turismo=Turismo
-construccion_anexos=Construcción / Anexos
+household=Hogar
+furniture=Mueble
+antique=Antiguedad
+appliance=Electrodoméstico
 
-clasificados_varios=Varios
+life=Vida
+health=Salud
+wear=Ropa
+cosmetic=Cosmética
+gift=Regalo
+toy=Juguete
+baby=Baby
+nutrition=Nutrición
+
+leisure=Hobby
+home=Hogar
+garden=Jardín
+foto=Foto
+optic=Óptica
+sport=Deporte
+hunt=Caza
+fishery=Pesca
+musicalInstrument=Instrumento Musical
+
+electronics=Electronica
+computer=Computer
+notebook=Notebook
+software=Software
+printer=Impresor
+supply=Accesorio
+phone=Teléfono
+tv=Televisión
+video=Video
+
+event=Evento
+fair=Expo
+party=Fiesta
+cinema=Cine
+theatre=Teatro
+concert=Conzerto
+sportevent=Deporte
+
+contact=Contacto
+friendship=Amistad
+venture=Actividad
+club=Club
+sheSeeksHim=Ella busca el
+heSeeksHer=El busca ella
+
+education=Educación
+it=Informática
+academics=Universitaria
+sportcourse=Deporte
+languages=Idioma
+art=Arte
+driving=Manejo
+
+service=Servicio
+healthservice=Salud
+workshop=Taller
+finance=Finanza
+transport=Transporte
+construction=Construcción
+animation=Animación
+eventTechnology=Eventos
+multimedia=Multimedia
+security=Seguridad
+tourism=Turismo
+
+other=Otros
+collection=Colleción
+pet=Mascota
 
 # Secure Module
 secure.title=

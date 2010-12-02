@@ -114,64 +114,111 @@ views.editUser.code2=Invalid code. Please type it again
 user.exists=User already present
 
 # Categories
-inmuebles=Real Estate
-casa=Houses
-residencias=Mansions
-departamentos=Apartment
-duplex=Twin Houses
-locales_oficinas_salones=Commercial Real Estate
-deposito=Storages
-terrenos=Plats
-tinglados=Halls
-habitacion=Rooms
-propriedades_ruales=Rural Properties
+realEstate=Real Estate
+house=House
+apartment=Apartment
+twinHouse=Twin House
+room=Room
+commercial=Commercial
+rural=Rural Property
 
-medio_de_transporte=Transport
-automotores=Cars
-motos=Bikes - think!
-bicicletas=Bycicles
-nautica=Boats
-autopartes_accesorios=Carparts
-repuestos=Repairs
+transport=Transport
+auto=Car
+bike=Bike - think!
+bicycle=Bicycle
+water=Watercraft
+autoparts=Autopart
+airplane=Airplane
 
-empleos=Jobs
-personal_ofrecido=Search Staff
-personal_pedido=Search Work
+job=Job
+healthjob=Health
+education=Education
+industry=Industry
+office=Office
+household=Household
 
-cursos_ensenanza=Training / Courses
-idiomas=Languages
-musica_teatro_danza=MusiC / Theatre / Dance
-arte_y_manualidades=Art / Handcraft
-informatica_computacion=Information Tecnology
-conduccion_manejo=Driving
-universitaria=Academics
-cursos_y_seminarios=Miscellaneous
-deportes=Sport
+farming=Farming
+equipment=Equipment
+plant=Plant
+animal=Animal
 
-comprar_vender=Bying / Selling
-informatica=Computers / IT
-celulares_electronica=Mobile Phones / Electronics
-muebles_electrodemesticos=Furniture / Hausehold Appliences
-deportes_equipos_de_gimnasia=Sport
-ropa_accesorios=Clothes / Accessories
-instrumentos_musicales=Musical Instruments
-coleccionables=Collections
-regalos_juguetes=Gifts / Toys
-caza_y_pesca=Hunting / Fishing
-mascotas=Domestic Animals
+business=Business
+machine=Machine
+officefurniture=Furniture
+officesupply=Supply
 
-servicios=Services
-animacion_de_fiestas=Party Animation
-servicios_de_discoteca=Club / Party Equipment
-servicios_de_comidas=Food
-custodio_seguridad=Custodity / Security
-internet_multimedia=Internet / Multimedia
-mudanza_fletes=Relocation / Cargo
-prestamos=Finances
-turismo=Tourism
-construccion_anexos=Construction
+household=Household
+furniture=Furniture
+antique=Antique
+appliance=Appliance
 
-clasificados_varios=Miscellaneous
+life=Life
+health=Health
+wear=Wear
+cosmetic=Cosmetic
+gift=Gift
+toy=Toy
+baby=Baby
+nutrition=Nutrition
+
+leisure=Leisure
+home=Home
+garden=Garden
+foto=Foto
+optic=Optics
+sport=Sport
+hunt=Hunting
+fishery=Fishing
+musicalInstrument=Musical Instrument
+
+electronics=Electronics
+computer=Computer
+notebook=Notebook
+software=Software
+printer=Printer
+supply=Supply
+phone=Phone
+tv=TV
+video=Video
+
+event=Event
+fair=Fair
+party=Party
+cinema=Cinema
+theatre=Theatre
+concert=Concert
+sportevent=Sport
+
+contact=Contact
+friendship=Friendship
+venture=Venture
+club=Club
+sheSeeksHim=She seeks him
+heSeeksHer=He seeks her
+
+education=Education
+it=Informatics
+academics=Academics
+sportcourse=Sport
+languages=Language
+art=Art
+driving=Driving
+
+service=Service
+healthservice=Health
+workshop=Workshop
+finance=Finance
+transport=Transport
+construction=Construction
+animation=Animation
+eventTechnology=Event Tecnology
+multimedia=Multimedia
+security=Security
+tourism=Tourism
+
+other=Other
+collection=Collection
+pet=Pet
 
 # Secure Module
 secure.title=

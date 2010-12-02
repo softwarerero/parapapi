@@ -3,6 +3,7 @@ package controllers;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
+import play.db.jpa.JPA;
 import play.i18n.Messages;
 import play.libs.Images;
 import play.mvc.*;
@@ -10,12 +11,18 @@ import play.mvc.*;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.*;
 
 import models.*;
 import play.data.validation.*;
 import play.modules.paginate.ValuePaginator;
 import play.templates.JavaExtensions;
+
+import javax.persistence.Query;
 
 
 public class Application extends Controller {
@@ -24,8 +31,8 @@ public class Application extends Controller {
 
   public static void index() {
     String[] mainCategories = Category.main;
-    System.out.println("mainCategories: " + mainCategories);
-    render("Application/index.html", mainCategories);
+    Map categoryCountMap = (Map) Cache.get("categoryCountMap");
+    render("Application/index.html", mainCategories, categoryCountMap);
   }
 
 
@@ -317,7 +324,6 @@ public class Application extends Controller {
                             File picture, File picture1, File picture2, File picture3,
                             File picture4, File picture5) throws IOException {
 
-    System.out.println("params: " + params.allSimple());
     if(validation.hasErrors()) {
       Logger.debug("validation error: " + validation.errorsMap());
       String[] mainCategories = Category.main;
@@ -388,52 +394,22 @@ public class Application extends Controller {
 ////            + "join cat.ads as ad where ad.language = 1 group by cat.id, cat.name");
 //    System.out.println("noOfCats: " + JPA.em().createNativeQuery("select count(id) from MainCategory").getSingleResult());
 //    System.out.println("noOfAds: " + JPA.em().createNativeQuery("select count(id) from Ad").getSingleResult());
-//    Query query = JPA.em().createNativeQuery("select cat.id, cat.name, count(ad.id) from MainCategory as cat "
-//        + "join Ad as ad on ad.MAINCATEGORY_ID = cat.id group by cat.id, cat.name");
+//    Query query = JPA.em().createNativeQuery("select ad.id, ad.mainCategory, count(ad.id) from Ad as ad "
+//        + "group by ad.id, ad.mainCategory");
 //    List res = query.getResultList();
 //    System.out.println("size:" + res.size());
 //    for(int i=0; i<res.size(); i++) {
 //      System.out.println(res.get(0)[0]);
+//      System.out.println(res.get(0).getClass());
 //    }
 //    for(int i=0; i<res.size(); i++) {
 //          Object tab[] = res.get(i);
-//
 //          System.out.println("id : "+tab[0]);
 //          System.out.println("name : "+tab[1]);
 //          System.out.println("count : "+tab[2]);
-//
 //    }
 //
 //  }
 
 
-//  public static void getMainCategories() throws Exception {
-//    Logger.info("Update category stats");
-//    Class.forName(Play.configuration.getProperty("db.driver"));
-//    Connection conn = DriverManager.getConnection(Play.configuration.getProperty("db.url"), Play.configuration.getProperty("db.user"), Play.configuration.getProperty("db.pass"));
-//    Statement st = conn.createStatement();
-//    String queryString = "select cat.id, cat.name, count(ad.id) from MainCategory as cat "
-//      + "join Ad as ad on ad.MAINCATEGORY_ID = cat.id group by cat.id, cat.name";
-//
-//    ResultSet rsCats = st.executeQuery(queryString);
-//    System.out.println(" Row: " + rsCats.getFetchSize());
-//    List<MainCategory> cats = new ArrayList<MainCategory>();
-//    while(rsCats.next()) {
-//      System.out.println(" Row:" + rsCats.getObject(1));
-//      System.out.println(" Row:" + rsCats.getObject(2));
-//      System.out.println(" noOfAds:" + rsCats.getObject(3));
-//      MainCategory cat = new MainCategory();
-//      cat.id = (Long) rsCats.getObject(1);
-//      cat.name = (String) rsCats.getObject(2);
-//      cat.adCount = (Long) rsCats.getObject(1);
-//      cats.add(cat);
-//
-//      String queryStringSub = "select cat.id, cat.name, count(ad.id) from SubCategory as cat "
-//        + "join Ad as ad on ad.MAINCATEGORY_ID = cat.id group by cat.id, cat.name";
-//
-//      ResultSet rsCats = st.executeQuery(queryString);
-//      System.out.println(" Row: " + rsCats.getFetchSize());
-//      List<MainCategory> cats = new ArrayList<MainCategory>();
-//    }
-//  }
 }

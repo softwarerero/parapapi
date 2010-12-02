@@ -23,18 +23,19 @@
         <input style="float: right;" id="createAd" type="button" onclick="location.href='@{Application.createAd()}'" value="&{'CreateAd'}" />
     #{/if}
 </form>
-                                                     
+
+
 
 <div class="categories">
     #{list items: mainCategories, as: 'category'}
         <div class="category">
             <span class="category-title">
-                #{renderCategory category: category/}
+                #{renderCategory category: category, categoryCountMap: categoryCountMap/}
             </span>
             <span class="category-metadata">
                 <span class="category-children">
                     #{list items: models.Category.getSubCategory(category), as: 'child'}
-                        #{renderCategory category: child, isChild: true /}
+                        #{renderCategory category: child, isChild: true, categoryCountMap: categoryCountMap /}
                     #{/list}
                 </span>
             </span>

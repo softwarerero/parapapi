@@ -52,4 +52,25 @@ public class Category {
     return ret;
   }
 
+
+  public static Map createCounterMap() {
+    Map<String, Long> map = new HashMap<String, Long>();
+    List l = new ArrayList();
+    for(String key: main) { map.put(key, 0L); }
+    for(String key: transport) { map.put(key, 0L); }
+    for(String key: realEstate) { map.put(key, 0L); }
+    for(String key: household) { map.put(key, 0L); }
+    for(String key: life) { map.put(key, 0L); }
+    for(String key: leisure) { map.put(key, 0L); }
+    for(String key: electronics) { map.put(key, 0L); }
+    for(String key: service) { map.put(key, 0L); }
+    for(String key: job) { map.put(key, 0L); }
+    for(String key: farming) { map.put(key, 0L); }
+    for(String key: business) { map.put(key, 0L); }
+    for(String key: event) { map.put(key, 0L); }
+    for(String key: contact) { map.put(key, 0L); }
+    for(String key: education) { map.put(key, 0L); }
+    for(String key: other) { map.put(key, 0L); }
+    return map;
+  }
 }

@@ -27,9 +27,8 @@
             ${_ad.content.nl2br()}
         </div>
     #{/if}
-    #{if controllers.Security.isConnected()}
+    #{if controllers.Security.isConnected() && _ad.author.nickname.equals(controllers.Security.nickname()) }
     <div class="actions">
-       
         <a href="@{Application.editAd(_ad.id)}" class="editAction" title="&{'edit'}"></a>
         <a href="@{Application.deleteAd(_ad.id)}" class="deleteAction" title="&{'delete'}"></a>
     </div>
@@ -38,8 +37,8 @@
 
 #{if _as == 'full'}
     <span class="ad-details">
-        &{'mainCategory'}: ${_ad.mainCategory.getDisplayName()}
-        #{if null != _ad.subCategory} &nbsp;|&nbsp; &{'subCategory'}: &{_ad.subCategory.getDisplayName()} #{/if}
+        &{'mainCategory'}: &{_ad.mainCategory}
+        #{if null != _ad.subCategory} &nbsp;|&nbsp; &{'subCategory'}: &{_ad.subCategory} #{/if}
         <br/>
         &{'department'}: &{_ad.department}
         &nbsp;|&nbsp;

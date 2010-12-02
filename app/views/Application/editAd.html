@@ -37,7 +37,7 @@
             #{form/renderText object: object, attr: "phone"/}
             #{form/renderText object: object, attr: "mobilePhone"/}
             #{form/renderText object: object, attr: "email"/}
-            #{form/renderSelect4Model name: "mainCategory", value: object.mainCategory, items: mainCategories /}
+            #{form/renderSelect4Enum name: "mainCategory", value: object.mainCategory, items: mainCategories /}
             <div> <!-- 1st Picture -->
                 <label for="picture">${messages.get('picture')}</label>
                 <input type="file" id="picture" name="picture"/>
@@ -58,7 +58,7 @@
             #{form/renderSelect4Enum name: "department", value: object.department, items: models.Ad.Department.values() /}
             #{form/renderText object: object, attr: "city"/}
             #{form/renderText object: object, attr: "zone"/}
-            #{form/renderSelect4Model name: "subCategory", value: object.subCategory, items: subCategories /}
+            #{form/renderSelect4Enum name: "subCategory", value: object.subCategory, items: subCategories /}
             <div> <!-- 4th Picture -->
                 <label for="picture3">${messages.get('picture3')}</label>
                 <input type="file" id="picture3" name="picture3"/>

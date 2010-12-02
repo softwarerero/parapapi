@@ -16,7 +16,8 @@ public class Security extends Secure.Security {
   }
 
   static void onAuthenticated() {
-    session.put("nickname", User.find("byEmail", connected()).<User>first().nickname);
+    User user = User.find("byEmail", connected()).<User>first();
+    session.put("nickname", user.nickname);
   }
 
   static void onDisconnected() {
@@ -33,5 +34,9 @@ public class Security extends Secure.Security {
     }
     return false;
   }
-  
+
+  static String nickname() {
+      return session.get("nickname");
+  }
+
 }

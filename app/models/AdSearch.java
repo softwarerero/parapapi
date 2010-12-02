@@ -1,6 +1,7 @@
 package models;
 
 import play.data.validation.MaxSize;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 import javax.persistence.*;
@@ -31,10 +32,9 @@ public class AdSearch extends Model {
   @Enumerated public Ad.Country country = Ad.Country.py;
   @Enumerated public Ad.Currency currency = Ad.Currency.PYG;
 
-  @ManyToOne public MainCategory mainCategory;
-
-  @ManyToOne public SubCategory subCategory;
-
+  public Category.Main mainCategory;
+  public Category.Sub subCategory;
+  
   @ManyToOne public User author;
 
   public boolean allowBids;

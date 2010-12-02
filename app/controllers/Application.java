@@ -12,10 +12,7 @@ import play.mvc.*;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 import models.*;
 import play.data.validation.*;
@@ -30,8 +27,10 @@ public class Application extends Controller {
   static public int pageSize = Integer.parseInt(Play.configuration.getProperty("pagesize"));
 
   public static void index() {
-    List<MainCategory> mainCategory = MainCategory.find("order by id asc").fetch(100);
-    render(mainCategory);
+    Enum[] mainCategories = Category.Main.values();
+    System.out.println("mainCategories: " + mainCategories);
+    String test = "hi";
+    render(mainCategories, test);
   }
 
 
@@ -46,8 +45,6 @@ public class Application extends Controller {
 		}
 
     String searchTerm = '%' + searchString.toLowerCase() + '%';
-//    List<Ad> ads = Ad.find("language = ? and (lower(title) like ? or lower(content) like ?)",
-//            getLanguage(), searchTerm, searchTerm).fetch();
     List<Ad> ads = Ad.find("lower(title) like ? or lower(content) like ? order by id desc",
             searchTerm, searchTerm).fetch();
     long noFound = ads.size();
@@ -60,7 +57,8 @@ public class Application extends Controller {
   public static void advancedSearch(AdSearch object) {
 
     if(!params._contains("object.text")) {
-      List<MainCategory> mainCategories = MainCategory.findAll();
+      Enum[] mainCategories = Category.Main.values();
+//      List<MainCategory> mainCategories = MainCategory.findAll();
       render(object, mainCategories);
     }
 
@@ -115,14 +113,16 @@ public class Application extends Controller {
       sb.and().lte("price", priceTo);
     }
 
-    MainCategory mainCategory = object.mainCategory;
+//    MainCategory mainCategory = object.mainCategory;
+    Category.Main mainCategory = object.mainCategory;
     if(null != mainCategory && !"".equals(mainCategory)) {
-      sb.and().eq("mainCategory", mainCategory.id);
+      sb.and().eq("mainCategory", mainCategory.ordinal());
     }
 
-    SubCategory subCategory = object.subCategory;
+//    SubCategory subCategory = object.subCategory;
+    Category.Sub subCategory = object.subCategory;
     if(null != subCategory && !"".equals(subCategory)) {
-      sb.and().eq("subCategory", subCategory.id);
+      sb.and().eq("subCategory", subCategory.ordinal());
     }
 
     Enum department = object.department;
@@ -229,17 +229,15 @@ public class Application extends Controller {
   }
 
   
-  public static void maincategoryList(Long id) {
-    MainCategory category = MainCategory.findById(id);
+  public static void maincategoryList(Category.Main category) {
     List<Ad> ads = Ad.find("mainCategory = ? order by id desc", category).fetch();
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
     long noFound = ads.size();
-		render("Application/adList.html", category, ads, paginator, noFound);
+		render("Application/adList.html", ads, paginator, noFound);
 	}
 
-  public static void subcategoryList(Long id) {
-    SubCategory category = SubCategory.findById(id);
+  public static void subcategoryList(Category.Sub category) {
     List<Ad> ads = Ad.find("subCategory = ? order by id desc)", category).fetch();
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
@@ -289,8 +287,9 @@ public class Application extends Controller {
 
   
   private static void render4editAd(Ad object) {
-    List<MainCategory> mainCategories = MainCategory.findAll();
-    List<SubCategory> subCategories = object.mainCategory.children;
+    Enum[] mainCategories = Category.Main.values();
+    Enum[] subCategories = null != object.mainCategory ?
+            Category.getSubCategory(object.mainCategory) : null;
     render("Application/editAd.html", Ad.class, object, mainCategories, subCategories);
 	}
 
@@ -312,8 +311,8 @@ public class Application extends Controller {
     object.zone = user.zone;
     object.department = user.department;
     object.city = user.city;
-    object.mainCategory = (MainCategory) MainCategory.findAll().get(0);
-    object.subCategory = object.mainCategory.children.get(0);
+//    object.mainCategory = (MainCategory) MainCategory.findAll().get(0);
+//    object.subCategory = object.mainCategory.children.get(0);
     return object;
   }
 
@@ -322,10 +321,11 @@ public class Application extends Controller {
                             File picture, File picture1, File picture2, File picture3,
                             File picture4, File picture5) throws IOException {
 
+    System.out.println("params: " + params.allSimple());
     if(validation.hasErrors()) {
       Logger.debug("validation error: " + validation.errorsMap());
       List<MainCategory> mainCategories = MainCategory.findAll();
-      List<SubCategory> subCategories = null != object.mainCategory ? object.mainCategory.children : null;
+      Enum[] subCategories = null != object.mainCategory ? Category.getSubCategory(object.mainCategory) : null;
       render("Application/editAd.html", Ad.class, object, mainCategories);
     }
 
@@ -360,21 +360,20 @@ public class Application extends Controller {
   }
 
 
-  public static String getOptionString4Category(Long id) {
+  public static String getOptionString4Category(String mainCategory) {
+    Enum[] subCategories = Category.getSubCategory(mainCategory);
     StringBuilder optionString = new StringBuilder();
     optionString.append("<option value=''>").append(Messages.get("option.none")).append("</option>");
 
-    if(null != id) {
-      MainCategory mainCategory = MainCategory.findById(id);
-      List<SubCategory> subCategories = mainCategory.children;
-      for(SubCategory cat: subCategories) {
-        String name = Messages.get(cat.getDisplayName());
-        optionString.append("<option value='" + cat.id + "'>" + name + "</option>");
+    if(null != mainCategory) {
+      for(Enum cat: subCategories) {
+        String name = Messages.get(Messages.get(cat));
+        optionString.append("<option value='" + cat + "'>" + name + "</option>");
       }
     }
     return optionString.toString();
   }
-  
+
 
   // TODO
   public static String termsOfUse() {

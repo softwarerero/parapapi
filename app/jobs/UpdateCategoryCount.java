@@ -27,25 +27,25 @@ public class UpdateCategoryCount extends Job {
     public void doJob() {
       Logger.info("Update category stats");
 
-      Query query = JPA.em().createNativeQuery("update MainCategory set adCount = 0");
-      query.executeUpdate();
-      List<MainCategory> mainCategories = MainCategory.findAll();
-      //for(int i=0; i<mainCategories.size(); i++) {
-      for(MainCategory category: mainCategories) {
-        //MainCategory category = (MainCategory) mainCategories.get(i);
-        long adCount = Ad.count("mainCategory = ?", category);
-        category.adCount += adCount;
-        category.save();
-      }
-
-      query = JPA.em().createNativeQuery("update SubCategory set adCount = 0");
-      query.executeUpdate();
-      List<SubCategory> subCategories = SubCategory.findAll();
-      for(SubCategory category: subCategories) {
-        long adCount = Ad.count("subCategory = ?", category);
-        category.adCount += adCount;
-        category.save();
-      }
+//      Query query = JPA.em().createNativeQuery("update MainCategory set adCount = 0");
+//      query.executeUpdate();
+//      List<MainCategory> mainCategories = MainCategory.findAll();
+//      //for(int i=0; i<mainCategories.size(); i++) {
+//      for(MainCategory category: mainCategories) {
+//        //MainCategory category = (MainCategory) mainCategories.get(i);
+//        long adCount = Ad.count("mainCategory = ?", category);
+//        category.adCount += adCount;
+//        category.save();
+//      }
+//
+//      query = JPA.em().createNativeQuery("update SubCategory set adCount = 0");
+//      query.executeUpdate();
+//      List<SubCategory> subCategories = SubCategory.findAll();
+//      for(SubCategory category: subCategories) {
+//        long adCount = Ad.count("subCategory = ?", category);
+//        category.adCount += adCount;
+//        category.save();
+//      }
     }
 
 }

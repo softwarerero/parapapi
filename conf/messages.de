@@ -133,65 +133,112 @@ views.editUser.code=Bitte geben Sie den Sicherheitscode ein
 views.editUser.code2=Falscher Code. Bitte versuchen Sie es noch einmal
 user.exists=Der Benutzer existiert bereits
 
-# Categories
-inmuebles=Immobilien
-casa=Häuser
-residencias=Villen
-departamentos=Wohnungen
-duplex=Doppelhäuser
-locales_oficinas_salones=Gewerbeimmobilien
-deposito=Lager
-terrenos=Grundstücke
-tinglados=Hallen
-habitacion=Zimmer
-propriedades_ruales=Ländliche Immobilien
+# Categories New
+realEstate=Immobilien
+house=Haus
+apartment=Wohnung
+twinHouse=Doppelhaus
+room=Zimmer
+commercial=Gewerbe
+rural=Ländliche Immobilien
 
-medio_de_transporte=Transport
-automotores=Autos
-motos=Motorräder - überlegen Sie sich das
-bicicletas=Fahrräder
-nautica=Wasserfahrzeuge
-autopartes_accesorios=Autoteile / Zubehör
-repuestos=Reparaturen
+transport=Transport
+auto=Auto
+bike=Motorrad - denken!
+bicycle=Fahrrad
+water=Wasserfahrzeug
+autoparts=Teil / Zubehör
+airplane=Flugzeug
 
-empleos=Stellenanzeigen
-personal_ofrecido=Suche Mitarbeiter
-personal_pedido=Suche Arbeit
+job=Arbeit
+healthjob=Gesundheit
+education=Bildung
+industry=Industrie
+office=Büro
+household=Haushalt
 
-cursos_ensenanza=Schulungen / Kurse
-idiomas=Sprachen
-musica_teatro_danza=Musik / Theater / Tanz
-arte_y_manualidades=Kunst / Kunsthandwerk
-informatica_computacion=Informatik
-conduccion_manejo=Fortbewegung
-universitaria=Akademisches
-cursos_y_seminarios=Sonstiges
-deportes=Sport
+farming=Landwirtschaft
+equipment=Gerät
+plant=Pflanze
+animal=Tier
 
-comprar_vender=Kauf / Verkauf
-informatica=Computer / Informatik
-celulares_electronica=Handys / Elektronik
-muebles_electrodemesticos=Möbel / Haushaltsgeräte
-deportes_equipos_de_gimnasia=Sport
-ropa_accesorios=Kleidung / Zubehör
-instrumentos_musicales=Musikinstrumente
-coleccionables=Sammeln
-regalos_juguetes=Geschenke / Spielzeug
-caza_y_pesca=Jagd / Fischerei
-mascotas=Haustiere
+business=Unternehmensbedarf
+machine=Maschinen
+officefurniture=Büromöbel
+officesupply=Zubehör
 
-servicios=Dienstleistungen
-animacion_de_fiestas=Animation
-servicios_de_discoteca=Diskothek / Partyausrüstung
-servicios_de_comidas=Essen
-custodio_seguridad=Bewachung / Sicherheit
-internet_multimedia=Internet / Multimedia
-mudanza_fletes=Umzug / Fracht
-prestamos=Finanzen
-turismo=Tourismus
-construccion_anexos=Bau
+household=Haushalt
+furniture=Möbel
+antique=Antiquität
+appliance=Haushaltsgerät
 
-clasificados_varios=Verschiedenes
+life=Alltag
+health=Gesundheit
+wear=Kleidung
+cosmetic=Kosmetik
+gift=Geschenk
+toy=Spielzeug
+baby=Baby
+nutrition=Ernährung
+
+leisure=Freizeit
+home=Haus
+garden=Garten
+foto=Foto
+optic=Optik
+sport=Sport
+hunt=Jagd
+fishery=Fischerei
+musicalInstrument=Musikinstrument
+
+electronics=Elektrogerät
+computer=Computer
+notebook=Notebook
+software=Software
+printer=Drucker
+supply=Zubehör
+phone=Telefon
+tv=TV
+video=Video
+
+event=Veranstaltung
+fair=Messe
+party=Feier
+cinema=Kino
+theatre=Theater
+concert=Konzert
+sportevent=Sport
+
+contact=Kontakt
+friendship=Freundschaft
+venture=Unternehmung
+club=Verein
+sheSeeksHim=Sie sucht ihn
+heSeeksHer=Er sucht sie
+
+education=Ausbildung
+it=Informatik
+academics=Akademisch
+sportcourse=Sport
+languages=Sprache
+art=Kunst
+driving=Fahren
+
+service=Dienstleistung
+healthservice=Gesundheit
+workshop=Werkstatt
+finance=Finanz
+transport=Transport
+construction=Konstruktion
+animation=Animation
+eventTechnology=Veranstaltungstechnik
+multimedia=Multimedia
+security=Sicherheit
+tourism=Tourismus
+
+other=Sonstiges
+collection=Sammlung
+pet=Haustier
 
 # Secure Module
 secure.title=

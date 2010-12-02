@@ -26,18 +26,16 @@
                                                      
 
 <div class="categories">
-    #{list items: mainCategory, as:'category'}
+    #{list items: mainCategories, as: 'category'}
         <div class="category">
             <span class="category-title">
-                #{renderCategory category:category/}
+                #{renderCategory category: category/}
             </span>
             <span class="category-metadata">
                 <span class="category-children">
-                    #{if category.children.size()}
-                        #{list items:category.children, as:'child'}
-                            #{renderCategory category:child, isChild: true /}
-                        #{/list}
-                    #{/if}
+                    #{list items: models.Category.getSubCategory(category), as: 'child'}
+                        #{renderCategory category: child, isChild: true /}
+                    #{/list}
                 </span>
             </span>
         </div>

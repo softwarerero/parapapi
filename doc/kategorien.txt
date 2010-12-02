@@ -3,7 +3,7 @@ Immobilien
 Transport
 	Auto, Mottorrad, Fahrrad, Wasserfahrzeug, Autoteile, Flugzeug
 Stelle / Job
-	Gesundheit, Ausbildung, Finanzen
+	Gesundheit, Ausbildung, Industrie, Büro, Haushalt, Sonstiges
 Landwirtschaft
 	Pflanze, Tiere, Geräte
 Gewerbe
@@ -19,7 +19,7 @@ Elektronik
 Veranstaltung
 	Flohmarkt, Party, Messe, Markt, Kino, Theater, Sport, Konzert, Sonstiges
 Kontaktsuche
-	Freundschaft, Club, 
+	Freundschaft, Club, SieSuchtIhn, ErSuchtSie, Unternehmung
 Ausbildung / Kurse
 	Informatik, Nachhilfe, Sport, Sprachen, Kunst, Fortbewegung, Akademisches, Sonstiges
 Dienstleistung

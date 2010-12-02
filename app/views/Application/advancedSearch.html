@@ -25,8 +25,8 @@
             #{form/renderText object: object, attr: "postedAt", size: 10/}
             #{form/renderSelect4Enum name: "handOver", value: object.handOver, items: models.Ad.HandOver /}
             #{form/renderText object: object, attr: "priceFrom", size: 15/}
-            #{form/renderSelect4Model name: "mainCategory", value: object.mainCategory, items: mainCategories /}
-            #{form/renderSelect4Model name: "subCategory", value: object.subCategory, items: subCategories /}
+            #{form/renderSelect4Enum name: "mainCategory", value: object.mainCategory, items: mainCategories /}
+            #{form/renderSelect4Enum name: "subCategory", value: object.subCategory, items: subCategories /}
         </div>
         <div style="width: 4%; float: left;">&nbsp;</div>
         <div style="width: 48%; float: left;">

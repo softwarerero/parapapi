@@ -1,10 +1,12 @@
 #{if _isChild}
-    &nbsp;&nbsp;&nbsp;
+    &nbsp;
 #{/if}
 
 
 <span class="category-child">
-    <a href="${_isChild ? actionBridge.Application.subcategoryList(_category.id) : actionBridge.Application.maincategoryList(_category.id)}">
-        <span class="category-name">${_category.getDisplayName()}</span>
-        <span class="category-adCount">(${_category.adCount})</span></a>
+    <a href="${_isChild ? actionBridge.Application.subcategoryList(_category) : actionBridge.Application.maincategoryList(_category)}">
+        <span class="category-name">${play.i18n.Messages.get(_category.toString()).toLowerCase()}</span>
+        </a>
+        <span class="category-adCount"><sup>(0)</sup></span>
+
 </span>

@@ -1,6 +1,6 @@
 #{extends 'main.html' /}
 
-<h3>${session.nickname}, <span>&{'views.main.adsWritten', ads.size() ?: 'no'}</span>
+<h3>${session.nickname}, <span>&{'views.main.adsWritten', ads.size() ?: '0'}</span>
 <span id="createAction" >
     <a href="@{Application.createAd()}" class="createAction" title="&{'create'}"></a>
 </span>

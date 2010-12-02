@@ -6,7 +6,7 @@
     #{if false != _optional}
         <option value="">&{'option.none'}</option>
     #{/if}
-    #{list items: _items, as:'item'}
+    #{list items: _items, as: 'item'}
         <option value="${item}" ${item.equals(_value) ? 'selected="true"'.raw() : ''} >${play.i18n.Messages.get(item.toString())}</option>
     #{/list}
 </select>

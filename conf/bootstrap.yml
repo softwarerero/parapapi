@@ -4,8 +4,10 @@
 User(bob):
   email: bob@gmail.com
   nickname: Bob
-  isAdmin: false
+  isAdmin: true
   isActive: true
+  phone: 1235
+  password: secret
 
 User(jeff):
     nickname: Jeff

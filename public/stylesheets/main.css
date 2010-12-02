@@ -247,7 +247,8 @@ h3 span {
     text-align: right;
 }
 
-.category-name {
+.category-adCount {
+    color: #869AB1;
 }
 
 /** Form **/

@@ -221,6 +221,7 @@ sportcourse=Deporte
 languages=Idioma
 art=Arte
 driving=Manejo
+book=Libro
 
 service=Servicio
 healthservice=Salud

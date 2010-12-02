@@ -31,16 +31,20 @@
     #{form/renderText object: object, attr: "firstNames"/}
     #{form/renderText object: object, attr: "lastNames"/}
     #{form/renderRadio object: object, attr: "currency", enum: models.Ad.Currency/}
+<!--
     #{form/renderText object: object, attr: "documentNo"/}
     #{form/renderRadio object: object, attr: "documentType", enum: models.User.DocumentType/}
+-->
     </div>
     <div style="width: 4%; float: left;">&nbsp;</div>
     <div style="width: 48%; float: left;">
     #{form/renderSelect4Enum name: "country", value: object.country, items: models.Ad.Country.values(), optional: false/}
     #{form/renderSelect4Enum name: "department", value: object.department, items: models.Ad.Department.values() /}
     #{form/renderText object: object, attr: "city"/}
+        <!--
     #{form/renderText object: object, attr: "postCode"/}
     #{form/renderText object: object, attr: "street"/}
+-->
     #{form/renderText object: object, attr: "zone"/}
     #{form/renderText object: object, attr: "mobilePhone"/}
     #{form/renderText object: object, attr: "phone"/}

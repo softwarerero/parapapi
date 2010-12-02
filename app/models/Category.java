@@ -27,7 +27,7 @@ public class Category {
   public static final String[] business = {"machine", "officefurniture", "officesupply"};
   public static final String[] event = {"fair", "party", "cinema", "theatre", "concert", "sportevent"};
   public static final String[] contact = {"friendship", "venture", "club", "sheSeeksHim", "heSeeksHer"};
-  public static final String[] education = {"it", "academics", "sportcourse", "languages", "art", "driving"};
+  public static final String[] education = {"it", "academics", "sportcourse", "languages", "art", "driving", "book"};
   public static final String[] other = {"collection", "pet"};
 
   public static final Map<String, String[]> all = new HashMap() {{

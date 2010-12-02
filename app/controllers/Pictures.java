@@ -44,13 +44,13 @@ public class Pictures extends Controller {
     String ending = file.getName().substring(file.getName().lastIndexOf('.'));
     String UUID = Codec.UUID();
     File newFile = new File(picturePath, UUID + THUMB + ending);
-    File newThumbnail = resize(file, newFile, 50, 38);
+    resize(file, newFile, 50, 38);
 
-    picture.thumbnail50 = newThumbnail.getCanonicalPath();
+    picture.thumbnail50 = newFile.getCanonicalPath();
 
     newFile = new File(picturePath, UUID + WIDTH430 + ending);
-    File newImage = resize(file, newFile, W430, H380);
-    picture.image = newImage.getCanonicalPath();
+    resize(file, newFile, W430, H380);
+    picture.image = newFile.getCanonicalPath();
 
     Validation.ValidationResult res = validation.valid(picture);
     if(res.ok) {
@@ -102,6 +102,7 @@ public class Pictures extends Controller {
   public static void renderPicture(Long adId, int offset) throws IOException {
     Ad ad = Ad.findById(adId);
     Picture picture = ad.pictures.get(offset);
+    System.out.println("picture: " + picture.image);
     renderBinary(new File(picture.image));
   }
 
@@ -161,6 +162,8 @@ public class Pictures extends Controller {
       Logger.info("save picture: " + newFile);
       return newFile;
     }
-    return originalFile;
+    originalFile.renameTo(newFile);
+    Logger.info("save picture: " + newFile);
+    return newFile;
   }
 }

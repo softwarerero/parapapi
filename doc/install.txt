@@ -49,6 +49,20 @@ mysql -u root -p
 	CREATE DATABASE parapapi;
 	GRANT ALL PRIVILEGES ON parapapi_loadtest.* TO 'parapapi'@'localhost' WITH GRANT OPTION;
 	CREATE DATABASE parapapi_loadtest;
+	
+# H2 Database
+cd ~/install/develop
+wget http://h2database.googlecode.com/files/h2-2010-11-21.zip
+mkdir /opt/h2-2010-11-21
+unzip h2-2010-11-21.zip -d /opt
+cd /opt
+mv h2 h2-2010-11-21
+ln -s h2-2010-11-21 h2
+useradd -U h2
+chown -R h2:h2 h2-2010-11-21 h2
+nano /etc/rc3.d/S99rc.local -> to end
+	/bin/su -l h2 -c "java -cp /opt/h2/bin/h2*.jar org.h2.tools.Server $ARGS" 
+
 
 # Mercurial
 sudo apt-get install mercurial
@@ -57,7 +71,7 @@ sudo /opt/play/play install paginate-head
 sudo /opt/play/play id alpha
 play run
 
-# Lighttpd - drop Glassfish
+# Lighttpd 
 sudo apt-get install lighttpd
 sudo nano /etc/lighttpd/lighttpd.conf
 	server.modules = (
@@ -74,7 +88,11 @@ sudo nano /etc/lighttpd/lighttpd.conf
 		proxy.balance = "round-robin" proxy.server = ( "/" =>
 			( ( "host" => "127.0.0.1", "port" => 9002 ) ) )
 	}
-	server.max-request-size=
+	$HTTP["host"] == "beta.parapapi.com" {
+		proxy.balance = "round-robin" proxy.server = ( "/" =>
+			( ( "host" => "127.0.0.1", "port" => 9003 ) ) )
+	}
+	server.max-request-size=2000
 
 sudo /etc/init.d/lighttpd restart
 # docs in /var/www

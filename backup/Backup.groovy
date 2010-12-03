@@ -1,5 +1,5 @@
 //@Grab(group='org.codehaus.groovy.modules',module='groosh',version='[0.3.6,)')
-String backupPathName = "./backup/files"
+String backupPathName = "./files"
 File backupPath = new File(backupPathName)
 if(!backupPath.exists()) {
   backupPath.mkdir()
@@ -14,19 +14,20 @@ datePart += String.valueOf(cal.get(Calendar.MINUTE));
 String backupFileName = "$backupPathName/${datePart}.parapapi.db.zip"
 println backupFileName
 
-String cmd = "java org.h2.tools.Script -url jdbc:h2:/var/h2/beta -user parapapi -pwd XXX -script $backupFileName -options compression zip"
+//String cmd = "java -cp /opt/h2/bin/h2-1.2.147.jar org.h2.tools.Script -url jdbc:h2:/var/h2/beta -user parapapi -password XXX -script $backupFileName -options compression zip"
+String cmd = java -cp /opt/h2/bin/h2-1.2.147.jar org.h2.tools.Shell -url jdbc:h2:/var/h2/beta -user parapapi -password XXX -sql "BACKUP TO 'backup.zip'"
 println cmd
 exec(cmd)
 
 String zipFileName = "$backupPathName/${datePart}.parapapi.pictures.zip"
 println zipFileName
-String cmd = "zip -r ${zipFileName} /var/www/parapapi/pictures/"
+cmd = "zip -r ${zipFileName} /var/www/parapapi/pictures/"
 println cmd
 exec(cmd)
 
 
 void exec(String cmd) { 
-	def proc = command.execute()                 // Call *execute* on the string
+	def proc = cmd.execute()                 // Call *execute* on the string
 	proc.waitFor()                               // Wait for the command to finish
 
 	// Obtain status and output

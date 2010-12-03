@@ -59,8 +59,8 @@
 .ui-widget { font-family: Verdana,Arial,sans-serif; font-size: 0.9em; }
 .ui-widget .ui-widget { font-size: 0.8em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Helvetica, Arial, Sans !important; font-size: 0.9em; }
-.ui-widget-content { border: 0px solid #aaaaaa; color: #222222; }
-.ui-widget-content { border: 0px solid #aaaaaa; background: #314660; color: #222222; }
+.ui-widget-content { border: 0px solid #aaaaaa; color: #869AB1; }
+.ui-widget-content { border: 0px solid #aaaaaa; background: #314660; color: #869AB1; }
 .ui-widget-header { border: 0px solid #aaaaaa; background: #364B66 50% 50% repeat-x; color: #222222; font-weight: bold; }
 .ui-widget-header a { color: #F0F3F7; }
 

@@ -1,0 +1,23 @@
+<h3>§ 1 Sinn und Zweck der Datenspeicherung?</h3>
+<p>1. Damit http://parapapi.com funktioniert muss SUNCOM Systems Ltd., 90-100 Sydney Street, SW3 6NJ London, Fax +44 203 004 1723, United Kingdom bestimmte Daten speichern. Wir speichern Daten, die für den Betrieb der Webseite nötig sind und, die uns helfen, die Geschwindigkeit und Qualität unserer Internetseite zu verbessern. Den Umgang mit diesen Daten beschreiben wir hier.</p>
+<h3>§ 2 Welche Daten speichern wir?</h3>
+<p>Alle Daten wie z.B. persönliche Daten, die in Formulare der Seite eingegeben werden. Daten, die uns Ihr Browser übermittelt, wie 
+<ul>
+<li>Browsertyp und Browserversion,</li>
+<li>Verwendetes Betriebssystem,</li>
+<li>Referrer URL (die zuvor besuchte Seite),</li>
+<li>Hostname des zugreifenden Rechners (IP Adresse) und</li>
+<li>Uhrzeit der Serveranfrage.</li>
+</ul>
+</p>
+<p>Wir speichern auch Cookies (kleine Textdateien) auf Ihrem Rechner, damit die Benutzung komfortabler wird.</p>
+<p>Diese Daten sind für uns nicht einer bestimmten Person zuordnenbar. Eine Zusammenführung der Daten mit anderen Datenquellen wird nicht vorgenommen. Nach der statistischen Auswertung werden die Daten außerdem gelöscht. </p>
+<h3>§ 3 Datenschutz bei Kindern</h3>
+<p>Personen unter 18 Jahren ist es leider nicht gestattet, unseren Dienst zu nutzen. Hier gilt nur für Papi und Mami! Wir entschuldigen uns bei Euch, das ist nur um Ärger mit dem Gesetz zu vermeiden.</p>
+<h3>§ 4. Datenweitergabe</h3>
+<p>Nur falls eine Behörde oder eine staatliche Stelle die Herausgabe von Daten verlangt und wir dazu verpflichtet sind.</p>
+<h3>§ 5 Auskunftsrecht</h3>
+<p>Sie haben jederzeit das Recht von uns Auskunft über die bezüglich Ihrer Person gespeicherter Daten, deren Herkunft und Empfänger sowie den Zweck der Speicherung zu erhalten. Wenden Sie sich hierzu bitte schriftlich an uns.</p>
+<h3>§ 6 Widerrufsrecht</h3> 
+<p>Sie können die Einwilligung zur Speicherung persönlicher Daten jederzeit für die Zukunft widerrufen. Den Widerruf können Sie schriftlich erklären. Sie können uns auch den Widerruf auf elektronischem Wege per E-Mail zuleiten.</p>
+	Stand: Dezember 2010

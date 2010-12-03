@@ -9,7 +9,9 @@ import play.i18n.Messages;
 import play.libs.Images;
 import play.mvc.*;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
@@ -378,14 +380,30 @@ public class Application extends Controller {
   }
 
 
-  // TODO
   public static String termsOfUse() {
-    return "hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>";
+    File file = Play.getFile("public/documents/termsOfUse.de.txt");
+    return readTextFile(file);
   }
 
-  // TODO
   public static String dataPolicy() {
-    return "dataPolicy hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alterhallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>hallo alter<br/>";
+    File file = Play.getFile("public/documents/dataPolicy.de.txt");
+    return readTextFile(file);
+  }
+
+
+  private static String readTextFile(File file) {
+    StringBuilder ret = new StringBuilder();
+    try {
+      BufferedReader in = new BufferedReader(new FileReader(file));
+      String str;
+      while((str = in.readLine()) != null) {
+        ret.append(str); //.append("<br/><br/>");
+      }
+      in.close();
+    } catch(IOException e) {
+      e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+    }
+    return ret.toString();
   }
 
 

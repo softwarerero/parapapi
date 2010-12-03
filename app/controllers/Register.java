@@ -22,7 +22,8 @@ import java.util.UUID;
  * Copyright.
  */
 public class Register extends CRUD {
-  
+  private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+
   public static void register() {
     newUser();
   }

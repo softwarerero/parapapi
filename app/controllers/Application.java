@@ -9,10 +9,7 @@ import play.i18n.Messages;
 import play.libs.Images;
 import play.mvc.*;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -394,12 +391,16 @@ public class Application extends Controller {
   private static String readTextFile(File file) {
     StringBuilder ret = new StringBuilder();
     try {
-      BufferedReader in = new BufferedReader(new FileReader(file));
+      Scanner scanner = new Scanner(new FileInputStream(file), "UTF-8");
       String str;
-      while((str = in.readLine()) != null) {
-        ret.append(str); //.append("<br/><br/>");
+      try {
+        while (scanner.hasNextLine()){
+          ret.append(scanner.nextLine());
+        }
       }
-      in.close();
+      finally{
+        scanner.close();
+      }
     } catch(IOException e) {
       e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
     }

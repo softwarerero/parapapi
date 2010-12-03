@@ -60,8 +60,8 @@ public class UpdateCategoryCount extends Job {
     //Cache.set("products", products, "30mn");
     Map categoryCountMap = (Map) Cache.get("categoryCountMap");
     if(null == categoryCountMap) {
-      //categoryCountMap = Category.createCounterMap();
-      categoryCountMap = new HashMap<String, Long>();
+      categoryCountMap = Category.createCounterMap();
+      Cache.set("categoryCountMap", categoryCountMap);
     }
     return categoryCountMap;
   }

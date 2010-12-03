@@ -1,5 +1,6 @@
 package controllers;
 
+import jobs.UpdateCategoryCount;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
@@ -11,18 +12,12 @@ import play.mvc.*;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.*;
 
 import models.*;
 import play.data.validation.*;
 import play.modules.paginate.ValuePaginator;
 import play.templates.JavaExtensions;
-
-import javax.persistence.Query;
 
 
 public class Application extends Controller {
@@ -31,7 +26,7 @@ public class Application extends Controller {
 
   public static void index() {
     String[] mainCategories = Category.main;
-    Map categoryCountMap = (Map) Cache.get("categoryCountMap");
+    Map categoryCountMap = UpdateCategoryCount.getCategoryCountMap();
     render("Application/index.html", mainCategories, categoryCountMap);
   }
 

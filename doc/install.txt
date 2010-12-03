@@ -62,7 +62,25 @@ useradd -U h2
 chown -R h2:h2 h2-2010-11-21 h2
 nano /etc/rc3.d/S99rc.local -> to end
 	/bin/su -l h2 -c "java -cp /opt/h2/bin/h2*.jar org.h2.tools.Server $ARGS" 
+cd /var	
+mkdir h2
+mkdir h2/beta
+chown -R h2:h2 h2
+mkdir /var/www/parapapi
+mkdir /var/www/parapapi/pictures
+chown -R www-data:www-data /var/www/parapapi/pictures
 
+# H2 Maintainance
+java -cp h2*.jar org.h2.tools.Shell  -?
+java -cp h2*.jar org.h2.tools.Backup -?
+java -cp h2*.jar org.h2.tools.Server -?
+java org.h2.tools.Server -tcpShutdown tcp://localhost:9092
+
+# Autmatically start up Play
+useradd -U play
+chown -R play:play /opt/play
+nano /etc/rc3.d/S99rc.local -> to end
+		/bin/su -l www -c "/opt/play/play start $APP $ARGS"
 
 # Mercurial
 sudo apt-get install mercurial

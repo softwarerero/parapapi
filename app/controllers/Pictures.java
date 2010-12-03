@@ -40,17 +40,19 @@ public class Pictures extends Controller {
     Picture picture = new Picture();
     picture.ad = ad;
 
-    File picturePath = getTodadysPicturePath();
+    String todayPath = getTodadysPicturePath();
     String ending = file.getName().substring(file.getName().lastIndexOf('.'));
     String UUID = Codec.UUID();
-    File newFile = new File(picturePath, UUID + THUMB + ending);
+    String fileName = todayPath + File.separator + UUID + THUMB + ending;
+    File newFile = new File(getPicturePath(), fileName);
     resize(file, newFile, 50, 38);
+    Logger.info("fileName: " + fileName);
+    picture.thumbnail50 = fileName;
 
-    picture.thumbnail50 = newFile.getCanonicalPath();
-
-    newFile = new File(picturePath, UUID + WIDTH430 + ending);
+    fileName = todayPath + File.separator + UUID + WIDTH430 + ending;
+    newFile = new File(getPicturePath(), fileName);
     resize(file, newFile, W430, H380);
-    picture.image = newFile.getCanonicalPath();
+    picture.image = fileName;
 
     Validation.ValidationResult res = validation.valid(picture);
     if(res.ok) {
@@ -62,14 +64,14 @@ public class Pictures extends Controller {
 
 
   //TODO probably cache
-  public static File getTodadysPicturePath() {
-  Calendar date = new GregorianCalendar();
-  int day = (date.get(Calendar.YEAR) + 21 - 2000) * 10000 + date.get(Calendar.DAY_OF_YEAR);
+  public static String getTodadysPicturePath() {
+    Calendar date = new GregorianCalendar();
+    int day = (date.get(Calendar.YEAR) + 21 - 2000) * 10000 + date.get(Calendar.DAY_OF_YEAR);
     File path = new File(getPicturePath() + File.separator + day);
     if(!path.exists()) {
         path.mkdirs();
     }
-    return path;
+    return String.valueOf(day);
   }
 
 
@@ -102,8 +104,9 @@ public class Pictures extends Controller {
   public static void renderPicture(Long adId, int offset) throws IOException {
     Ad ad = Ad.findById(adId);
     Picture picture = ad.pictures.get(offset);
-    System.out.println("picture: " + picture.image);
-    renderBinary(new File(picture.image));
+    File file = new File(getPicturePath(), picture.image);
+    System.out.println("picture.file: " +file);
+    renderBinary(file);
   }
 
 
@@ -114,7 +117,9 @@ public class Pictures extends Controller {
       renderBinary(new File(PUBLIC_IMAGES_FAVICON01_PNG));
     }
     Picture picture = ad.pictures.get(offset);
-    renderBinary(new File(picture.thumbnail50));
+    File file = new File(getPicturePath(), picture.thumbnail50);
+    System.out.println("picture.file: " +file);
+    renderBinary(file);
   }
 
 

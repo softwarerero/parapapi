@@ -76,7 +76,7 @@ public class UpdateCategoryCount extends Job {
     rsCats.close();
   }
 
-  private Map getCategoryCountMap() {
+  public static Map getCategoryCountMap() {
     //Cache.set("products", products, "30mn");
     Map categoryCountMap = (Map) Cache.get("categoryCountMap");
     if(null == categoryCountMap) {

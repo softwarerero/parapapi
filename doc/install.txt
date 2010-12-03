@@ -76,11 +76,16 @@ java -cp h2*.jar org.h2.tools.Backup -?
 java -cp h2*.jar org.h2.tools.Server -?
 java org.h2.tools.Server -tcpShutdown tcp://localhost:9092
 
-# Autmatically start up Play
+# Automatically start up Play
 useradd -U play
 chown -R play:play /opt/play
+mkdir /opt/parapapi
+mv /root/beta /opt/parapapi
+chown -R play:play /opt/parapapi/beta
+#TODO this does not work, there are process ids left in the dirs that prevent starting
 nano /etc/rc3.d/S99rc.local -> to end
-		/bin/su -l www -c "/opt/play/play start $APP $ARGS"
+		/bin/su -l play -c "/opt/play/play start /opt/parapapi/beta"
+		/bin/su -l root -c "/opt/play/play start /root/parapapi"
 
 # Mercurial
 sudo apt-get install mercurial

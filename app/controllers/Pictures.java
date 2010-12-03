@@ -67,7 +67,7 @@ public class Pictures extends Controller {
   public static String getTodadysPicturePath() {
     Calendar date = new GregorianCalendar();
     int day = (date.get(Calendar.YEAR) + 21 - 2000) * 10000 + date.get(Calendar.DAY_OF_YEAR);
-    File path = new File(getPicturePath() + File.separator + day);
+    File path = new File(getPicturePath() + '/' + day);
     if(!path.exists()) {
         path.mkdirs();
     }

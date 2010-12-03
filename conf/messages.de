@@ -48,6 +48,7 @@ validation.before=Das Datum muss vor dem %2$s liegen
 validation.object=Die Validierung ist fehlgeschlagen
 validation.notFound=Für die ID %2$s gibt es kein Objekt
 validation.url=URL ungültig
+validation.badPicture=Das Bild %s ist nicht gut
 
 Ad=Anzeige
 Ad.title=Titel

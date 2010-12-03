@@ -22,7 +22,7 @@ public class Category {
   public static final String[] leisure = {"home", "garden", "foto", "optic", "sport", "hunt", "fishery", "musicalInstrument"};
   public static final String[] electronics = {"computer", "notebook", "software", "printer", "supply", "phone", "tv", "video"};
   public static final String[] service = {"healthservice", "workshop", "finance", "transport", "construction", "animation", "eventTechnology", "multimedia", "security", "tourism"};
-  public static final String[] job = {"healthjob", "education", "industry", "office", "household"};
+  public static final String[] job = {"healthjob", "educationjob", "industry", "office", "household"};
   public static final String[] farming = {"equipment", "plant", "animal"};
   public static final String[] business = {"machine", "officefurniture", "officesupply"};
   public static final String[] event = {"fair", "party", "cinema", "theatre", "concert", "sportevent"};

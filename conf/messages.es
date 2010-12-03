@@ -45,6 +45,7 @@ validation.before=La fecha tiene que ser antes de %2$s
 validation.object=La evaluación fallo
 validation.notFound=No existe on objete para la ID %2$s
 validation.url=URL illícito
+validation.badPicture=%s no es un buen imagen
 
 Ad=Anuncio
 Ad.title=Titulo

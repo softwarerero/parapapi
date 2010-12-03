@@ -28,7 +28,7 @@ ParaPapi=Para Papi!
 validation.required=%s is neccessary
 validation.invalid=The value %s is invalid
 validation.isTrue=%s must be checked
-
+validation.badPicture=%s is not a good picture
 
 Ad=Ad
 Ad.title=Title

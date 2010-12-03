@@ -9,6 +9,7 @@ import play.jobs.*;
 
 import javax.persistence.Query;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,36 +24,15 @@ import java.util.Map;
 @Every("60s")
 public class UpdateCategoryCount extends Job {
 
-    public void doJob() throws Exception {
-
-      Logger.info("Update category stats");
-      Map categoryCountMap = getCategoryCountMap();
-      Statement st = getStatement();
-      updateMainCategories(categoryCountMap, st);
-      updateSubCategories(categoryCountMap, st);
-      Cache.set("categoryCountMap", categoryCountMap);
-      st.close();
-
-//      Query query = JPA.em().createNativeQuery("update MainCategory set adCount = 0");
-//      query.executeUpdate();
-//      List<MainCategory> mainCategories = MainCategory.findAll();
-//      //for(int i=0; i<mainCategories.size(); i++) {
-//      for(MainCategory category: mainCategories) {
-//        //MainCategory category = (MainCategory) mainCategories.get(i);
-//        long adCount = Ad.count("mainCategory = ?", category);
-//        category.adCount += adCount;
-//        category.save();
-//      }
-//
-//      query = JPA.em().createNativeQuery("update SubCategory set adCount = 0");
-//      query.executeUpdate();
-//      List<SubCategory> subCategories = SubCategory.findAll();
-//      for(SubCategory category: subCategories) {
-//        long adCount = Ad.count("subCategory = ?", category);
-//        category.adCount += adCount;
-//        category.save();
-//      }
-    }
+  public void doJob() throws Exception {
+    Logger.info("Update category stats");
+    Map categoryCountMap = getCategoryCountMap();
+    Statement st = getStatement();
+    updateMainCategories(categoryCountMap, st);
+    updateSubCategories(categoryCountMap, st);
+    Cache.set("categoryCountMap", categoryCountMap);
+    st.close();
+  }
 
   private void updateSubCategories(Map categoryCountMap, Statement st) throws SQLException {
     String queryStringSub = "select subCategory, count(id) from Ad group by subCategory";
@@ -80,7 +60,8 @@ public class UpdateCategoryCount extends Job {
     //Cache.set("products", products, "30mn");
     Map categoryCountMap = (Map) Cache.get("categoryCountMap");
     if(null == categoryCountMap) {
-      categoryCountMap = Category.createCounterMap();
+      //categoryCountMap = Category.createCounterMap();
+      categoryCountMap = new HashMap<String, Long>();
     }
     return categoryCountMap;
   }

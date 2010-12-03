@@ -5,6 +5,7 @@ import models.Picture;
 import play.Logger;
 import play.Play;
 import play.data.validation.Validation;
+import play.i18n.Messages;
 import play.libs.Codec;
 import play.libs.Images;
 import play.mvc.Controller;
@@ -32,10 +33,16 @@ public class Pictures extends Controller {
   private static final String WIDTH430 = "430";
   private static final int W430 = 430;
   private static final int H380 = 380;
+  private static final String IMAGE_PATTERN = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
+
 
 
   static void savePicture(Ad ad, File file) throws IOException {
     if(null == file) return;
+    validation.match(file.getName(), IMAGE_PATTERN).message(Messages.get("validation.badPicture", file.getName()));
+    if(validation.hasErrors()) {
+      return;
+    }
 
     Picture picture = new Picture();
     picture.ad = ad;

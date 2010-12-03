@@ -319,12 +319,7 @@ public class Application extends Controller {
                             File picture, File picture1, File picture2, File picture3,
                             File picture4, File picture5) throws IOException {
 
-    if(validation.hasErrors()) {
-      Logger.debug("validation error: " + validation.errorsMap());
-      String[] mainCategories = Category.main;
-      String[] subCategories = null != object.mainCategory ? Category.getSubCategory(object.mainCategory) : null;
-      render("Application/editAd.html", Ad.class, object, mainCategories);
-    }
+    checkAdValidation(object);
 
     Logger.debug("saving ad: " + object.id + ", " + object.title);
     object.save();
@@ -336,10 +331,21 @@ public class Application extends Controller {
     Pictures.savePicture(object, picture4);
     Pictures.savePicture(object, picture5);
 
+    checkAdValidation(object);
+
     Users.dashboard();
   }
 
-  
+  private static void checkAdValidation(Ad object) {
+    if(validation.hasErrors()) {
+      Logger.debug("validation error: " + validation.errorsMap());
+      String[] mainCategories = Category.main;
+      String[] subCategories = null != object.mainCategory ? Category.getSubCategory(object.mainCategory) : null;
+      render("Application/editAd.html", Ad.class, object, mainCategories);
+    }
+  }
+
+
   public static void deleteAd(Long id) {
     Ad object = Ad.findById(id);
     Logger.debug("delete: " + object);

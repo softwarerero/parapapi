@@ -105,7 +105,6 @@ public class Pictures extends Controller {
     Ad ad = Ad.findById(adId);
     Picture picture = ad.pictures.get(offset);
     File file = new File(getPicturePath(), picture.image);
-    System.out.println("picture.file: " +file);
     renderBinary(file);
   }
 
@@ -118,7 +117,6 @@ public class Pictures extends Controller {
     }
     Picture picture = ad.pictures.get(offset);
     File file = new File(getPicturePath(), picture.thumbnail50);
-    System.out.println("picture.file: " +file);
     renderBinary(file);
   }
 

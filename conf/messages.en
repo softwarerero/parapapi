@@ -1,5 +1,5 @@
-views.index.title.header=Publish Ads in Asunción, Paraguay
-views.index.title.subheader=You can use this site freely to publish everything you want to offer or find in or around Asunción, Papi.
+views.index.title.header=Publish Ads in Paraguay
+views.index.title.subheader=Use this site freely to publish everything you want to offer or find in or around Asunción, Papi.
 
 views.dateFormat=dd.MM.yyyy
 views.main.tools.login=Login
@@ -132,10 +132,10 @@ airplane=Airplane
 
 job=Job
 healthjob=Health
-education=Education
+educationjob=Education
 industry=Industry
 office=Office
-household=Household
+householdjob=Household
 
 farming=Farming
 equipment=Equipment
@@ -209,7 +209,7 @@ service=Service
 healthservice=Health
 workshop=Workshop
 finance=Finance
-transport=Transport
+transportservice=Transport
 construction=Construction
 animation=Animation
 eventTechnology=Event Tecnology

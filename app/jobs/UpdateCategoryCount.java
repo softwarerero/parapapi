@@ -1,17 +1,15 @@
 package jobs;
 
+import com.jamonapi.Monitor;
+import com.jamonapi.MonitorFactory;
 import models.*;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
-import play.db.jpa.JPA;
 import play.jobs.*;
-
-import javax.persistence.Query;
 import java.sql.*;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,7 +23,6 @@ import java.util.Map;
 public class UpdateCategoryCount extends Job {
 
   public void doJob() throws Exception {
-    Logger.info("Update category stats");
     Map categoryCountMap = getCategoryCountMap();
     Statement st = getStatement();
     updateMainCategories(categoryCountMap, st);
@@ -57,12 +54,14 @@ public class UpdateCategoryCount extends Job {
   }
 
   public static Map getCategoryCountMap() {
-    //Cache.set("products", products, "30mn");
     Map categoryCountMap = (Map) Cache.get("categoryCountMap");
+    Monitor cacheMonitor = MonitorFactory.getMonitor("CategoryCountMapHit", "count");
     if(null == categoryCountMap) {
       categoryCountMap = Category.createCounterMap();
       Cache.set("categoryCountMap", categoryCountMap);
+      cacheMonitor = MonitorFactory.getMonitor("CategoryCountMapMiss", "count");
     }
+    cacheMonitor.add(1);
     return categoryCountMap;
   }
 

@@ -27,20 +27,21 @@ public class User extends Model {
   @Required public String lastNames;
   @Required public Ad.Currency currency = Ad.Currency.PYG;
   public String documentNo;
-  public DocumentType documentType = DocumentType.CID;
+  public DocumentType documentType;
   @Required public Ad.Country country = Ad.Country.py;
-  @Required public Ad.Department department = Ad.Department.ce;
+  @Required public Ad.Department department;
   @Required public String city = "Asunción";
   public String postCode;
   public String street;
-  public String zone;
+  public String zone = "Centro";
   public String mobilePhone;
   @Required public String phone;
   public boolean isAdmin = false;
   public boolean isActive = false;
   public String confirmationToken;
   @Required @IsTrue public boolean acceptConditions = false;
-  
+//  @IsTrue public boolean wantNotifications = false;
+
 
   public User() {
   }

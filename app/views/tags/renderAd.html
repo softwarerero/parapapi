@@ -6,11 +6,12 @@
 #{/set}
 
 *{ Display an Ad in one of these modes: 'full', 'home' or 'teaser' }*
-<div class="ad ${_as == 'teaser' ? 'teaser' : ''} ">
+<div class="ad ${_as == 'teaser' ? 'teaser' : ''} " style="clear: both;">
+
     <div class="ad-thumb">
         <a href="@{Application.adDetail(_ad.id)}"><img src="@{Pictures.renderThumbnail(_ad.id, 0)}" /></a>
     </div>
-    <div class="ad-teaser-data">
+    <div class="ad-teaser-data" >
         <div class="ad-title">
             <a href="@{Application.adDetail(_ad.id)}">${_ad.title}</a>
         </div>
@@ -21,59 +22,63 @@
             <span class="ad-price">#{if null != _ad.price}&{'Price'} ${_ad.price.doubleValue().formatCurrency(_ad.currency.name()).raw()}#{/if}</span>
         </div>
     </div>
-    #{if _as != 'teaser'}
-    <div style="clear: both;"></div>
-        <div class="ad-content">
-            ${_ad.content.nl2br()}
-        </div>
-    #{/if}
+
+
     #{if controllers.Security.isConnected() && _ad.author.nickname.equals(controllers.Security.nickname()) }
     <div class="actions">
         <a href="@{Application.editAd(_ad.id)}" class="editAction" title="&{'edit'}"></a>
         <a href="@{Application.deleteAd(_ad.id)}" class="deleteAction" title="&{'delete'}"></a>
     </div>
     #{/if}
-</div>
+    #{if _as == 'full'}
+        <div style="clear: both; height: 10px;"></div>
+        <span class="ad-details">
+            <div style="width: 48%; float: left; ">
+                &{'mainCategory'}: &{_ad.mainCategory}
+                #{if null != _ad.subCategory} >> &{_ad.subCategory} #{/if}
+                <br/>
+                <!-- &{'NoOfVisits'}: ${_ad.noOfVisits}
+                &nbsp;|&nbsp;  -->
+                &{'handOver'}: &{_ad.handOver} >> &{_ad.offer}
+            </div>
+            <div style="width: 4%; float: left;">&nbsp;</div>
+            <div style="width: 48%; float: left;">
+                &{'views.renderAd.where'}: &{_ad.department} >> ${_ad.city} >> ${_ad.zone}
+                <br/>
+                #{if controllers.Security.isConnected()}
+                    &{'Ad.phone'}: ${_ad.phone}
+                    &nbsp;|&nbsp;
+                    &{'Ad.mobilePhone'}: ${_ad.mobilePhone}
+                    &nbsp;|&nbsp;
+                    &{'Ad.email'}: ${_ad.getHtmlSecuredEmail()?.raw()}
+                #{/if}
+                #{else}
+                    <a href="@{Register.register()}">&{'views.renderAd.registerGratis1'}</a> &{'views.renderAd.registerGratis2'}
+                #{/else}
+            </div>
+        </span>
+    #{/if}
 
-#{if _as == 'full'}
-    <span class="ad-details">
-        &{'mainCategory'}: &{_ad.mainCategory}
-        #{if null != _ad.subCategory} &nbsp;|&nbsp; &{'subCategory'}: &{_ad.subCategory} #{/if}
-        <br/>
-        &{'department'}: &{_ad.department}
-        &nbsp;|&nbsp;
-        &{'Ad.city'}: ${_ad.city}
-        &nbsp;|&nbsp;
-        &{'Ad.zone'}: ${_ad.zone}
-        #{if controllers.Security.isConnected()}
-            <br/>
-            &{'Ad.phone'}: ${_ad.phone}
-            &nbsp;|&nbsp;
-            &{'Ad.mobilePhone'}: ${_ad.mobilePhone}
-            &nbsp;|&nbsp;
-            &{'Ad.email'}: ${_ad.getHtmlSecuredEmail()?.raw()}
-        #{/if}
-        <br/>
-        <!-- &{'NoOfVisits'}: ${_ad.noOfVisits}
-        &nbsp;|&nbsp;  -->
-        &{'handOver'}: &{_ad.handOver}
-        &nbsp;|&nbsp;
-        &{'Ad.offer'}: &{_ad.offer}
-    </span>
 
-<div style="height: 20px;"></div>
-<div class="pcitures">
-    %{
-        //for(Long id: _ad.pictures*.id) {
-        if(null != _ad.pictures) {
-            for(int i = 0; i < _ad.pictures.size(); i++) {
-    }%
-            <img src="@{Pictures.renderPicture(_ad.id, i)}" />
-    %{
+<div style="clear: both;"></div>
+#{if _as != 'teaser'}
+    <div style="clear: both;"></div>
+        <div class="ad-content">
+            ${_ad.content.nl2br()}
+        </div>
+    <div class="pcitures">
+        %{
+            //for(Long id: _ad.pictures*.id) {
+            if(null != _ad.pictures) {
+                for(int i = 0; i < _ad.pictures.size(); i++) {
+        }%
+                <img src="@{Pictures.renderPicture(_ad.id, i)}" />
+        %{
+                }
             }
-        }
-    }%
+        }%
 </div>
 #{/if}
+</div>
 
 

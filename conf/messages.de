@@ -1,6 +1,6 @@
 views.dateFormat=dd-MM-yyyy
-views.index.title.header=Kleinanzeigen in und um Asunción
-views.index.title.subheader=Hier inseriert Papi in Deutsch, Englisch oder Spanisch. Mami natürlich auch!
+views.index.title.header=Kleinanzeigen in Paraguay
+views.index.title.subheader=Hier inseriert Papi in Deutsch, Englisch oder Spanisch. Mami natürlich auch! Gratis!
 
 views.main.tools.login=Anmelden
 views.main.tools.logout=Abmelden
@@ -9,6 +9,10 @@ views.main.tools.myAds=Meine Anzeigen
 views.main.adsWritten=Du hast bisher %s Anzeigen publiziert
 views.main.noSearchCriteria=Bitte geben Sie Ihre Suchkriterien ein!
 views.main.moreSearchCriteria=Bitte geben Sie mehr Suchkriterien ein!
+
+views.renderAd.registerGratis1=Gratis registrieren
+views.renderAd.registerGratis2=um die Kontatkdaten zu sehen.
+views.renderAd.where=Wo
 
 message.delete.confirm.title=Was will Papi?
 message.delete.confirm.text=Wirklich löschen?
@@ -148,15 +152,15 @@ auto=Auto
 bike=Motorrad - denken!
 bicycle=Fahrrad
 water=Wasserfahrzeug
-autoparts=Teil / Zubehör
+autoparts=Zubehör
 airplane=Flugzeug
 
 job=Arbeit
 healthjob=Gesundheit
-education=Bildung
+educationjob=Bildung
 industry=Industrie
 office=Büro
-household=Haushalt
+householdjob=Haushalt
 
 farming=Landwirtschaft
 equipment=Gerät
@@ -230,7 +234,7 @@ service=Dienstleistung
 healthservice=Gesundheit
 workshop=Werkstatt
 finance=Finanz
-transport=Transport
+transportservice=Transport
 construction=Konstruktion
 animation=Animation
 eventTechnology=Veranstaltungstechnik

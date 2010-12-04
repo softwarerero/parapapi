@@ -1,6 +1,6 @@
 views.dateFormat=yyyy-MM-dd
-views.index.title.header=Clasificados en Asunción, Paraguay
-views.index.title.subheader=Papi hace su publicidad gratis. Mami también!
+views.index.title.header=Clasificados en Paraguay
+views.index.title.subheader=Papi hace su publicidad gratis. Mami también! Gratis!
 
 views.main.tools.login=Ingresar
 views.main.tools.logout=Salir
@@ -151,10 +151,10 @@ airplane=Avión
 
 job=Empleo
 healthjob=Salud
-education=Educación
+educationjob=Educación
 industry=Industria
 office=Oficina
-household=Domestica
+householdjob=Domestica
 
 farming=Agricultura
 equipment=Máquina
@@ -228,7 +228,7 @@ service=Servicio
 healthservice=Salud
 workshop=Taller
 finance=Finanza
-transport=Transporte
+transportservice=Transporte
 construction=Construcción
 animation=Animación
 eventTechnology=Eventos

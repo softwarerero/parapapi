@@ -36,11 +36,10 @@
         </div>
 
         <p id="footer">
-            &{'Version'}  ${play.configuration.getProperty("version")}  &nbsp;&nbsp;&nbsp; &{'your_language'}: ${play.i18n.Lang.get()} 
-            <br/>Copyright &#169; 2010 SUNCOM Systems Ltd. 
+            Copyright &#169; 2010 SUNCOM Systems Ltd.  &nbsp;&nbsp;&nbsp;
+            &{'Version'}  ${play.configuration.getProperty("version")}  &nbsp;&nbsp;&nbsp; &{'your_language'}: ${play.i18n.Lang.get()}
+            &nbsp;&nbsp;&nbsp;  <a href="@{Application.termsOfUse()}">&{'views.editUser.termsOfUse'}</a>
+            &nbsp;&nbsp;&nbsp;  <a href="@{Application.dataPolicy()}">&{'views.editUser.dataPolicy'}</a>
         </p>
-
-
-
     </body>
 </html>

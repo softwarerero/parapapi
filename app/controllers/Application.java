@@ -378,6 +378,7 @@ public class Application extends Controller {
 
 
   public static String termsOfUse() {
+    System.out.println("tof");
     File file = Play.getFile("public/documents/termsOfUse.de.txt");
     return readTextFile(file);
   }
@@ -406,30 +407,5 @@ public class Application extends Controller {
     }
     return ret.toString();
   }
-
-
-//  public static void test() {
-//    //Query query = JPA.em().createNativeQuery("update MainCategory set adCount = 0");
-//    //query.executeUpdate();
-////            + "join cat.ads as ad where ad.language = 1 group by cat.id, cat.name");
-//    System.out.println("noOfCats: " + JPA.em().createNativeQuery("select count(id) from MainCategory").getSingleResult());
-//    System.out.println("noOfAds: " + JPA.em().createNativeQuery("select count(id) from Ad").getSingleResult());
-//    Query query = JPA.em().createNativeQuery("select ad.id, ad.mainCategory, count(ad.id) from Ad as ad "
-//        + "group by ad.id, ad.mainCategory");
-//    List res = query.getResultList();
-//    System.out.println("size:" + res.size());
-//    for(int i=0; i<res.size(); i++) {
-//      System.out.println(res.get(0)[0]);
-//      System.out.println(res.get(0).getClass());
-//    }
-//    for(int i=0; i<res.size(); i++) {
-//          Object tab[] = res.get(i);
-//          System.out.println("id : "+tab[0]);
-//          System.out.println("name : "+tab[1]);
-//          System.out.println("count : "+tab[2]);
-//    }
-//
-//  }
-
 
 }

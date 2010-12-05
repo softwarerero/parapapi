@@ -13,6 +13,7 @@ GET     /captcha                                Application.captcha
 
 GET     /confirmRegistration/{email}/{confirmationToken} Register.confirmRegistration
 GET     /profiSearch                Application.advancedSearch
+GET     /termsOfUse                Application.showTermsOfUse
 
 GET     /mainCategories/categoriesAsJson     MainCategories.categoriesAsJson(format:'json')
 

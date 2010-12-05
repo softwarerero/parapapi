@@ -124,9 +124,9 @@ User.street=Calle
 User.zone=Zona
 User.mobilePhone=Celular
 User.phone=Teléfono
-views.editUser.acceptConditions=Yo he leido los %s y %s estoy de acuerdo
-views.editUser.termsOfUse=<a id="termsOfUse">Terminos de Uso</a>
-views.editUser.dataPolicy=<a id="dataPolicy">Politica de Privacidad</a>
+views.editUser.acceptConditions=Yo he leido los <a id="termsOfUse">%s</a> y <a id="dataPolicy">%s</a> estoy de acuerdo
+views.editUser.termsOfUse=Terminos de Uso
+views.editUser.dataPolicy=Politica de Privacidad
 views.editUser.code=Por favor entre el codigo de seguridad
 views.editUser.code2=Codigo invalido. Por favor intenta de nuevo
 user.exists=El usario ya existe

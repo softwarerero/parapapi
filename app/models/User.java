@@ -35,7 +35,7 @@ public class User extends Model {
   public String street;
   public String zone = "Centro";
   public String mobilePhone;
-  @Required public String phone;
+  public String phone;
   public boolean isAdmin = false;
   public boolean isActive = false;
   public String confirmationToken;

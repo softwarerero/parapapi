@@ -137,15 +137,16 @@ views.editUser.dataPolicy=Datenschutzbestimmungen
 views.editUser.code=Bitte geben Sie den Sicherheitscode ein
 views.editUser.code2=Falscher Code. Bitte versuchen Sie es noch einmal
 user.exists=Der Benutzer existiert bereits
+user.phoneFails=Mobiltelefon oder Festnetz muss angegeben werden
 
 # Categories New
-realEstate=Immobilien
+realEstate=Immobilie
 house=Haus
 apartment=Wohnung
 twinHouse=Doppelhaus
 room=Zimmer
 commercial=Gewerbe
-rural=Ländliche Immobilien
+rural=Ländliche Immobilie
 
 transport=Transport
 auto=Auto
@@ -168,7 +169,7 @@ plant=Pflanze
 animal=Tier
 
 business=Unternehmensbedarf
-machine=Maschinen
+machine=Maschine
 officefurniture=Büromöbel
 officesupply=Zubehör
 

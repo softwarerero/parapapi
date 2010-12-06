@@ -10,6 +10,10 @@ views.main.adsWritten=hasta ahora publicaste %s anuncios
 views.main.noSearchCriteria=Por favor entre sus crterias para buscar
 views.main.moreSearchCriteria=Por favor entre más criterias
 
+views.renderAd.registerGratis1=Registrarse gratis
+views.renderAd.registerGratis2=para ver los datos de contacto.
+views.renderAd.where=Where
+
 no.javascript=Por favor activa Javascript.
 
 AdvancedSearch=Busqueda avanzada
@@ -130,6 +134,7 @@ views.editUser.dataPolicy=Politica de Privacidad
 views.editUser.code=Por favor entre el codigo de seguridad
 views.editUser.code2=Codigo invalido. Por favor intenta de nuevo
 user.exists=El usario ya existe
+user.phoneFails=Hay que llenar cellular o linea baja
 
 
 # Categories

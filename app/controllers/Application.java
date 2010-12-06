@@ -5,6 +5,7 @@ import play.Logger;
 import play.Play;
 import play.cache.Cache;
 import play.db.jpa.JPA;
+import play.i18n.Lang;
 import play.i18n.Messages;
 import play.libs.Images;
 import play.mvc.*;
@@ -378,13 +379,18 @@ public class Application extends Controller {
 
 
   public static String termsOfUse() {
-    System.out.println("tof");
     File file = Play.getFile("public/documents/termsOfUse.de.txt");
+    if("es".equals(Lang.get())) {
+      file = Play.getFile("public/documents/termsOfUse.es.txt");
+    }
     return readTextFile(file);
   }
 
   public static String dataPolicy() {
     File file = Play.getFile("public/documents/dataPolicy.de.txt");
+    if("es".equals(Lang.get())) {
+      file = Play.getFile("public/documents/dataPolicy.es.txt");
+    }
     return readTextFile(file);
   }
 

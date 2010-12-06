@@ -56,17 +56,21 @@ public class Register extends CRUD {
     }
 
     long count = 0;
-    String userExistsError = "";
+    String otherError = "";
     if(null == object.id) {
       count = User.count("email = ? or nickname = ?", object.email, object.nickname);
       if(count > 0) {
-        userExistsError = "user.exists";
+        otherError = "user.exists";
       }
     }
 
-    if(validation.hasErrors() || count > 0) {
+    if((null == object.phone || object.phone.equals("")) && (null == object.mobilePhone || object.mobilePhone.equals(""))) {
+      otherError = "user.phoneFails";
+    }
+
+    if(validation.hasErrors() || !otherError.equals("")) {
       Logger.debug("validation error: " + validation.errorsMap());
-      render("Register/editUser.html", User.class, object, randomID, userExistsError);
+      render("Register/editUser.html", User.class, object, randomID, otherError);
     }
 
     boolean isRegistration = null == object.id;

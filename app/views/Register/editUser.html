@@ -18,8 +18,8 @@
     #{ifErrors}
         <p class="error"> ${errors[0]} </p>
     #{/ifErrors}
-    #{elseif null != userExistsError}
-        <p class="error"> &{userExistsError} </p>
+    #{elseif null != otherError}
+        <p class="error"> &{otherError} </p>
     #{/elseif}
 
     <input type="hidden" id="object_id" name="object.id" value="${object.id}" />

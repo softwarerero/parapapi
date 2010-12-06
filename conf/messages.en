@@ -10,6 +10,10 @@ views.main.adsWritten=you have written %s so far
 views.main.noSearchCriteria=Oops, please enter your search criteria!
 views.main.moreSearchCriteria=Please enter more criteria!
 
+views.renderAd.registerGratis1=Register gratis
+views.renderAd.registerGratis2=to see the contact information.
+views.renderAd.where=Where
+
 views.dateFormat=dd-MM-yyyy
 views.index.title.header=Classified Ads in and around Asunción
 views.index.title.subheader=Papi can publish ads here in German, English or Spanish. Mami off course, too!
@@ -112,6 +116,7 @@ views.editUser.dataPolicy=Data PolicytermsOfUse
 views.editUser.code=Please enter the security code
 views.editUser.code2=Invalid code. Please type it again
 user.exists=User already present
+user.phoneFails=Specify mobile phone or landline
 
 # Categories
 realEstate=Real Estate

@@ -64,9 +64,9 @@ public class Register extends CRUD {
       }
     }
 
-    if((null == object.phone || object.phone.equals("")) && (null == object.mobilePhone || object.mobilePhone.equals(""))) {
-      otherError = "user.phoneFails";
-    }
+//    if((null == object.phone || object.phone.equals("")) && (null == object.mobilePhone || object.mobilePhone.equals(""))) {
+//      otherError = "user.phoneFails";
+//    }
 
     if(validation.hasErrors() || !otherError.equals("")) {
       Logger.debug("validation error: " + validation.errorsMap());

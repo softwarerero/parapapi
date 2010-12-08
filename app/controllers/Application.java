@@ -378,40 +378,33 @@ public class Application extends Controller {
   }
 
 
-  public static String termsOfUse() {
-    File file = Play.getFile("public/documents/termsOfUse.de.txt");
+  public static void termsOfUse() throws FileNotFoundException {
+    File file = Play.getFile("public/documents/termsOfUse.de.html");
     if("es".equals(Lang.get())) {
-      file = Play.getFile("public/documents/termsOfUse.es.txt");
+      file = Play.getFile("public/documents/termsOfUse.es.html");
     }
-    return readTextFile(file);
+    respondStaticHtml(file);
   }
 
-  public static String dataPolicy() {
-    File file = Play.getFile("public/documents/dataPolicy.de.txt");
+  public static void dataPolicy() throws FileNotFoundException {
+    File file = Play.getFile("public/documents/dataPolicy.de.html");
     if("es".equals(Lang.get())) {
-      file = Play.getFile("public/documents/dataPolicy.es.txt");
+      file = Play.getFile("public/documents/dataPolicy.es.html");
     }
-    return readTextFile(file);
+    respondStaticHtml(file);
+  }
+
+  private static void respondStaticHtml(File file) throws FileNotFoundException {
+    InputStream is = new FileInputStream(file);
+    response.setHeader("Content-Length", file.length() + "");
+    response.cacheFor("24h");
+    response.contentType = "text/html; charset=utf-8";
+    response.direct = is;
   }
 
 
-  private static String readTextFile(File file) {
-    StringBuilder ret = new StringBuilder();
-    try {
-      Scanner scanner = new Scanner(new FileInputStream(file), "UTF-8");
-      String str;
-      try {
-        while (scanner.hasNextLine()){
-          ret.append(scanner.nextLine());
-        }
-      }
-      finally{
-        scanner.close();
-      }
-    } catch(IOException e) {
-      e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-    }
-    return ret.toString();
+  public static void backup() {
+    
   }
 
 }

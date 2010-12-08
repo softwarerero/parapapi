@@ -35,7 +35,7 @@ public class Ad extends Model {
   @Required public Department department = Department.ce;
   public String city;
   public String zone;
-  @Required public String phone;
+  public String phone;
   public String mobilePhone;
   @Required @Email public String email;
   public long noOfVisits;

@@ -1,6 +1,6 @@
 views.dateFormat=yyyy-MM-dd
-views.index.title.header=Clasificados en Paraguay
-views.index.title.subheader=Papi hace su publicidad gratis. Mami también! Gratis!
+views.index.title.header=Clasificados gratis en Paraguay
+views.index.title.subheader=Para ver anuncios solo en tu idioma registrate gratis y haz un busqueda avanzada.
 
 views.main.tools.login=Ingresar
 views.main.tools.logout=Salir
@@ -12,7 +12,7 @@ views.main.moreSearchCriteria=Por favor entre más criterias
 
 views.renderAd.registerGratis1=Registrarse gratis
 views.renderAd.registerGratis2=para ver los datos de contacto.
-views.renderAd.where=Where
+views.renderAd.where=Donde
 
 no.javascript=Por favor activa Javascript.
 
@@ -195,14 +195,14 @@ hunt=Caza
 fishery=Pesca
 musicalInstrument=Instrumento Musical
 
-electronics=Electronica
+electronics=Electrónica
 computer=Computer
 notebook=Notebook
 software=Software
-printer=Impresor
+printer=Impresora
 supply=Accesorio
 phone=Teléfono
-tv=Televisión
+tv=TV
 video=Video
 
 event=Evento
@@ -210,7 +210,7 @@ fair=Expo
 party=Fiesta
 cinema=Cine
 theatre=Teatro
-concert=Conzerto
+concert=Concierto
 sportevent=Deporte
 
 contact=Contacto
@@ -232,7 +232,7 @@ book=Libro
 service=Servicio
 healthservice=Salud
 workshop=Taller
-finance=Finanza
+finance=Finanzas
 transportservice=Transporte
 construction=Construcción
 animation=Animación

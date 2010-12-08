@@ -112,9 +112,10 @@ sudo nano /etc/lighttpd/lighttpd.conf
 		proxy.balance = "round-robin" proxy.server = ( "/" =>
 			( ( "host" => "127.0.0.1", "port" => 9002 ) ) )
 	}
-	$HTTP["host"] == "beta.parapapi.com" {
+	$HTTP["host"] == "beta.parapapi.com" {	
 		proxy.balance = "round-robin" proxy.server = ( "/" =>
 			( ( "host" => "127.0.0.1", "port" => 9003 ) ) )
+		accesslog.filename = "/var/logs/lighttpd/beta.log"
 	}
 	server.max-request-size=2000
 

@@ -18,6 +18,9 @@ import java.util.Date;
 @Entity
 public class AdSearch extends Model {
 
+  public enum OrderBy { postedAt, price, department, city, language, country, currency, mainCategory, subCategory }
+  public enum AscOrDesc { asc, desc }
+
   @MaxSize(100) public String text;
   @Temporal(TemporalType.DATE) public Date postedAt;
   public BigDecimal priceFrom;
@@ -38,5 +41,8 @@ public class AdSearch extends Model {
   @ManyToOne public User author;
 
   public boolean allowBids;
+
+  public OrderBy orderBy = OrderBy.postedAt;
+  public AscOrDesc ascOrDesc = AscOrDesc.desc;
 
 }

@@ -27,6 +27,9 @@
             #{form/renderText object: object, attr: "priceFrom", size: 15/}
             #{form/renderSelect4Enum name: "mainCategory", value: object.mainCategory, items: mainCategories /}
             #{form/renderSelect4Enum name: "subCategory", value: object.subCategory, items: subCategories /}
+            <label>&nbsp;</label>
+            <label>&nbsp;</label>
+            #{form/renderSelect4Enum name: "orderBy", value: object.orderBy, items: models.AdSearch.OrderBy /}
         </div>
         <div style="width: 4%; float: left;">&nbsp;</div>
         <div style="width: 48%; float: left;">
@@ -39,6 +42,7 @@
             #{form/renderSelect4Enum name: "department", value: object.department, items: models.Ad.Department.values() /}
             #{form/renderText object: object, attr: "city"/}
             #{form/renderText object: object, attr: "zone"/}
+            #{form/renderSelect4Enum name: "ascOrDesc", value: object.ascOrDesc, items: models.AdSearch.AscOrDesc /}
         </div>
     </div>
     <div style="clear: both; text-align: left;">

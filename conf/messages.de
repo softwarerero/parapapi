@@ -112,6 +112,13 @@ currency=Währung
 AdSearch.city=Stadt
 AdSearch.zone=Stadtteil
 Search=Suche
+postedAt=Datum
+price=Preis
+city=Stadt
+country=Land
+asc=Aufsteigend
+desc=Absteigend
+
 
 User.acceptConditions=
 User.nickname=Benutzername
@@ -134,6 +141,7 @@ User.phone=Telefon
 views.editUser.acceptConditions=Ich habe die %s und die %s gelesen und akzeptiere diese
 views.editUser.termsOfUse=<a href="/termsOfUse">Benutzungsvereinbarungen</a>
 views.editUser.dataPolicy=<a href="/dataPolicy">Datenschutzbestimmungen</a>
+views.editUser.wantNotifications=Ich möchte per email über Neuigeiten zu ParaPapi informiert werden
 views.editUser.code=Bitte geben Sie den Sicherheitscode ein
 views.editUser.code2=Falscher Code. Bitte versuchen Sie es noch einmal
 user.exists=Der Benutzer existiert bereits

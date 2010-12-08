@@ -18,10 +18,12 @@ cn=Canindeyú
 co=Concepción
 cd=Cordillera
 gu=Guariá
-it=Itapúa
+itp=Itapúa
 pa=Paraguarí
 pr=Presidente Hayes
 sp=San Pedro
 ne=Ñeembucú
 mi=Missiones
 
+User.acceptConditions=
+User.wantNotifications=

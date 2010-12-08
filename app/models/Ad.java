@@ -24,7 +24,7 @@ public class Ad extends Model {
   public enum Language { de, en, es }
   public enum Country { py, de, en, us, fr }
   public enum Currency { PYG, USD, EUR }
-  public enum Department { ce, ap, an, am, bo, ca, cz, cn, co, cd, gu, it, pa, pr , sp, ne, mi }
+  public enum Department { ce, ap, an, am, bo, ca, cz, cn, co, cd, gu, itp, pa, pr , sp, ne, mi }
   // Central, Alto Paraguay,
   // Alto Paraná, Amambay, Boquerón, Caaguazú, Caazapá, Canindeyú, Concepción,
   // Cordillera, Guariá, Itapúa, Paraguarí, Presidente Hayes, San Pedro, Ñeembucú, Missiones

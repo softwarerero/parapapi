@@ -3,6 +3,7 @@ package models;
 import java.util.*;
 import javax.persistence.*;
 
+import com.sun.istack.internal.Nullable;
 import play.data.validation.*;
 import play.db.jpa.*;
                             
@@ -29,7 +30,7 @@ public class User extends Model {
   public String documentNo;
   public DocumentType documentType;
   @Required public Ad.Country country = Ad.Country.py;
-  @Required public Ad.Department department;
+  public Ad.Department department;
   @Required public String city = "Asunción";
   public String postCode;
   public String street;
@@ -40,7 +41,6 @@ public class User extends Model {
   public boolean isActive = false;
   public String confirmationToken;
   @Required @IsTrue public boolean acceptConditions = false;
-  //public boolean wantNotifications = false;
 
 
   public User() {

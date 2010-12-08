@@ -54,8 +54,6 @@ public class Application extends Controller {
   public static void advancedSearch(AdSearch object) {
 
     if(!params._contains("object.text")) {
-//      Enum[] mainCategories = Category.Main.values();
-//      List<MainCategory> mainCategories = MainCategory.findAll();
       String[] mainCategories = Category.main;
       render(object, mainCategories);
     }
@@ -138,7 +136,17 @@ public class Application extends Controller {
       sb.and().like("zone", zone);
     }
 
-    sb.orderBy("id desc");
+    String orderBy = params.get("object.orderBy");
+    if(null == orderBy || "".equals(orderBy)) {
+      orderBy = "id";
+    }
+
+    String ascOrDesc = params.get("object.ascOrDesc");
+    if(null == ascOrDesc || "".equals(ascOrDesc)) {
+      ascOrDesc = "desc";
+    }
+    orderBy += " " + ascOrDesc;
+    sb.orderBy(orderBy);
 
     String searchString = sb.getSearchString();
     Logger.info("searchString: " + searchString);

@@ -110,9 +110,9 @@ User.street=Street
 User.zone=District
 User.mobilePhone=Mobile Phone
 User.phone=Phone
-views.editUser.acceptConditions=I have read the termsOfUse%stermsOfUse and the <a id="dataPolicy">%stermsOfUse and agree
-views.editUser.termsOfUse=termsOfUseUser Terms
-views.editUser.dataPolicy=Data PolicytermsOfUse
+views.editUser.acceptConditions=I have read the % and the % and I agree
+views.editUser.termsOfUse=<a href="/termsOfUse">Terms of Use</a>
+views.editUser.dataPolicy=<a href="/dataPolicy">Data Policy</a>
 views.editUser.code=Please enter the security code
 views.editUser.code2=Invalid code. Please type it again
 user.exists=User already present

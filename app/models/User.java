@@ -40,7 +40,7 @@ public class User extends Model {
   public boolean isActive = false;
   public String confirmationToken;
   @Required @IsTrue public boolean acceptConditions = false;
-//  @IsTrue public boolean wantNotifications = false;
+  //public boolean wantNotifications = false;
 
 
   public User() {

@@ -52,7 +52,8 @@
     <div style="clear: both;"></div>
     <p>&nbsp;</p>
     <span style="float: left;">#{form/renderCheckbox object: object, attr: "acceptConditions"/}&nbsp;&nbsp;</span>
-        <label for="acceptConditions" id="acceptConditions">&{'views.editUser.acceptConditions', messages.get('views.editUser.termsOfUse'), messages.get('views.editUser.dataPolicy')}</label>
+<!--        <label for="acceptConditions" id="acceptConditions">&{'views.editUser.acceptConditions', messages.get('views.editUser.termsOfUse'), messages.get('views.editUser.dataPolicy')}</label> -->
+        <label for="acceptConditions" id="acceptConditions">&{'views.editUser.acceptConditions', messages.get('views.editUser.termsOfUse') ,messages.get('views.editUser.dataPolicy')}</label>
     <p>&nbsp;</p>
 
 
@@ -67,9 +68,6 @@
     </div>
 #{/form}
 
-<div id="termsOfUseDialog" title="${messages.get('views.editUser.termsOfUse')}">${controllers.Application.termsOfUse().raw()}</div>
-<div id="dataPolicyDialog" title="${messages.get('views.editUser.dataPolicy')}">${controllers.Application.dataPolicy().raw()}</div>
-
 
 <script type="text/javascript">
 
@@ -78,15 +76,9 @@
 		$("#object_city").autocomplete({
 			source: cities
 		});
-	});
+    });
     $(document).ready(function() {
         $('#termsOfUseDialog').dialog({
-            autoOpen: false, modal: true,
-            width: 500, height: 330,
-            overlay: { backgroundColor: "#000", opacity: 0.5 },
-            close: function(ev, ui) { $(this).close(); }
-        });
-        $('#dataPolicyDialog').dialog({
             autoOpen: false, modal: true,
             width: 500, height: 330,
             overlay: { backgroundColor: "#000", opacity: 0.5 },
@@ -97,11 +89,7 @@
             $("#termsOfUseDialog").dialog('open');
             return false;
         });
-
-        $('#dataPolicy').click(function() {
-            $("#dataPolicyDialog").dialog('open');
-            return false;
-        });
     });
+    
 
 </script>

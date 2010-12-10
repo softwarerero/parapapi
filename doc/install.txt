@@ -250,3 +250,25 @@ cp -R /root/pictures/ .
 chown -R parapapi:parapapi pictures pull.sh
 
 
+# AwStats
+sudo nano /etc/lighttpd/lighttpd.conf
+	alias.url = (
+                "/awstatsclasses" => "/usr/local/awstats/wwwroot/classes/",
+                "/awstatscss" => "/usr/local/awstats/wwwroot/css/",
+                "/awstatsicons" => "/usr/local/awstats/wwwroot/icon/",
+                "/awstats/" => "/usr/local/awstats/wwwroot/cgi-bin/",
+                "/icon/" => "/usr/local/awstats/wwwroot/icon/"
+              )
+	# provide awstats cgi-bin access
+	$HTTP["url"] =~ "/awstats/" {
+		  cgi.assign = ( ".pl" => "/usr/bin/perl" )
+	}
+sudo /etc/init.d/lighttpd restart
+cd /etc/awstats
+cp awstats.conf awstats.beta.parapapi.com.conf
+mkdir /var/www/awstats
+nano awstats.beta.parapapi.com.conf
+	LogFile="/var/log/lighttpd/beta.log"
+	LogFormat=1
+	SiteDomain="beta.parapapi.com"
+	DirData="/var/lib/awstats"

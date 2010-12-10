@@ -14,7 +14,7 @@
 #{/ifErrors}
 
 
-<form action="@{Application.search()}" method="GET">
+<form action="@{Application.search()}" method="GET" id="form1">
     <input type="text" name="searchString" size="50"/> 
     <input type="submit" value="&{'ParaPapi'}" />
 
@@ -22,8 +22,17 @@
         <input id="advancedSearch" type="button" onclick="location.href='@{Application.advancedSearch()}'" value="&{'AdvancedSearch'}" />
         <input style="float: right;" id="createAd" type="button" onclick="location.href='@{Application.createAd()}'" value="&{'CreateAd'}" />
     #{/if}
+    #{else}
+    <p style="float: right;">
+        <span style="float: left; margin-top: 5px;"><input type="checkbox" id="german" name="german" "${language.equals("de") ? 'checked' : ''}""/>&nbsp;</span>
+        <span style="float: left;"><label for="german">&{'german'}</label></span>
+        <span style="float: left; margin-top: 5px; margin-left: 10px;"><input type="checkbox" id="english" name="english" "${language.equals("en") ? 'checked' : ''}" />&nbsp;&nbsp;</span>
+        <span style="float: left;"><label for="english">&{'english'}</label></span>&nbsp;&nbsp;
+        <span style="float: left; margin-top: 5px; margin-left: 10px;"><input type="checkbox" id="spanish" name="spanish" "${language.equals("es") ? 'checked' : ''}" />&nbsp;&nbsp;</span>
+        <span style="float: left;"><label for="spanish">&{'spanish'}</label></span>&nbsp;&nbsp;
+    </p>
+    #{/else}
 </form>
-
 
 
 <div class="categories">
@@ -42,4 +51,5 @@
         </div>
     #{/list}
 </div>
+
 

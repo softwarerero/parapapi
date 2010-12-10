@@ -25,6 +25,7 @@ public class Ad extends Model {
   public enum Country { py, de, en, us, fr }
   public enum Currency { PYG, USD, EUR }
   public enum Department { ce, ap, an, am, bo, ca, cz, cn, co, cd, gu, itp, pa, pr , sp, ne, mi }
+  public enum State { brandnew, used }
   // Central, Alto Paraguay,
   // Alto Paraná, Amambay, Boquerón, Caaguazú, Caazapá, Canindeyú, Concepción,
   // Cordillera, Guariá, Itapúa, Paraguarí, Presidente Hayes, San Pedro, Ñeembucú, Missiones
@@ -45,16 +46,13 @@ public class Ad extends Model {
   @Required @Enumerated public Language language = Language.de;
   @Required @Enumerated public Country country = Country.py;
   @Required @Enumerated public Currency currency = Currency.PYG;
-
+  @Lob @Required @MaxSize(10000) public String content;
+  @ManyToOne @Required public User author;
+  public boolean allowBids;
   @Required public String mainCategory;
   public String subCategory;
-
-  @Lob @Required @MaxSize(10000) public String content;
-
-  @ManyToOne @Required public User author;
-
-  public boolean allowBids;
-  
+  State state = State.used;
+//  int year = 0;
   @OneToMany(mappedBy="ad", cascade= CascadeType.ALL) public List<Picture> pictures;
 
 
@@ -62,24 +60,6 @@ public class Ad extends Model {
     if(null == email) return null;
     return email.replace("@", "<code>@</code>");
   }
-
-
-//  public String formattedPrice() {
-//    if(null == price) return "";
-//    String ret = price.toString();
-//    if(Currency.pyg.equals(currency)) {
-//      ret = Long.valueOf(price.longValue()).toString();
-//    }
-//    ret.replace('.', ',');
-//    for(int i=1; i<ret.length()-3; i++) {
-//      if(0 == i%3) {
-//        ret = ret.substring(0, i) + '.' + ret.substring(i+1);
-//      }
-//    }
-//    System.out.println("ret: " + ret);
-//
-//    return ret;
-//  }
 
 
   public String toString() {

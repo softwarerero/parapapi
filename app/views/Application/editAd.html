@@ -22,10 +22,12 @@
     <input type="hidden" id="object_id" name="object.id" value="${object.id}" />
     <input type="hidden" id="object_author" name="object.author.id" value="${object.author.id}" />
     <div style="width: 48%; float: left;">
-    #{form/renderRadio object: object, attr: "language", enum: models.Ad.Language/}
+        #{form/renderSelect4Enum name: "mainCategory", value: object.mainCategory, items: mainCategories /}
+        #{form/renderRadio object: object, attr: "language", enum: models.Ad.Language/}
     </div>
     <div style="width: 4%; float: left;">&nbsp;</div>
     <div style="width: 48%; float: left;">
+        #{form/renderSelect4Enum name: "subCategory", value: object.subCategory, items: subCategories /}
         #{form/renderRadio object: object, attr: "offer", enum: models.Ad.OfferType/}
     </div>
     #{form/renderText object: object, attr: "title", size: 100/}
@@ -37,7 +39,7 @@
             #{form/renderText object: object, attr: "phone"/}
             #{form/renderText object: object, attr: "mobilePhone"/}
             #{form/renderText object: object, attr: "email"/}
-            #{form/renderSelect4Enum name: "mainCategory", value: object.mainCategory, items: mainCategories /}
+            #{form/renderSelect4Enum name: "state", value: object.state, items: models.Ad.State.values() /}
             <div> <!-- 1st Picture -->
                 <label for="picture">${messages.get('picture')}</label>
                 <input type="file" id="picture" name="picture" value="${picture}"/>
@@ -58,7 +60,6 @@
             #{form/renderSelect4Enum name: "department", value: object.department, items: models.Ad.Department.values() /}
             #{form/renderText object: object, attr: "city"/}
             #{form/renderText object: object, attr: "zone"/}
-            #{form/renderSelect4Enum name: "subCategory", value: object.subCategory, items: subCategories /}
             <div> <!-- 4th Picture -->
                 <label for="picture3">${messages.get('picture3')}</label>
                 <input type="file" id="picture3" name="picture3"/>

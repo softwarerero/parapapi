@@ -18,20 +18,23 @@ import models.*;
 import play.data.validation.*;
 import play.modules.paginate.ValuePaginator;
 import play.templates.JavaExtensions;
+import src.py.suncom.parapapi.db.SearchBuilder;
 
 
 public class Application extends Controller {
 
   static public int pageSize = Integer.parseInt(Play.configuration.getProperty("pagesize"));
 
+
   public static void index() {
     String[] mainCategories = Category.main;
+    String language = Lang.get();
     Map categoryCountMap = UpdateCategoryCount.getCategoryCountMap();
-    render("Application/index.html", mainCategories, categoryCountMap);
+    render("Application/index.html", mainCategories, categoryCountMap, language);
   }
 
 
-	public static void search(String searchString) {
+	public static void search(String searchString, boolean german, boolean english, boolean spanish) {
     validation.required(searchString).message(Messages.get("views.main.noSearchCriteria"));
     validation.minSize(searchString, 3).message(Messages.get("views.main.moreSearchCriteria"));
 
@@ -41,9 +44,31 @@ public class Application extends Controller {
 			index();
 		}
 
-    String searchTerm = '%' + searchString.toLowerCase() + '%';
-    List<Ad> ads = Ad.find("lower(title) like ? or lower(content) like ? order by id desc",
-            searchTerm, searchTerm).fetch();
+    SearchBuilder sb = new SearchBuilder();
+    String text = params.get("object.text");
+    if(null != searchString && !"".equals(searchString)) {
+      sb.startExpression().like("title", searchString).or().like("content", searchString).endExpression();
+    }
+    if(german || english || spanish) {
+      sb.and().startExpression();
+      if(german) {
+        sb.eq("language", Ad.Language.valueOf("de").ordinal());
+      }
+      if(english) {
+        if(german) sb.or();
+        sb.eq("language", Ad.Language.valueOf("en").ordinal());
+      }
+      if(spanish) {
+        if(german || english) sb.or();
+        sb.eq("language", Ad.Language.valueOf("es").ordinal());
+      }
+      sb.endExpression();
+    }
+    sb.orderBy("id");
+
+    String search = sb.getSearchString();
+    Logger.info("search: " + search);
+    List<Ad> ads = sb.exec();
     long noFound = ads.size();
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
@@ -52,7 +77,6 @@ public class Application extends Controller {
 
 
   public static void advancedSearch(AdSearch object) {
-
     if(!params._contains("object.text")) {
       String[] mainCategories = Category.main;
       render(object, mainCategories);
@@ -109,13 +133,11 @@ public class Application extends Controller {
       sb.and().lte("price", priceTo);
     }
 
-//    MainCategory mainCategory = object.mainCategory;
     String mainCategory = object.mainCategory;
     if(null != mainCategory && !"".equals(mainCategory)) {
       sb.and().eq("mainCategory",  "'" + mainCategory + "'");
     }
 
-//    SubCategory subCategory = object.subCategory;
     String subCategory = object.subCategory;
     if(null != subCategory && !"".equals(subCategory)) {
       sb.and().eq("subCategory",  "'" + subCategory + "'");
@@ -159,87 +181,39 @@ public class Application extends Controller {
   }
 
 
-  static class SearchBuilder {
-    StringBuilder search = new StringBuilder();
+  public static void maincategoryList(String category, boolean isGerman) {
+    Logger.info("isGerman: " + isGerman);
+    renderMaincategoryList(category, false, false, false);
+	}
 
-    public SearchBuilder like(String attr, String s) {
-      search.append("lower(").append(attr).append(") like ");
-      search.append("'%" + (s.toLowerCase()) + "%'");
-      return this;
-    }
-
-    public SearchBuilder eq(String attr, Object s) {
-      if(s instanceof String) {
-        s = escape((String) s);
+  public static void renderMaincategoryList(String category, boolean german, boolean english, boolean spanish) {
+    SearchBuilder sb = new SearchBuilder();
+    sb.startExpression().like("mainCategory", category).endExpression();
+    if(german || english || spanish) {
+      sb.and().startExpression();
+      if(german) {
+        sb.eq("language", Ad.Language.valueOf("de").ordinal());
       }
-      search.append(attr).append("=").append(s);
-      return this;
-    }
-
-    public SearchBuilder gte(String attr, Object s) {
-      if(s instanceof String || s instanceof Date) {
-        s = "'" + escape(((String) s)) + "'";
+      if(english) {
+        if(german) sb.or();
+        sb.eq("language", Ad.Language.valueOf("en").ordinal());
       }
-      search.append(attr).append(">=").append(s);
-      return this;
-    }
-
-
-    public SearchBuilder lte(String attr, Object s) {
-      if(s instanceof String || s instanceof Date) {
-        s = "'" + escape(((String) s)) + "'";
+      if(spanish) {
+        if(german || english) sb.or();
+        sb.eq("language", Ad.Language.valueOf("es").ordinal());
       }
-      search.append(attr).append("<=").append(s);
-      return this;
+      sb.endExpression();
     }
+    sb.orderBy("id");
 
-    public SearchBuilder eqEnum(String attr, Enum[] values, Enum enumValue) {
-      int val = -1;
-      for(int i=0; i<values.length; i++) {
-        Enum e = values[i];
-        if(e.name().equals(enumValue.name())) {
-          val = i;
-        }
-      }
-      search.append(attr).append("=").append(val);
-      return this;
-    }
-
-    public SearchBuilder and() {
-      search.append(" and ");
-      return this;
-    }
-
-    public SearchBuilder or() {
-      search.append(" or ");
-      return this;
-    }
-
-    public SearchBuilder orderBy(String orderBy) {
-      search.append(" order by " + orderBy);
-      return this;
-    }
-
-    public String getSearchString() {
-      return search.toString();
-    }
-
-    public String escape(String s) {
-      //search.append("'%" + escape(s.toLowerCase()) + "%'");
-      return JavaExtensions.escape(s).toString();
-    }
-
-    public List<Ad> exec() {
-      return Ad.find(search.toString()).fetch();
-    }
-  }
-
-  
-  public static void maincategoryList(String category) {
-    List<Ad> ads = Ad.find("mainCategory = ? order by id desc", category).fetch();
+    String search = sb.getSearchString();
+    Logger.info("search: " + search);
+    List<Ad> ads = sb.exec();
+    long noFound = ads.size();
+//    List<Ad> ads = Ad.find("mainCategory = ? order by id desc", category).fetch();
+//    long noFound = ads.size();
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
-    long noFound = ads.size();
 		render("Application/adList.html", ads, paginator, noFound);
 	}
 

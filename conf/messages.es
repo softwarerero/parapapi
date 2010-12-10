@@ -1,13 +1,13 @@
 views.dateFormat=yyyy-MM-dd
 views.index.title.header=Clasificados gratis en Paraguay
-views.index.title.subheader=Para ver anuncios solo en tu idioma registrate gratis y haz un busqueda avanzada.
+views.index.title.subheader=Registrate gratis para buscar avanzado y publicar.
 
 views.main.tools.login=Ingresar
 views.main.tools.logout=Salir
 views.main.tools.register=Registrar
 views.main.tools.myAds=Mis Anuncios
 views.main.adsWritten=hasta ahora publicaste %s anuncios
-views.main.noSearchCriteria=Por favor entre sus crterias para buscar
+views.main.noSearchCriteria=Por favor entre sus criterias para buscar
 views.main.moreSearchCriteria=Por favor entre más criterias
 
 views.renderAd.registerGratis1=Registrarse gratis
@@ -50,6 +50,10 @@ validation.object=La evaluación fallo
 validation.notFound=No existe on objete para la ID %2$s
 validation.url=URL illícito
 validation.badPicture=%s no es un buen imagen
+
+german=Aleman
+english=Ingles
+spanish=Español
 
 Ad=Anuncio
 Ad.title=Titulo
@@ -115,6 +119,9 @@ city=Ciudad
 country=País
 asc=Ascendente
 desc=Descendente
+orderBy=Ordenación
+ascOrDesc=Ordenación asc-/descendente
+
 
 User.acceptConditions=
 User.nickname=Usario

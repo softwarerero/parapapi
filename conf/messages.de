@@ -33,6 +33,10 @@ since.months  = vor %s Monaten
 since.years   = vor %s Jahren
 since.format  = MMM d, yyyy
 
+german=Deutsch
+english=Englisch
+spanish=Spanisch
+
 # Validation messages
 validation.required=%s ist erforderlich
 validation.minSize=Der Mindestwert ist %2$d
@@ -118,7 +122,8 @@ city=Stadt
 country=Land
 asc=Aufsteigend
 desc=Absteigend
-
+orderBy=Sortierung
+ascOrDesc=Sortierung auf-/absteigend
 
 User.acceptConditions=
 User.nickname=Benutzername

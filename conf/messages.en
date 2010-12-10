@@ -34,6 +34,10 @@ validation.invalid=The value %s is invalid
 validation.isTrue=%s must be checked
 validation.badPicture=%s is not a good picture
 
+german=German
+english=English
+spanish=Spanish
+
 Ad=Ad
 Ad.title=Title
 Ad.language=Language
@@ -97,6 +101,8 @@ city=City
 country=Country
 asc=Ascending
 desc=Descending
+orderBy=Sort Order
+ascOrDesc=Order ascending/descending
 
 
 User.acceptConditions=

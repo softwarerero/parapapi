@@ -9,6 +9,7 @@ import play.i18n.Messages;
 import play.libs.Codec;
 import play.libs.Images;
 import play.mvc.Controller;
+import play.mvc.With;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -25,7 +26,7 @@ import java.util.GregorianCalendar;
  * Time: 21:55:40
  * Copyright.
  */
-public class Pictures extends Controller {
+public class Pictures extends Controller  {
   
   private static final String PUBLIC_IMAGES_FAVICON01_PNG = "public/images/favicon01.png";
   private static final String PUBLIC_IMAGES_CROSS_PNG = "public/images/cross.png";

@@ -4,7 +4,6 @@ import jobs.UpdateCategoryCount;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
-import play.db.jpa.JPA;
 import play.i18n.Lang;
 import play.i18n.Messages;
 import play.libs.Images;
@@ -17,7 +16,6 @@ import java.util.*;
 import models.*;
 import play.data.validation.*;
 import play.modules.paginate.ValuePaginator;
-import play.templates.JavaExtensions;
 import py.suncom.parapapi.db.SearchBuilder;
 
 

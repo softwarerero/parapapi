@@ -134,7 +134,7 @@ cd install/develop
 mv redmine-1.0.3/ /opt/
 cd /opt
 ln -s redmine-1.0.3/ redmine
-# Install Redmine db in /opt/redmine/config/database.yml
+# Install Redmine py.suncom.parapapi.db in /opt/redmine/config/database.yml
 MYSQL_DB=redmine
 MYSQL_USERNAME=redmine
 MYSQL_USERPWD=kM2S*js%vc09
@@ -147,7 +147,7 @@ mysql -u root -p
 	create database redmine;
 	CREATE USER 'redmine'@'localhost' IDENTIFIED BY 'kM2S*js%vc09';
 	GRANT ALL PRIVILEGES ON redmine.* TO 'redmine'@'localhost';
-/usr/bin/rake db:migrate RAILS_ENV="production"
+/usr/bin/rake py.suncom.parapapi.db:migrate RAILS_ENV="production"
 /usr/bin/rake redmine:load_default_data RAILS_ENV="production"
 mkdir /var/www/redmine
 /bin/chmod -R go-w /var/www/redmine
@@ -227,7 +227,7 @@ server.modules += ( "mod_simple_vhost" , "mod_rewrite" , "mod_fastcgi" )
 
 # Redmine Backup (has to be done manually)
 ## Database
-/usr/bin/mysqldump -u <username> -p<password> <redmine_database> | gzip > /path/to/backup/db/redmine_`date +%y_%m_%d`.gz
+/usr/bin/mysqldump -u <username> -p<password> <redmine_database> | gzip > /path/to/backup/py.suncom.parapapi.db/redmine_`date +%y_%m_%d`.gz
 
 ## Attachments
 rsync -a /path/to/redmine/files /path/to/backup/files

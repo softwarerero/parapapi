@@ -36,8 +36,6 @@ public class Application extends Controller {
 
 //  public static void renderCategories(boolean german, boolean english, boolean spanish) {
   public static void renderCategories() {
-    Logger.info("renderCategories " );
-//    StringBuilder html = new StringBuilder();
     String[] mainCategories = Category.main;
     String lang = Lang.get();
     Map categoryCountMap = UpdateCategoryCount.getCategoryCountMap("CategoryCountMap_" + lang);

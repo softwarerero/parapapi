@@ -6,7 +6,7 @@ cobertura.ser
 test-result
 tmp
 attachments
-db
+db/db*
 precompiled
 push.bat
 public/images/candidates

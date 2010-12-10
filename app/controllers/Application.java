@@ -18,7 +18,7 @@ import models.*;
 import play.data.validation.*;
 import play.modules.paginate.ValuePaginator;
 import play.templates.JavaExtensions;
-import src.py.suncom.parapapi.db.SearchBuilder;
+import py.suncom.parapapi.db.SearchBuilder;
 
 
 public class Application extends Controller {

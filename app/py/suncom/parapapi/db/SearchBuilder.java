@@ -89,8 +89,11 @@ public class SearchBuilder {
   }
 
   public String escape(String s) {
-    //search.append("'%" + escape(s.toLowerCase()) + "%'");
     return JavaExtensions.escape(s).toString();
+  }
+
+  public String quote(String s) {
+    return "'" + s + "'";
   }
 
   public List<Ad> exec() {

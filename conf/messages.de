@@ -1,5 +1,5 @@
 views.dateFormat=dd-MM-yyyy
-views.index.title.header=Kleinanzeigen in Paraguay
+views.index.title.header=Kostenlose Kleinanzeigen in Paraguay
 views.index.title.subheader=Hier inseriert Papi in Deutsch, Englisch oder Spanisch. Mami natürlich auch! Gratis!
 
 views.main.tools.login=Anmelden
@@ -18,6 +18,8 @@ message.delete.confirm.title=Was will Papi?
 message.delete.confirm.text=Wirklich löschen?
 
 no.javascript=Bitte aktivieren Sie Javascript.
+items_found=Gefunden
+nothing_found=Nichts gefunden
 
 AdvancedSearch=Erweiterte Suche
 CreateAd=Anzeige aufgeben
@@ -58,6 +60,7 @@ validation.notFound=Für die ID %2$s gibt es kein Objekt
 validation.url=URL ungültig
 validation.badPicture=Das Bild %s ist nicht gut
 
+Ads=Anzeigen
 Ad=Anzeige
 Ad.title=Titel
 Ad.language=Sprache
@@ -271,7 +274,6 @@ secure.logout=Sie sind abgemeldet
 
 
 # Next 7 lines were automatically added by i18n-extract on 2010-11-22 09:47:55
-items_found=Gefunden
 your_language=Ihre Sprache
 Version=Version
 

@@ -23,43 +23,67 @@ import java.util.Map;
 public class UpdateCategoryCount extends Job {
 
   public void doJob() throws Exception {
-    Map categoryCountMap = getCategoryCountMap();
     Statement st = getStatement();
-    updateMainCategories(categoryCountMap, st);
-    updateSubCategories(categoryCountMap, st);
-    Cache.set("categoryCountMap", categoryCountMap);
+    Map categoryCountMap = getCategoryCountMap("CategoryCountMap");
+    updateMainCategories(categoryCountMap, st, null);
+    updateSubCategories(categoryCountMap, st, null);
+    categoryCountMap = getCategoryCountMap("CategoryCountMap_de");
+    updateMainCategories(categoryCountMap, st, "language=" + Ad.Language.de.ordinal());
+    updateSubCategories(categoryCountMap, st, "language=" + Ad.Language.de.ordinal());
+    categoryCountMap = getCategoryCountMap("CategoryCountMap_en");
+    updateMainCategories(categoryCountMap, st, "language=" + Ad.Language.en.ordinal());
+    updateSubCategories(categoryCountMap, st, "language=" + Ad.Language.en.ordinal());
+    categoryCountMap = getCategoryCountMap("CategoryCountMap_es");
+    updateMainCategories(categoryCountMap, st, "language=" + Ad.Language.es.ordinal());
+    updateSubCategories(categoryCountMap, st, "language=" + Ad.Language.es.ordinal());
+
+    count(Ad.Language.de, st);
+    count(Ad.Language.en, st);
+    count(Ad.Language.es, st);
     st.close();
   }
 
-  private void updateSubCategories(Map categoryCountMap, Statement st) throws SQLException {
-    String queryStringSub = "select subCategory, count(id) from Ad group by subCategory";
-    ResultSet rsSubCats = st.executeQuery(queryStringSub);
-    while(rsSubCats.next()) {
-//      System.out.println(" Name:" + rsSubCats.getObject(1));
-//      System.out.println(" noOfAds:" + rsSubCats.getObject(2));
-      categoryCountMap.put(rsSubCats.getObject(1), rsSubCats.getObject(2));
-    }
-    rsSubCats.close();
+  private void count(Ad.Language lang, Statement st) throws SQLException {
+    String queryString = "select count(*) from Ad where language = " + lang.ordinal();
+    ResultSet rs = st.executeQuery(queryString);
+    rs.first();
+    Cache.set("count_" + lang.name(), rs.getObject(1));
+    rs.close();
   }
 
-  private void updateMainCategories(Map categoryCountMap, Statement st) throws SQLException {
-    String queryString = "select mainCategory, count(id) from Ad group by mainCategory";
+  public Long getCount(Ad.Language lang) {
+    return (Long) Cache.get("count_" + lang.name());
+  }
+
+  private void updateSubCategories(Map categoryCountMap, Statement st, String having) throws SQLException {
+    String categoryType = "subCategory";
+    execQuery(categoryCountMap, st, categoryType, having);
+  }
+
+  private void updateMainCategories(Map categoryCountMap, Statement st, String having) throws SQLException {
+    String categoryType = "mainCategory";
+    execQuery(categoryCountMap, st, categoryType, having);
+  }
+
+  private void execQuery(Map categoryCountMap, Statement st, String categoryType, String having) throws SQLException {
+    String queryString = "select " + categoryType + ", count(id) from Ad group by " + categoryType;
+    if(null != having) {
+      queryString += ", language having " + having;
+    }
     ResultSet rsCats = st.executeQuery(queryString);
     while(rsCats.next()) {
-//      System.out.println(" Na,e:" + rsCats.getObject(1));
-//      System.out.println(" noOfAds:" + rsCats.getObject(2));
       categoryCountMap.put(rsCats.getObject(1), rsCats.getObject(2));
     }
     rsCats.close();
   }
 
-  public static Map getCategoryCountMap() {
-    Map categoryCountMap = (Map) Cache.get("categoryCountMap");
-    Monitor cacheMonitor = MonitorFactory.getMonitor("CategoryCountMapHit", "count");
+  public static Map getCategoryCountMap(String name) {
+    Map categoryCountMap = (Map) Cache.get(name);
+    Monitor cacheMonitor = MonitorFactory.getMonitor(name + "Hit", "count");
     if(null == categoryCountMap) {
       categoryCountMap = Category.createCounterMap();
-      Cache.set("categoryCountMap", categoryCountMap);
-      cacheMonitor = MonitorFactory.getMonitor("CategoryCountMapMiss", "count");
+      Cache.set(name, categoryCountMap);
+      cacheMonitor = MonitorFactory.getMonitor(name + "Miss", "count");
     }
     cacheMonitor.add(1);
     return categoryCountMap;

@@ -1,0 +1,14 @@
+#{list items: _mainCategories, as: 'category'}
+    <div class="category">
+        <span class="category-title">
+            #{renderCategory category: category, categoryCountMap: _categoryCountMap/}
+        </span>
+        <span class="category-metadata">
+            <span class="category-children">
+                #{list items: models.Category.getSubCategory(category), as: 'child'}
+                    #{renderCategory category: child, isChild: true, categoryCountMap: _categoryCountMap /}
+                #{/list}
+            </span>
+        </span>
+    </div>
+#{/list}

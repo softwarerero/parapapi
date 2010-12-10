@@ -16,6 +16,8 @@ import java.util.*;
 import models.*;
 import play.data.validation.*;
 import play.modules.paginate.ValuePaginator;
+import play.templates.Template;
+import play.templates.TemplateLoader;
 import py.suncom.parapapi.db.SearchBuilder;
 
 
@@ -27,12 +29,29 @@ public class Application extends Controller {
   public static void index() {
     String[] mainCategories = Category.main;
     String language = Lang.get();
-    Map categoryCountMap = UpdateCategoryCount.getCategoryCountMap();
+    Map categoryCountMap = UpdateCategoryCount.getCategoryCountMap("CategoryCountMap");
     render("Application/index.html", mainCategories, categoryCountMap, language);
   }
 
 
-	public static void search(String searchString, boolean german, boolean english, boolean spanish) {
+//  public static void renderCategories(boolean german, boolean english, boolean spanish) {
+  public static void renderCategories() {
+    Logger.info("renderCategories " );
+//    StringBuilder html = new StringBuilder();
+    String[] mainCategories = Category.main;
+    String lang = Lang.get();
+    Map categoryCountMap = UpdateCategoryCount.getCategoryCountMap("CategoryCountMap_" + lang);
+    Map args = new HashMap();
+    args.put("_categoryCountMap", categoryCountMap);
+    args.put("_mainCategories", mainCategories);
+    Template t = TemplateLoader.load("tags/renderCategories.html");
+    String html = t.render(args); //Template mit args rendern
+    renderText(html.toString());
+  }
+
+
+//  public static void search(String searchString, boolean german, boolean english, boolean spanish) {
+  public static void search(String searchString) {
     validation.required(searchString).message(Messages.get("views.main.noSearchCriteria"));
     validation.minSize(searchString, 3).message(Messages.get("views.main.moreSearchCriteria"));
 
@@ -47,27 +66,12 @@ public class Application extends Controller {
     if(null != searchString && !"".equals(searchString)) {
       sb.startExpression().like("title", searchString).or().like("content", searchString).endExpression();
     }
-    if(german || english || spanish) {
-      sb.and().startExpression();
-      if(german) {
-        sb.eq("language", Ad.Language.valueOf("de").ordinal());
-      }
-      if(english) {
-        if(german) sb.or();
-        sb.eq("language", Ad.Language.valueOf("en").ordinal());
-      }
-      if(spanish) {
-        if(german || english) sb.or();
-        sb.eq("language", Ad.Language.valueOf("es").ordinal());
-      }
-      sb.endExpression();
-    }
+//    addLanguageExpression(german, english, spanish, sb);
+    addLanguageExpression(sb);
     sb.orderBy("id");
 
-    String search = sb.getSearchString();
-    Logger.info("search: " + search);
-    List<Ad> ads = sb.exec();
-    long noFound = ads.size();
+    List<Ad> ads = searchAds(sb);
+    long noFound = getNoFound(ads);
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
 		render("Application/adList.html", searchString, ads, paginator, noFound);
@@ -77,6 +81,7 @@ public class Application extends Controller {
   public static void advancedSearch(AdSearch object) {
     if(!params._contains("object.text")) {
       String[] mainCategories = Category.main;
+      object.language = Ad.Language.valueOf(Lang.get());
       render(object, mainCategories);
     }
 
@@ -179,48 +184,79 @@ public class Application extends Controller {
   }
 
 
-  public static void maincategoryList(String category, boolean isGerman) {
-    Logger.info("isGerman: " + isGerman);
-    renderMaincategoryList(category, false, false, false);
+//  public static void renderMaincategoryList(String category, boolean german, boolean english, boolean spanish) {
+  public static void renderMaincategoryList(String category, String language) {
+    String catType = "mainCategory";
+//    renderAds(category, german, english, spanish, catType);
+    renderAds(category, language, catType);
 	}
 
-  public static void renderMaincategoryList(String category, boolean german, boolean english, boolean spanish) {
+
+//  public static void renderSubcategoryList(String category, boolean german, boolean english, boolean spanish) {
+  public static void renderSubcategoryList(String category, String language) {
+    String catType = "subCategory";
+    renderAds(category, language, catType);
+	}
+
+//  private static void renderAds(String category, boolean german, boolean english, boolean spanish, String catType) {
+  private static void renderAds(String category, String language, String catType) {
+//    Logger.info("category: " + category + " german: " + german + " english: " + english + " spanish: " + spanish);
     SearchBuilder sb = new SearchBuilder();
-    sb.startExpression().like("mainCategory", category).endExpression();
-    if(german || english || spanish) {
-      sb.and().startExpression();
-      if(german) {
-        sb.eq("language", Ad.Language.valueOf("de").ordinal());
-      }
-      if(english) {
-        if(german) sb.or();
-        sb.eq("language", Ad.Language.valueOf("en").ordinal());
-      }
-      if(spanish) {
-        if(german || english) sb.or();
-        sb.eq("language", Ad.Language.valueOf("es").ordinal());
-      }
-      sb.endExpression();
-    }
+    sb.startExpression().eq(catType, sb.quote(category)).endExpression();
+//    addLanguageExpression(german, english, spanish, sb);
+    addLanguageExpression(sb);
     sb.orderBy("id");
 
+    List<Ad> ads = searchAds(sb);
+    long noFound = getNoFound(ads);
+
+    ValuePaginator paginator = new ValuePaginator(ads);
+    paginator.setPageSize(pageSize);
+    render("Application/adList.html", ads, paginator, noFound);
+  }
+
+
+  private static List<Ad> searchAds(SearchBuilder sb) {
     String search = sb.getSearchString();
     Logger.info("search: " + search);
     List<Ad> ads = sb.exec();
-    long noFound = ads.size();
-//    List<Ad> ads = Ad.find("mainCategory = ? order by id desc", category).fetch();
-//    long noFound = ads.size();
-    ValuePaginator paginator = new ValuePaginator(ads);
-    paginator.setPageSize(pageSize);
-		render("Application/adList.html", ads, paginator, noFound);
-	}
+    return ads;
+  }
 
-  public static void subcategoryList(String category) {
-    List<Ad> ads = Ad.find("subCategory = ? order by id desc)", category).fetch();
-    ValuePaginator paginator = new ValuePaginator(ads);
-    paginator.setPageSize(pageSize);
-    render("Application/adList.html", category, ads, paginator);
-	}
+
+  private static long getNoFound(List<Ad> ads) {
+    long noFound = ads.size();
+    validation.min(noFound, 1).message(Messages.get("nothing_found"));
+    if(validation.hasErrors()) {
+      params.flash(); // add http parameters to the flash scope
+      validation.keep(); // keep the errors for the next request
+      index();
+    }
+    return noFound;
+  }
+
+//  private static void addLanguageExpression(boolean german, boolean english, boolean spanish, SearchBuilder sb) {
+//    if(german || english || spanish) {
+//      sb.and().startExpression();
+//      if(german) {
+//        sb.eq("language", Ad.Language.valueOf("de").ordinal());
+//      }
+//      if(english) {
+//        if(german) sb.or();
+//        sb.eq("language", Ad.Language.valueOf("en").ordinal());
+//      }
+//      if(spanish) {
+//        if(german || english) sb.or();
+//        sb.eq("language", Ad.Language.valueOf("es").ordinal());
+//      }
+//      sb.endExpression();
+//    }
+//  }
+
+  private static void addLanguageExpression(SearchBuilder sb) {
+    sb.and().eq("language", Ad.Language.valueOf(Lang.get()).ordinal());
+  }
+
 
 //  //TODO example how to cache page fragments
 //  public static void index(Long id){

@@ -1,12 +1,10 @@
 #{extends 'main.html' /}
 #{set title: 'Que quieres hoy?' /}
 
-<div id="application-title">
-    <h1>&{'views.index.title.header'}</h1>
-    <h2>&{'views.index.title.subheader'}</h2>
+<div id="logo">
+    <h3><img src="/public/images/favicon01.png"/>&nbsp; &{'views.index.title.header'}</h3>
 </div>
 
-        
 #{ifErrors}
     <p class="error">
         ${errors[0]}
@@ -23,33 +21,64 @@
         <input style="float: right;" id="createAd" type="button" onclick="location.href='@{Application.createAd()}'" value="&{'CreateAd'}" />
     #{/if}
     #{else}
-    <p style="float: right;">
-        <span style="float: left; margin-top: 5px;"><input type="checkbox" id="german" name="german" "${language.equals("de") ? 'checked' : ''}""/>&nbsp;</span>
+    <!--
+    <p style="float: right">
+        <span style="float: left; margin-top: 5px;"><input type="checkbox" id="german" name="german" "${language.equals("de") ? 'checked' : ''}" onclick="langSelect();" /></span>
         <span style="float: left;"><label for="german">&{'german'}</label></span>
-        <span style="float: left; margin-top: 5px; margin-left: 10px;"><input type="checkbox" id="english" name="english" "${language.equals("en") ? 'checked' : ''}" />&nbsp;&nbsp;</span>
-        <span style="float: left;"><label for="english">&{'english'}</label></span>&nbsp;&nbsp;
-        <span style="float: left; margin-top: 5px; margin-left: 10px;"><input type="checkbox" id="spanish" name="spanish" "${language.equals("es") ? 'checked' : ''}" />&nbsp;&nbsp;</span>
-        <span style="float: left;"><label for="spanish">&{'spanish'}</label></span>&nbsp;&nbsp;
+        <span style="float: left; margin-top: 5px; margin-left: 10px;"><input type="checkbox" id="english" name="english" "${language.equals("en") ? 'checked' : ''} /></span>
+        <span style="float: left;"><label for="english">&{'english'}</label></span>
+        <span style="float: left; margin-top: 5px; margin-left: 10px;"><input type="checkbox" id="spanish" name="spanish" "${language.equals("es") ? 'checked' : ''} /></span>
+        <span style="float: left;"><label for="spanish">&{'spanish'}</label></span>
     </p>
+	-->
     #{/else}
 </form>
 
 
-<div class="categories">
-    #{list items: mainCategories, as: 'category'}
-        <div class="category">
-            <span class="category-title">
-                #{renderCategory category: category, categoryCountMap: categoryCountMap/}
-            </span>
-            <span class="category-metadata">
-                <span class="category-children">
-                    #{list items: models.Category.getSubCategory(category), as: 'child'}
-                        #{renderCategory category: child, isChild: true, categoryCountMap: categoryCountMap /}
-                    #{/list}
-                </span>
-            </span>
-        </div>
-    #{/list}
+<div id="categories" class="categories">
 </div>
 
 
+<script type="text/javascript">
+
+    var renderMaincategoryList = #{jsAction @Application.renderMaincategoryList(':cat, :german, :english, :spanish') /}
+
+    var mainCategoryChoosen = function(cat) {
+//        var isGerman = $("#german").attr("checked");
+//        var isEnglish = $("#english").attr("checked");
+//        var isSpanish = $("#spanish").attr("checked");
+        $.get('@{Application.renderMaincategoryList()}', {category: cat}, function(data) {
+            document.write(data);
+            document.close();
+        });
+    };
+
+    var subCategoryChoosen = function(cat) {
+//        var isGerman = $("#german").attr("checked");
+//        var isEnglish = $("#english").attr("checked");
+//        var isSpanish = $("#spanish").attr("checked");
+        $.get('@{Application.renderSubcategoryList()}', {category: cat}, function(data) {
+            document.write(data);
+            document.close();
+        });
+    };
+
+    var renderCategoryList = #{jsAction @Application.renderCategories() /}
+    function langSelect() {
+//        var isGerman = $("#german").attr("checked");
+//        var isEnglish = $("#english").attr("checked");
+//        var isSpanish = $("#spanish").attr("checked");
+        $("#categories").load(renderCategoryList());
+    };
+
+    function Refresh() { // reload the page
+        location.reload();
+    };
+    
+    $(document).ready(function() {
+        langSelect();
+        setTimeout("Refresh()", 60000); //60 sec.
+    });
+
+
+</script>

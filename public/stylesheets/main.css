@@ -16,7 +16,6 @@ body {
 #header {
     padding: 10px 0;
     position: relative;
-    margin-bottom: 30px;
 }
 
 #logo a {
@@ -31,13 +30,26 @@ body {
     text-shadow: 1px 2px 2px #000;
 }
 
-a {
-    color: #869AB1;
-}
-
 #logo span {
     color: #B8C569;
     font-size: 65%;
+}
+
+#logo h3 {
+    display: block;
+    margin: 0px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    color: #F0F3F7;
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: none;
+    text-shadow: 1px 2px 2px #000;
+    font-size: 18px;
+}
+
+a {
+    color: #869AB1;
 }
 
 #tools {
@@ -217,7 +229,8 @@ h3 span {
 /** Category **/
 
 .categories {
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
     margin-bottom: 30px;
     font-family: Verdana, Helvetica, Arial, Sans !important;
 }

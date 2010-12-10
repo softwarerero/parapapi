@@ -40,6 +40,7 @@
             &{'Version'}  ${play.configuration.getProperty("version")}  &nbsp;&nbsp;&nbsp; &{'your_language'}: ${play.i18n.Lang.get()}
             &nbsp;&nbsp;&nbsp;  <a href="@{Application.termsOfUse()}">&{'views.editUser.termsOfUse'}</a>
             &nbsp;&nbsp;&nbsp;  <a href="@{Application.dataPolicy()}">&{'views.editUser.dataPolicy'}</a>
+            <br/>de: ${play.cache.Cache.get("count_de")} &nbsp;&nbsp;&nbsp;en: ${play.cache.Cache.get("count_en")} &nbsp;&nbsp;&nbsp;es: ${play.cache.Cache.get("count_es")}
         </p>
     </body>
 </html>

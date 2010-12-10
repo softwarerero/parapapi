@@ -4,9 +4,8 @@
 
 
 <span class="category-child">
-    <a href="${_isChild ? actionBridge.Application.subcategoryList(_category) : actionBridge.Application.maincategoryList(_category)}">
+    <a href="${_isChild ? 'javascript: subCategoryChoosen(\'' + _category + '\');' : 'javascript: mainCategoryChoosen(\'' + _category + '\');'}">
         <span class="category-name">${play.i18n.Messages.get(_category.toString()).toLowerCase()}</span>
-        </a>
-        <span class="category-adCount"><sup>(${_categoryCountMap.get(_category)})</sup></span>
-
+    </a>
+    <span class="category-adCount"><sup>(${_categoryCountMap.get(_category)})</sup></span>
 </span>

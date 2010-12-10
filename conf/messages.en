@@ -15,13 +15,15 @@ views.renderAd.registerGratis2=to see the contact information.
 views.renderAd.where=Where
 
 views.dateFormat=dd-MM-yyyy
-views.index.title.header=Classified Ads in and around Asunción
+views.index.title.header=Classified Ads in and around Asunción, gratis
 views.index.title.subheader=Papi can publish ads here in German, English or Spanish. Mami off course, too!
 views.main.tools.login=Login
 views.main.tools.logout=Logout
 views.main.tools.register=Register
 
 no.javascript=Javascript must be enabled to properly navigate this site.
+items_found=Found
+nothing_found=Nothing found
 
 AdvancedSearch=Advanced Search
 CreateAd=Publish Ad
@@ -38,6 +40,7 @@ german=German
 english=English
 spanish=Spanish
 
+Ads=Ads
 Ad=Ad
 Ad.title=Title
 Ad.language=Language
@@ -123,7 +126,7 @@ User.street=Street
 User.zone=District
 User.mobilePhone=Mobile Phone
 User.phone=Phone
-views.editUser.acceptConditions=I have read the % and the % and I agree
+views.editUser.acceptConditions=I have read the %s and the %s and I agree
 views.editUser.termsOfUse=<a href="/termsOfUse">Terms of Use</a>
 views.editUser.dataPolicy=<a href="/dataPolicy">Data Policy</a>
 views.editUser.wantNotifications=I want to be informed be email about ParaPapi news
@@ -251,7 +254,6 @@ secure.logout=You are logged out
 
 
 # Next 7 lines were automatically added by i18n-extract on 2010-11-22 09:47:55
-items_found=Found
 your_language=Your language
 Version=Version
 

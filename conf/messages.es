@@ -1,5 +1,5 @@
 views.dateFormat=yyyy-MM-dd
-views.index.title.header=Clasificados gratis en Paraguay
+views.index.title.header=Publicar clasificados gratis en Paraguay
 views.index.title.subheader=Registrate gratis para buscar avanzado y publicar.
 
 views.main.tools.login=Ingresar
@@ -15,6 +15,8 @@ views.renderAd.registerGratis2=para ver los datos de contacto.
 views.renderAd.where=Donde
 
 no.javascript=Javascript es necesario
+items_found=Encontrado
+nothing_found=Nada encontrado
 
 AdvancedSearch=Busqueda avanzada
 CreateAd=Publicar Anuncio
@@ -55,6 +57,7 @@ german=Aleman
 english=Ingles
 spanish=Español
 
+Ads=Anuncios
 Ad=Anuncio
 Ad.title=Titulo
 Ad.language=Idioma
@@ -270,7 +273,6 @@ secure.logout=Usted salio del sistema
 
 
 # Next 7 lines were automatically added by i18n-extract on 2010-11-22 09:47:55
-items_found=Encontrado
 your_language=Su idioma
 Version=Version
 

@@ -1,6 +1,7 @@
 views.dateFormat=dd-MM-yyyy
 views.index.title.header=Kostenlose Kleinanzeigen in Paraguay
 views.index.title.subheader=Hier inseriert Papi in Deutsch, Englisch oder Spanisch. Mami natürlich auch! Gratis!
+main.title=Kleinanzeigen in Paraguay
 
 views.main.tools.login=Anmelden
 views.main.tools.logout=Abmelden

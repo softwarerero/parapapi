@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title: 'Que quieres hoy?' /}
+#{set title: messages.get('main.title') /}
 
 <div id="logo">
     <h3><img src="/public/images/favicon01.png"/>&nbsp; &{'views.index.title.header'}</h3>
@@ -77,7 +77,7 @@
     
     $(document).ready(function() {
         langSelect();
-        setTimeout("Refresh()", 60000); //60 sec.
+//        setTimeout("Refresh()", 60000); //60 sec.
     });
 
 

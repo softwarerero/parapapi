@@ -1,8 +1,10 @@
 #{set 'moreStyles'}
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/smoothness/jquery-ui-1.8.6.custom.css'}">
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/jquery.lightbox-0.5.css'}">
 #{/set}
 #{set 'moreScripts'}
     <script src="@{'/public/javascripts/jquery-ui-1.8.6.custom.min.js'}" type="text/javascript" ></script>
+    <script src="@{'/public/javascripts/jquery.lightbox-0.5.min.js'}" type="text/javascript" ></script>
 #{/set}
 
 *{ Display an Ad in one of these modes: 'full', 'home' or 'teaser' }*
@@ -66,19 +68,33 @@
         <div class="ad-content">
             ${_ad.content.nl2br()}
         </div>
-    <div class="pcitures">
-        %{
-            //for(Long id: _ad.pictures*.id) {
-            if(null != _ad.pictures) {
-                for(int i = 0; i < _ad.pictures.size(); i++) {
-        }%
-                <img src="@{Pictures.renderPicture(_ad.id, i)}" />
-        %{
+
+    <div id="gallery" class="pictures">
+        <ul>
+            %{
+                if(null != _ad.pictures) {
+                    for(int i = 0; i < _ad.pictures.size(); i++) {
+            }%
+                <li>
+                    <a href="@{Pictures.renderPicture(_ad.id, i)}">
+                        <img src="@{Pictures.renderThumbnail72(_ad.id, i)}" />
+                    </a>
+                </li>
+            %{
+                    }
                 }
-            }
-        }%
-</div>
+            }%
+        </ul>
+    </div>
+
 #{/if}
 </div>
 
 
+<script type="text/javascript">
+    $(function() {
+        $('#gallery a').lightBox();
+    });
+</script>
+
+    

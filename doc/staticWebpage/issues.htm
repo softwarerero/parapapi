@@ -1,0 +1,1163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>ParaPapi! - allByVersion - ParaPapi!</title>
+<meta name="description" content="Redmine">
+<meta name="keywords" content="issue,bug,tracker">
+<link rel="shortcut icon" href="http://redmine.parapapi.com/favicon.ico?1289952642">
+<link href="issues_files/application.css" media="all" rel="stylesheet" type="text/css">
+
+<script src="issues_files/prototype.js" type="text/javascript"></script>
+<script src="issues_files/effects.js" type="text/javascript"></script>
+<script src="issues_files/dragdrop.js" type="text/javascript"></script>
+<script src="issues_files/controls.js" type="text/javascript"></script>
+<script src="issues_files/application.js" type="text/javascript"></script>
+<link href="issues_files/jstoolbar.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1198879113);}
+    </style>
+<![endif]-->
+
+<!-- page specific tags -->
+
+<script src="issues_files/select_list_move.js" type="text/javascript"></script>
+
+    <link href="http://redmine.parapapi.com/issues.atom?key=44729c56d319ce93ecb06e0c23a745d1cd960ce5&amp;query_id=5" rel="alternate" title="Issues" type="application/atom+xml">
+    <link href="http://redmine.parapapi.com/issues/changes?format=atom&amp;key=44729c56d319ce93ecb06e0c23a745d1cd960ce5&amp;query_id=5" rel="alternate" title="Details of all changes" type="application/atom+xml">
+<script src="issues_files/context_menu.js" type="text/javascript"></script><link href="issues_files/context_menu.css" media="screen" rel="stylesheet" type="text/css"></head><body class="theme-Basecamp controller-issues action-index">
+<div id="wrapper">
+<div id="wrapper2">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="http://redmine.parapapi.com/my/account" class="my-account">My account</a></li>
+<li><a href="http://redmine.parapapi.com/logout" class="logout">Sign out</a></li></ul>    </div>
+    <div id="loggedas">Logged in as <a href="http://redmine.parapapi.com/users/1">admin</a></div>
+    <ul><li><a href="http://redmine.parapapi.com/" class="home">Home</a></li>
+<li><a href="http://redmine.parapapi.com/my/page" class="my-page">My page</a></li>
+<li><a href="http://redmine.parapapi.com/projects" class="projects">Projects</a></li>
+<li><a href="http://redmine.parapapi.com/admin" class="administration">Administration</a></li>
+<li><a href="http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="quick-search">
+        <form action="/search/index/parapapi" method="get">
+        <input name="issues" value="1" type="hidden">
+        <a href="http://redmine.parapapi.com/search/index/parapapi" accesskey="4">Search</a>:
+        <input accesskey="f" class="small" id="q" name="q" size="20" type="text">
+        </form>
+        <select onchange="if (this.value != '') { window.location = this.value; }"><option value="">Jump to a project...</option><option value="" disabled="disabled">---</option><option selected="selected" value="/projects/parapapi?jump=issues">ParaPapi!</option></select>
+    </div>
+    
+    <h1>ParaPapi!</h1>
+    
+    
+    <div id="main-menu">
+        <ul><li><a href="http://redmine.parapapi.com/projects/parapapi" class="overview">Overview</a></li>
+<li><a href="http://redmine.parapapi.com/projects/parapapi/activity" class="activity">Activity</a></li>
+<li><a href="http://redmine.parapapi.com/projects/parapapi/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="http://redmine.parapapi.com/projects/parapapi/issues" class="issues selected">Issues</a></li>
+<li><a href="http://redmine.parapapi.com/projects/parapapi/issues/new" accesskey="7" class="new-issue">New issue</a></li>
+<li><a href="http://redmine.parapapi.com/projects/parapapi/issues/gantt" class="gantt">Gantt</a></li>
+<li><a href="http://redmine.parapapi.com/projects/parapapi/issues/calendar" class="calendar">Calendar</a></li>
+<li><a href="http://redmine.parapapi.com/projects/parapapi/news" class="news">News</a></li>
+<li><a href="http://redmine.parapapi.com/projects/parapapi/documents" class="documents">Documents</a></li>
+<li><a href="http://redmine.parapapi.com/projects/parapapi/wiki" class="wiki">Wiki</a></li>
+<li><a href="http://redmine.parapapi.com/projects/parapapi/files" class="files">Files</a></li>
+<li><a href="http://redmine.parapapi.com/projects/parapapi/repository" class="repository">Repository</a></li>
+<li><a href="http://redmine.parapapi.com/projects/parapapi/settings" class="settings">Settings</a></li></ul>
+    </div>
+    
+</div>
+
+<div class="" id="main">
+    <div id="sidebar">        
+        
+    <h3>Issues</h3>
+<a href="http://redmine.parapapi.com/projects/parapapi/issues?set_filter=1">View all issues</a><br>
+
+<a href="http://redmine.parapapi.com/projects/parapapi/issues/report">Summary</a><br>
+
+
+
+
+	<a href="http://redmine.parapapi.com/projects/parapapi/issues/calendar">Calendar</a><br>
+
+
+	<a href="http://redmine.parapapi.com/projects/parapapi/issues/gantt">Gantt</a><br>
+
+
+
+<h3>Custom queries</h3>
+
+<a href="http://redmine.parapapi.com/projects/parapapi/issues?query_id=5">allByVersion</a><br>
+<a href="http://redmine.parapapi.com/projects/parapapi/issues?query_id=1">features 0.9</a><br>
+<a href="http://redmine.parapapi.com/projects/parapapi/issues?query_id=6">Release Notes 0.8 - 0.9</a><br>
+
+
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+	<a href="http://redmine.parapapi.com/queries/edit/5" class="icon icon-edit">Edit</a>
+	<a href="http://redmine.parapapi.com/queries/destroy/5" class="icon icon-del" onclick="if (confirm('Are you sure ?')) { var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var s = document.createElement('input'); s.setAttribute('type', 'hidden'); s.setAttribute('name', 'authenticity_token'); s.setAttribute('value', '/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U='); f.appendChild(s);f.submit(); };return false;">Delete</a>
+
+</div>
+
+<h2>allByVersion</h2>
+
+
+<form action="/queries/new" id="query_form" method="post"><div style="margin: 0pt; padding: 0pt; display: inline;"><input name="authenticity_token" value="/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U=" type="hidden"></div>
+    <input id="project_id" name="project_id" value="parapapi" type="hidden">
+		<div id="query_form_content" class="hide-when-print">
+    <fieldset id="filters" class="collapsible collapsed">
+    	<legend onclick="toggleFieldset(this);">Filters</legend>
+    	<div style="display: none;">
+    		<script type="text/javascript">
+//<![CDATA[
+function add_filter() {
+    select = $('add_filter_select');
+    field = select.value
+    Element.show('tr_' +  field);
+    check_box = $('cb_' + field);
+    check_box.checked = true;
+    toggle_filter(field);
+    select.selectedIndex = 0;
+    
+    for (i=0; i<select.options.length; i++) {
+        if (select.options[i].value == field) {
+            select.options[i].disabled = true;
+        }    
+    }
+}
+
+function toggle_filter(field) {
+    check_box = $('cb_' + field);
+    
+    if (check_box.checked) {
+        Element.show("operators_" + field);
+        toggle_operator(field);
+    } else {
+        Element.hide("operators_" + field);
+        Element.hide("div_values_" + field);
+  }
+}
+
+function toggle_operator(field) {
+  operator = $("operators_" + field);
+  switch (operator.value) {
+    case "!*":
+    case "*":
+    case "t":
+    case "w":
+    case "o":
+    case "c":
+      Element.hide("div_values_" + field);
+      break;
+    default:
+      Element.show("div_values_" + field);
+      break;
+  }
+}
+
+function toggle_multi_select(field) {
+    select = $('values_' + field);
+    if (select.multiple == true) {
+        select.multiple = false;
+    } else {
+        select.multiple = true;
+    }
+}
+
+function apply_filters_observer() {
+  $$("#query_form input[type=text]").invoke("observe", "keypress", function(e){
+    if(e.keyCode == Event.KEY_RETURN) {
+      new Ajax.Updater('content', '/issues?set_filter=1', {asynchronous:true, evalScripts:true, onComplete:function(request){e.stop(); apply_filters_observer()}, parameters:Form.serialize('query_form') + '&authenticity_token=' + encodeURIComponent('/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U=')})
+    }
+  });
+}
+Event.observe(document,"dom:loaded", apply_filters_observer);
+//]]>
+</script>
+
+<table width="100%">
+<tbody><tr>
+<td>
+<table>
+
+    
+    <tbody><tr id="tr_status_id" class="filter">
+    <td style="width: 200px;">
+        <input checked="checked" id="cb_status_id" name="fields[]" onclick="toggle_filter('status_id');" value="status_id" type="checkbox">
+        <label for="cb_status_id">Status</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_status_id" name="operators[status_id]" onchange="toggle_operator('status_id');" style="vertical-align: top;"><option value="o">open</option>
+<option value="=">is</option>
+<option value="!">is not</option>
+<option value="c">closed</option>
+<option value="*" selected="selected">all</option></select>
+    </td>
+    <td>    
+    <div id="div_values_status_id" style="display: none;">
+    
+        <select name="values[status_id][]" id="values_status_id" class="select-small" style="vertical-align: top;">
+        <option value="1" selected="selected">New</option>
+<option value="2">In Progress</option>
+<option value="3">Resolved</option>
+<option value="4">Feedback</option>
+<option value="5">Closed</option>
+<option value="6">Rejected</option>        
+        </select>
+        <a href="#" onclick="toggle_multi_select('status_id');; return false;" style="vertical-align: bottom;"><img alt="Bullet_toggle_plus" src="issues_files/bullet_toggle_plus.png"></a>
+    
+    </div>
+    <script type="text/javascript">toggle_filter('status_id');</script>
+    </td>
+    </tr>
+
+    
+    <tr style="display: none;" id="tr_tracker_id" class="filter">
+    <td style="width: 200px;">
+        <input id="cb_tracker_id" name="fields[]" onclick="toggle_filter('tracker_id');" value="tracker_id" type="checkbox">
+        <label for="cb_tracker_id">Tracker</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_tracker_id" name="operators[tracker_id]" onchange="toggle_operator('tracker_id');" style="vertical-align: top; display: none;"><option selected="selected" value="=">is</option>
+<option value="!">is not</option></select>
+    </td>
+    <td>    
+    <div id="div_values_tracker_id" style="display: none;">
+    
+        <select name="values[tracker_id][]" id="values_tracker_id" class="select-small" style="vertical-align: top;">
+        <option selected="selected" value="1">Bug</option>
+<option value="2">Feature</option>
+<option value="3">Support</option>        
+        </select>
+        <a href="#" onclick="toggle_multi_select('tracker_id');; return false;" style="vertical-align: bottom;"><img alt="Bullet_toggle_plus" src="issues_files/bullet_toggle_plus.png"></a>
+    
+    </div>
+    <script type="text/javascript">toggle_filter('tracker_id');</script>
+    </td>
+    </tr>
+
+    
+    <tr style="display: none;" id="tr_priority_id" class="filter">
+    <td style="width: 200px;">
+        <input id="cb_priority_id" name="fields[]" onclick="toggle_filter('priority_id');" value="priority_id" type="checkbox">
+        <label for="cb_priority_id">Priority</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_priority_id" name="operators[priority_id]" onchange="toggle_operator('priority_id');" style="vertical-align: top; display: none;"><option selected="selected" value="=">is</option>
+<option value="!">is not</option></select>
+    </td>
+    <td>    
+    <div id="div_values_priority_id" style="display: none;">
+    
+        <select name="values[priority_id][]" id="values_priority_id" class="select-small" style="vertical-align: top;">
+        <option selected="selected" value="3">Low</option>
+<option value="4">Normal</option>
+<option value="5">High</option>
+<option value="6">Urgent</option>
+<option value="7">Immediate</option>        
+        </select>
+        <a href="#" onclick="toggle_multi_select('priority_id');; return false;" style="vertical-align: bottom;"><img alt="Bullet_toggle_plus" src="issues_files/bullet_toggle_plus.png"></a>
+    
+    </div>
+    <script type="text/javascript">toggle_filter('priority_id');</script>
+    </td>
+    </tr>
+
+    
+    <tr style="display: none;" id="tr_assigned_to_id" class="filter">
+    <td style="width: 200px;">
+        <input id="cb_assigned_to_id" name="fields[]" onclick="toggle_filter('assigned_to_id');" value="assigned_to_id" type="checkbox">
+        <label for="cb_assigned_to_id">Assigned to</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_assigned_to_id" name="operators[assigned_to_id]" onchange="toggle_operator('assigned_to_id');" style="vertical-align: top; display: none;"><option selected="selected" value="=">is</option>
+<option value="!">is not</option>
+<option value="!*">none</option>
+<option value="*">all</option></select>
+    </td>
+    <td>    
+    <div id="div_values_assigned_to_id" style="display: none;">
+    
+        <select name="values[assigned_to_id][]" id="values_assigned_to_id" class="select-small" style="vertical-align: top;">
+        <option selected="selected" value="me">&lt;&lt; me &gt;&gt;</option>
+<option value="3">El Softwarerero</option>
+<option value="1">Redmine Admin</option>
+<option value="6">Rosa Flores</option>        
+        </select>
+        <a href="#" onclick="toggle_multi_select('assigned_to_id');; return false;" style="vertical-align: bottom;"><img alt="Bullet_toggle_plus" src="issues_files/bullet_toggle_plus.png"></a>
+    
+    </div>
+    <script type="text/javascript">toggle_filter('assigned_to_id');</script>
+    </td>
+    </tr>
+
+    
+    <tr style="display: none;" id="tr_author_id" class="filter">
+    <td style="width: 200px;">
+        <input id="cb_author_id" name="fields[]" onclick="toggle_filter('author_id');" value="author_id" type="checkbox">
+        <label for="cb_author_id">Author</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_author_id" name="operators[author_id]" onchange="toggle_operator('author_id');" style="vertical-align: top; display: none;"><option selected="selected" value="=">is</option>
+<option value="!">is not</option></select>
+    </td>
+    <td>    
+    <div id="div_values_author_id" style="display: none;">
+    
+        <select name="values[author_id][]" id="values_author_id" class="select-small" style="vertical-align: top;">
+        <option selected="selected" value="me">&lt;&lt; me &gt;&gt;</option>
+<option value="3">El Softwarerero</option>
+<option value="1">Redmine Admin</option>
+<option value="6">Rosa Flores</option>        
+        </select>
+        <a href="#" onclick="toggle_multi_select('author_id');; return false;" style="vertical-align: bottom;"><img alt="Bullet_toggle_plus" src="issues_files/bullet_toggle_plus.png"></a>
+    
+    </div>
+    <script type="text/javascript">toggle_filter('author_id');</script>
+    </td>
+    </tr>
+
+    
+    <tr style="display: none;" id="tr_fixed_version_id" class="filter">
+    <td style="width: 200px;">
+        <input id="cb_fixed_version_id" name="fields[]" onclick="toggle_filter('fixed_version_id');" value="fixed_version_id" type="checkbox">
+        <label for="cb_fixed_version_id">Target version</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_fixed_version_id" name="operators[fixed_version_id]" onchange="toggle_operator('fixed_version_id');" style="vertical-align: top; display: none;"><option selected="selected" value="=">is</option>
+<option value="!">is not</option>
+<option value="!*">none</option>
+<option value="*">all</option></select>
+    </td>
+    <td>    
+    <div id="div_values_fixed_version_id" style="display: none;">
+    
+        <select name="values[fixed_version_id][]" id="values_fixed_version_id" class="select-small" style="vertical-align: top;">
+        <option selected="selected" value="1">ParaPapi! - 0.8</option>
+<option value="2">ParaPapi! - 0.9</option>
+<option value="3">ParaPapi! - 1.0</option>
+<option value="4">ParaPapi! - 1.1</option>
+<option value="5">ParaPapi! - 2.0</option>        
+        </select>
+        <a href="#" onclick="toggle_multi_select('fixed_version_id');; return false;" style="vertical-align: bottom;"><img alt="Bullet_toggle_plus" src="issues_files/bullet_toggle_plus.png"></a>
+    
+    </div>
+    <script type="text/javascript">toggle_filter('fixed_version_id');</script>
+    </td>
+    </tr>
+
+    
+    <tr style="display: none;" id="tr_subject" class="filter">
+    <td style="width: 200px;">
+        <input id="cb_subject" name="fields[]" onclick="toggle_filter('subject');" value="subject" type="checkbox">
+        <label for="cb_subject">Subject</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_subject" name="operators[subject]" onchange="toggle_operator('subject');" style="vertical-align: top; display: none;"><option selected="selected" value="~">contains</option>
+<option value="!~">doesn't contain</option></select>
+    </td>
+    <td>    
+    <div id="div_values_subject" style="display: none;">
+    
+        <input class="select-small" id="values_subject" name="values[subject][]" size="30" type="text">
+    
+    </div>
+    <script type="text/javascript">toggle_filter('subject');</script>
+    </td>
+    </tr>
+
+    
+    <tr style="display: none;" id="tr_created_on" class="filter">
+    <td style="width: 200px;">
+        <input id="cb_created_on" name="fields[]" onclick="toggle_filter('created_on');" value="created_on" type="checkbox">
+        <label for="cb_created_on">Created</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_created_on" name="operators[created_on]" onchange="toggle_operator('created_on');" style="vertical-align: top; display: none;"><option selected="selected" value="&gt;t-">less than days ago</option>
+<option value="&lt;t-">more than days ago</option>
+<option value="t-">days ago</option>
+<option value="t">today</option>
+<option value="w">this week</option></select>
+    </td>
+    <td>    
+    <div id="div_values_created_on" style="display: none;">
+    
+        <input class="select-small" id="values_created_on" name="values[created_on][]" size="3" type="text"> days
+    
+    </div>
+    <script type="text/javascript">toggle_filter('created_on');</script>
+    </td>
+    </tr>
+
+    
+    <tr style="display: none;" id="tr_updated_on" class="filter">
+    <td style="width: 200px;">
+        <input id="cb_updated_on" name="fields[]" onclick="toggle_filter('updated_on');" value="updated_on" type="checkbox">
+        <label for="cb_updated_on">Updated</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_updated_on" name="operators[updated_on]" onchange="toggle_operator('updated_on');" style="vertical-align: top; display: none;"><option selected="selected" value="&gt;t-">less than days ago</option>
+<option value="&lt;t-">more than days ago</option>
+<option value="t-">days ago</option>
+<option value="t">today</option>
+<option value="w">this week</option></select>
+    </td>
+    <td>    
+    <div id="div_values_updated_on" style="display: none;">
+    
+        <input class="select-small" id="values_updated_on" name="values[updated_on][]" size="3" type="text"> days
+    
+    </div>
+    <script type="text/javascript">toggle_filter('updated_on');</script>
+    </td>
+    </tr>
+
+    
+    <tr style="display: none;" id="tr_start_date" class="filter">
+    <td style="width: 200px;">
+        <input id="cb_start_date" name="fields[]" onclick="toggle_filter('start_date');" value="start_date" type="checkbox">
+        <label for="cb_start_date">Start Date</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_start_date" name="operators[start_date]" onchange="toggle_operator('start_date');" style="vertical-align: top; display: none;"><option selected="selected" value="&lt;t+">in less than</option>
+<option value="&gt;t+">in more than</option>
+<option value="t+">in</option>
+<option value="t">today</option>
+<option value="w">this week</option>
+<option value="&gt;t-">less than days ago</option>
+<option value="&lt;t-">more than days ago</option>
+<option value="t-">days ago</option></select>
+    </td>
+    <td>    
+    <div id="div_values_start_date" style="display: none;">
+    
+        <input class="select-small" id="values_start_date" name="values[start_date][]" size="3" type="text"> days
+    
+    </div>
+    <script type="text/javascript">toggle_filter('start_date');</script>
+    </td>
+    </tr>
+
+    
+    <tr style="display: none;" id="tr_due_date" class="filter">
+    <td style="width: 200px;">
+        <input id="cb_due_date" name="fields[]" onclick="toggle_filter('due_date');" value="due_date" type="checkbox">
+        <label for="cb_due_date">Due date</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_due_date" name="operators[due_date]" onchange="toggle_operator('due_date');" style="vertical-align: top; display: none;"><option selected="selected" value="&lt;t+">in less than</option>
+<option value="&gt;t+">in more than</option>
+<option value="t+">in</option>
+<option value="t">today</option>
+<option value="w">this week</option>
+<option value="&gt;t-">less than days ago</option>
+<option value="&lt;t-">more than days ago</option>
+<option value="t-">days ago</option></select>
+    </td>
+    <td>    
+    <div id="div_values_due_date" style="display: none;">
+    
+        <input class="select-small" id="values_due_date" name="values[due_date][]" size="3" type="text"> days
+    
+    </div>
+    <script type="text/javascript">toggle_filter('due_date');</script>
+    </td>
+    </tr>
+
+    
+    <tr style="display: none;" id="tr_estimated_hours" class="filter">
+    <td style="width: 200px;">
+        <input id="cb_estimated_hours" name="fields[]" onclick="toggle_filter('estimated_hours');" value="estimated_hours" type="checkbox">
+        <label for="cb_estimated_hours">Estimated time</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_estimated_hours" name="operators[estimated_hours]" onchange="toggle_operator('estimated_hours');" style="vertical-align: top; display: none;"><option selected="selected" value="=">is</option>
+<option value="&gt;=">&gt;=</option>
+<option value="&lt;=">&lt;=</option>
+<option value="!*">none</option>
+<option value="*">all</option></select>
+    </td>
+    <td>    
+    <div id="div_values_estimated_hours" style="display: none;">
+    
+        <input class="select-small" id="values_estimated_hours" name="values[estimated_hours][]" size="3" type="text">
+    
+    </div>
+    <script type="text/javascript">toggle_filter('estimated_hours');</script>
+    </td>
+    </tr>
+
+    
+    <tr style="display: none;" id="tr_done_ratio" class="filter">
+    <td style="width: 200px;">
+        <input id="cb_done_ratio" name="fields[]" onclick="toggle_filter('done_ratio');" value="done_ratio" type="checkbox">
+        <label for="cb_done_ratio">% Done</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_done_ratio" name="operators[done_ratio]" onchange="toggle_operator('done_ratio');" style="vertical-align: top; display: none;"><option selected="selected" value="=">is</option>
+<option value="&gt;=">&gt;=</option>
+<option value="&lt;=">&lt;=</option>
+<option value="!*">none</option>
+<option value="*">all</option></select>
+    </td>
+    <td>    
+    <div id="div_values_done_ratio" style="display: none;">
+    
+        <input class="select-small" id="values_done_ratio" name="values[done_ratio][]" size="3" type="text">
+    
+    </div>
+    <script type="text/javascript">toggle_filter('done_ratio');</script>
+    </td>
+    </tr>
+
+    
+    <tr style="display: none;" id="tr_watcher_id" class="filter">
+    <td style="width: 200px;">
+        <input id="cb_watcher_id" name="fields[]" onclick="toggle_filter('watcher_id');" value="watcher_id" type="checkbox">
+        <label for="cb_watcher_id">Watcher</label>
+    </td>
+    <td style="width: 150px;">
+        <select class="select-small" id="operators_watcher_id" name="operators[watcher_id]" onchange="toggle_operator('watcher_id');" style="vertical-align: top; display: none;"><option selected="selected" value="=">is</option>
+<option value="!">is not</option></select>
+    </td>
+    <td>    
+    <div id="div_values_watcher_id" style="display: none;">
+    
+        <select name="values[watcher_id][]" id="values_watcher_id" class="select-small" style="vertical-align: top;">
+        <option selected="selected" value="me">&lt;&lt; me &gt;&gt;</option>        
+        </select>
+        <a href="#" onclick="toggle_multi_select('watcher_id');; return false;" style="vertical-align: bottom;"><img alt="Bullet_toggle_plus" src="issues_files/bullet_toggle_plus.png"></a>
+    
+    </div>
+    <script type="text/javascript">toggle_filter('watcher_id');</script>
+    </td>
+    </tr>
+
+</tbody></table>
+</td>
+<td class="add-filter">
+<label for="add_filter_select">Add filter</label>:
+<select class="select-small" id="add_filter_select" onchange="add_filter();"><option selected="selected" value=""></option>
+<option value="tracker_id">Tracker</option>
+<option value="priority_id">Priority</option>
+<option value="assigned_to_id">Assigned to</option>
+<option value="author_id">Author</option>
+<option value="fixed_version_id">Target version</option>
+<option value="subject">Subject</option>
+<option value="created_on">Created</option>
+<option value="updated_on">Updated</option>
+<option value="start_date">Start Date</option>
+<option value="due_date">Due date</option>
+<option value="estimated_hours">Estimated time</option>
+<option value="done_ratio">% Done</option>
+<option value="watcher_id">Watcher</option></select>
+</td>
+</tr>
+</tbody></table>
+
+    	</div>
+    </fieldset>
+    <fieldset class="collapsible collapsed">
+    	<legend onclick="toggleFieldset(this);">Options</legend>
+    	<div style="display: none;">
+    		<table>
+    			<tbody><tr>
+    				<td>Columns</td>
+						<td><table style="border-collapse: collapse; border: 0pt none;">
+	<tbody><tr>
+		<td style="padding-left: 0pt;"><select id="available_columns" multiple="multiple" name="available_columns[]" size="10" style="width: 150px;"><option value="project">Project</option>
+<option value="parent">Parent task</option>
+<option value="author">Author</option>
+<option value="assigned_to">Assigned to</option>
+<option value="updated_on">Updated</option>
+<option value="category">Category</option>
+<option value="fixed_version">Target version</option>
+<option value="start_date">Start Date</option>
+<option value="due_date">Due date</option>
+<option value="estimated_hours">Estimated time</option>
+<option value="created_on">Created</option></select>
+		</td>
+		<td align="center" valign="middle">
+			<input value="→" onclick="moveOptions(this.form.available_columns, this.form.selected_columns);" type="button"><br>
+			<input value="←" onclick="moveOptions(this.form.selected_columns, this.form.available_columns);" type="button">
+		</td>
+		<td><select id="selected_columns" multiple="multiple" name="query[column_names][]" size="10" style="width: 150px;"><option value="tracker">Tracker</option>
+<option value="status">Status</option>
+<option value="priority">Priority</option>
+<option value="subject">Subject</option>
+<option value="done_ratio">% Done</option></select>
+		</td>
+		<td align="center" valign="middle">
+			<input value="↑" onclick="moveOptionUp(this.form.selected_columns);" type="button"><br>
+			<input value="↓" onclick="moveOptionDown(this.form.selected_columns);" type="button">
+		</td>
+	</tr>
+</tbody></table>
+
+
+</td>
+					</tr>
+					<tr>
+						<td>Group results by</td>
+						<td><select id="group_by" name="group_by"><option value=""></option>
+<option value="project">Project</option>
+<option value="tracker">Tracker</option>
+<option value="status">Status</option>
+<option value="priority">Priority</option>
+<option value="assigned_to">Assigned to</option>
+<option value="category">Category</option>
+<option value="fixed_version" selected="selected">Target version</option>
+<option value="done_ratio">% Done</option></select></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</fieldset>
+		</div>
+    <p class="buttons hide-when-print">
+
+    <a class="icon icon-checked" href="#" onclick="selectAllOptions(&quot;selected_columns&quot;);; new Ajax.Updater('content', '/issues?set_filter=1', {asynchronous:true, evalScripts:true, onComplete:function(request){apply_filters_observer()}, parameters:Form.serialize('query_form') + '&amp;authenticity_token=' + encodeURIComponent('/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U=')}); return false;">Apply</a>
+                       
+    <a class="icon icon-reload" href="#" onclick="new Ajax.Updater('content', '/projects/parapapi/issues?set_filter=1', {asynchronous:true, evalScripts:true, method:'get', parameters:'authenticity_token=' + encodeURIComponent('/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U=')}); return false;">Clear</a>
+                       
+    
+    </p>
+</form>
+
+
+
+
+<form action="/issues" method="post"><div style="margin: 0pt; padding: 0pt; display: inline;"><input name="authenticity_token" value="/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U=" type="hidden"></div>	
+<input id="back_url" name="back_url" value="/projects/parapapi/issues?query_id=5" type="hidden">
+<div class="autoscroll">
+<table class="list issues">
+    <thead><tr>
+        <th class="checkbox hide-when-print"><a href="http://redmine.parapapi.com/issues" onclick='toggleIssuesSelection(Element.up(this, "form")); return false;' title="Check all/Uncheck all"><img alt="Toggle_check" src="issues_files/toggle_check.png"></a>
+        </th>
+		<th title="Sort by &quot;#&quot;"><a class="sort desc" href="http://redmine.parapapi.com/projects/parapapi/issues?query_id=5&amp;sort=id" onclick="new Ajax.Updater('content', '/projects/parapapi/issues?query_id=5&amp;sort=id', {asynchronous:true, evalScripts:true, method:'get', parameters:'authenticity_token=' + encodeURIComponent('/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U=')}); return false;">#</a></th>
+        
+          <th title="Sort by &quot;Tracker&quot;"><a href="http://redmine.parapapi.com/projects/parapapi/issues?query_id=5&amp;sort=tracker%2Cid%3Adesc" onclick="new Ajax.Updater('content', '/projects/parapapi/issues?query_id=5&amp;sort=tracker%2Cid%3Adesc', {asynchronous:true, evalScripts:true, method:'get', parameters:'authenticity_token=' + encodeURIComponent('/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U=')}); return false;">Tracker</a></th>
+        
+          <th title="Sort by &quot;Status&quot;"><a href="http://redmine.parapapi.com/projects/parapapi/issues?query_id=5&amp;sort=status%2Cid%3Adesc" onclick="new Ajax.Updater('content', '/projects/parapapi/issues?query_id=5&amp;sort=status%2Cid%3Adesc', {asynchronous:true, evalScripts:true, method:'get', parameters:'authenticity_token=' + encodeURIComponent('/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U=')}); return false;">Status</a></th>
+        
+          <th title="Sort by &quot;Priority&quot;"><a href="http://redmine.parapapi.com/projects/parapapi/issues?query_id=5&amp;sort=priority%3Adesc%2Cid%3Adesc" onclick="new Ajax.Updater('content', '/projects/parapapi/issues?query_id=5&amp;sort=priority%3Adesc%2Cid%3Adesc', {asynchronous:true, evalScripts:true, method:'get', parameters:'authenticity_token=' + encodeURIComponent('/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U=')}); return false;">Priority</a></th>
+        
+          <th title="Sort by &quot;Subject&quot;"><a href="http://redmine.parapapi.com/projects/parapapi/issues?query_id=5&amp;sort=subject%2Cid%3Adesc" onclick="new Ajax.Updater('content', '/projects/parapapi/issues?query_id=5&amp;sort=subject%2Cid%3Adesc', {asynchronous:true, evalScripts:true, method:'get', parameters:'authenticity_token=' + encodeURIComponent('/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U=')}); return false;">Subject</a></th>
+        
+          <th title="Sort by &quot;% Done&quot;"><a href="http://redmine.parapapi.com/projects/parapapi/issues?query_id=5&amp;sort=done_ratio%2Cid%3Adesc" onclick="new Ajax.Updater('content', '/projects/parapapi/issues?query_id=5&amp;sort=done_ratio%2Cid%3Adesc', {asynchronous:true, evalScripts:true, method:'get', parameters:'authenticity_token=' + encodeURIComponent('/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U=')}); return false;">% Done</a></th>
+        
+	</tr></thead>
+	
+	<tbody>
+	  
+    
+    <tr class="group open">
+    	<td colspan="7">
+    		<span class="expander" onclick="toggleRowGroup(this); return false;">&nbsp;</span>
+      	<a href="http://redmine.parapapi.com/versions/show/4">1.1</a> <span class="count">(6)</span>
+    	</td>
+		</tr>
+		
+  
+	<tr id="issue-47" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="47" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/47">47</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/47">Offer a flag to include search results from competitors</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-28" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="28" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/28">28</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/28">Monitoring</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-22" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="22" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/22">22</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/22">Abonate Stored Searches by Email</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-21" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="21" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/21">21</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/21">Store Searches (Parameter Sets)</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-20" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="20" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/20">20</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/20">Watchlist for Ads to read later</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-18" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="18" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/18">18</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/18">Denunciate bad Ads</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+    
+    <tr class="group open">
+    	<td colspan="7">
+    		<span class="expander" onclick="toggleRowGroup(this); return false;">&nbsp;</span>
+      	<a href="http://redmine.parapapi.com/versions/show/3">1.0</a> <span class="count">(17)</span>
+    	</td>
+		</tr>
+		
+  
+	<tr id="issue-69" class="hascontextmenu odd issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="69" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/69">69</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/69">Show only ads in user language</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-62" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="62" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/62">62</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/62">robots.txt</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-60" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="60" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/60">60</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/60">New field User.wantNotifications</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-59" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="59" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/59">59</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/59">Include migrate module</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-50" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="50" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/50">50</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/50">Loadtest with 115 users (15 inserting/editing and 100 searching)</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-46" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="46" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/46">46</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/46">Include fields new, used and age (also as search param)</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-42" class="hascontextmenu odd issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="42" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/42">42</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/42">Sort AdvancedSearch results</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-37" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="37" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/37">37</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/37">Count number of visits</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-27" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="27" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/27">27</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/27">Load JQuery and JQuery UI from Google</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-26" class="hascontextmenu even issue status-1 priority-1 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="26" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/26">26</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Low</td><td class="subject"><a href="http://redmine.parapapi.com/issues/26">Confirm Ad deletion</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-17" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="17" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/17">17</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/17">Run 2 Play Instances for 0 downtime</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-16" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="16" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/16">16</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/16">Compress JS, CSS and other Resources</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-15" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="15" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/15">15</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/15">Activate Caching</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-13" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="13" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/13">13</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/13">Automatic database upgrade </a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-12" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="12" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/12">12</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/12">Use dedicated SMTP server</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-10" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="10" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/10">10</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/10">100% Test Coverage</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 60%;"></td><td class="todo" style="width: 40%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-9" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="9" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/9">9</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/9">Continous Integration Server</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+    
+    <tr class="group open">
+    	<td colspan="7">
+    		<span class="expander" onclick="toggleRowGroup(this); return false;">&nbsp;</span>
+      	<a href="http://redmine.parapapi.com/versions/show/2">0.9</a> <span class="count">(15)</span>
+    	</td>
+		</tr>
+		
+  
+	<tr id="issue-63" class="hascontextmenu odd issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="63" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/63">63</a></td>
+        <td class="tracker">Bug</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/63">User validation should be on mobliePhone or landline</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-58" class="hascontextmenu even issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="58" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/58">58</a></td>
+        <td class="tracker">Bug</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/58">Upload a file type thats not a picture as image crashes</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-56" class="hascontextmenu odd issue status-5 priority-3 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="56" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/56">56</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">High</td><td class="subject"><a href="http://redmine.parapapi.com/issues/56">Exclude offending attributes from user registration</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-51" class="hascontextmenu even issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="51" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/51">51</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/51">Link to view ad when photo is clicked</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-49" class="hascontextmenu odd issue status-5 priority-3 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="49" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/49">49</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">High</td><td class="subject"><a href="http://redmine.parapapi.com/issues/49">Switch to H2 database</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-48" class="hascontextmenu even issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="48" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/48">48</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/48">Limit file upload size to 4MB (Lighthttp)</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-43" class="hascontextmenu odd issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="43" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/43">43</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/43">Load tests - 15 Users publishing half an hour</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-38" class="hascontextmenu even issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="38" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/38">38</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/38">Think over categories</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-33" class="hascontextmenu odd issue status-6 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="33" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/33">33</a></td>
+        <td class="tracker">Bug</td><td class="status">Rejected</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/33">Show only Ads in my language</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-25" class="hascontextmenu even issue status-2 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="25" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/25">25</a></td>
+        <td class="tracker">Feature</td><td class="status">In Progress</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/25">Backup of database and picture files</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 50%;"></td><td class="todo" style="width: 50%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-24" class="hascontextmenu odd issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="24" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/24">24</a></td>
+        <td class="tracker">Bug</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/24">Pictures paths are stored with absolute and config var is not taken for IDs</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-23" class="hascontextmenu even issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="23" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/23">23</a></td>
+        <td class="tracker">Bug</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/23">SubCategory looses its focus when editing again and is deleted on safe</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-19" class="hascontextmenu odd issue status-5 priority-4 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="19" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/19">19</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Urgent</td><td class="subject"><a href="http://redmine.parapapi.com/issues/19">Write Terms of Use and Data Agreement in German and Spanish</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-14" class="hascontextmenu even issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="14" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/14">14</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/14">Make user editable</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-11" class="hascontextmenu odd issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="11" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/11">11</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/11">Run Play with a dedicated user</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+    
+    <tr class="group open">
+    	<td colspan="7">
+    		<span class="expander" onclick="toggleRowGroup(this); return false;">&nbsp;</span>
+      	<a href="http://redmine.parapapi.com/versions/show/1">0.8</a> <span class="count">(8)</span>
+    	</td>
+		</tr>
+		
+  
+	<tr id="issue-8" class="hascontextmenu odd issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="8" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/8">8</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/8">Product Blog</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-7" class="hascontextmenu even issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="7" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/7">7</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/7">Display email safely (picture)</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-6" class="hascontextmenu odd issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="6" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/6">6</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/6">Search</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-5" class="hascontextmenu even issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="5" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/5">5</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/5">i18n</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-4" class="hascontextmenu odd issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="4" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/4">4</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/4">User registration</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-3" class="hascontextmenu even issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="3" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/3">3</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/3">Crop images (Thumbnail) and limit upload size</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-2" class="hascontextmenu odd issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="2" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/2">2</a></td>
+        <td class="tracker">Feature</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/2">Edit Ads</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-1" class="hascontextmenu even issue status-5 priority-2 closed created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="1" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/1">1</a></td>
+        <td class="tracker">Bug</td><td class="status">Closed</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/1">Fix CSS in logon and maincategorylist</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="closed" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+    
+    <tr class="group open">
+    	<td colspan="7">
+    		<span class="expander" onclick="toggleRowGroup(this); return false;">&nbsp;</span>
+      	<a href="http://redmine.parapapi.com/versions/show/5">2.0</a> <span class="count">(23)</span>
+    	</td>
+		</tr>
+		
+  
+	<tr id="issue-68" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="68" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/68">68</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/68">Facebook like button</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-67" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="67" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/67">67</a></td>
+        <td class="tracker">Bug</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/67">Publicar anuncios automaticamente en Facebook</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-66" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="66" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/66">66</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/66">Publicar anuncios automaticamente en Clasipar </a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-65" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="65" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/65">65</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/65">Facebook authentification</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-64" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="64" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/64">64</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/64">	Write Terms of Use and Data Agreement in English</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-61" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="61" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/61">61</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/61">Chat</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-57" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="57" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/57">57</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/57">Optimize lighthttp settings</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-55" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="55" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/55">55</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/55">Evaluate OWASP AntiSamy</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-54" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="54" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/54">54</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/54">Generate native debian packages</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-53" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="53" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/53">53</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/53">Show number of total Ads in index</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-52" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="52" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/52">52</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/52">Show breadcrump line</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-45" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="45" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/45">45</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/45">Generate Search Engine Friendly URLs</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-44" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="44" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/44">44</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/44">Add client side validation</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-41" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="41" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/41">41</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/41">Page Redesign</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-40" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="40" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/40">40</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/40">SEO Engineering</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-39" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="39" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/39">39</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/39">Make Ads findable by search engines</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-36" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="36" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/36">36</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/36">Ad title to pictures</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-35" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="35" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/35">35</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/35">Special Page for Automobiles - Edit and Search</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-34" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="34" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/34">34</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/34">Special Page for Real Estate - Edit and Search</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-32" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="32" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/32">32</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/32">Import Ads from Clasipar</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-31" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="31" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/31">31</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/31">Provide currency conversion and display prices in all 3 currencies</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-30" class="hascontextmenu even issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="30" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/30">30</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/30">Provide translation of Ads</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+	  
+	<tr id="issue-29" class="hascontextmenu odd issue status-1 priority-2 created-by-me">
+	  <td class="checkbox hide-when-print"><input name="ids[]" value="29" type="checkbox"></td>
+		<td class="id"><a href="http://redmine.parapapi.com/issues/29">29</a></td>
+        <td class="tracker">Feature</td><td class="status">New</td><td class="priority">Normal</td><td class="subject"><a href="http://redmine.parapapi.com/issues/29">Add buildnumber (hg tip) to Page Footer</a></td><td class="done_ratio"><table class="progress" style="width: 80px;"><tbody><tr><td class="todo" style="width: 100%;"></td></tr></tbody></table><p class="pourcent"></p></td>
+	</tr>
+		</tbody>
+</table>
+</div>
+</form>
+<p class="pagination"> (1-69/69) | Per page: <a href="http://redmine.parapapi.com/projects/parapapi/issues?per_page=25&amp;query_id=5" onclick="new Ajax.Updater('content', '/projects/parapapi/issues?per_page=25&amp;query_id=5', {asynchronous:true, evalScripts:true, method:'get', parameters:'authenticity_token=' + encodeURIComponent('/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U=')}); return false;">25</a>, <a href="http://redmine.parapapi.com/projects/parapapi/issues?per_page=50&amp;query_id=5" onclick="new Ajax.Updater('content', '/projects/parapapi/issues?per_page=50&amp;query_id=5', {asynchronous:true, evalScripts:true, method:'get', parameters:'authenticity_token=' + encodeURIComponent('/4zrK5wg8+sW3zUhzjVMzT4UTUXE+V++Ej8VdeVhU0U=')}); return false;">50</a>, 100</p>
+
+
+<p class="other-formats">Also available in:
+	<span><a href="http://redmine.parapapi.com/projects/parapapi/issues.atom?key=44729c56d319ce93ecb06e0c23a745d1cd960ce5&amp;query_id=5" class="atom" rel="nofollow">Atom</a></span>
+	<span><a href="http://redmine.parapapi.com/projects/parapapi/issues.csv" class="csv" rel="nofollow">CSV</a></span>
+	<span><a href="http://redmine.parapapi.com/projects/parapapi/issues.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script><div style="display: none;" id="context-menu"></div>
+
+        
+				<div style="clear: both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display: none;"><span>Loading...</span></div>
+	
+<div id="footer">
+  <div class="bgl"><div class="bgr">
+    Powered by <a href="http://www.redmine.org/">Redmine</a> © 2006-2010 Jean-Philippe Lang
+  </div></div>
+</div>
+</div>
+</div>
+
+</body></html>

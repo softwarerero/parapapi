@@ -77,17 +77,19 @@ public class Application extends Controller {
 
 
   public static void advancedSearch(AdSearch object) {
+    validation.clear();
+    System.out.println("object: " + object);
     if(!params._contains("object.text")) {
       String[] mainCategories = Category.main;
       object.language = Ad.Language.valueOf(Lang.get());
       render(object, mainCategories);
     }
 
-    if(validation.hasErrors()) {
-      params.flash(); // add http parameters to the flash scope
-      validation.keep(); // keep the errors for the next request
-      index();
-    }
+//    if(validation.hasErrors()) {
+//      params.flash(); // add http parameters to the flash scope
+//      validation.keep(); // keep the errors for the next request
+//      index();
+//    }
 
     SearchBuilder sb = new SearchBuilder();
 
@@ -95,7 +97,7 @@ public class Application extends Controller {
 
     String text = params.get("object.text");
     if(null != text && !"".equals(text)) {
-      sb.and().like("title", text).or().like("content", text);
+      sb.and().startExpression().like("title", text).or().like("content", text).endExpression();
     }
 
     Enum language = object.language;
@@ -106,6 +108,11 @@ public class Application extends Controller {
     Enum offer = object.offer;
     if(null != offer && !"".equals(offer)) {
       sb.and().eqEnum("offer", Ad.OfferType.values(), offer);
+    }
+
+    Enum priceType = object.priceType;
+    if(null != priceType && !"".equals(priceType)) {
+      sb.and().eqEnum("priceType", Ad.PriceType.values(), priceType);
     }
 
     Enum handOver = object.handOver;
@@ -176,6 +183,12 @@ public class Application extends Controller {
 
     List<Ad> ads = sb.exec();
     long noFound = ads.size();
+    validation.min(noFound, 1).message(Messages.get("nothing_found"));
+    if(validation.hasErrors()) {
+      params.flash(); // add http parameters to the flash scope
+      validation.keep(); // keep the errors for the next request
+      render("Application/advancedSearch.html", object);
+    }
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);
     render("Application/adList.html", ads, paginator, noFound);

@@ -31,9 +31,8 @@ public class Pictures extends Controller  {
   private static final String PUBLIC_IMAGES_FAVICON01_PNG = "public/images/favicon01.png";
   private static final String PUBLIC_IMAGES_CROSS_PNG = "public/images/cross.png";
   private static final String THUMB = "_thumb";
+  private static final String WIDTH72 = "72";
   private static final String WIDTH430 = "430";
-  private static final int W430 = 430;
-  private static final int H380 = 380;
   private static final String IMAGE_PATTERN = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
 
 
@@ -57,9 +56,14 @@ public class Pictures extends Controller  {
     Logger.info("fileName: " + fileName);
     picture.thumbnail50 = fileName;
 
+    fileName = todayPath + File.separator + UUID + WIDTH72 + ending;
+    newFile = new File(getPicturePath(), fileName);
+    resize(file, newFile, 100, 72);
+    picture.thumbnail72 = fileName;
+
     fileName = todayPath + File.separator + UUID + WIDTH430 + ending;
     newFile = new File(getPicturePath(), fileName);
-    resize(file, newFile, W430, H380);
+    resize(file, newFile, 520, 450);
     picture.image = fileName;
 
     Validation.ValidationResult res = validation.valid(picture);
@@ -129,6 +133,18 @@ public class Pictures extends Controller  {
   }
 
 
+  public static void renderThumbnail72(Long adId, int offset) throws IOException {
+    Ad ad = Ad.findById(adId);
+
+    if(ad.pictures.isEmpty()) {
+      renderBinary(new File(PUBLIC_IMAGES_FAVICON01_PNG));
+    }
+    Picture picture = ad.pictures.get(offset);
+    File file = new File(getPicturePath(), picture.thumbnail72);
+    renderBinary(file);
+  }
+
+
   public static void delete(Long adId, int pictureId) throws IOException {
     Ad ad = Ad.findById(adId);
     Picture picture = null;
@@ -143,7 +159,7 @@ public class Pictures extends Controller  {
     picture.ad.pictures.remove(picture);
     picture.ad.save();
     picture.delete();
-    renderText("deleted");
+    renderText("X ");
   }
 
 

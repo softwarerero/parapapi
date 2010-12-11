@@ -60,6 +60,8 @@
             #{form/renderSelect4Enum name: "department", value: object.department, items: models.Ad.Department.values() /}
             #{form/renderText object: object, attr: "city"/}
             #{form/renderText object: object, attr: "zone"/}
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
             <div> <!-- 4th Picture -->
                 <label for="picture3">${messages.get('picture3')}</label>
                 <input type="file" id="picture3" name="picture3"/>
@@ -82,12 +84,11 @@
 
 
 %{
-    //for(Long id: object.pictures*.id) {
     if(null != object.pictures) {
         for(int i = 0; i < object.pictures.size(); i++) {
 }%
-        <div id="picture_${i}">
-            <img src="@{Pictures.renderPicture(object.id, i)}" />
+        <div style="float: left;" id="picture_${i}">
+            <img src="@{Pictures.renderThumbnail72(object.id, i)}" />
             <input type="button" class="pictureDelete" id="pictureDelete_${object.pictures.get(i).id}" value="&{'delete'}" />
             <br/>
         </div>
@@ -95,6 +96,7 @@
         }
     }
 }%
+<div style="clear: both;">
 
 <script type="text/javascript">
 
@@ -110,7 +112,7 @@
 			source: cities
 		});
 	});
-    
+
     var pictureDelete = #{jsAction @Pictures.delete(':adId', ':id') /}
     $('.pictureDelete').click(function() {
         var divId = this.parentNode.id.substring("picture_".length);

@@ -22,13 +22,12 @@ public class Picture extends Model {
   public Ad ad;
 
   // 50px max for width and height
-//  public Blob thumbnail50;
   @Required public String thumbnail50;
 
-  //@Required public String thumbnail300;
+  // 72px max for width and height
+  @Required public String thumbnail72;
 
   // 500px max for width and height 
-//  @Required public Blob image;
   @Required public String image;
 
   public String description;

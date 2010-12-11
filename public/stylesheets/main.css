@@ -16,12 +16,12 @@ body {
 #header {
     padding: 10px 0;
     position: relative;
+    margin-bottom: 20px;
 }
 
 #logo a {
     display: block;
     height: 49px;
-    margin-left: 0px;
     color: #F0F3F7;
     font-size: 48px;
     font-weight: bold;
@@ -37,8 +37,7 @@ body {
 
 #logo h3 {
     display: block;
-    margin: 0px;
-    margin-top: 5px;
+    margin-top: -20px;
     margin-bottom: 15px;
     color: #F0F3F7;
     font-weight: bold;
@@ -121,6 +120,7 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 }
 
 .ad {
+    margin-top: 0px;
 }
 
 .ad .ad-thumb {
@@ -210,10 +210,12 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 
 .deleteAction {
 	margin: 5px;
-    background: url(/public/images/delete.png) center right no-repeat;
+    background: url(/public/images/cross.png) center right no-repeat;
     padding: 10px;
 }
 
+.pictureDelete {
+}
 
 h3 {
     color: #869AB1;
@@ -548,3 +550,19 @@ ul.pagination {
 .pagination a:hover {
 	text-decoration: none;
 }
+
+/* jQuery lightBox plugin - Gallery style */
+#gallery {
+    padding: 10px; text-align: center;
+}
+#gallery ul { list-style: none; }
+#gallery ul li { display: inline; }
+#gallery ul img {
+    border: none;
+}
+#gallery ul a:hover img {
+    border: 5px solid #fff;
+    border-width: 5px 5px 20px;
+    color: #fff;
+}
+#gallery ul a:hover { color: #fff; }

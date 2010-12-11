@@ -11,6 +11,9 @@ import play.mvc.*;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 
 import models.*;
@@ -18,6 +21,7 @@ import play.data.validation.*;
 import play.modules.paginate.ValuePaginator;
 import play.templates.Template;
 import play.templates.TemplateLoader;
+import py.suncom.parapapi.db.DbHelper;
 import py.suncom.parapapi.db.SearchBuilder;
 
 
@@ -430,8 +434,8 @@ public class Application extends Controller {
   }
 
 
-  public static void backup() {
-    
+  public static void backup() throws ClassNotFoundException, SQLException {
+    DbHelper.backup();
   }
 
 }

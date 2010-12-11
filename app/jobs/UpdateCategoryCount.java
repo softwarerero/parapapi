@@ -7,6 +7,8 @@ import play.Logger;
 import play.Play;
 import play.cache.Cache;
 import play.jobs.*;
+import py.suncom.parapapi.db.DbHelper;
+
 import java.sql.*;
 import java.util.Map;
 
@@ -23,7 +25,7 @@ import java.util.Map;
 public class UpdateCategoryCount extends Job {
 
   public void doJob() throws Exception {
-    Statement st = getStatement();
+    Statement st = DbHelper.getStatement();
     Map categoryCountMap = getCategoryCountMap("CategoryCountMap");
     updateMainCategories(categoryCountMap, st, null);
     updateSubCategories(categoryCountMap, st, null);
@@ -89,11 +91,5 @@ public class UpdateCategoryCount extends Job {
     return categoryCountMap;
   }
 
-  private Statement getStatement() throws ClassNotFoundException, SQLException {
-    Class.forName(Play.configuration.getProperty("db.driver"));
-    Connection conn = DriverManager.getConnection(Play.configuration.getProperty("db.url"), Play.configuration.getProperty("db.user"), Play.configuration.getProperty("db.pass"));
-    Statement st = conn.createStatement();
-    return st;
-  }
 
 }

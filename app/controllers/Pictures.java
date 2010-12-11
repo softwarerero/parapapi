@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 
 /**
@@ -193,4 +194,30 @@ public class Pictures extends Controller  {
     Logger.info("save picture: " + newFile);
     return newFile;
   }
+
+
+  public static void pictureUpdate() throws IOException {
+    List pictures = Picture.all().fetch();
+    for(Object object: pictures) {
+      Picture picture = (Picture) object;
+      if(null == picture.thumbnail72) {
+        String todayPath = getTodadysPicturePath();
+        File bigFile = new File(getPicturePath(), picture.image);
+        if(bigFile.exists()) {
+          Logger.info("found bigFile: " + bigFile);
+        } else {
+          Logger.info("not found bigFile: " + bigFile);
+          continue;
+        }
+        String UUID = Codec.UUID();
+        String ending = bigFile.getName().substring(bigFile.getName().lastIndexOf('.'));
+        String fileName72 = todayPath + File.separator + UUID + WIDTH72 + ending;
+        File file72 = new File(getPicturePath(), fileName72);
+        resize(bigFile, file72, 100, 72);
+        picture.thumbnail72 = fileName72;
+        picture.save();
+      }
+    }
+  }
+
 }

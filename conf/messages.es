@@ -2,6 +2,7 @@ views.dateFormat=yyyy-MM-dd
 views.index.title.header=Publicar clasificados gratis en Paraguay
 views.index.title.subheader=Registrate gratis para buscar avanzado y publicar.
 main.title=Clasificados en Paraguay
+main.all=todos
 advancedSearch.title=Buscar avanzado
 
 views.main.tools.login=Ingresar
@@ -51,7 +52,7 @@ validation.after=La fecha tiene que ser despúes de %2$s
 validation.past=La fecha tiene que estar en el pasado
 validation.before=La fecha tiene que ser antes de %2$s
 validation.object=La evaluación fallo
-validation.notFound=No existe on objete para la ID %2$s
+validation.notFound=No existe on objeto para la ID %2$s
 validation.url=URL illícito
 validation.badPicture=%s no es un buen imagen
 

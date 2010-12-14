@@ -9,12 +9,14 @@ import play.i18n.Messages;
 import play.libs.Codec;
 import play.libs.Images;
 import play.mvc.Controller;
-import play.mvc.With;
+import py.suncom.parapapi.db.DbHelper;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -32,9 +34,10 @@ public class Pictures extends Controller  {
   private static final String PUBLIC_IMAGES_FAVICON01_PNG = "public/images/favicon01.png";
   private static final String PUBLIC_IMAGES_CROSS_PNG = "public/images/cross.png";
   private static final String THUMB = "_thumb";
-  private static final String WIDTH72 = "72";
-  private static final String WIDTH430 = "430";
-  private static final String IMAGE_PATTERN = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
+  private static final String MIDDLE = "_middle";
+  private static final String BIG = "_big";
+  private static final String IMAGE_PATTERN = "[.|\\w|\\s]*(\\.)(jpg|png|gif|bmp)$";
+//  private static final String IMAGE_PATTERN = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
 
 
 
@@ -54,15 +57,14 @@ public class Pictures extends Controller  {
     String fileName = todayPath + File.separator + UUID + THUMB + ending;
     File newFile = new File(getPicturePath(), fileName);
     resize(file, newFile, 50, 38);
-    Logger.info("fileName: " + fileName);
     picture.thumbnail50 = fileName;
 
-    fileName = todayPath + File.separator + UUID + WIDTH72 + ending;
+    fileName = todayPath + File.separator + UUID + MIDDLE + ending;
     newFile = new File(getPicturePath(), fileName);
-    resize(file, newFile, 100, 72);
+    resize(file, newFile, 200, 150);
     picture.thumbnail72 = fileName;
 
-    fileName = todayPath + File.separator + UUID + WIDTH430 + ending;
+    fileName = todayPath + File.separator + UUID + BIG + ending;
     newFile = new File(getPicturePath(), fileName);
     resize(file, newFile, 520, 450);
     picture.image = fileName;
@@ -200,7 +202,7 @@ public class Pictures extends Controller  {
     List pictures = Picture.all().fetch();
     for(Object object: pictures) {
       Picture picture = (Picture) object;
-      if(null == picture.thumbnail72) {
+//      if(null == picture.thumbnail72) {
         String todayPath = getTodadysPicturePath();
         File bigFile = new File(getPicturePath(), picture.image);
         if(bigFile.exists()) {
@@ -211,13 +213,34 @@ public class Pictures extends Controller  {
         }
         String UUID = Codec.UUID();
         String ending = bigFile.getName().substring(bigFile.getName().lastIndexOf('.'));
-        String fileName72 = todayPath + File.separator + UUID + WIDTH72 + ending;
+        String fileName72 = todayPath + File.separator + UUID + MIDDLE + ending;
         File file72 = new File(getPicturePath(), fileName72);
-        resize(bigFile, file72, 100, 72);
+        resize(bigFile, file72, 200, 150);
         picture.thumbnail72 = fileName72;
         picture.save();
-      }
+//      }
     }
+  }
+
+
+  public static void backup() throws IOException {
+    String backupPathName = Play.configuration.getProperty("db.backup.path");
+    String datePart = DbHelper.getDatePart();
+    String backupFileName = backupPathName + "/" + datePart + ".parapapi.pictures.zip";
+    String picturePath = getPicturePath();
+
+    String cmd = "zip -r " + backupFileName + " /var/www/parapapi/pictures/";
+
+    Process p = Runtime.getRuntime().exec(cmd);
+    String line;
+
+    BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+    while ((line = input.readLine()) != null) {
+     System.out.println(line);
+    }
+    input.close();
+
+    Logger.info("picture backup to: " + backupFileName);
   }
 
 }

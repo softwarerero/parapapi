@@ -1,19 +1,25 @@
 package controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import jobs.UpdateCategoryCount;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
 import play.i18n.Lang;
 import play.i18n.Messages;
+import play.libs.Codec;
 import play.libs.Images;
+import play.libs.WS;
 import play.mvc.*;
 
 import java.io.*;
 import java.math.BigDecimal;
-import java.sql.ResultSet;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.*;
 
 import models.*;
@@ -298,6 +304,11 @@ public class Application extends Controller {
 
   public static void adDetail(Long id) {
     Ad ad = Ad.findById(id);
+    if(null == ad) {
+      validation.required(ad).message(Messages.get("validation.notFound", ad, id));
+      validation.keep(); // keep the errors for the next request
+      index();
+    }
 		render(ad);
 	}
 
@@ -305,12 +316,6 @@ public class Application extends Controller {
   public static void createAd() {
     Ad object = new Ad();
     populateTestAd(object);
-    render4editAd(object);
-	}
-
-
-  public static void editAd(Long id) {
-    Ad object = Ad.findById(id);
     render4editAd(object);
 	}
 
@@ -352,8 +357,10 @@ public class Application extends Controller {
 
     checkAdValidation(object);
 
-    Logger.debug("saving ad: " + object.id + ", " + object.title);
     object.save();
+//    object.computeUrl();
+//    object.save();
+//    Logger.info("saving ad: " + object.id + ", " + object.url);
 
     Pictures.savePicture(object, picture);
     Pictures.savePicture(object, picture1);
@@ -367,6 +374,7 @@ public class Application extends Controller {
     Users.dashboard();
   }
 
+  
   private static void checkAdValidation(Ad object) {
     if(validation.hasErrors()) {
       Logger.debug("validation error: " + validation.errorsMap());
@@ -384,6 +392,12 @@ public class Application extends Controller {
     Users.dashboard();
   }
 
+
+  public static void editAd(Long id) {
+    Ad object = Ad.findById(id);
+    render4editAd(object);
+//    https://www.googleapis.com/language/translate/v2?key=AIzaSyAO6JxIxKsHa8wBqXt924fPDNaAw8q-m28&q=flowers&source=en&target=fr&callback=handleResponse&prettyprint=true
+	}
 
 
   public static void captcha(String id) {

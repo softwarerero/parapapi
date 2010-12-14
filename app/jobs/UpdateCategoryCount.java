@@ -42,6 +42,7 @@ public class UpdateCategoryCount extends Job {
     count(Ad.Language.de, st);
     count(Ad.Language.en, st);
     count(Ad.Language.es, st);
+    countAll();
     st.close();
   }
 
@@ -51,6 +52,19 @@ public class UpdateCategoryCount extends Job {
     rs.first();
     Cache.set("count_" + lang.name(), rs.getObject(1));
     rs.close();
+  }
+
+
+  private void countAll() {
+    Long countDe = (Long) Cache.get("count_" + Ad.Language.de.name());
+    Long countEn = (Long) Cache.get("count_" + Ad.Language.en.name());
+    Long coundEs = (Long) Cache.get("count_" + Ad.Language.es.name());
+    Cache.set("count_all", countDe + countEn + coundEs);
+  }
+
+  
+  public Long getCount() {
+    return (Long) Cache.get("count_all");
   }
 
   public Long getCount(Ad.Language lang) {

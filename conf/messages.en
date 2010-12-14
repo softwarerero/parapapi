@@ -1,6 +1,7 @@
 views.index.title.header=Publish Ads in Paraguay
 views.index.title.subheader=Use this site freely to publish everything you want to offer or find in or around Asunción, Papi.
 main.title=Clasified Ads in Paraguay
+main.all=all
 advancedSearch.title=Advanced Search
 
 views.dateFormat=dd.MM.yyyy

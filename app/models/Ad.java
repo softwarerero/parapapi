@@ -51,15 +51,33 @@ public class Ad extends Model {
   public boolean allowBids;
   @Required public String mainCategory;
   public String subCategory;
-  State state = State.used;
+  public State state = State.used;
 //  int year = 0;
   @OneToMany(mappedBy="ad", cascade= CascadeType.ALL) public List<Picture> pictures;
+//  public String url;
 
 
   public String getHtmlSecuredEmail() {
     if(null == email) return null;
     return email.replace("@", "<code>@</code>");
   }
+
+
+//  public String computeUrl() {
+//    StringBuilder sb = new StringBuilder();
+//    if(null != title) {
+//      for(int i=0; i<title.length(); i++) {
+//        Character c = title.charAt(i);
+//        sb.append(Character.isLetterOrDigit(c) ? c : '_');
+//      }
+//    }
+//    sb.append('_');
+//    if(null != id) {
+//     sb.append(id);
+//    }
+//    url = sb.toString();
+//    return url;
+//  }
 
 
   public String toString() {

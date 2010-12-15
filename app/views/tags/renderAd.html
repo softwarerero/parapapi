@@ -26,7 +26,7 @@
     </div>
 
 
-    #{if controllers.Security.isConnected() && _ad.author.nickname.equals(controllers.Security.nickname()) }
+    #{if controllers.Security.isConnected() && (_ad.author.nickname.equals(controllers.Security.nickname())) }
     <div class="actions">
         <a href="@{Application.editAd(_ad.id)}" class="editAction" title="&{'edit'}"></a>
         <a href="@{Application.deleteAd(_ad.id)}" class="deleteAction" title="&{'delete'}"></a>

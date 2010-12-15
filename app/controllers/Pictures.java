@@ -36,9 +36,7 @@ public class Pictures extends Controller  {
   private static final String THUMB = "_thumb";
   private static final String MIDDLE = "_middle";
   private static final String BIG = "_big";
-  private static final String IMAGE_PATTERN = "[.|\\w|\\s]*(\\.)(jpg|png|gif|bmp)$";
-//  private static final String IMAGE_PATTERN = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
-
+  private static final String IMAGE_PATTERN = "[.|\\w||\\d|\\s]*(\\.)(jpg|png|gif|bmp)$";
 
 
   static void savePicture(Ad ad, File file) throws IOException {

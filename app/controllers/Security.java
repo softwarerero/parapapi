@@ -35,6 +35,14 @@ public class Security extends Secure.Security {
     return false;
   }
 
+  static boolean isAdmin() {
+    User user = User.find("byEmail", connected()).<User>first();
+    if(null != user) {
+      return user.isAdmin;
+    }
+    return false;
+  }
+
   static String nickname() {
       return session.get("nickname");
   }

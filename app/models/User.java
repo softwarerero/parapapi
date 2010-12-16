@@ -29,7 +29,7 @@ public class User extends Model {
   @Required public Ad.Currency currency = Ad.Currency.PYG;
   public String documentNo;
   public DocumentType documentType;
-  @Required public Ad.Country country = Ad.Country.py;
+  public Ad.Country country = Ad.Country.py;
   public Ad.Department department;
   @Required public String city = "Asunción";
   public String postCode;

@@ -91,6 +91,7 @@ public class Register extends CRUD {
     email.setFrom("noreply@suncom.com.py");
     email.addTo(user.email);
     email.addTo("register@suncom.com.py");
+    email.setCharset("UTF-8");
     String path = request.path;
     email.setSubject("Activar su cuenta con Para Papi");
     String msg = "Siguese este link para empiezar: ";
@@ -114,10 +115,7 @@ public class Register extends CRUD {
 
 
   public static void confirmRegistration(String email, String confirmationToken) throws Throwable {
-    System.out.println("email: " + email);
-    System.out.println("confirmationToken: " + confirmationToken);
     User user = User.find("byEmail", email).<User>first();
-    //render("Users/confirmRegistration.html");
     if(null == user) {
       Logger.fatal("user confirmation failed: " + email);
       Application.index();

@@ -29,7 +29,9 @@
     </div>
     <div style="width: 4%; float: left;">&nbsp;</div>
     <div style="width: 48%; float: left;">
+    <!--
     #{form/renderSelect4Enum name: "country", value: object.country, items: models.Ad.Country.values(), optional: false/}
+    -->
     #{form/renderSelect4Enum name: "department", value: object.department, items: models.Ad.Department.values() /}
     #{form/renderText object: object, attr: "city"/}
     #{form/renderText object: object, attr: "postCode"/}

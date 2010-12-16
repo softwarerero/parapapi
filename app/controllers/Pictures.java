@@ -36,15 +36,15 @@ public class Pictures extends Controller  {
   private static final String THUMB = "_thumb";
   private static final String MIDDLE = "_middle";
   private static final String BIG = "_big";
-  private static final String IMAGE_PATTERN = "[-|.|\\w|\\d|\\s]*(\\.)(jpg|png|gif|bmp)$";
-//  private static final String IMAGE_PATTERN = "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
-
+//  private static final String IMAGE_PATTERN = "[-|.|\\w|\\d|\\s]*(\\.)(jpg|png|gif|bmp)$";
+  private static final String IMAGE_PATTERN = "(?i)(.)*(\\.)(jpg|png|gif|bmp)$";
 
 
   static void savePicture(Ad ad, File file) throws IOException {
     if(null == file) return;
     validation.match(file.getName(), IMAGE_PATTERN).message(Messages.get("validation.badPicture", file.getName()));
     if(validation.hasErrors()) {
+      Logger.info("picuture validation failed");
       return;
     }
 
@@ -69,12 +69,12 @@ public class Pictures extends Controller  {
     resize(file, newFile, 520, 450);
     picture.image = fileName;
 
-    Validation.ValidationResult res = validation.valid(picture);
-    if(res.ok) {
-      picture.save();
-    } else {
-      Logger.warn("could not save picture (2nd pass): " + res.error);
-    }
+//    Validation.ValidationResult res = validation.valid(picture);
+//    if(res.ok) {
+//      picture.save();
+//    } else {
+//      Logger.warn("could not save picture (2nd pass): " + res.error);
+//    }
   }
 
 

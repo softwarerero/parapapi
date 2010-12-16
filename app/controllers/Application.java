@@ -1,24 +1,16 @@
 package controllers;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import jobs.UpdateCategoryCount;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
 import play.i18n.Lang;
 import play.i18n.Messages;
-import play.libs.Codec;
 import play.libs.Images;
-import play.libs.WS;
 import play.mvc.*;
 
 import java.io.*;
 import java.math.BigDecimal;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -76,7 +68,7 @@ public class Application extends Controller {
     }
 //    addLanguageExpression(german, english, spanish, sb);
     addLanguageExpression(sb);
-    sb.orderBy("id");
+    sb.orderBy("id desc");
 
     List<Ad> ads = searchAds(sb);
     long noFound = getNoFound(ads);
@@ -226,7 +218,7 @@ public class Application extends Controller {
     sb.startExpression().eq(catType, sb.quote(category)).endExpression();
 //    addLanguageExpression(german, english, spanish, sb);
     addLanguageExpression(sb);
-    sb.orderBy("id");
+    sb.orderBy("id desc");
 
     List<Ad> ads = searchAds(sb);
     long noFound = getNoFound(ads);
@@ -315,7 +307,7 @@ public class Application extends Controller {
 
   public static void createAd() {
     Ad object = new Ad();
-    populateTestAd(object);
+    populateAd(object);
     render4editAd(object);
 	}
 
@@ -328,14 +320,11 @@ public class Application extends Controller {
 	}
 
 
-  private static Ad populateTestAd(Ad object) {
+  private static Ad populateAd(Ad object) {
     User user = User.find("byEmail", Security.connected()).first();
-//    long no = Ad.count() + 1;
+    object.language = Ad.Language.valueOf(Lang.get());
     object.author = user;
-//    object.price = new BigDecimal("99.77");
     object.postedAt = new Date();
-//    object.title = "Title " + no;
-//    object.content = "Content " + no;
     object.email = user.email;
     object.offer = Ad.OfferType.offer;
     object.handOver = Ad.HandOver.sell;
@@ -357,7 +346,6 @@ public class Application extends Controller {
 
     checkAdValidation(object);
 
-    object.save();
 //    object.computeUrl();
 //    object.save();
 //    Logger.info("saving ad: " + object.id + ", " + object.url);
@@ -370,6 +358,7 @@ public class Application extends Controller {
     Pictures.savePicture(object, picture5);
 
     checkAdValidation(object);
+    object.save();
 
     Users.dashboard();
   }
@@ -380,7 +369,7 @@ public class Application extends Controller {
       Logger.debug("validation error: " + validation.errorsMap());
       String[] mainCategories = Category.main;
       String[] subCategories = null != object.mainCategory ? Category.getSubCategory(object.mainCategory) : null;
-      render("Application/editAd.html", Ad.class, object, mainCategories);
+      render("Application/editAd.html", Ad.class, object, mainCategories, subCategories);
     }
   }
 

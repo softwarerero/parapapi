@@ -69,12 +69,12 @@ public class Pictures extends Controller  {
     resize(file, newFile, 520, 450);
     picture.image = fileName;
 
-//    Validation.ValidationResult res = validation.valid(picture);
-//    if(res.ok) {
-//      picture.save();
-//    } else {
-//      Logger.warn("could not save picture (2nd pass): " + res.error);
-//    }
+    Validation.ValidationResult res = validation.valid(picture);
+    if(res.ok) {
+      picture.save();
+    } else {
+      Logger.warn("could not save picture (2nd pass): " + res.error);
+    }
   }
 
 

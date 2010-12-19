@@ -345,6 +345,7 @@ public class Application extends Controller {
                             File picture4, File picture5) throws IOException {
 
     checkAdValidation(object);
+    object.save();
 
 //    object.computeUrl();
 //    object.save();

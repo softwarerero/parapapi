@@ -40,11 +40,10 @@ public class Pictures extends Controller  {
   private static final String IMAGE_PATTERN = "(?i)(.)*(\\.)(jpg|png|gif|bmp)$";
 
 
-  static void savePicture(Ad ad, File file) throws IOException {
+  static void savePicture(Ad ad, File file) throws Exception {
     if(null == file) return;
     validation.match(file.getName(), IMAGE_PATTERN).message(Messages.get("validation.badPicture", file.getName()));
     if(validation.hasErrors()) {
-      Logger.info("picuture validation failed");
       return;
     }
 
@@ -73,7 +72,8 @@ public class Pictures extends Controller  {
     if(res.ok) {
       picture.save();
     } else {
-      Logger.warn("could not save picture (2nd pass): " + res.error);
+      Logger.warn("could not save picture: " + res.error);
+//      throw new Exception("could not save picture");
     }
   }
 
@@ -166,11 +166,13 @@ public class Pictures extends Controller  {
   }
 
 
-  private static File resize(File originalFile, File newFile, int maxSizeW, int maxSizeH) throws IOException {
+  private static File resize(File originalFile, File newFile, int maxSizeW, int maxSizeH) throws Exception {
     BufferedImage image = ImageIO.read(originalFile);
+    if(null == image) {
+      validation.required(image).message(Messages.get("validation.badPicture", originalFile));
+    }
     int w = image.getWidth();
     int h = image.getHeight();
-    int max = Math.max(w, h);
     if(w > maxSizeW || h > maxSizeH) {
       int w2 = 0, h2 = 0;
       int q = 0;
@@ -198,27 +200,25 @@ public class Pictures extends Controller  {
   }
 
 
-  public static void pictureUpdate() throws IOException {
+  public static void pictureUpdate() throws Exception {
     List pictures = Picture.all().fetch();
     for(Object object: pictures) {
       Picture picture = (Picture) object;
-//      if(null == picture.thumbnail72) {
-        String todayPath = getTodadysPicturePath();
-        File bigFile = new File(getPicturePath(), picture.image);
-        if(bigFile.exists()) {
-          Logger.info("found bigFile: " + bigFile);
-        } else {
-          Logger.info("not found bigFile: " + bigFile);
-          continue;
-        }
-        String UUID = Codec.UUID();
-        String ending = bigFile.getName().substring(bigFile.getName().lastIndexOf('.'));
-        String fileName72 = todayPath + File.separator + UUID + MIDDLE + ending;
-        File file72 = new File(getPicturePath(), fileName72);
-        resize(bigFile, file72, 200, 150);
-        picture.thumbnail72 = fileName72;
-        picture.save();
-//      }
+      String todayPath = getTodadysPicturePath();
+      File bigFile = new File(getPicturePath(), picture.image);
+      if(bigFile.exists()) {
+        Logger.info("found bigFile: " + bigFile);
+      } else {
+        Logger.info("not found bigFile: " + bigFile);
+        continue;
+      }
+      String UUID = Codec.UUID();
+      String ending = bigFile.getName().substring(bigFile.getName().lastIndexOf('.'));
+      String fileName72 = todayPath + File.separator + UUID + MIDDLE + ending;
+      File file72 = new File(getPicturePath(), fileName72);
+      resize(bigFile, file72, 200, 150);
+      picture.thumbnail72 = fileName72;
+      picture.save();
     }
   }
 

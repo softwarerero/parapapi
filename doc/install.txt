@@ -102,7 +102,8 @@ sudo nano /etc/lighttpd/lighttpd.conf
 	server.modules = (
 		  "mod_access",
 		  "mod_proxy",
-		  "mod_accesslog" 
+		  "mod_accesslog",
+		  "mod_auth",
 	)
 	...
 	$HTTP["host"] =~ "alpha.parapapi.com" {
@@ -119,6 +120,20 @@ sudo nano /etc/lighttpd/lighttpd.conf
 		accesslog.filename = "/var/logs/lighttpd/beta.log"
 	}
 	server.max-request-size=2000
+	auth.debug = 2
+	auth.backend = "plain"
+	auth.backend.plain.userfile = "/var/.lighttpdpassword"
+	auth.require = ( "/stats/" => (
+		"method" => "basic",
+		"realm" => "Password protected area",
+		"require" => "user=sun|user=ale"
+	  )
+	)
+
+chown www-data:www-data /var/.lighttpdpassword	
+nano /var/.lighttpdpassword	
+	ale:mania
+	sun:papi
 
 sudo /etc/init.d/lighttpd restart
 # docs in /var/www
@@ -251,24 +266,26 @@ chown -R parapapi:parapapi pictures pull.sh
 
 
 # AwStats
-sudo nano /etc/lighttpd/lighttpd.conf
-	alias.url = (
-                "/awstatsclasses" => "/usr/local/awstats/wwwroot/classes/",
-                "/awstatscss" => "/usr/local/awstats/wwwroot/css/",
-                "/awstatsicons" => "/usr/local/awstats/wwwroot/icon/",
-                "/awstats/" => "/usr/local/awstats/wwwroot/cgi-bin/",
-                "/icon/" => "/usr/local/awstats/wwwroot/icon/"
-              )
-	# provide awstats cgi-bin access
-	$HTTP["url"] =~ "/awstats/" {
-		  cgi.assign = ( ".pl" => "/usr/bin/perl" )
-	}
 sudo /etc/init.d/lighttpd restart
+cp -r /usr/share/awstats/icon/ /var/www/awstats-icon
 cd /etc/awstats
 cp awstats.conf awstats.beta.parapapi.com.conf
 mkdir /var/www/awstats
-nano awstats.beta.parapapi.com.conf
+chown -R www-data:www-data /var/www/awstats
+nano /etc/awstats/awstats.beta.parapapi.com.conf
 	LogFile="/var/log/lighttpd/beta.log"
 	LogFormat=1
 	SiteDomain="beta.parapapi.com"
+	HostAliases="beta.parapapi.com localhost 127.0.0.1"
 	DirData="/var/lib/awstats"
+#sudo /usr/lib/cgi-bin/awstats.pl -config=beta.parapapi.com -update	
+perl /usr/share/awstats/tools/awstats_buildstaticpages.pl -config=beta.parapapi.com -output -staticlinks -dir=/var/www/stats
+
+nano /etc/cron.d/awstats
+	10 * * * * root /root/stats.sh
+
+nano /root/stats.sh
+	perl /usr/share/awstats/tools/awstats_buildstaticpages.pl -config=beta.parapapi.com -output -staticlinks -dir=/var/www/stats
+	
+#PDF Report
+perl /usr/share/awstats/tools/awstats_buildstaticpages.pl -config=beta.parapapi.com  -dir=/var/www/stats -buildpdf=/usr/bin/htmldoc	

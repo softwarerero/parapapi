@@ -4,6 +4,7 @@ import jobs.UpdateCategoryCount;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
+import play.db.jpa.JPA;
 import play.i18n.Lang;
 import play.i18n.Messages;
 import play.libs.Images;
@@ -342,21 +343,26 @@ public class Application extends Controller {
   
   public static void saveAd(@Valid Ad object,
                             File picture, File picture1, File picture2, File picture3,
-                            File picture4, File picture5) throws IOException {
+                            File picture4, File picture5) throws Exception {
 
     checkAdValidation(object);
     object.save();
 
+    try {
+      Pictures.savePicture(object, picture);
+      Pictures.savePicture(object, picture1);
+      Pictures.savePicture(object, picture2);
+      Pictures.savePicture(object, picture3);
+      Pictures.savePicture(object, picture4);
+      Pictures.savePicture(object, picture5);
+    } catch(Exception e) {
+      Logger.error("exception: " + e);
+      JPA.setRollbackOnly();
+    }
+
 //    object.computeUrl();
 //    object.save();
 //    Logger.info("saving ad: " + object.id + ", " + object.url);
-
-    Pictures.savePicture(object, picture);
-    Pictures.savePicture(object, picture1);
-    Pictures.savePicture(object, picture2);
-    Pictures.savePicture(object, picture3);
-    Pictures.savePicture(object, picture4);
-    Pictures.savePicture(object, picture5);
 
     checkAdValidation(object);
     object.save();

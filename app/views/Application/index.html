@@ -20,18 +20,6 @@ ${_searchString}
         <input id="advancedSearch" type="button" onclick="location.href='@{Application.advancedSearch()}'" value="&{'AdvancedSearch'}" />
         <input style="float: right;" id="createAd" type="button" onclick="location.href='@{Application.createAd()}'" value="&{'CreateAd'}" />
     #{/if}
-    #{else}
-    <!--
-    <p style="float: right">
-        <span style="float: left; margin-top: 5px;"><input type="checkbox" id="german" name="german" "${language.equals("de") ? 'checked' : ''}" onclick="langSelect();" /></span>
-        <span style="float: left;"><label for="german">&{'german'}</label></span>
-        <span style="float: left; margin-top: 5px; margin-left: 10px;"><input type="checkbox" id="english" name="english" "${language.equals("en") ? 'checked' : ''} /></span>
-        <span style="float: left;"><label for="english">&{'english'}</label></span>
-        <span style="float: left; margin-top: 5px; margin-left: 10px;"><input type="checkbox" id="spanish" name="spanish" "${language.equals("es") ? 'checked' : ''} /></span>
-        <span style="float: left;"><label for="spanish">&{'spanish'}</label></span>
-    </p>
-	-->
-    #{/else}
 </form>
 
 
@@ -44,9 +32,6 @@ ${_searchString}
     var renderMaincategoryList = #{jsAction @Application.renderMaincategoryList(':cat, :german, :english, :spanish') /}
 
     var mainCategoryChoosen = function(cat) {
-//        var isGerman = $("#german").attr("checked");
-//        var isEnglish = $("#english").attr("checked");
-//        var isSpanish = $("#spanish").attr("checked");
         $.get('@{Application.renderMaincategoryList()}', {category: cat}, function(data) {
             document.write(data);
             document.close();
@@ -54,9 +39,6 @@ ${_searchString}
     };
 
     var subCategoryChoosen = function(cat) {
-//        var isGerman = $("#german").attr("checked");
-//        var isEnglish = $("#english").attr("checked");
-//        var isSpanish = $("#spanish").attr("checked");
         $.get('@{Application.renderSubcategoryList()}', {category: cat}, function(data) {
             document.write(data);
             document.close();
@@ -65,9 +47,6 @@ ${_searchString}
 
     var renderCategoryList = #{jsAction @Application.renderCategories() /}
     function langSelect() {
-//        var isGerman = $("#german").attr("checked");
-//        var isEnglish = $("#english").attr("checked");
-//        var isSpanish = $("#spanish").attr("checked");
         $("#categories").load(renderCategoryList());
     };
 
@@ -79,6 +58,5 @@ ${_searchString}
         langSelect();
 //        setTimeout("Refresh()", 60000); //60 sec.
     });
-
 
 </script>

@@ -37,7 +37,6 @@ public class Application extends Controller {
   }
 
 
-//  public static void renderCategories(boolean german, boolean english, boolean spanish) {
   public static void renderCategories() {
     String[] mainCategories = Category.main;
     String lang = Lang.get();
@@ -51,7 +50,6 @@ public class Application extends Controller {
   }
 
 
-//  public static void search(String searchString, boolean german, boolean english, boolean spanish) {
   public static void search(String searchString) {
     validation.required(searchString).message(Messages.get("views.main.noSearchCriteria"));
     validation.minSize(searchString, 3).message(Messages.get("views.main.moreSearchCriteria"));
@@ -67,7 +65,6 @@ public class Application extends Controller {
     if(null != searchString && !"".equals(searchString)) {
       sb.startExpression().like("title", searchString).or().like("content", searchString).endExpression();
     }
-//    addLanguageExpression(german, english, spanish, sb);
     addLanguageExpression(sb);
     sb.orderBy("id desc");
 
@@ -86,12 +83,6 @@ public class Application extends Controller {
       object.language = Ad.Language.valueOf(Lang.get());
       render(object, mainCategories);
     }
-
-//    if(validation.hasErrors()) {
-//      params.flash(); // add http parameters to the flash scope
-//      validation.keep(); // keep the errors for the next request
-//      index();
-//    }
 
     SearchBuilder sb = new SearchBuilder();
 
@@ -197,26 +188,20 @@ public class Application extends Controller {
   }
 
 
-//  public static void renderMaincategoryList(String category, boolean german, boolean english, boolean spanish) {
   public static void renderMaincategoryList(String category, String language) {
     String catType = "mainCategory";
-//    renderAds(category, german, english, spanish, catType);
     renderAds(category, language, catType);
 	}
 
 
-//  public static void renderSubcategoryList(String category, boolean german, boolean english, boolean spanish) {
   public static void renderSubcategoryList(String category, String language) {
     String catType = "subCategory";
     renderAds(category, language, catType);
 	}
 
-//  private static void renderAds(String category, boolean german, boolean english, boolean spanish, String catType) {
   private static void renderAds(String category, String language, String catType) {
-//    Logger.info("category: " + category + " german: " + german + " english: " + english + " spanish: " + spanish);
     SearchBuilder sb = new SearchBuilder();
     sb.startExpression().eq(catType, sb.quote(category)).endExpression();
-//    addLanguageExpression(german, english, spanish, sb);
     addLanguageExpression(sb);
     sb.orderBy("id desc");
 
@@ -248,23 +233,6 @@ public class Application extends Controller {
     return noFound;
   }
 
-//  private static void addLanguageExpression(boolean german, boolean english, boolean spanish, SearchBuilder sb) {
-//    if(german || english || spanish) {
-//      sb.and().startExpression();
-//      if(german) {
-//        sb.eq("language", Ad.Language.valueOf("de").ordinal());
-//      }
-//      if(english) {
-//        if(german) sb.or();
-//        sb.eq("language", Ad.Language.valueOf("en").ordinal());
-//      }
-//      if(spanish) {
-//        if(german || english) sb.or();
-//        sb.eq("language", Ad.Language.valueOf("es").ordinal());
-//      }
-//      sb.endExpression();
-//    }
-//  }
 
   private static void addLanguageExpression(SearchBuilder sb) {
     sb.and().eq("language", Ad.Language.valueOf(Lang.get()).ordinal());
@@ -293,16 +261,6 @@ public class Application extends Controller {
 //        renderHtml(content);
 //
 //} 
-
-//  public static void adDetail(Long id) {
-//    Ad ad = Ad.findById(id);
-//    if(null == ad) {
-//      validation.required(ad).message(Messages.get("validation.notFound", ad, id));
-//      validation.keep(); // keep the errors for the next request
-//      index();
-//    }
-//		render(ad);
-//	}
 
   public static void adDetail(String url) {
     Ad ad = Ad.find("byUrl", url).first();

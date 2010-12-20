@@ -3,6 +3,7 @@ package models;
 import java.math.BigDecimal;
 import java.util.*;
 
+import play.Logger;
 import play.data.validation.*;
 import play.db.jpa.Model;
 
@@ -52,9 +53,9 @@ public class Ad extends Model {
   @Required public String mainCategory;
   public String subCategory;
   public State state = State.used;
-//  int year = 0;
+  public Integer year = 0;
   @OneToMany(mappedBy="ad", cascade= CascadeType.ALL) public List<Picture> pictures;
-//  public String url;
+  public String url;
 
 
   public String getHtmlSecuredEmail() {
@@ -63,21 +64,22 @@ public class Ad extends Model {
   }
 
 
-//  public String computeUrl() {
-//    StringBuilder sb = new StringBuilder();
-//    if(null != title) {
-//      for(int i=0; i<title.length(); i++) {
-//        Character c = title.charAt(i);
-//        sb.append(Character.isLetterOrDigit(c) ? c : '_');
-//      }
-//    }
-//    sb.append('_');
-//    if(null != id) {
-//     sb.append(id);
-//    }
-//    url = sb.toString();
-//    return url;
-//  }
+  public String computeUrl() {
+    StringBuilder sb = new StringBuilder();
+    if(null != title) {
+      for(int i=0; i<title.length(); i++) {
+        Character c = title.charAt(i);
+        sb.append(Character.isLetterOrDigit(c) ? c : '_');
+      }
+    }
+    sb.append('_');
+    if(null != id) {
+     sb.append(id);
+    }
+    url = sb.toString();
+    Logger.info("url: " + url);
+    return url;
+  }
 
 
   public String toString() {

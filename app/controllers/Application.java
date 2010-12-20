@@ -81,7 +81,6 @@ public class Application extends Controller {
 
   public static void advancedSearch(AdSearch object) {
     validation.clear();
-    System.out.println("object: " + object);
     if(!params._contains("object.text")) {
       String[] mainCategories = Category.main;
       object.language = Ad.Language.valueOf(Lang.get());
@@ -295,10 +294,20 @@ public class Application extends Controller {
 //
 //} 
 
-  public static void adDetail(Long id) {
-    Ad ad = Ad.findById(id);
+//  public static void adDetail(Long id) {
+//    Ad ad = Ad.findById(id);
+//    if(null == ad) {
+//      validation.required(ad).message(Messages.get("validation.notFound", ad, id));
+//      validation.keep(); // keep the errors for the next request
+//      index();
+//    }
+//		render(ad);
+//	}
+
+  public static void adDetail(String url) {
+    Ad ad = Ad.find("byUrl", url).first();
     if(null == ad) {
-      validation.required(ad).message(Messages.get("validation.notFound", ad, id));
+      validation.required(ad).message(Messages.get("validation.notFound", ad, url));
       validation.keep(); // keep the errors for the next request
       index();
     }
@@ -356,13 +365,13 @@ public class Application extends Controller {
       Pictures.savePicture(object, picture4);
       Pictures.savePicture(object, picture5);
     } catch(Exception e) {
-      Logger.error("exception: " + e);
+      Logger.warn("can't save picture: " + e);
       JPA.setRollbackOnly();
     }
 
-//    object.computeUrl();
-//    object.save();
-//    Logger.info("saving ad: " + object.id + ", " + object.url);
+    object.computeUrl();
+    object.save();
+    Logger.info("saving ad: " + object.id + ", " + object.url);
 
     checkAdValidation(object);
     object.save();

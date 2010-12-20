@@ -7,7 +7,7 @@ GET     /                                       Application.index
 
 GET     /category/{id}                          Application.adList
 
-GET     /ad/{id}                                Application.adDetail
+GET     /ad/{url}                                Application.adDetail
 
 GET     /captcha                                Application.captcha
 
@@ -17,6 +17,8 @@ GET     /termsOfUse                Application.termsOfUse
 GET     /dataPolicy                Application.dataPolicy
 
 GET     /mainCategories/categoriesAsJson     MainCategories.categoriesAsJson(format:'json')
+
+GET     /up0.9.2                DbUpdate.from0_9_1to0_9_2
 
 
 # Import CRUD routes

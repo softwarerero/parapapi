@@ -11,11 +11,11 @@
 <div class="ad ${_as == 'teaser' ? 'teaser' : ''} " style="clear: both;">
 
     <div class="ad-thumb">
-        <a href="@{Application.adDetail(_ad.id)}"><img src="@{Pictures.renderThumbnail(_ad.id, 0)}" /></a>
+        <a href="@{Application.adDetail(_ad.url)}"><img src="@{Pictures.renderThumbnail(_ad.id, 0)}" /></a>
     </div>
     <div class="ad-teaser-data" >
         <div class="ad-title">
-            <a href="@{Application.adDetail(_ad.id)}">${_ad.title}</a>
+            <a href="@{Application.adDetail(_ad.url)}">${_ad.title}</a>
         </div>
         <br/>
         <div class="ad-metadata">

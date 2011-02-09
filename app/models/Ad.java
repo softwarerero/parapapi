@@ -63,6 +63,15 @@ public class Ad extends Model {
     return email.replace("@", "<code>@</code>");
   }
 
+  public String getUrl() {
+  	if(null == url) {
+  		url = computeUrl();
+    	System.out.println("compute: " + url);
+  		this.save();
+  	}
+  	return url;
+  }
+
 
   public String computeUrl() {
     StringBuilder sb = new StringBuilder();

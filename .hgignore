@@ -3,6 +3,9 @@ syntax: glob
 
 cobertura.ser
 *.iml
+.classpath
+.project
+.settings
 test-result
 tmp
 attachments
@@ -16,3 +19,6 @@ doc/css/login
 doc/css/*.zip
 logs/system.out
 backup
+repo
+eclipse
+startH2.cmd

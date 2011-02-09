@@ -413,6 +413,7 @@ public class Application extends Controller {
 
   public static void backup() throws ClassNotFoundException, SQLException {
     DbHelper.backup();
+		String backupPathName = Play.configuration.getProperty("db.backup.path");
+		renderText("backup'ed to " + backupPathName);
   }
-
 }

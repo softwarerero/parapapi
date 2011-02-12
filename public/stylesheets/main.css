@@ -7,7 +7,6 @@ html, body {
 }
 
 body {
-    width: 900px;
     padding: 0 30px;
     margin: auto;
 }
@@ -230,11 +229,17 @@ h3 span {
 
 /** Category **/
 
+.sponsors {
+	float: right;
+	width: 160px;
+  margin-top: 20px;
+}
+
 .categories {
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-bottom: 30px;
-    font-family: Verdana, Helvetica, Arial, Sans !important;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-bottom: 30px;
+  font-family: Verdana, Helvetica, Arial, Sans !important;
 }
 
 .category {
@@ -366,10 +371,9 @@ form .label {
 /** Footer **/
 
 #footer {
-    border-top: 1px solid #45597A;
+    border-top: 0px solid #45597A;
     font-size: 70%;
-    padding: 10px 30px;
-    text-align: center;
+    text-align: left;
     color: #869AB1;
     margin-top: 30px;
 }

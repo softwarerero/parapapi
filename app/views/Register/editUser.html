@@ -30,11 +30,11 @@
     #{form/renderPassword object: object, attr: "passwordConfirmation"/}
     #{form/renderText object: object, attr: "firstNames"/}
     #{form/renderText object: object, attr: "lastNames"/}
+*{
     #{form/renderRadio object: object, attr: "currency", enum: models.Ad.Currency /}
-<!--
     #{form/renderText object: object, attr: "documentNo"/}
     #{form/renderRadio object: object, attr: "documentType", enum: models.User.DocumentType/}
--->
+}*
     </div>
     <div style="width: 4%; float: left;">&nbsp;</div>
     <div style="width: 48%; float: left;">
@@ -55,8 +55,10 @@
     <p>&nbsp;</p>
     <span style="float: left;">#{form/renderCheckbox object: object, attr: "acceptConditions"/}&nbsp;&nbsp;</span>
     <label for="acceptConditions" id="acceptConditions">&{'views.editUser.acceptConditions', messages.get('views.editUser.termsOfUse'), messages.get('views.editUser.dataPolicy')}</label>
+*{
     <span style="clear: both; float: left;">#{form/renderCheckbox object: object, attr: "wantNotifications"/}&nbsp;&nbsp;</span>
     <label id="wantNotifications">&{'views.editUser.wantNotifications'}</label>
+}*
     <p>&nbsp;</p>
 
 

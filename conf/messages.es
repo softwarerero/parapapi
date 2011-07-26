@@ -9,7 +9,7 @@ views.main.tools.login=Ingresar
 views.main.tools.logout=Salir
 views.main.tools.register=Registrar
 views.main.tools.myAds=Mis Anuncios
-views.main.adsWritten=hasta ahora publicaste %s anuncios
+views.main.adsWritten=Publicaste %s anuncios hasta ahora
 views.main.noSearchCriteria=Por favor entre sus criterias para buscar
 views.main.moreSearchCriteria=Por favor entre más criterias
 
@@ -255,7 +255,7 @@ finance=Finanzas
 transportservice=Transporte
 construction=Construcción
 animation=Animación
-eventTechnology=Eventos
+eventTechnology=Evento
 multimedia=Multimedia
 security=Seguridad
 tourism=Turismo

@@ -8,7 +8,7 @@
         clazz = field.error ? "error" : "";
     }%
     <span class="${clazz}">
-        %{ _enum.values().each() { }%
+        %{ value.class.values().each() { }%
         %{
             selected = false;
             if(field.error?.message != 'validation.required') {

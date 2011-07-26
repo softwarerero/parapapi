@@ -4,6 +4,7 @@ import jobs.UpdateCategoryCount;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
+import play.cache.CacheFor;
 import play.db.jpa.JPA;
 import play.i18n.Lang;
 import play.i18n.Messages;
@@ -29,6 +30,7 @@ public class Application extends Controller {
   static public int pageSize = Integer.parseInt(Play.configuration.getProperty("pagesize"));
 
 
+//  @CacheFor("15mn")
   public static void index() {
     String[] mainCategories = Category.main;
     String language = Lang.get();

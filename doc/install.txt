@@ -37,6 +37,17 @@ sudo nano /home/user/.bashrc
 	export PATH
 source .bashrc
 
+#Play 1.2 Preview
+cd /opt
+wget http://download.playframework.org/releases/play-1.2-preview.zip
+unzip play-1.2-preview.zip
+rm wget play-1.2-preview.zip
+sudo nano /root/.bashrc
+	PATH=$PATH:/opt/play
+	export PATH
+source .bashrc
+
+
 # MySQL
 sudo apt-get install mysql-server
 	root/j6Sv0;-g3$gH
@@ -104,6 +115,7 @@ sudo nano /etc/lighttpd/lighttpd.conf
 		  "mod_proxy",
 		  "mod_accesslog",
 		  "mod_auth",
+		  "mod_compress",
 	)
 	...
 	$HTTP["host"] =~ "alpha.parapapi.com" {
@@ -117,7 +129,17 @@ sudo nano /etc/lighttpd/lighttpd.conf
 	$HTTP["host"] == "beta.parapapi.com" {	
 		proxy.balance = "round-robin" proxy.server = ( "/" =>
 			( ( "host" => "127.0.0.1", "port" => 9003 ) ) )
-		accesslog.filename = "/var/logs/lighttpd/beta.log"
+		accesslog.filename = "/var/log/lighttpd/beta.log"
+	}
+	$HTTP["host"] == "zp30.parapapi.com" {	
+		proxy.balance = "round-robin" proxy.server = ( "/" =>
+			( ( "host" => "127.0.0.1", "port" => 9005 ) ) )
+		accesslog.filename = "/var/log/lighttpd/zp30.log"
+	}
+	$HTTP["host"] == "hgt.parapapi.com" {	
+		proxy.balance = "round-robin" proxy.server = ( "/" =>
+			( ( "host" => "127.0.0.1", "port" => 9006 ) ) )
+		accesslog.filename = "/var/log/lighttpd/hgt.log"
 	}
 	server.max-request-size=2000
 	auth.debug = 2
@@ -176,6 +198,9 @@ mkdir /var/www/redmine
 mkdir tmp public/plugin_assets
 chown -R www-data:www-data files log tmp public/plugin_assets
 sudo chmod -R 755 files log tmp public/plugin_assets
+
+/usr/bin/mysqld -u 'redmine' -pkM2S*js%vc09  redmine | gzip > ~/backup/redmine_`date +%y_%m_%d`.gz
+mysql --verbose --user=redmine --password=kM2S*js%vc09 redmine < ~/backup/redmine_11_07_13
 
 /bin/chown -R www-data:www-data /var/lib/redmine
 # configure smtp in conf/environment.rb - add the following lines for a local server

@@ -15,12 +15,12 @@
             <div id="logo">
                 <a href="@{Application.index()}">Para Papi! <span>Y claro, para Mami también!</span></a>
             </div>
-            <div >
+            <div>
                 <ul id="tools">
                     <li>
                         #{if controllers.Security.isConnected()}
                             <input id="dashboard" type="button" onclick="location.href='@{Users.dashboard()}'" value="&{'views.main.tools.myAds'}" />
-                            <input id="editUser" type="button" onclick="location.href='@{Register.editUser()}'" value="${session.nickname}" />
+                            <input id="editUser" type="button" onclick="location.href='@{Register.editUser()}'" value="${session.username}" />
                             <input id="logout" type="button" onclick="location.href='@{Secure.logout()}'" value="&{'views.main.tools.logout'}" />
                         #{/if}
                         #{else}

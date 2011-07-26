@@ -1,5 +1,6 @@
 package controllers;
 
+import play.Logger;
 import models.User;
 
 /**
@@ -15,15 +16,21 @@ public class Security extends Secure.Security {
     return User.connect(username, password) != null;
   }
 
-  static void onAuthenticated() {
-    User user = User.find("byEmail", connected()).<User>first();
-    session.put("nickname", user.nickname);
-  }
+//  static void onAuthenticated() {
+//    User user = User.find("byEmail", connected()).<User>first();
+//    session.put("nickname", user.nickname);
+//  }
 
-  static void onDisconnected() {
-    session.remove("nickname");
-    Application.index();
-  }
+//  static void onDisconnected() {
+//    session.remove("username");
+//    Application.index();
+//  }
+
+//  static boolean isConnected() {
+//  	System.out.println(session.get("username"));
+//  	Logger.info(session.get("username"));
+//    return session.contains("username");
+//  }
 
   static boolean check(String profile) {
     if("admin".equals(profile)) {
@@ -43,8 +50,8 @@ public class Security extends Secure.Security {
     return false;
   }
 
-  static String nickname() {
-      return session.get("nickname");
-  }
+//  static String nickname() {
+//      return session.get("nickname");
+//  }
 
 }

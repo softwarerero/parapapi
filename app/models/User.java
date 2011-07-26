@@ -4,6 +4,8 @@ import java.util.*;
 import javax.persistence.*;
 
 import com.sun.istack.internal.Nullable;
+
+import play.Logger;
 import play.data.validation.*;
 import play.db.jpa.*;
                             
@@ -57,6 +59,7 @@ public class User extends Model {
   public static User connect(String email, String password) {
     User user = find("byEmailAndPassword", email, password).first();
     if(null != user && !user.isActive) {
+    	Logger.warn("Logged on with wrong credentials, email: " + email + ", pw: " + password);
       return null;
     }
     return user;

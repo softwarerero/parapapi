@@ -1,7 +1,5 @@
 package controllers.auth;
 
-import com.sun.tools.internal.xjc.reader.gbind.ConnectedComponent;
-
 import models.User;
 import controllers.Secure;
 

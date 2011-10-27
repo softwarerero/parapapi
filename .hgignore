@@ -22,3 +22,7 @@ backup
 repo
 eclipse
 startH2.cmd
+.DS_Store
+modules
+lib
+

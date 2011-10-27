@@ -8,12 +8,15 @@
 #{/ifErrors}
         
 <div class="adList">
-    <h3>&nbsp;<span style="float: right;">&{'items_found'}: ${noFound}</span></h3>
+	<div>
+	    <div class="right">
+		    <h3> &nbsp;<span>&{'items_found'}: ${noFound}</span></h3>
+	    </div>
+	</div>
 
     #{paginate.list items:paginator, as: 'ad'}
         #{renderAd ad: ad, as: 'teaser'/}
     #{/paginate.list}
-    <p></p>
-    #{paginate.controls items:paginator /}
 
+	#{paginate.controls items:paginator /}
 </div>

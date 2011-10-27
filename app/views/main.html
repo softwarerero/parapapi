@@ -4,6 +4,9 @@
     <head>
         <title>Para Papi! - #{get 'title' /}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="language" content="spanish"/>
+		<meta name="description" content="Clasificados para Asunnción, Paraguay"/>
+		<meta name="category" content="clasificados, asunción, paraguay, clasified ads, kleinanzeigen"/>
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon01.png'}">
@@ -18,7 +21,7 @@
             <div>
                 <ul id="tools">
                     <li>
-                        #{if controllers.Security.isConnected()}
+                        #{if controllers.auth.Security.isConnected()}
                             <input id="dashboard" type="button" onclick="location.href='@{Users.dashboard()}'" value="&{'views.main.tools.myAds'}" />
                             <input id="editUser" type="button" onclick="location.href='@{Register.editUser()}'" value="${session.username}" />
                             <input id="logout" type="button" onclick="location.href='@{Secure.logout()}'" value="&{'views.main.tools.logout'}" />
@@ -31,17 +34,35 @@
                 </ul>
             </div>
         </div>
-        <div id="content">
-            #{doLayout /}
+        <div class="">
+	        <div class="content">
+	            #{doLayout /}
+	        </div>
+			#{if request.domain != "localhost2"}
+				<div id="sponsors" class="sponsors">
+					<script type="text/javascript"><!--
+					google_ad_client = "ca-pub-5979020849631235";
+					/* shop200_1 */
+					google_ad_slot = "7624833704";
+					google_ad_width = 160;
+					google_ad_height = 600;
+					//-->
+					</script>
+					<script type="text/javascript"
+					src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+					</script>			
+				</div>
+			#{/if}
         </div>
 
-        <p id="footer">
-            Copyright &#169; 2010 SUNCOM Systems Ltd.  &nbsp;&nbsp;&nbsp;
+
+        <div class="footer">
+            </br>Copyright &#169; 2010 SUNCOM Systems Ltd.  &nbsp;&nbsp;&nbsp;
             &{'Version'}  ${play.configuration.getProperty("version")}  &nbsp;&nbsp;&nbsp; &{'your_language'}: ${play.i18n.Lang.get()}
             &nbsp;&nbsp;&nbsp;  <a href="@{Application.termsOfUse()}">&{'views.editUser.termsOfUse'}</a>
             &nbsp;&nbsp;&nbsp;  <a href="@{Application.dataPolicy()}">&{'views.editUser.dataPolicy'}</a>
             <br/>&{'main.all'}: ${play.cache.Cache.get("count_all")}&nbsp;&nbsp;&nbsp;de: ${play.cache.Cache.get("count_de")} &nbsp;&nbsp;&nbsp;en: ${play.cache.Cache.get("count_en")}
             &nbsp;&nbsp;&nbsp;es: ${play.cache.Cache.get("count_es")}
-        </p>
+        </div>
     </body>
 </html>

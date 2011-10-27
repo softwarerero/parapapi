@@ -25,8 +25,7 @@
         </div>
     </div>
 
-
-    #{if controllers.Security.isConnected() && (_ad.author.email.equals(controllers.Security.connected())) }
+    #{if controllers.auth.Security.isConnected() && (_ad.author.email.equals(controllers.auth.Security.connected())) }
     <div class="actions">
         <a href="@{Application.editAd(_ad.id)}" class="editAction" title="&{'edit'}"></a>
         <a href="@{Application.deleteAd(_ad.id)}" class="deleteAction" title="&{'delete'}"></a>
@@ -47,7 +46,7 @@
             <div style="width: 48%; float: left;">
                 &{'views.renderAd.where'}: &{_ad.department} >> ${_ad.city} >> ${_ad.zone}
                 <br/>
-                #{if controllers.Security.isConnected()}
+                #{if controllers.auth.Security.isConnected()}
                     &{'Ad.phone'}: ${_ad.phone}
                     &nbsp;|&nbsp;
                     &{'Ad.mobilePhone'}: ${_ad.mobilePhone}

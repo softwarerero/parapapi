@@ -1,7 +1,9 @@
-package controllers;
+package controllers.auth;
 
-import play.Logger;
+import com.sun.tools.internal.xjc.reader.gbind.ConnectedComponent;
+
 import models.User;
+import controllers.Secure;
 
 /**
  * Created by IntelliJ IDEA.
@@ -48,6 +50,11 @@ public class Security extends Secure.Security {
       return user.isAdmin;
     }
     return false;
+  }
+  
+  
+  static public String connected() {
+  	return session.get("username");
   }
 
 //  static String nickname() {

@@ -2,6 +2,8 @@ package controllers;
 
 import models.*;
 import org.apache.commons.mail.EmailException;
+
+import controllers.auth.Security;
 import play.Logger;
 import play.Play;
 import play.cache.Cache;

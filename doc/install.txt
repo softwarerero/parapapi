@@ -118,6 +118,10 @@ sudo nano /etc/lighttpd/lighttpd.conf
 		  "mod_compress",
 	)
 	...
+$HTTP["host"] == "static.parapapi.com" {	
+	accesslog.filename = "/var/log/lighttpd/parapapi.log"
+	server.document-root = "/var/www/"
+}
 	$HTTP["host"] =~ "alpha.parapapi.com" {
 		proxy.balance = "round-robin" proxy.server = ( "/" =>
 			( ( "host" => "127.0.0.1", "port" => 9001 ) ) )
@@ -141,6 +145,34 @@ sudo nano /etc/lighttpd/lighttpd.conf
 			( ( "host" => "127.0.0.1", "port" => 9006 ) ) )
 		accesslog.filename = "/var/log/lighttpd/hgt.log"
 	}
+	$HTTP["host"] == "shop200.parapapi.com" {	
+		proxy.balance = "round-robin" proxy.server = ( "/" =>
+			( ( "host" => "127.0.0.1", "port" => 9007 ) ) )
+		accesslog.filename = "/var/log/lighttpd/shop200.log"
+	}
+$HTTP["host"] =~ "(shop200\.parapapi\.com|shop\.parapapi\.com|toys\.parapapi\.com)$" {
+		proxy.balance = "round-robin" proxy.server = ( "/" =>
+			( ( "host" => "127.0.0.1", "port" => 9007 ) ) )
+		accesslog.filename = "/var/log/lighttpd/shop200.log"
+}
+$HTTP["host"] == "parapapi.com" {	
+	proxy.balance = "round-robin" proxy.server = ( "/" =>
+		( ( "host" => "127.0.0.1", "port" => 9008 ) ) )
+	accesslog.filename = "/var/log/lighttpd/parapapi-site.log"
+	server.document-root = "/var/www/"
+}
+$HTTP["host"] == "www.parapapi.com" {	
+	proxy.balance = "round-robin" proxy.server = ( "/" =>
+		( ( "host" => "127.0.0.1", "port" => 9008 ) ) )
+	accesslog.filename = "/var/log/lighttpd/parapapi-site.log"
+	server.document-root = "/var/www/"
+}
+##all the rest goes to shop - does not work
+#$HTTP["host"] =~ "^(.+\.)?parapapi\.com$" {
+#		proxy.balance = "round-robin" proxy.server = ( "/" =>
+#			( ( "host" => "127.0.0.1", "port" => 9007 ) ) )
+#		accesslog.filename = "/var/log/lighttpd/shop200.log"
+#}
 	server.max-request-size=2000
 	auth.debug = 2
 	auth.backend = "plain"
@@ -303,8 +335,8 @@ nano /etc/awstats/awstats.beta.parapapi.com.conf
 	SiteDomain="beta.parapapi.com"
 	HostAliases="beta.parapapi.com localhost 127.0.0.1"
 	DirData="/var/lib/awstats"
-#sudo /usr/lib/cgi-bin/awstats.pl -config=beta.parapapi.com -update	
-perl /usr/share/awstats/tools/awstats_buildstaticpages.pl -config=beta.parapapi.com -output -staticlinks -dir=/var/www/stats
+#sudo /usr/lib/cgi-bin/awstats.pl -config=shop200.parapapi.com -update	
+perl /usr/share/awstats/tools/awstats_buildstaticpages.pl -config=shop200.parapapi.com -output -staticlinks -dir=/var/www/stats
 
 nano /etc/cron.d/awstats
 	10 * * * * root /root/stats.sh

@@ -21,28 +21,28 @@
     <p></p>
         <div style="width: 48%; float: left;">
             #{form/renderText object: object, attr: "text"/}
-            #{form/renderSelect4Enum name: "language", value: object.language, items: models.Ad.Language /}
+            #{form/renderSelect4Enum name: "language", value: object.language, items: models.Ad.Language.values() /}
             #{form/renderText object: object, attr: "postedAt", size: 10/}
-            #{form/renderSelect4Enum name: "handOver", value: object.handOver, items: models.Ad.HandOver /}
+            #{form/renderSelect4Enum name: "handOver", value: object.handOver, items: models.Ad.HandOver.values() /}
             #{form/renderText object: object, attr: "priceFrom", size: 15/}
             #{form/renderSelect4Enum name: "mainCategory", value: object.mainCategory, items: mainCategories /}
             #{form/renderSelect4Enum name: "subCategory", value: object.subCategory, items: subCategories /}
             <label>&nbsp;</label>
             <label>&nbsp;</label>
-            #{form/renderSelect4Enum name: "orderBy", value: object.orderBy, items: models.AdSearch.OrderBy /}
+            #{form/renderSelect4Enum name: "orderBy", value: object.orderBy, items: models.AdSearch.OrderBy.values() /}
         </div>
         <div style="width: 4%; float: left;">&nbsp;</div>
         <div style="width: 48%; float: left;">
             <label>&nbsp;</label>
             <label>&nbsp;</label>
-            #{form/renderSelect4Enum name: "offer", value: object.offer, items: models.Ad.OfferType /}
-            #{form/renderSelect4Enum name: "priceType", value: object.priceType, items: models.Ad.PriceType /}
-            #{form/renderSelect4Enum name: "currency", value: object.currency, items: models.Ad.Currency /}
+            #{form/renderSelect4Enum name: "offer", value: object.offer, items: models.Ad.OfferType.values() /}
+            #{form/renderSelect4Enum name: "priceType", value: object.priceType, items: models.Ad.PriceType.values() /}
+            #{form/renderSelect4Enum name: "currency", value: object.currency, items: models.Ad.Currency.values() /}
             #{form/renderText object: object, attr: "priceTo", size: 15/}
             #{form/renderSelect4Enum name: "department", value: object.department, items: models.Ad.Department.values() /}
             #{form/renderText object: object, attr: "city"/}
             #{form/renderText object: object, attr: "zone"/}
-            #{form/renderSelect4Enum name: "ascOrDesc", value: object.ascOrDesc, items: models.AdSearch.AscOrDesc /}
+            #{form/renderSelect4Enum name: "ascOrDesc", value: object.ascOrDesc, items: models.AdSearch.AscOrDesc.values() /}
         </div>
     </div>
     <div style="clear: both; text-align: left;">

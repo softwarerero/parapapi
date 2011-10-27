@@ -16,29 +16,11 @@
     <input type="text" name="searchString" size="50" value="${searchString}"/> 
     <input type="submit" value="&{'ParaPapi'}" />
 ${_searchString}
-    #{if controllers.Security.isConnected()}
+    #{if controllers.auth.Security.isConnected()}
         <input id="advancedSearch" type="button" onclick="location.href='@{Application.advancedSearch()}'" value="&{'AdvancedSearch'}" />
         <input style="float: right;" id="createAd" type="button" onclick="location.href='@{Application.createAd()}'" value="&{'CreateAd'}" />
     #{/if}
 </form>
-
-<div id="sponsors" class="sponsors">
-	<script type="text/javascript"><!--
-		google_ad_client = "ca-pub-5979020849631235";
-		/* parapapi-main */
-		google_ad_slot = "4592332894";
-		google_ad_width = 160;
-		google_ad_height = 90;
-		//-->
-		</script>
-		<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-	</script>
-
-	<script type='text/javascript'>
-		var mu_affiliate = 9298;
-	</script>
-	<script type='text/javascript' src='http://affil.mupromo.com/ext/ads/promo160x600-static.js'></script>
-</div>
 
 <div id="categories" class="categories">
 </div>

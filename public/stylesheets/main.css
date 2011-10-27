@@ -108,6 +108,17 @@ a {
 
 noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; width:100%; }
 
+.content {
+	float: left;
+	width: 80%;
+}
+
+.sponsors {
+	float: left;
+//	width: 160px;
+  margin-left: 30px;
+  margin-top: 20px;
+}
 
 /** Ad **/
 
@@ -136,12 +147,12 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
     margin-left: 10px;
     display:block;
     line-height:22px;
-    width:800px;
+    //width:800px;
 }
 
 .ad .ad-title {
     float: left;
-    width:830px;
+//    width:830px;
 }
 
 .ad .ad-title a {
@@ -188,7 +199,7 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 
 .actions {
     float: right;
-    margin-top: -35px;
+    margin-top: 10px;
 }
 
 #createAction {
@@ -229,12 +240,6 @@ h3 span {
 
 /** Category **/
 
-.sponsors {
-	float: right;
-	width: 160px;
-  margin-top: 20px;
-}
-
 .categories {
   margin-top: 20px;
   margin-left: 10px;
@@ -253,7 +258,7 @@ h3 span {
 }
 
 .category .category-title a {
-    color: white;
+    color: #F0F3F7;
     width: 80px;
     text-align: right;
 }
@@ -273,8 +278,8 @@ h3 span {
 
 form {
     padding: 10px;
-    background: #253142;
-    background: -webkit-gradient(linear, left top, left 60%, from(#253142), to(#364B66));
+//    background: #253142;
+    background: #F0F3F7;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
 }
@@ -301,6 +306,7 @@ form textarea {
 
 form input, form textarea {
     font-size: 14px;
+    background: #F0F3F7;
 }
 
 form label {
@@ -370,15 +376,16 @@ form .label {
 
 /** Footer **/
 
-#footer {
-    border-top: 0px solid #45597A;
+.footer {
+	clear: both;
+//    border-top: 0px solid #45597A;
     font-size: 70%;
-    text-align: left;
+//    text-align: left;
     color: #869AB1;
-    margin-top: 30px;
+//    margin-top: 60px;
 }
 
-#footer a {
+.footer a {
     color: #869AB1;
     font-weight: normal;
 }
@@ -565,8 +572,11 @@ ul.pagination {
     border: none;
 }
 #gallery ul a:hover img {
-    border: 5px solid #fff;
+    border: 5px solid #eee;
     border-width: 5px 5px 20px;
     color: #fff;
 }
 #gallery ul a:hover { color: #fff; }
+
+.left { float: left; }
+.right { float: right; }

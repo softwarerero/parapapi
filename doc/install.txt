@@ -135,6 +135,11 @@ $HTTP["host"] == "static.parapapi.com" {
 			( ( "host" => "127.0.0.1", "port" => 9003 ) ) )
 		accesslog.filename = "/var/log/lighttpd/beta.log"
 	}
+$HTTP["host"] =~ "(ads\.parapapi\.com|beta\.parapapi\.com)$" {
+	proxy.balance = "round-robin" proxy.server = ( "/" =>
+		( ( "host" => "127.0.0.1", "port" => 9003 ) ) )
+	accesslog.filename = "/var/log/lighttpd/beta.log"
+}
 	$HTTP["host"] == "zp30.parapapi.com" {	
 		proxy.balance = "round-robin" proxy.server = ( "/" =>
 			( ( "host" => "127.0.0.1", "port" => 9005 ) ) )
@@ -150,11 +155,11 @@ $HTTP["host"] == "static.parapapi.com" {
 			( ( "host" => "127.0.0.1", "port" => 9007 ) ) )
 		accesslog.filename = "/var/log/lighttpd/shop200.log"
 	}
-$HTTP["host"] =~ "(shop200\.parapapi\.com|shop\.parapapi\.com|toys\.parapapi\.com)$" {
-		proxy.balance = "round-robin" proxy.server = ( "/" =>
-			( ( "host" => "127.0.0.1", "port" => 9007 ) ) )
-		accesslog.filename = "/var/log/lighttpd/shop200.log"
-}
+#$HTTP["host"] =~ "(shop200\.parapapi\.com|shop\.parapapi\.com|toys\.parapapi\.com)$" {
+#		proxy.balance = "round-robin" proxy.server = ( "/" =>
+#			( ( "host" => "127.0.0.1", "port" => 9007 ) ) )
+#		accesslog.filename = "/var/log/lighttpd/shop200.log"
+#}
 $HTTP["host"] == "parapapi.com" {	
 	proxy.balance = "round-robin" proxy.server = ( "/" =>
 		( ( "host" => "127.0.0.1", "port" => 9008 ) ) )
@@ -167,13 +172,52 @@ $HTTP["host"] == "www.parapapi.com" {
 	accesslog.filename = "/var/log/lighttpd/parapapi-site.log"
 	server.document-root = "/var/www/"
 }
-##all the rest goes to shop - does not work
-#$HTTP["host"] =~ "^(.+\.)?parapapi\.com$" {
-#		proxy.balance = "round-robin" proxy.server = ( "/" =>
-#			( ( "host" => "127.0.0.1", "port" => 9007 ) ) )
-#		accesslog.filename = "/var/log/lighttpd/shop200.log"
-#}
+#redirect shop to shops
+$HTTP["host"] == "shop.parapapi.com" {
+	url.redirect = ( "^/(.*)" => "http://shops.parapapi.com/$1" )
+} 
+$HTTP["scheme"] == "http" {
+  $HTTP["url"] =~ "^/((login)|(logout)|(secure)|(admin)/(.*))" {
+    url.redirect = ( "^/(.*)" => "https://%1/$1" )
+  }
+}
+$HTTP["scheme"] == "https" {
+  $HTTP["url"] !~ "^/((login)|(logout)|(secure)|(admin)/(.*))" {
+    $HTTP["referer"] !~ "^/((login)|(logout)|(secure)|(admin)/(.*))" {
+            url.redirect = ( "^/(.*)" => "http://%1/$1" )
+     }
+  }
+}
+
+#all the rest goes to shop
+$HTTP["host"] =~ "(^|\.)parapapi\.com$" {
+	$HTTP["host"] !~ "^(parapapi\.com|www\.parapapi\.com|shop\.parapapi\.com|ads\.parapapi\.com|beta\.parapapi\.com|static\.parapapi\.com|redmine\.parapapi\.com)$" {	
+
+		proxy.balance = "round-robin" proxy.server = ( "/" =>
+			( ( "host" => "127.0.0.1", "port" => 9007 ) ) )
+		accesslog.filename = "/var/log/lighttpd/shop200.log"
+	}
+}
 	server.max-request-size=2000
+#SSL
+$SERVER["socket"] == ":443" {
+  ssl.engine = "enable"
+  ssl.pemfile = "/etc/lighttpd/certs/parapapi.pem"
+}
+
+$HTTP["scheme"] == "http" {
+  $HTTP["url"] =~ "^/((login)|(logout)|(secure)|(admin))" {
+    url.redirect = ( "^/(.*)" => "https://%1/$1" )
+  }
+}
+$HTTP["scheme"] == "https" {
+  $HTTP["url"] !~ "^/((login)|(logout)|(secure)|(admin))" {
+    $HTTP["referer"] !~ "^/((login)|(logout)|(secure)|(admin))" {
+            url.redirect = ( "^/(.*)" => "http://%1/$1" )
+     }
+  }
+}
+
 	auth.debug = 2
 	auth.backend = "plain"
 	auth.backend.plain.userfile = "/var/.lighttpdpassword"

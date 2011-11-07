@@ -79,7 +79,7 @@ public class Register extends CRUD {
     object.save();
     Cache.delete(randomID);
     if(isRegistration) {
-      registrationConfirmation(object);
+      registrationConfirmation(object.email);
     } else {
       Users.dashboard();
     }
@@ -87,14 +87,14 @@ public class Register extends CRUD {
 
 
   // TODO parametrize hard coded values
-  public static void registrationConfirmation(User object) throws EmailException {
-    User user = User.find("byEmail", object.email).<User>first();
+  private static void registrationConfirmation(String userEmail) throws EmailException {
+    User user = User.find("byEmail", userEmail).<User>first();
     SimpleEmail email = new SimpleEmail();
     email.setFrom("noreply@suncom.com.py");
     email.addTo(user.email);
     email.addTo("register@suncom.com.py");
     email.setCharset("UTF-8");
-    String path = request.path;
+//    String path = request.path;
     email.setSubject("Activar su cuenta con Para Papi");
     String msg = "Siguese este link para empiezar: ";
     if(Lang.get().equals("de")) {

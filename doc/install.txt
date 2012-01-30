@@ -172,6 +172,9 @@ $HTTP["host"] == "www.parapapi.com" {
 	accesslog.filename = "/var/log/lighttpd/parapapi-site.log"
 	server.document-root = "/var/www/"
 }
+$HTTP["host"] == "idipar.org" {
+	url.redirect = ( "^/(.*)" => "http://http://ingridmreusrath.parapapi.com/$1" )
+}
 #redirect shop to shops
 $HTTP["host"] == "shop.parapapi.com" {
 	url.redirect = ( "^/(.*)" => "http://shops.parapapi.com/$1" )
@@ -189,8 +192,9 @@ $HTTP["scheme"] == "https" {
   }
 }
 
+
 #all the rest goes to shop
-$HTTP["host"] =~ "(^|\.)parapapi\.com$" {
+$HTTP["host"] =~ "((^|\.)parapapi\.com|shops\.com\.py|shops\.com\.py)$" {
 	$HTTP["host"] !~ "^(parapapi\.com|www\.parapapi\.com|shop\.parapapi\.com|ads\.parapapi\.com|beta\.parapapi\.com|static\.parapapi\.com|redmine\.parapapi\.com)$" {	
 
 		proxy.balance = "round-robin" proxy.server = ( "/" =>
@@ -213,9 +217,9 @@ $HTTP["scheme"] == "http" {
 $HTTP["scheme"] == "https" {
   $HTTP["url"] !~ "^/((login)|(logout)|(secure)|(admin))" {
     $HTTP["referer"] !~ "^/((login)|(logout)|(secure)|(admin))" {
-            url.redirect = ( "^/(.*)" => "http://%1/$1" )
-     }
-  }
+    	url.redirect = ( "^/(.*)" => "http://%1/$1" )
+    }
+	}
 }
 
 	auth.debug = 2

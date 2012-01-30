@@ -96,7 +96,7 @@ public class Register extends CRUD {
     email.setCharset("UTF-8");
 //    String path = request.path;
     email.setSubject("Activar su cuenta con Para Papi");
-    String msg = "Siguese este link para empiezar: ";
+    String msg = "Siguese este link para empezar: ";
     if(Lang.get().equals("de")) {
       email.setSubject("Bitte aktivieren Sie Ihr Benutzerkonto bei Para Papi");
       msg = "Bitte folgen Sie diesem Link um Ihr Benutzerkonto zu aktieren: ";

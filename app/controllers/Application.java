@@ -176,7 +176,7 @@ public class Application extends Controller {
     sb.orderBy(orderBy);
 
     String searchString = sb.getSearchString();
-    Logger.info("searchString: " + searchString);
+//    Logger.info("searchString: " + searchString);
 
     List<Ad> ads = sb.exec();
     long noFound = ads.size();
@@ -220,7 +220,7 @@ public class Application extends Controller {
 
   private static List<Ad> searchAds(SearchBuilder sb) {
     String search = sb.getSearchString();
-    Logger.info("search: " + search);
+//    Logger.info("search: " + search);
     List<Ad> ads = sb.exec();
     return ads;
   }
@@ -333,7 +333,7 @@ public class Application extends Controller {
 
     object.computeUrl();
     object.save();
-    Logger.info("saving ad: " + object.id + ", " + object.url);
+//    Logger.info("saving ad: " + object.id + ", " + object.url);
 
     checkAdValidation(object);
     object.save();

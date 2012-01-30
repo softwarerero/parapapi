@@ -15,7 +15,7 @@
     </div>
     <div class="ad-teaser-data" >
         <div class="ad-title">
-            <a href="@{Application.adDetail(_ad.url)}">${_ad.title}</a>
+            <a href="@{Application.adDetail(_ad.url)}">${_ad.title.substring(0,Math.min(_ad.title.length(), 85))}</a>
         </div>
         <br/>
         <div class="ad-metadata">

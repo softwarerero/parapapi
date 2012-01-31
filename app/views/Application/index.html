@@ -10,10 +10,10 @@
 
 <form action="@{Application.search()}" method="GET" id="form1">
     <input type="text" name="searchString" size="50" value="${searchString}"/> 
-    <input type="submit" value="&{'ParaPapi'}" />
+    <input type="submit" class="btn primary" value="&{'ParaPapi'}" />
     #{if controllers.auth.Security.isConnected()}
-        <input id="advancedSearch" type="button" onclick="location.href='@{Application.advancedSearch()}'" value="&{'AdvancedSearch'}" />
-        <input style="float: right;" id="createAd" type="button" onclick="location.href='@{Application.createAd()}'" value="&{'CreateAd'}" />
+        <input id="advancedSearch" class="btn" type="button" onclick="location.href='@{Application.advancedSearch()}'" value="&{'AdvancedSearch'}" />
+        <input style="float: right;" id="createAd" class="btn" type="button" onclick="location.href='@{Application.createAd()}'" value="&{'CreateAd'}" />
     #{/if}
 </form>
 

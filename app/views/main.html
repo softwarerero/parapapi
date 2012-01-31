@@ -16,23 +16,23 @@
     <body>
         <div id="header">
             <div id="logo">
+	            <img src="/public/images/Clasificados Small.png"/>
             	<div>
 	                <a href="@{Application.index()}">Para Papi! <span>Y claro, para Mami también!</span></a>
 				    <h3>&{'views.index.title.header'}</h3>
             	</div>
-	            <img src="/public/images/Clasificados Small.png"/>
             </div>
             <div>
                 <ul id="tools">
                     <li>
                         #{if controllers.auth.Security.isConnected()}
-                            <input id="dashboard" type="button" onclick="location.href='@{Users.dashboard()}'" value="&{'views.main.tools.myAds'}" />
-                            <input id="editUser" type="button" onclick="location.href='@{Register.editUser()}'" value="${session.username}" />
-                            <input id="logout" type="button" onclick="location.href='@{Secure.logout()}'" value="&{'views.main.tools.logout'}" />
+                            <input id="dashboard" class="btn" type="button" onclick="location.href='@{Users.dashboard()}'" value="&{'views.main.tools.myAds'}" />
+                            <input id="editUser" class="btn" type="button" onclick="location.href='@{Register.editUser()}'" value="${session.username}" />
+                            <input id="logout" class="btn" type="button" onclick="location.href='@{Secure.logout()}'" value="&{'views.main.tools.logout'}" />
                         #{/if}
                         #{else}
-                            <input id="register" type="button" onclick="location.href='@{Register.register()}'" value="&{'views.main.tools.register'}" />
-                            <input id="login" type="button" onclick="location.href='@{Secure.login()}'" value="&{'views.main.tools.login'}" />
+                            <input id="register" class="btn" type="button" onclick="location.href='@{Register.register()}'" value="&{'views.main.tools.register'}" />
+                            <input id="login" class="btn" type="button" onclick="location.href='@{Secure.login()}'" value="&{'views.main.tools.login'}" />
                         #{/else}
                     </li>
                 </ul>

@@ -31,7 +31,8 @@ body {
     display: block;
     height: 49px;
     color: #0064CD;
-    font-size: 36px;
+    font-size: 48px;
+//    font-size: 36px;
     font-weight: bold;
     text-decoration: none;
     letter-spacing: -3px;
@@ -40,7 +41,7 @@ body {
 
 #logo span {
     color: #FFA600;
-//    font-size: 65%;
+    font-size: 65%;
 }
 
 #logo h3 {

@@ -257,11 +257,12 @@ h3 span {
     margin-top: 10px;
 }
 
+.category.even {
+  background-color: #F0F3F7;
+}
+
 .category a {
-    width: 70%;
-    clear: both;
-    color: #0064CD;
-//    font-size: 95%;
+    text-decoration: none;
 }
 
 .category .category-title a {
@@ -272,7 +273,7 @@ h3 span {
 }
 
 .category .category-metadata {
-    color: #F0F3F7;
+//    color: #F0F3F7;
     font-size: 90%;
     width: 95px;
     text-align: right;
@@ -280,6 +281,12 @@ h3 span {
 
 .category-adCount {
     color: #0064CD;
+}
+
+.category-child a:hover {
+  font-weight: bold;
+	font-size: 120%;
+    color: #FFA600;
 }
 
 /** Form **/

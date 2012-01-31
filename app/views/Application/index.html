@@ -15,7 +15,6 @@
 <form action="@{Application.search()}" method="GET" id="form1">
     <input type="text" name="searchString" size="50" value="${searchString}"/> 
     <input type="submit" value="&{'ParaPapi'}" />
-${_searchString}
     #{if controllers.auth.Security.isConnected()}
         <input id="advancedSearch" type="button" onclick="location.href='@{Application.advancedSearch()}'" value="&{'AdvancedSearch'}" />
         <input style="float: right;" id="createAd" type="button" onclick="location.href='@{Application.createAd()}'" value="&{'CreateAd'}" />

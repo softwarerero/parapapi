@@ -2,8 +2,10 @@
 
 html, body {
 //    background: #364B66 !important;
-		background: #efefef !important;
-    font-family: Helvetica, Arial, Sans !important;
+		background: #fefefe !important;
+    //font-family: Helvetica, Arial, Sans !important;
+	font: 15px/1.6 ff-meta-web-pro-1,ff-meta-web-pro-2,"Lucida Grande",Tahoma,sans-serif;
+    padding: 0 0 100px;
     color: #F0F3F7;
 }
 
@@ -14,6 +16,7 @@ body {
 
 /** Blog header **/
 #header {
+    font-family: Helvetica, Arial, Sans !important;
     padding: 10px 0;
     position: relative;
     margin-bottom: 20px;
@@ -22,7 +25,7 @@ body {
 #logo a {
     display: block;
     height: 49px;
-    color: #223D62;
+    color: #0064CD;
     font-size: 48px;
     font-weight: bold;
     text-decoration: none;
@@ -31,24 +34,25 @@ body {
 }
 
 #logo span {
-    color: #B8C569;
+    color: #FFA600;
     font-size: 65%;
 }
 
 #logo h3 {
+    font-family: Helvetica, Arial, Sans !important;
     display: block;
     margin-top: -20px;
     margin-bottom: 15px;
     color: #F0F3F7;
     font-weight: bold;
-    font-style:italic;
+//    font-style:italic;
     text-decoration: none;
     text-shadow: 1px 2px 2px #000;
     font-size: 18px;
 }
 
 a {
-    color: #223D62;
+    color: #0064CD;
 }
 
 #tools {
@@ -67,7 +71,7 @@ a {
 }
 
 #application-title {
-    background: #B8C569;
+    background: #FFA600;
     padding: 20px 30px 30px 20px;
     margin: 20px 0;
     color: #3C4313;
@@ -125,7 +129,7 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 
 .teaser {
     margin-top: 10px;
-    background: #B8C569;
+    background: #FFA600;
     padding: 3px;
     height: 38px;
 }
@@ -159,25 +163,25 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 .ad .ad-title a {
     font-size: 16px;
     font-weight: bold;
-    color: #223D62;
+    color: #0064CD;
     text-decoration: none;
 }
 
 .ad .ad-metadata {
     font-size: 80%;
-    color: #223D62;
+    color: #0064CD;
 }
 
 .ad-details {
     font-size: 80%;
-    color: #223D62;
+    color: #0064CD;
 }
 
 .ad .ad-content {
     color: #364B66;
     clear: both;
     position: relative;
-    background: #B8C569;
+    background: #FFA600;
     padding: 10px;
     margin: 20px 0 20px 0;
     -webkit-border-radius: 10px;
@@ -230,7 +234,7 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 }
 
 h3 {
-    color: #223D62;
+    color: #0064CD;
     font-size: 18px;
     margin-bottom: 15px;
 }
@@ -256,24 +260,26 @@ h3 span {
 .category a {
     width: 70%;
     clear: both;
-    color: #223D62;
+    color: #0064CD;
+//    font-size: 95%;
 }
 
 .category .category-title a {
-    color: #223D62;
+    color: #0064CD;
     width: 80px;
     text-align: right;
+    font-weight: bold;
 }
 
 .category .category-metadata {
     color: #F0F3F7;
     font-size: 90%;
-    width: 80px;
+    width: 95px;
     text-align: right;
 }
 
 .category-adCount {
-    color: #223D62;
+    color: #0064CD;
 }
 
 /** Form **/
@@ -281,7 +287,7 @@ h3 span {
 form {
     padding: 10px;
 //    background: #253142;
-    background: #B8C569;
+    background: #FFA600;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
 }
@@ -315,7 +321,7 @@ form label {
     display: block;
     font-weight: bold;
     font-size: 90%;
-    color: #223D62;
+    color: #0064CD;
     margin-bottom: 3px;
     margin-top: 7px;
 }
@@ -345,14 +351,14 @@ form .label {
     list-style: none;
     padding: 0;
     position: relative;
-    color: #223D62;
+    color: #0064CD;
     font-size: 90%;
     top: -20px;
     margin-bottom: 30px;
 }
 
 #pagination a {
-    color: #223D62;
+    color: #0064CD;
     font-size: 90%;
 }
 
@@ -383,12 +389,12 @@ form .label {
 //    border-top: 0px solid #45597A;
     font-size: 70%;
 //    text-align: left;
-    color: #223D62;
+    color: #0064CD;
 //    margin-top: 60px;
 }
 
 .footer a {
-    color: #223D62;
+    color: #0064CD;
     font-weight: normal;
 }
 
@@ -420,7 +426,7 @@ form .label {
 }
 
 #adminMenu li.selected a {
-    background: #B8C569;
+    background: #FFA600;
 }
 
 /** Login **/
@@ -528,7 +534,7 @@ ul.pagination {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	border: solid 0px #223D62;
+	border: solid 0px #0064CD;
 	float: left;
 	margin-right : 2px;
 }
@@ -537,7 +543,7 @@ ul.pagination {
 .pagination .next-off a,
 .pagination .off a:link,
 .pagination .off a:visited {
-	color: #223D62;
+	color: #0064CD;
     font-size: 0.9em;
 }
 
@@ -548,12 +554,12 @@ ul.pagination {
 
 .pagination .active {
 	color: #fff;
-	background-color: #B8C569;
+	background-color: #FFA600;
   font-size: 0.9em;
 }
 
 .pagination a:link, .pagination a:visited {
-//	color: #B8C569;
+//	color: #FFA600;
 	display : block;
 	float: left;
 	padding: 3px 6px;

@@ -286,7 +286,8 @@ h3 span {
 .category-child a:hover {
   font-weight: bold;
 	font-size: 120%;
-    color: #FFA600;
+  color: #FFA600;
+  text-decoration: underline;
 }
 
 /** Form **/

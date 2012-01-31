@@ -158,6 +158,7 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 .ad .ad-title {
     float: left;
 //    width:830px;
+	width: 100%;
 }
 
 .ad .ad-title a {

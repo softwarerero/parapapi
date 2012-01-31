@@ -47,6 +47,7 @@ body {
 #logo h3 {
     font-family: Helvetica, Arial, Sans !important;
 		margin: 0px;
+		margin-top: 12px;
     color: #F0F3F7;
     font-weight: bold;
     text-decoration: none;

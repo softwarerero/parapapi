@@ -57,7 +57,7 @@ body {
 
 #logo div {
 //	float: left;
-	margin-left: 170px;
+//	margin-left: 170px;
 }
 #logo img {
 	float: left;
@@ -129,6 +129,7 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 	float: left;
 	width: 80%;
 	clear: both;
+	margin-top: 20px;
 }
 
 .sponsors {

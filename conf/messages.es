@@ -1,5 +1,5 @@
 views.dateFormat=yyyy-MM-dd
-views.index.title.header=Publicar clasificados gratis en Paraguay
+views.index.title.header=Anunciar gratis en Paraguay
 views.index.title.subheader=Registrate gratis para buscar avanzado y publicar.
 main.title=Clasificados en Paraguay
 main.all=todos

@@ -17,16 +17,21 @@ body {
 /** Blog header **/
 #header {
     font-family: Helvetica, Arial, Sans !important;
-    padding: 10px 0;
+    padding: 10px 0px 0px 0px;
     position: relative;
-    margin-bottom: 20px;
+  //  margin-bottom: 20px;
+}
+
+#logo {
+	float: left;
+	width: 80%;
 }
 
 #logo a {
     display: block;
     height: 49px;
     color: #0064CD;
-    font-size: 48px;
+    font-size: 36px;
     font-weight: bold;
     text-decoration: none;
     letter-spacing: -3px;
@@ -35,20 +40,24 @@ body {
 
 #logo span {
     color: #FFA600;
-    font-size: 65%;
+//    font-size: 65%;
 }
 
 #logo h3 {
     font-family: Helvetica, Arial, Sans !important;
-    display: block;
-    margin-top: -20px;
-    margin-bottom: 15px;
+		margin: 0px;
     color: #F0F3F7;
     font-weight: bold;
-//    font-style:italic;
     text-decoration: none;
     text-shadow: 1px 2px 2px #000;
     font-size: 18px;
+}
+
+#logo div {
+	float: left;
+}
+#logo img {
+	float: right;
 }
 
 a {
@@ -116,13 +125,14 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 .content {
 	float: left;
 	width: 80%;
+	clear: both;
 }
 
 .sponsors {
 	float: left;
 //	width: 160px;
   margin-left: 30px;
-  margin-top: 20px;
+//  margin-top: 20px;
 }
 
 /** Ad **/

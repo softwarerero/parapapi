@@ -1,10 +1,6 @@
 #{extends 'main.html' /}
 #{set title: messages.get('main.title') /}
 
-<div id="logo">
-    <h3><img src="/public/images/favicon01.png"/>&nbsp; &{'views.index.title.header'}</h3>
-</div>
-
 #{ifErrors}
     <p class="error">
         ${errors[0]}

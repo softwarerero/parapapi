@@ -193,7 +193,6 @@ public class Application extends Controller {
 
 
   public static void renderMaincategoryList(String category, String language) {
-  	Logger.info("renderMaincategoryList: " + category + ", lang: " + language);
     String catType = "mainCategory";
     renderAds(category, language, catType);
 	}

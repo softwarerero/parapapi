@@ -575,10 +575,10 @@ ul.pagination {
     font-size: 0.9em;
 }
 
-.pagination .next a, .pagination .previous a, .pagination .first a, .pagination .last a {
-    font-size: 0.9em;
-	color: #000000;
-}
+//.pagination .next a, .pagination .previous a, .pagination .first a, .pagination .last a {
+//    font-size: 0.9em;
+//	color: #000000;
+//}
 
 .pagination .active {
 	color: #fff;

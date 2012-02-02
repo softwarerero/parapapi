@@ -6,7 +6,7 @@ html, body {
     //font-family: Helvetica, Arial, Sans !important;
 	font: 15px/1.6 ff-meta-web-pro-1,ff-meta-web-pro-2,"Lucida Grande",Tahoma,sans-serif;
     padding: 0 0 100px;
-    color: #F0F3F7;
+    color: #0064CD;
 }
 
 body {
@@ -142,14 +142,17 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 /** Ad **/
 
 .teaser {
-    margin-top: 10px;
-    background: #FFA600;
+    margin-top: 5px;
+//    background: #FFA600;
+	border-bottom: 2px solid #FFA600;
+
     padding: 3px;
+    padding-bottom: 10px;
     height: 38px;
 }
 
 .ad {
-    margin-top: 0px;
+//    margin-top: 0px;
 }
 
 .ad .ad-thumb {
@@ -185,6 +188,7 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 .ad .ad-metadata {
     font-size: 80%;
     color: #0064CD;
+//    margin-bottom: 15px;
 }
 
 .ad-details {
@@ -541,6 +545,7 @@ form .enum {
 /** based on http://woork.blogspot.com /2008/03/perfect-pagination-style-using-css.html **/
 
 div.pagination-container {
+	margin-top: 10px;
 	margin-bottom: 10px;
 	clear: both;
 }
@@ -660,4 +665,8 @@ ul.pagination {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   border-color: #0064cd #0064cd #003f81;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+
+.itemsFound {
+	font-size: 80%;
 }

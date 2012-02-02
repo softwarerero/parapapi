@@ -8,11 +8,9 @@
 #{/ifErrors}
         
 <div class="adList">
-	<div>
-	    <div class="right">
-		    <h3> &nbsp;<span>&{'items_found'}: ${noFound}</span></h3>
-	    </div>
-	</div>
+    <div class="right itemsFound">
+	    &{'items_found'}: ${noFound}
+    </div>
 
     #{paginate.list items:paginator, as: 'ad'}
         #{renderAd ad: ad, as: 'teaser'/}

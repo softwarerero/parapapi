@@ -131,7 +131,7 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 
 .content {
 	float: left;
-//	width: 80%;
+	width: 100%;
 	clear: both;
 	margin-top: 20px;
 }

@@ -15,7 +15,7 @@
     </div>
     <div class="ad-teaser-data" >
         <div class="ad-title">
-            <a href="@{Application.adDetail(_ad.url)}">${_ad.title.substring(0,Math.min(_ad.title.length(), 85))}</a>
+            <a href="@{Application.adDetail(_ad.url)}">${_ad.title.substring(0,Math.min(_ad.title.length(), 80))}</a>
         </div>
         <br/>
         <div class="ad-metadata">
@@ -27,8 +27,8 @@
 
     #{if controllers.auth.Security.isConnected() && (_ad.author.email.equals(controllers.auth.Security.connected())) }
     <div class="actions">
-        <a href="@{Application.editAd(_ad.id)}" class="editAction" title="&{'edit'}"></a>
-        <a href="@{Application.deleteAd(_ad.id)}" class="deleteAction" title="&{'delete'}"></a>
+        <a href="@{SecuredApp.editAd(_ad.id)}" class="editAction" title="&{'edit'}"></a>
+        <a href="@{SecuredApp.deleteAd(_ad.id)}" class="deleteAction" title="&{'delete'}"></a>
     </div>
     #{/if}
     #{if _as == 'full'}

@@ -9,7 +9,7 @@
 #{/set}
 
 
-#{form @Application.saveAd(ad), enctype:'multipart/form-data'}
+#{form @SecuredApp.saveAd(ad), enctype:'multipart/form-data'}
     <div style="width: 100%;" class="form">
 
     <noscript>
@@ -30,7 +30,7 @@
         #{form/renderSelect4Enum name: "subCategory", value: object.subCategory, items: subCategories /}
         #{form/renderRadio object: object, attr: "offer"/}
     </div>
-    #{form/renderText object: object, attr: "title", size: 100/}
+    #{form/renderText object: object, attr: "title", size: 80/}
     #{form/renderTextArea object: object, attr: "content"/}
     <p></p>
         <div style="width: 48%; float: left;">

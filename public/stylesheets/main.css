@@ -324,7 +324,7 @@ form {
 }
 
 .error {
-    background: #c00;
+    background: #FF2600;
     color: #fff;
     font-size: 90%;
     padding: 3px 5px;
@@ -338,28 +338,22 @@ form p {
 }
 
 form textarea {
-    width: 99%;
-    height: 150px;
-    !important;
-}
-
-form input, form textarea {
-    font-size: 14px;
-    background: #F0F3F7;
+	font-family: Lucida Grande, Tahoma,sans-serif !important;    
+  font-size: 80%;
+  width: 99%;
+  height: 150px;
 }
 
 form label {
     display: block;
     font-weight: bold;
     font-size: 90%;
-    color: #0064CD;
     margin-bottom: 3px;
     margin-top: 7px;
 }
 
 form .label {
     font-size: 90%;
-    color: #aaa;
 }
 
 #captcha{
@@ -463,15 +457,15 @@ form .label {
 /** Login **/
 
 #login form {
-    background: #8B98AD !important;
-    border: 0 !important;
-    -webkit-border-radius: 16px;
-    -moz-border-radius: 16px;
+//    background: #8B98AD !important;
+//    border: 0 !important;
+ //   -webkit-border-radius: 16px;
+  //  -moz-border-radius: 16px;
 }
 
 #login label, #password-field label, #username-field label {
-    color: #161D28 !important;
-    font-size: 110% !important;
+  //  color: #161D28 !important;
+    //font-size: 110% !important;
 }
 
 

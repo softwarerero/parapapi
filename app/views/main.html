@@ -5,42 +5,43 @@
         <title>Para Papi! - #{get 'title' /}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="language" content="spanish"/>
-		<meta name="description" content="Clasificados para Asunnción, Paraguay"/>
-		<meta name="category" content="clasificados, asunción, paraguay, clasified ads, kleinanzeigen"/>
+		<meta name="description" content="Clasificados y Agrupados de Paraguay, Comprar y vender Autos, Inmuebles, Electrónicos, encontrar trabajo y empleo y contactos"/>
+		<meta name="category" content="clasificados, agrupados, asunción, paraguay, avisos, gratis"/>
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
-        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon01.png'}">
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/bobble.png'}">
         <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
         #{get 'moreScripts' /}
     </head>
     <body>
-        <div id="header">
-            <div id="logo">
-            	<div>
-	                <a href="@{Application.index()}">Para Papi! <span>Y claro, para Mami también!</span></a>
-				    <h3>&{'views.index.title.header'}</h3>
-            	</div>
-            </div>
-            <div>
-                <ul id="tools">
-                    <li>
-                        #{if controllers.auth.Security.isConnected()}
-                            <input id="dashboard" class="btn" type="button" onclick="location.href='@{Users.dashboard()}'" value="&{'views.main.tools.myAds'}" />
-                            <input id="editUser" class="btn" type="button" onclick="location.href='@{Register.editUser()}'" value="${session.username}" />
-                            <input id="logout" class="btn" type="button" onclick="location.href='@{Secure.logout()}'" value="&{'views.main.tools.logout'}" />
-                        #{/if}
-                        #{else}
-                            <input id="register" class="btn" type="button" onclick="location.href='@{Register.register()}'" value="&{'views.main.tools.register'}" />
-                            <input id="login" class="btn" type="button" onclick="location.href='@{Secure.login()}'" value="&{'views.main.tools.login'}" />
-                        #{/else}
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="">
+        <div class="app">
+	        <div id="header">
+	            <div id="logo">
+	            	<div>
+		                <a href="@{Application.index()}">Para Papi! <span>Y claro, para Mami también!</span></a>
+					    <h3>&{'views.index.title.header'}</h3>
+	            	</div>
+	            </div>
+	            <div>
+	                <ul id="tools">
+	                    <li>
+	                        #{if controllers.auth.Security.isConnected()}
+	                            <input id="dashboard" class="btn" type="button" onclick="location.href='@{Users.dashboard()}'" value="&{'views.main.tools.myAds'}" />
+	                            <input id="editUser" class="btn" type="button" onclick="location.href='@{Register.editUser()}'" value="${session.username}" />
+	                            <input id="logout" class="btn" type="button" onclick="location.href='@{Secure.logout()}'" value="&{'views.main.tools.logout'}" />
+	                        #{/if}
+	                        #{else}
+	                            <input id="register" class="btn" type="button" onclick="location.href='@{Register.register()}'" value="&{'views.main.tools.register'}" />
+	                            <input id="login" class="btn" type="button" onclick="location.href='@{Secure.login()}'" value="&{'views.main.tools.login'}" />
+	                        #{/else}
+	                    </li>
+	                </ul>
+	            </div>
+	        </div>
 	        <div class="content">
 	            #{doLayout /}
 	        </div>
+        </div>
 			#{if request.domain != "localhost2"}
 				<div id="sponsors" class="sponsors">
 					<script type="text/javascript"><!--
@@ -56,7 +57,6 @@
 					</script>			
 				</div>
 			#{/if}
-        </div>
 
 
         <div class="footer">

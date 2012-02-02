@@ -23,6 +23,7 @@ import play.data.validation.*;
 import play.modules.paginate.ValuePaginator;
 import play.templates.Template;
 import play.templates.TemplateLoader;
+import play.vfs.VirtualFile;
 import py.suncom.parapapi.db.DbHelper;
 import py.suncom.parapapi.db.SearchBuilder;
 
@@ -391,27 +392,39 @@ public class Application extends Controller {
 
 
   public static void termsOfUse() throws FileNotFoundException {
-    File file = Play.getFile("public/documents/termsOfUse.de.html");
+  	VirtualFile file = VirtualFile.fromRelativePath("/public/documents/termsOfUse.de.html");
     if("es".equals(Lang.get())) {
-      file = Play.getFile("public/documents/termsOfUse.es.html");
+      file = VirtualFile.fromRelativePath("/public/documents/termsOfUse.es.html");
     }
-    respondStaticHtml(file);
+    showDocument(file);
   }
 
-  public static void dataPolicy() throws FileNotFoundException {
-    File file = Play.getFile("public/documents/dataPolicy.de.html");
+  public static void dataPolicy() {
+    VirtualFile file = VirtualFile.fromRelativePath("/public/documents/dataPolicy.de.html");
     if("es".equals(Lang.get())) {
-      file = Play.getFile("public/documents/dataPolicy.es.html");
+      file = VirtualFile.fromRelativePath("/public/documents/dataPolicy.es.html");
     }
-    respondStaticHtml(file);
+//    respondStaticHtml(file);
+    showDocument(file);
   }
 
-  private static void respondStaticHtml(File file) throws FileNotFoundException {
-    InputStream is = new FileInputStream(file);
-    response.setHeader("Content-Length", file.length() + "");
+//  private static void respondStaticHtml(File file) throws FileNotFoundException {
+//    InputStream is = new FileInputStream(file);
+//    response.setHeader("Content-Length", file.length() + "");
+//    response.cacheFor("24h");
+//    response.contentType = "text/html; charset=utf-8";
+//    response.direct = is;
+//  }
+
+  private static void showDocument(VirtualFile file) {
+//    InputStream is = new FileInputStream(file);
+//    response.setHeader("Content-Length", file.length() + "");
     response.cacheFor("24h");
-    response.contentType = "text/html; charset=utf-8";
-    response.direct = is;
+//    response.contentType = "text/html; charset=utf-8";
+//    response.direct = is;
+    notFoundIfNull(file);
+    String content = file.contentAsString();
+    render("Application/showDocument.html", content);
   }
 
 

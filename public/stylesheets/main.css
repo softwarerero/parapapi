@@ -201,7 +201,6 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 }
 
 .ad .ad-content {
-    color: #364B66;
     clear: both;
     position: relative;
     background: #FFA600;
@@ -412,7 +411,7 @@ form .label {
 .footer {
 	clear: both;
 //    border-top: 0px solid #45597A;
-    font-size: 70%;
+    font-size: 75%;
 //    text-align: left;
     color: #0064CD;
 //    margin-top: 60px;

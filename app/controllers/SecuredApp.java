@@ -133,7 +133,8 @@ public class SecuredApp extends Controller {
     if(validation.hasErrors()) {
       params.flash(); // add http parameters to the flash scope
       validation.keep(); // keep the errors for the next request
-      render("Application/advancedSearch.html", object);
+//      render("Application/advancedSearch.html", object);
+      render(object);
     }
     ValuePaginator paginator = new ValuePaginator(ads);
     paginator.setPageSize(pageSize);

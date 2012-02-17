@@ -410,11 +410,8 @@ form .label {
 
 .footer {
 	clear: both;
-//    border-top: 0px solid #45597A;
     font-size: 75%;
-//    text-align: left;
     color: #0064CD;
-//    margin-top: 60px;
 }
 
 .footer a {
@@ -472,8 +469,6 @@ form .label {
     display: none;
 }
 
-/** My posts **/
-
 #admin .post {
     background: #fff;
     padding: 4px;
@@ -481,8 +476,8 @@ form .label {
     font-size: 90%;
 }
 
-#admin .post.odd {
-    background: #C0CBE5;
+#admin .post.odd, .category.odd {
+    background: #E5EEFF;
 }
 
 #admin .post a {

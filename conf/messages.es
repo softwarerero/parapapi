@@ -124,8 +124,8 @@ city=Ciudad
 country=País
 asc=Ascendente
 desc=Descendente
-orderBy=Ordenación
-ascOrDesc=Ordenación asc-/descendente
+orderBy=Orden
+ascOrDesc=Orden asc-/descendente
 
 
 User.acceptConditions=

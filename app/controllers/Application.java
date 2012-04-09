@@ -49,6 +49,7 @@ public class Application extends Controller {
     Map args = new HashMap();
     args.put("_categoryCountMap", categoryCountMap);
     args.put("_mainCategories", mainCategories);
+    args.put("_mainSVGIcons", Category.mainSVGIcons);
     Template t = TemplateLoader.load("tags/renderCategories.html");
     String html = t.render(args); //Template mit args rendern
     renderText(html.toString());

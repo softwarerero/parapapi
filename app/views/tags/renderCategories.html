@@ -1,6 +1,11 @@
 #{list items: _mainCategories, as: 'category'}
     <div class="category ${category_parity}">
         <span class="category-title">
+        <svg class="svgIcon" version="1.0" id="mainCategoryIcon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
+        	width="20px" height="20px" viewBox="0 0 100 75.758" enable-background="new 0 0 100 75.758" xml:space="preserve" fill="#0064CD">
+        	${_mainSVGIcons[category].raw()}
+		</svg>
+		
             #{renderCategory category: category, categoryCountMap: _categoryCountMap/}
         </span>
         <span class="category-metadata">

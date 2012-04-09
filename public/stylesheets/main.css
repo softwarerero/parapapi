@@ -662,3 +662,8 @@ ul.pagination {
 .itemsFound {
 	font-size: 80%;
 }
+
+.svgIcon {
+	margin: 3px 5px 0px 5px;
+}
+

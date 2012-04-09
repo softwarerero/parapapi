@@ -202,6 +202,10 @@ $HTTP["host"] =~ "((^|\.)parapapi\.com|shops\.com\.py|shops\.com\.py)$" {
 		accesslog.filename = "/var/log/lighttpd/shop200.log"
 	}
 }
+$HTTP["host"] =~ "^www\.(.*)$" {
+	url.redirect = ( "^/(.*)" => "http://%1/$1" )
+}
+
 	server.max-request-size=2000
 #SSL
 $SERVER["socket"] == ":443" {

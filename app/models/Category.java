@@ -12,9 +12,8 @@ import java.util.*;
  */
 public class Category {
 
-  public static final String[] main = {"transport", "realEstate", "electronics", "household", "life",
-    "leisure", "service", "job",
-    "farming", "business", "event", "contact", "education", "other" };
+  public static final String[] main = {"farming", "contact", "education", "electronics", "job", "business", "event", 
+  	"leisure", "household", "realEstate", "other", "service", "transport", "life" };
   public static final String[] transport = {"auto", "autoparts", "airplane", "bicycle", "bike", "water" };
   public static final String[] realEstate = {"house", "commercial", "apartment", "twinHouse", "room", "rural"};
   public static final String[] electronics = {"supply", "computer", "printer", "notebook", "software", "phone", "tv", "video"};

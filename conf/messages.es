@@ -165,7 +165,7 @@ room=Habitación
 commercial=Comercial
 rural=Rural
 
-transport=Transporte
+transport=Vehículo
 auto=Automotor
 bike=Moto - piensalo!
 bicycle=Bicicleta

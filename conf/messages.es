@@ -24,7 +24,7 @@ nothing_found=Nada encontrado
 AdvancedSearch=Busqueda avanzada
 CreateAd=Publicar Anuncio
 Save=Guardar
-ParaPapi=Para Papi!
+ParaPapi=Buscar
 
 # For use in JavaExtensions.since tag
 since.seconds = hace %s segundos
@@ -149,12 +149,13 @@ User.phone=Teléfono
 views.editUser.acceptConditions=Yo he leido los %1s y %2s y estoy de acuerdo
 views.editUser.termsOfUse=<a href="/termsOfUse">Terminos de Uso</a>
 views.editUser.dataPolicy=<a href="/dataPolicy">Politica de Privacidad</a>
-views.editUser.wantNotifications=Yo quiero ser notificado por email cuando hay novedades de ParaPapi
+views.editUser.impressum=
+views.editUser.wantNotifications=Yo quiero ser notificado por email cuando hay novedades de SUNCOM Ads
 views.editUser.code=Por favor entre el codigo de seguridad
 views.editUser.code2=Codigo invalido. Por favor intenta de nuevo
 user.exists=El usario ya existe
 user.phoneFails=Hay que llenar cellular o linea baja
-
+object.acceptConditions=Tiene que estar de acuerdo con las conidiciones de uso
 
 # Categories
 realEstate=Inmuebles

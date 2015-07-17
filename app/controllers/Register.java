@@ -90,18 +90,18 @@ public class Register extends CRUD {
   private static void registrationConfirmation(String userEmail) throws EmailException {
     User user = User.find("byEmail", userEmail).<User>first();
     SimpleEmail email = new SimpleEmail();
-    email.setFrom("noreply@suncom.com.py");
+    email.setFrom("ads@sun.com.py");
     email.addTo(user.email);
-    email.addTo("register@suncom.com.py");
+    email.addTo("ads@sun.com.py");
     email.setCharset("UTF-8");
 //    String path = request.path;
-    email.setSubject("Activar su cuenta con Para Papi");
+    email.setSubject("Activar su cuenta con SUNCOM Ads");
     String msg = "Siguese este link para empezar: ";
     if(Lang.get().equals("de")) {
-      email.setSubject("Bitte aktivieren Sie Ihr Benutzerkonto bei Para Papi");
+      email.setSubject("Bitte aktivieren Sie Ihr Benutzerkonto bei SUNCOM Ads");
       msg = "Bitte folgen Sie diesem Link um Ihr Benutzerkonto zu aktieren: ";
     } else if(Lang.get().equals("en")) {
-      email.setSubject("Please activate your account with Para Papi");
+      email.setSubject("Please activate your account with SUNCOM Ads");
       msg = "Please follow this Link to activate your account: ";
     }
     String confirmationToken = UUID.randomUUID().toString();

@@ -140,6 +140,10 @@ $HTTP["host"] =~ "(ads\.parapapi\.com|beta\.parapapi\.com)$" {
 		( ( "host" => "127.0.0.1", "port" => 9003 ) ) )
 	accesslog.filename = "/var/log/lighttpd/beta.log"
 }
+$HTTP["host"] == "parapapi.com" {	
+	url.redirect = ( "^/(.*)" => "http://ads.parapapi.com/$1" )
+}
+
 	$HTTP["host"] == "zp30.parapapi.com" {	
 		proxy.balance = "round-robin" proxy.server = ( "/" =>
 			( ( "host" => "127.0.0.1", "port" => 9005 ) ) )
@@ -155,6 +159,7 @@ $HTTP["host"] =~ "(ads\.parapapi\.com|beta\.parapapi\.com)$" {
 			( ( "host" => "127.0.0.1", "port" => 9007 ) ) )
 		accesslog.filename = "/var/log/lighttpd/shop200.log"
 	}
+	
 #$HTTP["host"] =~ "(shop200\.parapapi\.com|shop\.parapapi\.com|toys\.parapapi\.com)$" {
 #		proxy.balance = "round-robin" proxy.server = ( "/" =>
 #			( ( "host" => "127.0.0.1", "port" => 9007 ) ) )
@@ -177,7 +182,11 @@ $HTTP["host"] == "idipar.org" {
 }
 #redirect shop to shops
 $HTTP["host"] == "shop.parapapi.com" {
-	url.redirect = ( "^/(.*)" => "http://shops.parapapi.com/$1" )
+	url.redirect = ( "^/(.*)" => "http://shops.com.py/$1" )
+} 
+#redirect shop to shops
+$HTTP["host"] == "shops.parapapi.com" {
+	url.redirect = ( "^/(.*)" => "http://shops.com.py/$1" )
 } 
 $HTTP["scheme"] == "http" {
   $HTTP["url"] =~ "^/((login)|(logout)|(secure)|(admin)/(.*))" {
@@ -204,6 +213,12 @@ $HTTP["host"] =~ "((^|\.)parapapi\.com|shops\.com\.py|shops\.com\.py)$" {
 }
 $HTTP["host"] =~ "^www\.(.*)$" {
 	url.redirect = ( "^/(.*)" => "http://%1/$1" )
+}
+
+$HTTP["host"] =~ "(ruc\.parapapi\.com|ruc\.sun\.com\.py|ruc\.suncom\.com\.py|ruc\.suncom\.de|ruc\.suncom\.info|ruc\.suncom\.eu)$" {	
+	proxy.balance = "round-robin" proxy.server = ( "/" =>
+		( ( "host" => "127.0.0.1", "port" => 8000 ) ) )
+	accesslog.filename = "/var/log/lighttpd/ruc.log"
 }
 
 	server.max-request-size=2000
@@ -399,6 +414,8 @@ nano /root/stats.sh
 #PDF Report
 perl /usr/share/awstats/tools/awstats_buildstaticpages.pl -config=beta.parapapi.com  -dir=/var/www/stats -buildpdf=/usr/bin/htmldoc	
 
+ln -s /var/cache/awstats /var/www/awstats
+
 #Scala
 wget http://www.scala-lang.org/downloads/distrib/files/scala-2.8.1.final.tgz
 tar xvfz scala-2.8.1.final.tgz
@@ -408,3 +425,82 @@ sudo nano /home/user/.bashrc
 	PATH=$PATH:/opt/scala
 	export PATH
 source .bashrc
+
+#User setup
+#http://feross.org/how-to-setup-your-linode/
+adduser sun
+usermod -a -G sudo sun
+
+#Install Fail2Ban:
+sudo aptitude install fail2ban
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+sudo nano /etc/fail2ban/jail.local
+Set "enabled" to "true" in [ssh-ddos] section
+#Set "port" to "44444" in [ssh] and [ssh-ddos] sections
+sudo service fail2ban restart
+
+#Add a firewall
+#Check rules
+sudo iptables -L
+sudo nano /etc/iptables.firewall.rules
+		*filter
+		
+		#  Allow all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
+		-A INPUT -i lo -j ACCEPT
+		-A INPUT ! -i lo -d 127.0.0.0/8 -j REJECT
+		
+		#  Accept all established inbound connections
+		-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+		
+		#  Allow all outbound traffic - you can modify this to only allow certain traffic
+		-A OUTPUT -j ACCEPT
+		
+		#  Allow HTTP and HTTPS connections from anywhere (the normal ports for websites and SSL).
+		-A INPUT -p tcp --dport 80 -j ACCEPT
+		-A INPUT -p tcp --dport 443 -j ACCEPT
+		
+		#  Allow port for RUC
+		-A INPUT -p tcp --dport 8000 -j ACCEPT
+
+		#  Allow ports for testing
+		-A INPUT -p tcp --dport 8080:8090 -j ACCEPT
+		
+		#  Allow ports for MOSH (mobile shell)
+		-A INPUT -p udp --dport 60000:61000 -j ACCEPT
+		
+		#  Allow SSH connections
+		#  The -dport number should be the same port number you set in sshd_config
+		-A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
+		
+		#  Allow ping
+		-A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
+		
+		#  Log iptables denied calls
+		-A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+		
+		#  Reject all other inbound - default deny unless explicitly allowed policy
+		-A INPUT -j REJECT
+		-A FORWARD -j REJECT
+		
+		COMMIT
+
+sudo iptables-restore < /etc/iptables.firewall.rules
+sudo nano /etc/network/if-pre-up.d/firewall
+		#!/bin/sh
+		/sbin/iptables-restore < /etc/iptables.firewall.rules
+sudo chmod +x /etc/network/if-pre-up.d/firewall
+
+iptables -I INPUT -p tcp --dport 80 -m string --algo bm --string 'GET /w00tw00t.at.ISC.SANS.' -j DROP
+iptables -I INPUT -p tcp -m string --algo bm --string 'GET /w00tw00t.at.ISC.SANS.' -j DROP
+
+#Get an email anytime a user uses sudo
+sudo nano /etc/sudoers.d/my_sudoers
+	Defaults    mail_always
+	Defaults    mailto="webmaster@parapapi.com"
+sudo aptitude install sendmail
+
+
+# Redirect devportal to devportal:8080
+/sbin/iptables -t nat -F
+/sbin/iptables -t nat -A OUTPUT -d devportal -p tcp --dport 80 -j REDIRECT
+--to-ports 8080

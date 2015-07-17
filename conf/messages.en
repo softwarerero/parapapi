@@ -1,5 +1,5 @@
 views.index.title.header=Publish Ads in Paraguay
-views.index.title.subheader=Use this site freely to publish everything you want to offer or find in or around Asunción, Papi.
+views.index.title.subheader=Clasified Ads for Paraguay in German, English or Spanish.
 main.title=Clasified Ads in Paraguay
 main.all=all
 advancedSearch.title=Advanced Search
@@ -19,7 +19,7 @@ views.renderAd.where=Where
 
 views.dateFormat=dd-MM-yyyy
 views.index.title.header=Classified Ads in and around Asunción, gratis
-views.index.title.subheader=Papi can publish ads here in German, English or Spanish. Mami off course, too!
+views.index.title.subheader=Publish ads in German, English or Spanish.
 views.main.tools.login=Login
 views.main.tools.logout=Logout
 views.main.tools.register=Register
@@ -31,7 +31,7 @@ nothing_found=Nothing found
 AdvancedSearch=Advanced Search
 CreateAd=Publish Ad
 Save=Save
-ParaPapi=Para Papi!
+ParaPapi=Search
 
 # Validation messages
 validation.required=%s is neccessary
@@ -132,11 +132,13 @@ User.phone=Phone
 views.editUser.acceptConditions=I have read the %s and the %s and I agree
 views.editUser.termsOfUse=<a href="/termsOfUse">Terms of Use</a>
 views.editUser.dataPolicy=<a href="/dataPolicy">Data Policy</a>
-views.editUser.wantNotifications=I want to be informed be email about ParaPapi news
+views.editUser.impressum=
+views.editUser.wantNotifications=I want to be informed be email about SUNCOM Ads news
 views.editUser.code=Please enter the security code
 views.editUser.code2=Invalid code. Please type it again
 user.exists=User already present
 user.phoneFails=Specify mobile phone or landline
+object.acceptConditions=You have to accept the conditions
 
 # Categories
 realEstate=Real Estate

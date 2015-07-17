@@ -1,6 +1,6 @@
 views.dateFormat=dd-MM-yyyy
 views.index.title.header=Kostenlose Kleinanzeigen in Paraguay
-views.index.title.subheader=Hier inseriert Papi in Deutsch, Englisch oder Spanisch. Mami natürlich auch! Gratis!
+views.index.title.subheader=Kleinanzeigen in Deutsch, Englisch oder Spanisch.
 main.title=Kleinanzeigen in Paraguay
 main.all=alle
 advancedSearch.title=Profi Suche
@@ -18,7 +18,7 @@ views.renderAd.registerGratis1=Gratis registrieren
 views.renderAd.registerGratis2=um die Kontatkdaten zu sehen.
 views.renderAd.where=Wo
 
-message.delete.confirm.title=Was will Papi?
+message.delete.confirm.title=Aktion
 message.delete.confirm.text=Wirklich löschen?
 
 no.javascript=Bitte aktivieren Sie Javascript.
@@ -28,7 +28,7 @@ nothing_found=Nichts gefunden
 AdvancedSearch=Erweiterte Suche
 CreateAd=Anzeige aufgeben
 Save=Speichern
-ParaPapi=Para Papi!
+ParaPapi=Suchen
 
 # For use in JavaExtensions.since tag
 since.seconds = vor %s Sekunden
@@ -152,11 +152,13 @@ User.phone=Telefon
 views.editUser.acceptConditions=Ich habe die %s und die %s gelesen und akzeptiere diese
 views.editUser.termsOfUse=<a href="/termsOfUse">Benutzungsvereinbarungen</a>
 views.editUser.dataPolicy=<a href="/dataPolicy">Datenschutzbestimmungen</a>
-views.editUser.wantNotifications=Ich möchte per email über Neuigeiten zu ParaPapi informiert werden
+views.editUser.impressum=<a href="/impressum">Impressum</a>
+views.editUser.wantNotifications=Ich möchte per email über Neuigeiten zu SUNCOM Ads informiert werden
 views.editUser.code=Bitte geben Sie den Sicherheitscode ein
 views.editUser.code2=Falscher Code. Bitte versuchen Sie es noch einmal
 user.exists=Der Benutzer existiert bereits
 user.phoneFails=Mobiltelefon oder Festnetz muss angegeben werden
+object.acceptConditions=Sie müssen die Bedingungen akzeptieren
 
 # Categories New
 realEstate=Immobilie

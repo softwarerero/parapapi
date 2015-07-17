@@ -15,6 +15,7 @@ GET     /confirmRegistration/{email}/{confirmationToken} Register.confirmRegistr
 GET     /profiSearch                SecuredApp.advancedSearch
 GET     /termsOfUse                Application.termsOfUse
 GET     /dataPolicy                Application.dataPolicy
+GET     /impressum                Application.impressum
 
 GET     /mainCategories/categoriesAsJson     MainCategories.categoriesAsJson(format:'json')
 

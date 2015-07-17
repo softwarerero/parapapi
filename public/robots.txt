@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /temp/
+
+#User-agent: wget
+#User-agent: webzip
+#Disallow: /

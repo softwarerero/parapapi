@@ -1,12 +1,8 @@
-/** Main layout **/
-
 html, body {
-//    background: #364B66 !important;
-		background: #fefefe !important;
-    //font-family: Helvetica, Arial, Sans !important;
+  background: #fefefe !important;
 	font: 15px/1.6 ff-meta-web-pro-1,ff-meta-web-pro-2,"Lucida Grande",Tahoma,sans-serif;
-    padding: 0 0 100px;
-    color: #0064CD;
+  padding: 0 0 100px;
+  color: #333;
 }
 
 body {
@@ -19,56 +15,35 @@ body {
 	width: 80%;
 }
 
-/** Blog header **/
 #header {
-    font-family: Helvetica, Arial, Sans !important;
-    padding: 10px 0px 0px 0px;
-    position: relative;
-  //  margin-bottom: 20px;
-}
-
-#logo {
-	float: left;
+  padding: 10px 0px 0px 0px;
+  position: relative;
+  /*border: 1px solid red;*/
+  height: 48px;
 }
 
 #logo a {
-    display: block;
-    height: 49px;
-    color: #0064CD;
-    font-size: 48px;
-//    font-size: 36px;
-    font-weight: bold;
-    text-decoration: none;
-    letter-spacing: -3px;
-    text-shadow: 1px 2px 2px #000;
+  position: relative;
+  top: -20px;
+  font-size: 48px;
+  font-weight: bold;
+  text-decoration: none;
+  font-style: italic;
+  letter-spacing: -3px;
+  text-shadow: 1px 1px 2px #0E87A4;
+}
+
+#logo img {
+  float: left;
 }
 
 #logo span {
-    color: #FFA600;
-    font-size: 65%;
-}
-
-#logo h3 {
-    font-family: Helvetica, Arial, Sans !important;
-		margin: 0px;
-		margin-top: 12px;
-    color: #F0F3F7;
-    font-weight: bold;
-    text-decoration: none;
-    text-shadow: 1px 2px 2px #000;
-    font-size: 18px;
-}
-
-#logo div {
-//	float: left;
-//	margin-left: 170px;
-}
-#logo img {
-	float: left;
+  color: #FFA600;
+  font-size: 65%;
 }
 
 a {
-    color: #0064CD;
+  color: #0E87A4;
 }
 
 #tools {
@@ -185,30 +160,31 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 .ad .ad-title a {
     font-size: 16px;
     font-weight: bold;
-    color: #0064CD;
+    color: #0E87A4;
     text-decoration: none;
 }
 
 .ad .ad-metadata {
     font-size: 80%;
-    color: #0064CD;
+    color: #0E87A4;
 //    margin-bottom: 15px;
 }
 
 .ad-details {
     font-size: 80%;
-    color: #0064CD;
+    color: #0E87A4;
 }
 
 .ad .ad-content {
-    clear: both;
-    position: relative;
-    background: #FFA600;
-    padding: 10px;
-    margin: 20px 0 20px 0;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-box-shadow: 0 2px 0 #BBBBBB;
+  clear: both;
+  position: relative;
+  background: #FFA600;
+  color: #fff;
+  padding: 10px;
+  margin: 20px 0 20px 0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-box-shadow: 0 2px 0 #BBBBBB;
 }
 
 .ad .about {
@@ -256,7 +232,7 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 }
 
 h3 {
-    color: #0064CD;
+    color: #0E87A4;
     font-size: 18px;
     margin-bottom: 15px;
 }
@@ -288,7 +264,7 @@ h3 span {
 }
 
 .category .category-title a {
-    color: #0064CD;
+    color: #0E87A4;
     width: 80px;
     text-align: right;
     font-weight: bold;
@@ -302,7 +278,7 @@ h3 span {
 }
 
 .category-adCount {
-    color: #0064CD;
+    color: #0E87A4;
 }
 
 .category-child a:hover {
@@ -375,14 +351,14 @@ form .label {
     list-style: none;
     padding: 0;
     position: relative;
-    color: #0064CD;
+    color: #0E87A4;
     font-size: 90%;
     top: -20px;
     margin-bottom: 30px;
 }
 
 #pagination a {
-    color: #0064CD;
+    color: #0E87A4;
     font-size: 90%;
 }
 
@@ -411,11 +387,11 @@ form .label {
 .footer {
 	clear: both;
     font-size: 75%;
-    color: #0064CD;
+    color: #0E87A4;
 }
 
 .footer a {
-    color: #0064CD;
+    color: #0E87A4;
     font-weight: normal;
 }
 
@@ -554,7 +530,7 @@ ul.pagination {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	border: solid 0px #0064CD;
+	border: solid 0px #0E87A4;
 	float: left;
 	margin-right : 2px;
 }
@@ -563,7 +539,7 @@ ul.pagination {
 .pagination .next-off a,
 .pagination .off a:link,
 .pagination .off a:visited {
-	color: #0064CD;
+	color: #0E87A4;
     font-size: 0.9em;
 }
 
@@ -645,17 +621,17 @@ ul.pagination {
 }
 .btn.primary {
   color: #fff;
-  background-color: #0064cd;
+  background-color: #0E87A4;
   background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
-  background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
-  background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
-  background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
-  background-image: -o-linear-gradient(top, #049cdb, #0064cd);
-  background-image: linear-gradient(top, #049cdb, #0064cd);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0E87A4));
+  background-image: -moz-linear-gradient(top, #049cdb, #0E87A4);
+  background-image: -ms-linear-gradient(top, #049cdb, #0E87A4);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0E87A4));
+  background-image: -webkit-linear-gradient(top, #049cdb, #0E87A4);
+  background-image: -o-linear-gradient(top, #049cdb, #0E87A4);
+  background-image: linear-gradient(top, #049cdb, #0E87A4);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  border-color: #0064cd #0064cd #003f81;
+  border-color: #0E87A4 #0E87A4 #003f81;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 

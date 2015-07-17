@@ -209,6 +209,15 @@ public class Application extends Controller {
     showDocument(file);
   }
 
+  public static void impressum() {
+    VirtualFile file = VirtualFile.fromRelativePath("/public/documents/impressum.de.html");
+    if("es".equals(Lang.get())) {
+      file = VirtualFile.fromRelativePath("/public/documents/impressum.es.html");
+    }
+//    respondStaticHtml(file);
+    showDocument(file);
+  }
+  
 //  private static void respondStaticHtml(File file) throws FileNotFoundException {
 //    InputStream is = new FileInputStream(file);
 //    response.setHeader("Content-Length", file.length() + "");

@@ -2,7 +2,7 @@
 # and then load them using Fixtures.load("data.yml")
 
 User(bob):
-  email: bob@gmail.com
+  email: bob@sun.com.py
   nickname: Bob
   isAdmin: true
   isActive: true
@@ -11,7 +11,7 @@ User(bob):
 
 User(jeff):
     nickname: Jeff
-    email:          jeff@gmail.com
+    email:          jeff@sun.com.py
     fullname:       Jeff
     isActive: true
 

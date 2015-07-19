@@ -74,7 +74,7 @@ public class Category {
 
   public static Map createCounterMap() {
     Map<String, Long> map = new HashMap<String, Long>();
-    List l = new ArrayList();
+//    List l = new ArrayList();
     for(String key: main) { map.put(key, 0L); }
     for(String key: transport) { map.put(key, 0L); }
     for(String key: realEstate) { map.put(key, 0L); }

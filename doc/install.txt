@@ -110,6 +110,7 @@ play run
 # Lighttpd 
 sudo apt-get install lighttpd
 sudo nano /etc/lighttpd/lighttpd.conf
+sudo /etc/init.d/lighttpd restart
 	server.modules = (
 		  "mod_access",
 		  "mod_proxy",
@@ -141,7 +142,12 @@ $HTTP["host"] =~ "(ads\.parapapi\.com|beta\.parapapi\.com)$" {
 	accesslog.filename = "/var/log/lighttpd/beta.log"
 }
 $HTTP["host"] == "parapapi.com" {	
-	url.redirect = ( "^/(.*)" => "http://ads.parapapi.com/$1" )
+  url.redirect = ( "^/(.*)" => "http://ads.parapapi.com/$1" )
+}
+$HTTP["host"] == "ads.sun.com.py" {	
+  proxy.balance = "round-robin" proxy.server = ( "/" =>
+    ( ( "host" => "127.0.0.1", "port" => 9003 ) ) )
+  accesslog.filename = "/var/log/lighttpd/beta.log"
 }
 
 	$HTTP["host"] == "zp30.parapapi.com" {	
@@ -184,7 +190,6 @@ $HTTP["host"] == "idipar.org" {
 $HTTP["host"] == "shop.parapapi.com" {
 	url.redirect = ( "^/(.*)" => "http://shops.com.py/$1" )
 } 
-#redirect shop to shops
 $HTTP["host"] == "shops.parapapi.com" {
 	url.redirect = ( "^/(.*)" => "http://shops.com.py/$1" )
 } 
@@ -204,7 +209,7 @@ $HTTP["scheme"] == "https" {
 
 #all the rest goes to shop
 $HTTP["host"] =~ "((^|\.)parapapi\.com|shops\.com\.py|shops\.com\.py)$" {
-	$HTTP["host"] !~ "^(parapapi\.com|www\.parapapi\.com|shop\.parapapi\.com|ads\.parapapi\.com|beta\.parapapi\.com|static\.parapapi\.com|redmine\.parapapi\.com)$" {	
+	$HTTP["host"] !~ "^(parapapi\.com|www\.parapapi\.com|shop\.parapapi\.com|ads\.parapapi\.com|beta\.parapapi\.com|static\.parapapi\.com|ads\.sun\.com\.py)$" {	
 
 		proxy.balance = "round-robin" proxy.server = ( "/" =>
 			( ( "host" => "127.0.0.1", "port" => 9007 ) ) )

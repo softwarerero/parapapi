@@ -37,23 +37,33 @@ public class Application extends Controller {
   public static void index() {
     String[] mainCategories = Category.main;
     String language = Lang.get();
-    Map categoryCountMap = UpdateCategoryCount.getCategoryCountMap("CategoryCountMap");
-    render("Application/index.html", mainCategories, categoryCountMap, language);
+//    Logger.info(language);
+    Map<String, Object> categoryCountMap = UpdateCategoryCount.getCategoryCountMap("CategoryCountMap_" + language);
+//    for(String key: categoryCountMap.keySet()) {
+//      Logger.info("key: " + key);
+//      Object obj = categoryCountMap.get(key);
+//      Logger.info("obj: " + obj);
+////      for(String subCat: subCats) {
+////        Logger.info("  subCat: " + subCat);
+////      }
+//    }
+    Map mainSVGIcons = Category.mainSVGIcons;
+    render("Application/index.html", mainCategories, categoryCountMap, language, mainSVGIcons);
   }
 
 
-  public static void renderCategories() {
-    String[] mainCategories = Category.main;
-    String lang = Lang.get();
-    Map categoryCountMap = UpdateCategoryCount.getCategoryCountMap("CategoryCountMap_" + lang);
-    Map args = new HashMap();
-    args.put("_categoryCountMap", categoryCountMap);
-    args.put("_mainCategories", mainCategories);
-    args.put("_mainSVGIcons", Category.mainSVGIcons);
-    Template t = TemplateLoader.load("tags/renderCategories.html");
-    String html = t.render(args); //Template mit args rendern
-    renderText(html.toString());
-  }
+//  public static void renderCategories() {
+//    String[] mainCategories = Category.main;
+//    String lang = Lang.get();
+//    Map categoryCountMap = UpdateCategoryCount.getCategoryCountMap("CategoryCountMap_" + lang);
+//    Map args = new HashMap();
+//    args.put("_categoryCountMap", categoryCountMap);
+//    args.put("_mainCategories", mainCategories);
+//    args.put("_mainSVGIcons", Category.mainSVGIcons);
+//    Template t = TemplateLoader.load("tags/renderCategories.html");
+//    String html = t.render(args); //Template mit args rendern
+//    renderText(html.toString());
+//  }
 
 
   public static void search(String searchString) {

@@ -1,25 +1,33 @@
 html, body {
   background: #fefefe !important;
 	font: 15px/1.6 ff-meta-web-pro-1,ff-meta-web-pro-2,"Lucida Grande",Tahoma,sans-serif;
-  padding: 0 0 100px;
+  /*padding: 0 0 100px;*/
+  padding: 0px;
   color: #333;
+  height: 100%;
+  /*margin: auto;*/
 }
 
 body {
-    padding: 0 30px;
-    margin: auto;
+  padding: 0 30px;
+  margin: auto;
 }
 
 .app {
-	float: left;
-	width: 80%;
+	/*float: left;*/
+	/*width: 80%;*/
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -50px;
 }
 
 #header {
   padding: 10px 0px 0px 0px;
   position: relative;
   /*border: 1px solid red;*/
-  height: 48px;
+  height: 60px;
 }
 
 #logo a {
@@ -40,6 +48,19 @@ body {
 #logo span {
   color: #FFA600;
   font-size: 65%;
+}
+
+
+.footer {
+  font-size: 75%;
+  color: #0E87A4;
+  height: 60px;
+  /*border: 1px solid red;*/
+}
+
+.footer a {
+  color: #0E87A4;
+  font-weight: normal;
 }
 
 a {
@@ -153,7 +174,6 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 
 .ad .ad-title {
     float: left;
-//    width:830px;
 	width: 100%;
 }
 
@@ -166,13 +186,12 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 
 .ad .ad-metadata {
     font-size: 80%;
-    color: #0E87A4;
-//    margin-bottom: 15px;
+    color: #777;
 }
 
 .ad-details {
-    font-size: 80%;
-    color: #0E87A4;
+  font-size: 80%;
+  color: #555;
 }
 
 .ad .ad-content {
@@ -182,6 +201,7 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
   color: #fff;
   padding: 10px;
   margin: 20px 0 20px 0;
+  border-radius: 5px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-box-shadow: 0 2px 0 #BBBBBB;
@@ -380,19 +400,6 @@ form .label {
 
 #pagination #next:after {
     content: ' >>';
-}
-
-/** Footer **/
-
-.footer {
-	clear: both;
-    font-size: 75%;
-    color: #0E87A4;
-}
-
-.footer a {
-    color: #0E87A4;
-    font-weight: normal;
 }
 
 /** Admin **/

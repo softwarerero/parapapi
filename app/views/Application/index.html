@@ -18,8 +18,9 @@
 </form>
 
 <div id="categories" class="categories">
+  <!--$("#categories").load(renderCategoryList());-->
+  #{renderCategories mainCategories: mainCategories, categoryCountMap: categoryCountMap, mainSVGIcons: mainSVGIcons/}
 </div>
-
 
 <script type="text/javascript">
 
@@ -38,19 +39,5 @@
             document.close();
         });
     };
-
-    var renderCategoryList = #{jsAction @Application.renderCategories() /}
-    function langSelect() {
-        $("#categories").load(renderCategoryList());
-    };
-
-    function Refresh() { // reload the page
-        location.reload();
-    };
-    
-    $(document).ready(function() {
-        langSelect();
-//        setTimeout("Refresh()", 60000); //60 sec.
-    });
 
 </script>

@@ -15,11 +15,12 @@
     </head>
     <body>
         <div class="app">
-	        <div id="header">
+          <div class="left2">
+  	        <div id="header">
 	            <div id="logo">
 	            	<div>
 		                <a href="@{Application.index()}">
-                      <img src="@{'/public/images/suncom_logo200.png'}"></img>
+                      <img src="@{'/public/images/suncom_logo200.png'}/">
                       <span>Ads!</span>
                     </a>
 					    <!--<h3>&{'views.index.title.header'}</h3>-->
@@ -45,31 +46,38 @@
 	            #{doLayout /}
 	        </div>
         </div>
-			#{if request.domain != "localhost2"}
-				<div id="sponsors" class="sponsors">
-					<script type="text/javascript"><!--
-					google_ad_client = "ca-pub-5979020849631235";
-					/* shop200_1 */
-					google_ad_slot = "7624833704";
-					google_ad_width = 160;
-					google_ad_height = 600;
-					//-->
-					</script>
-					<script type="text/javascript"
-					src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-					</script>			
-				</div>
-			#{/if}
+        <div class="right2">
+          #{if request.domain != "localhost2"}
+            <div id="sponsors" class="sponsors">
+              <script type="text/javascript"><!--
+              google_ad_client = "ca-pub-5979020849631235";
+              /* shop200_1 */
+              google_ad_slot = "7624833704";
+              google_ad_width = 160;
+              google_ad_height = 600;
+              //-->
+              </script>
+              <script type="text/javascript"
+              src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+              </script>			
+            </div>
+          #{/if}
+        </div>
+      </div>
 
 
         <div class="footer">
-            </br>Copyright &#169; 2015 SUNCOM Systems  &nbsp;&nbsp;&nbsp;
-            &{'Version'}  ${play.configuration.getProperty("version")}  &nbsp;&nbsp;&nbsp; &{'your_language'}: ${play.i18n.Lang.get()}
-            &nbsp;&nbsp;&nbsp;  <a href="@{Application.termsOfUse()}">&{'views.editUser.termsOfUse'}</a>
+            Copyright &#169; 2015 SUNCOM Systems
+            &{'Version'}  ${play.configuration.getProperty("version")}  &nbsp;&nbsp;&nbsp; 
+            <a href="@{Application.termsOfUse()}">&{'views.editUser.termsOfUse'}</a>
             &nbsp;&nbsp;&nbsp;  <a href="@{Application.dataPolicy()}">&{'views.editUser.dataPolicy'}</a>
             &nbsp;&nbsp;&nbsp;  <a href="@{Application.impressum()}">&{'views.editUser.impressum'}</a>
-            <br/>&{'main.all'}: ${play.cache.Cache.get("count_all")}&nbsp;&nbsp;&nbsp;de: ${play.cache.Cache.get("count_de")} &nbsp;&nbsp;&nbsp;en: ${play.cache.Cache.get("count_en")}
+            <br/>
+            &{'main.all'}: ${play.cache.Cache.get("count_all")}
+            &nbsp;&nbsp;&nbsp;de: ${play.cache.Cache.get("count_de")} 
+            &nbsp;&nbsp;&nbsp;en: ${play.cache.Cache.get("count_en")}
             &nbsp;&nbsp;&nbsp;es: ${play.cache.Cache.get("count_es")}
+            &nbsp;&nbsp;&nbsp; &{'your_language'}: ${play.i18n.Lang.get()}
         </div>
     </body>
 </html>

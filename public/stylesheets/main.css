@@ -14,13 +14,20 @@ body {
 }
 
 .app {
-	/*float: left;*/
-	/*width: 80%;*/
   min-height: 100%;
   height: auto !important;
   height: 100%;
   /* Negative indent footer by its height */
   margin: 0 auto -50px;
+}
+
+.leftApp {
+  float: left;
+  width: 80%;
+}
+
+.rightApp {
+  float: right;
 }
 
 #header {
@@ -52,6 +59,7 @@ body {
 
 
 .footer {
+  clear: both;
   font-size: 75%;
   color: #0E87A4;
   height: 60px;
@@ -126,9 +134,9 @@ a {
 noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; width:100%; }
 
 .content {
-	float: left;
-	width: 100%;
-	clear: both;
+	/*float: left;*/
+	/*width: 100%;*/
+	/*clear: both;*/
 	margin-top: 20px;
 }
 

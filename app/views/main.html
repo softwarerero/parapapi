@@ -8,11 +8,9 @@
   <meta name="description"
         content="Kleinanzeigen in Paraguay, Kaufen, Verkaufen, Autos, Immobilien, Elektrogeräte, Kontakte, Asuncion"/>
   <meta name="category" content="kleinanzeigen, asunción, paraguay, kaufen, verkaufen, gratis"/>
-  <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
-  #{get 'moreStyles' /}
   <link rel="shortcut icon" type="image/png" href="@{'/public/images/bobble.png'}">
-  <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
-  #{get 'moreScripts' /}
+  #{greenscript.css 'main smoothness/jquery-ui-1.8.6.custom jquery.lightbox-0.5', output: 'all'/}
+  #{greenscript.js 'jquery-1.4.2.min jquery-ui-1.8.6.custom.min jquery.lightbox-0.5.min jquery.form', output: 'all'/}
 </head>
 <body>
 <div class="app">
@@ -24,7 +22,6 @@
             <img src="@{'/public/images/suncom_logo200.png'}/">
             <span>Ads!</span>
           </a>
-          <!--<h3>&{'views.index.title.header'}</h3>-->
         </div>
       </div>
       <div>
@@ -68,7 +65,6 @@
       google_ad_slot = "7624833704";
       google_ad_width = 160;
       google_ad_height = 600;
-      //-->
       </script>
       <script type="text/javascript"
               src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
@@ -81,9 +77,6 @@
 
 <div class="footer">
   Copyright &#169; 2015 SUNCOM Systems
-  <!--<a href="@{Application.termsOfUse()}">&{'views.editUser.termsOfUse'}</a>-->
-  <!--&nbsp;&nbsp;&nbsp; <a href="@{Application.dataPolicy()}">&{'views.editUser.dataPolicy'}</a>-->
-  <!--&nbsp;&nbsp;&nbsp; <a href="@{Application.impressum()}">&{'views.editUser.impressum'}</a>-->
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&{'main.all'}: ${play.cache.Cache.get("count_all")}
   &nbsp;&nbsp;&nbsp;de: ${play.cache.Cache.get("count_de")}

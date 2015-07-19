@@ -6,11 +6,12 @@ require:
     - play -> paginate head
     - play -> crud
 #    - play -> press 1.0.23
+    - play -> greenscript 1.2.8b
     
-repositories:
-    - localModules:
-        type:       local
-        artifact:   /Users/sun/daten/suncom/proj/[organisation]/[module]-[revision]
-        contains:
-            - 2011
+#repositories:
+#    - localModules:
+#        type:       local
+#        artifact:   /Users/sun/daten/suncom/proj/[organisation]/[module]-[revision]
+#        contains:
+#            - 2011
         

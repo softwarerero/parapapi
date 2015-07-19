@@ -13,17 +13,13 @@
     <input type="submit" class="btn primary" value="&{'ParaPapi'}" />
         <input id="advancedSearch" class="btn" type="button" onclick="location.href='@{SecuredApp.advancedSearch()}'" value="&{'AdvancedSearch'}" />
         <input style="float: right;" id="createAd" class="btn" type="button" onclick="location.href='@{SecuredApp.createAd()}'" value="&{'CreateAd'}" />
-    #{if controllers.auth.Security.isConnected()}
-    #{/if}
 </form>
 
 <div id="categories" class="categories">
-  <!--$("#categories").load(renderCategoryList());-->
   #{renderCategories mainCategories: mainCategories, categoryCountMap: categoryCountMap, mainSVGIcons: mainSVGIcons/}
 </div>
 
-<script type="text/javascript">
-
+#{greenscript.js output:true}
     var renderMaincategoryList = #{jsAction @Application.renderMaincategoryList(':cat, :german, :english, :spanish') /}
 
     var mainCategoryChoosen = function(cat) {
@@ -39,5 +35,4 @@
             document.close();
         });
     };
-
-</script>
+#{/greenscript.js}

@@ -8,7 +8,7 @@
 #{/set}
 
 *{ Display an Ad in one of these modes: 'full', 'home' or 'teaser' }*
-<div class="ad ${_as == 'teaser' ? 'teaser' : ''} " style="clear: both;">
+<div class="ad ${_as == 'teaser' ? 'teaser' : ''} ">
 
     <div class="ad-thumb">
         <a href="@{Application.adDetail(_ad.url)}"><img src="@{Pictures.renderThumbnail(_ad.id, 0)}" /></a>

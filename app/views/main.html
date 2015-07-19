@@ -29,22 +29,29 @@
       </div>
       <div>
         <ul id="tools">
-          <li>
-            #{if controllers.auth.Security.isConnected()}
-            <input id="dashboard" class="btn" type="button" onclick="location.href='@{Users.dashboard()}'"
-                   value="&{'views.main.tools.myAds'}"/>
-            <input id="editUser" class="btn" type="button" onclick="location.href='@{Register.editUser()}'"
-                   value="${session.username}"/>
-            <input id="logout" class="btn" type="button" onclick="location.href='@{Secure.logout()}'"
-                   value="&{'views.main.tools.logout'}"/>
-            #{/if}
-            #{else}
-            <input id="register" class="btn" type="button" onclick="location.href='@{Register.register()}'"
-                   value="&{'views.main.tools.register'}"/>
-            <input id="login" class="btn" type="button" onclick="location.href='@{Secure.login()}'"
-                   value="&{'views.main.tools.login'}"/>
-            #{/else}
-          </li>
+          <span class="menubar">
+            <ul id='nav'>
+              <li><a href="/">&{'Home'}</a></li>
+              #{if controllers.auth.Security.isConnected()}
+                <li><a href="@{Register.editUser()}">&{'User'}</a>
+                  <ul>
+                    <li><a href="@{Users.dashboard()}">&{'views.main.tools.myAds'}</a></li>
+                    <li><a href="@{Secure.logout()}">&{'views.main.tools.logout'}</a></li>
+                  </ul>
+                </li>
+              #{/if}
+              #{else}
+                <li><a href="@{Register.register()}">&{'views.main.tools.register'}</a></li>
+                <li><a href="@{Secure.login()}">&{'views.main.tools.login'}</a></li>
+              #{/else}
+              <li><a href="@{Application.impressum()}">&{'views.editUser.impressum'}</a>
+                <ul>
+                  <li><a href="@{Application.termsOfUse()}">&{'views.editUser.termsOfUse'}</a></li>
+                  <li><a href="@{Application.dataPolicy()}">&{'views.editUser.dataPolicy'}</a></li>
+                </ul>
+              </li>
+            </ul>
+          </span>
         </ul>
       </div>
     </div>
@@ -53,7 +60,7 @@
     </div>
   </div>
   <div class="rightApp">
-    #{if request.domain != "localhost2"}
+    #{if request.domain != "localhost"}
     <div id="sponsors" class="sponsors">
       <script type="text/javascript"><!--
       google_ad_client = "ca-pub-5979020849631235";
@@ -74,16 +81,16 @@
 
 <div class="footer">
   Copyright &#169; 2015 SUNCOM Systems
-  &{'Version'} ${play.configuration.getProperty("version")} &nbsp;&nbsp;&nbsp;
-  <a href="@{Application.termsOfUse()}">&{'views.editUser.termsOfUse'}</a>
-  &nbsp;&nbsp;&nbsp; <a href="@{Application.dataPolicy()}">&{'views.editUser.dataPolicy'}</a>
-  &nbsp;&nbsp;&nbsp; <a href="@{Application.impressum()}">&{'views.editUser.impressum'}</a>
-  <br/>
-  &{'main.all'}: ${play.cache.Cache.get("count_all")}
+  <!--<a href="@{Application.termsOfUse()}">&{'views.editUser.termsOfUse'}</a>-->
+  <!--&nbsp;&nbsp;&nbsp; <a href="@{Application.dataPolicy()}">&{'views.editUser.dataPolicy'}</a>-->
+  <!--&nbsp;&nbsp;&nbsp; <a href="@{Application.impressum()}">&{'views.editUser.impressum'}</a>-->
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&{'main.all'}: ${play.cache.Cache.get("count_all")}
   &nbsp;&nbsp;&nbsp;de: ${play.cache.Cache.get("count_de")}
   &nbsp;&nbsp;&nbsp;en: ${play.cache.Cache.get("count_en")}
   &nbsp;&nbsp;&nbsp;es: ${play.cache.Cache.get("count_es")}
   &nbsp;&nbsp;&nbsp; &{'your_language'}: ${play.i18n.Lang.get()}
+  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &{'Version'} ${play.configuration.getProperty("version")} 
 </div>
 </body>
 </html>

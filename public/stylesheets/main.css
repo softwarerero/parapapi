@@ -18,7 +18,7 @@ body {
   height: auto !important;
   height: 100%;
   /* Negative indent footer by its height */
-  margin: 0 auto -35px;
+  margin: 0 auto -3px;
 }
 
 .leftApp {
@@ -285,8 +285,12 @@ h3 span {
     margin-top: 10px;
 }
 
+.category.odd {
+  background: #edf5f4;
+}
+
 .category.even {
-  background-color: #F0F3F7;
+  background: #fafafa;
 }
 
 .category a {
@@ -301,7 +305,6 @@ h3 span {
 }
 
 .category .category-metadata {
-//    color: #F0F3F7;
     font-size: 90%;
     width: 95px;
     text-align: right;
@@ -469,8 +472,11 @@ form .label {
     font-size: 90%;
 }
 
-#admin .post.odd, .category.odd {
-    background: #E5EEFF;
+#admin .post.odd{
+  background: #E5EEFF;
+  /*background: #0E87A4;*/
+  /*background: #e4f5f4;*/
+  /*background: #9fd0d6;*/
 }
 
 #admin .post a {
@@ -683,7 +689,7 @@ ul#nav {
   /*-webkit-border-radius: 4px;*/
   /*-moz-border-radius: 4px;*/
   /*border-radius: 4px;*/
-  opacity: 0.9;
+  opacity: 0.97;
 }
 
 ul#nav, ul#nav a {
@@ -741,7 +747,7 @@ ul#nav > li:hover ul {
 }
 
 ul#nav > li:hover > a {
-//  color: #333;
+  text-decoration: underline;
 }
 
 ul#nav > li > a {

@@ -1,3 +1,5 @@
+@import "variables.less";
+
 html, body {
   background: #fefefe !important;
 	font: 15px/1.6 ff-meta-web-pro-1,ff-meta-web-pro-2,"Lucida Grande",Tahoma,sans-serif;
@@ -46,7 +48,7 @@ body {
   text-decoration: none;
   font-style: italic;
   letter-spacing: -3px;
-  text-shadow: 1px 1px 2px #0E87A4;
+  text-shadow: 1px 1px 2px @color2;
 }
 
 #logo img {
@@ -54,7 +56,7 @@ body {
 }
 
 #logo span {
-  color: #FFA600;
+  color: @color1;
   font-size: 65%;
 }
 
@@ -62,18 +64,18 @@ body {
 .footer {
   clear: both;
   font-size: 75%;
-  color: #0E87A4;
+  color: @color2;
   height: 35px;
   /*border: 1px solid red;*/
 }
 
 .footer a {
-  color: #0E87A4;
+  color: @color2;
   font-weight: normal;
 }
 
 a {
-  color: #0E87A4;
+  color: @color2;
 }
 
 #tools {
@@ -92,7 +94,7 @@ a {
 }
 
 #application-title {
-    background: #FFA600;
+    background: @color1;
     padding: 20px 30px 30px 20px;
     margin: 20px 0;
     color: #3C4313;
@@ -152,8 +154,8 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 
 .teaser {
     margin-top: 5px;
-//    background: #FFA600;
-	border-bottom: 2px solid #FFA600;
+//    background: @color1;
+	border-bottom: 2px solid @color1;
 
     padding: 3px;
     padding-bottom: 10px;
@@ -190,7 +192,7 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 .ad .ad-title a {
     font-size: 16px;
     font-weight: bold;
-    color: #0E87A4;
+    color: @color2;
     text-decoration: none;
 }
 
@@ -207,7 +209,7 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 .ad .ad-content {
   clear: both;
   position: relative;
-  background: #FFA600;
+  background: @color1;
   color: #fff;
   padding: 10px;
   margin: 20px 0 20px 0;
@@ -262,7 +264,7 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 }
 
 h3 {
-    color: #0E87A4;
+    color: @color2;
     font-size: 18px;
     margin-bottom: 15px;
 }
@@ -298,7 +300,7 @@ h3 span {
 }
 
 .category .category-title a {
-    color: #0E87A4;
+    color: @color2;
     width: 80px;
     text-align: right;
     font-weight: bold;
@@ -311,13 +313,13 @@ h3 span {
 }
 
 .category-adCount {
-    color: #0E87A4;
+    color: @color2;
 }
 
 .category-child a:hover {
   font-weight: bold;
 	font-size: 120%;
-  color: #FFA600;
+  color: @color1;
   text-decoration: underline;
 }
 
@@ -326,7 +328,7 @@ h3 span {
 form {
     padding: 10px;
 //    background: #253142;
-    background: #FFA600;
+    background: @color1;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
 }
@@ -384,14 +386,14 @@ form .label {
     list-style: none;
     padding: 0;
     position: relative;
-    color: #0E87A4;
+    color: @color2;
     font-size: 90%;
     top: -20px;
     margin-bottom: 30px;
 }
 
 #pagination a {
-    color: #0E87A4;
+    color: @color2;
     font-size: 90%;
 }
 
@@ -443,7 +445,7 @@ form .label {
 }
 
 #adminMenu li.selected a {
-    background: #FFA600;
+    background: @color1;
 }
 
 /** Login **/
@@ -474,7 +476,7 @@ form .label {
 
 #admin .post.odd{
   background: #E5EEFF;
-  /*background: #0E87A4;*/
+  /*background: @color2;*/
   /*background: #e4f5f4;*/
   /*background: #9fd0d6;*/
 }
@@ -553,7 +555,7 @@ ul.pagination {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	border: solid 0px #0E87A4;
+	border: solid 0px @color2;
 	float: left;
 	margin-right : 2px;
 }
@@ -562,7 +564,7 @@ ul.pagination {
 .pagination .next-off a,
 .pagination .off a:link,
 .pagination .off a:visited {
-	color: #0E87A4;
+	color: @color2;
     font-size: 0.9em;
 }
 
@@ -573,12 +575,12 @@ ul.pagination {
 
 .pagination .active {
 	color: #fff;
-	background-color: #FFA600;
+	background-color: @color1;
   font-size: 0.9em;
 }
 
 .pagination a:link, .pagination a:visited {
-//	color: #FFA600;
+//	color: @color1;
 	display : block;
 	float: left;
 	padding: 3px 6px;
@@ -644,17 +646,17 @@ ul.pagination {
 }
 .btn.primary {
   color: #fff;
-  background-color: #0E87A4;
+  background-color: @color2;
   background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0E87A4));
-  background-image: -moz-linear-gradient(top, #049cdb, #0E87A4);
-  background-image: -ms-linear-gradient(top, #049cdb, #0E87A4);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0E87A4));
-  background-image: -webkit-linear-gradient(top, #049cdb, #0E87A4);
-  background-image: -o-linear-gradient(top, #049cdb, #0E87A4);
-  background-image: linear-gradient(top, #049cdb, #0E87A4);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(@color2));
+  background-image: -moz-linear-gradient(top, #049cdb, @color2);
+  background-image: -ms-linear-gradient(top, #049cdb, @color2);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, @color2));
+  background-image: -webkit-linear-gradient(top, #049cdb, @color2);
+  background-image: -o-linear-gradient(top, #049cdb, @color2);
+  background-image: linear-gradient(top, #049cdb, @color2);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  border-color: #0E87A4 #0E87A4 #003f81;
+  border-color: @color2 @color2 #003f81;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 
@@ -802,8 +804,8 @@ ul#nav > li > ul {
 }
 
 ul#nav > li > ul > li {
-  /*background-color: #FFA600;*/
-  /*background-color: #FFA600;*/
+  /*background-color: @color1;*/
+  /*background-color: @color1;*/
   padding: 10px 0 10px 10px;
 //  margin-top: -10px;
 //  border-top: 1px solid #aaa;
@@ -871,39 +873,39 @@ ul#nav > li > ul > li > a {
   }
 }
 
-@-ms-keyframes anim {
-  0% {
-    left: 0;
-    opacity: 0
-  }
-  100% {
-    left: 0;
-    top: 35px;
-    opacity: 1
-  }
-}
-
-@-o-keyframes anim {
-  0% {
-    left: 0;
-    opacity: 0
-  }
-  100% {
-    left: 0;
-    top: 35px;
-    opacity: 1
-  }
-}
-
-@keyframes anim {
-  0% {
-    left: 0;
-    opacity: 0
-  }
-  100% {
-    left: 0;
-    top: 35px;
-    opacity: 1
-  }
-}
+//@-ms-keyframes anim {
+//  0% {
+//    left: 0;
+//    opacity: 0
+//  }
+//  100% {
+//    left: 0;
+//    top: 35px;
+//    opacity: 1
+//  }
+//}
+//
+//@-o-keyframes anim {
+//  0% {
+//    left: 0;
+//    opacity: 0
+//  }
+//  100% {
+//    left: 0;
+//    top: 35px;
+//    opacity: 1
+//  }
+//}
+//
+//@keyframes anim {
+//  0% {
+//    left: 0;
+//    opacity: 0
+//  }
+//  100% {
+//    left: 0;
+//    top: 35px;
+//    opacity: 1
+//  }
+//}
 

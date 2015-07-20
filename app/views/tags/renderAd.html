@@ -1,6 +1,6 @@
+
 *{ Display an Ad in one of these modes: 'full', 'home' or 'teaser' }*
 <div class="ad ${_as == 'teaser' ? 'teaser' : ''} ">
-
     <div class="ad-thumb">
         <a href="@{Application.adDetail(_ad.url)}"><img src="@{Pictures.renderThumbnail(_ad.id, 0)}" /></a>
     </div>
@@ -66,9 +66,10 @@
                     for(int i = 0; i < _ad.pictures.size(); i++) {
             }%
                 <li>
-                    <a href="@{Pictures.renderPicture(_ad.id, i)}">
-                        <img src="@{Pictures.renderThumbnail72(_ad.id, i)}" />
-                    </a>
+                  <img class="jslghtbx-thmb" src="@{Pictures.renderThumbnail72(_ad.id, i)}" alt="" data-jslghtbx="@{Pictures.renderPicture(_ad.id, i)}" data-jslghtbx-group="adgroup1">
+                    <!--<a href="@{Pictures.renderPicture(_ad.id, i)}">-->
+                        <!--<img src="@{Pictures.renderThumbnail72(_ad.id, i)}" />-->
+                    <!--</a>-->
                 </li>
             %{
                     }

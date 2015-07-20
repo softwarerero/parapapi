@@ -147,8 +147,8 @@ User.zone=Zona
 User.mobilePhone=Celular
 User.phone=Teléfono
 views.editUser.acceptConditions=Yo he leido los %1s y %2s y estoy de acuerdo
-views.editUser.termsOfUse=<a href="/termsOfUse">Terminos de Uso</a>
-views.editUser.dataPolicy=<a href="/dataPolicy">Politica de Privacidad</a>
+views.editUser.termsOfUse=Terminos de Uso
+views.editUser.dataPolicy=Politica de Privacidad
 views.editUser.impressum=
 views.editUser.wantNotifications=Yo quiero ser notificado por email cuando hay novedades de SUNCOM Ads
 views.editUser.code=Por favor entre el codigo de seguridad

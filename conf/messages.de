@@ -150,9 +150,9 @@ User.zone=Stadtteil
 User.mobilePhone=Handy
 User.phone=Telefon
 views.editUser.acceptConditions=Ich habe die %s und die %s gelesen und akzeptiere diese
-views.editUser.termsOfUse=<a href="/termsOfUse">Benutzungsvereinbarungen</a>
-views.editUser.dataPolicy=<a href="/dataPolicy">Datenschutzbestimmungen</a>
-views.editUser.impressum=<a href="/impressum">Impressum</a>
+views.editUser.termsOfUse=Benutzungsvereinbarungen
+views.editUser.dataPolicy=Datenschutzbestimmungen
+views.editUser.impressum=Impressum
 views.editUser.wantNotifications=Ich möchte per email über Neuigeiten zu SUNCOM Ads informiert werden
 views.editUser.code=Bitte geben Sie den Sicherheitscode ein
 views.editUser.code2=Falscher Code. Bitte versuchen Sie es noch einmal

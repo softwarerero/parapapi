@@ -6,11 +6,11 @@ import java.util.Date;
 import java.util.List;
 
 import controllers.auth.Security;
+import models.*;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
+import play.libs.Mail;
 
-import models.Ad;
-import models.AdSearch;
-import models.Category;
-import models.User;
 import play.Logger;
 import play.Play;
 import play.data.validation.Valid;
@@ -203,6 +203,7 @@ public class SecuredApp extends Controller {
 
     checkAdValidation(object);
     object.save();
+    notifyByEmail(object);
 
     Users.dashboard();
   }
@@ -231,5 +232,33 @@ public class SecuredApp extends Controller {
     render4editAd(object);
 //    https://www.googleapis.com/language/translate/v2?key=AIzaSyAO6JxIxKsHa8wBqXt924fPDNaAw8q-m28&q=flowers&source=en&target=fr&callback=handleResponse&prettyprint=true
 	}
+
+
+  private static void notifyByEmail(Ad ad) throws EmailException {
+    SimpleEmail email = new SimpleEmail();
+    email.setFrom("ads@sun.com.py");
+    email.addTo("ads@sun.com.py");
+    email.setCharset("UTF-8");
+    email.setSubject("Ad published");
+    String msg = new StringBuilder("")
+      .append("\nTitle: " + ad.title)
+      .append("\nPosted at: " + ad.postedAt)
+      .append("\nPrice: " + ad.price)
+      .append("\nCity: " + ad.city)
+      .append("\nPhone: " + ad.phone)
+      .append("\nMobilePhone: " + ad.mobilePhone)
+      .append("\nEmail: " + ad.email)
+      .append("\nLanguage: " + ad.language)
+      .append("\nCurrency: " + ad.currency)
+      .append("\nAuthor: " + ad.author)
+      .append("\nMainCategory: " + ad.mainCategory)
+      .append("\nSubCategory: " + ad.subCategory)
+      .append("\nUrl: " + ad.url)
+      .append("\n\n" + ad.content)
+      .toString();
+    email.setMsg(msg);
+    Mail.send(email);
+  }
+  
 
 }

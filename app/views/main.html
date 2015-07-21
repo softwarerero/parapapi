@@ -55,12 +55,14 @@
                 <li><a href="@{Register.register()}">&{'views.main.tools.register'}</a></li>
                 <li><a href="@{Secure.login()}">&{'views.main.tools.login'}</a></li>
               #{/else}
-              <li><a href="@{Application.impressum()}">&{'views.editUser.impressum'}</a>
-                <ul>
-                  <li><a href="@{Application.termsOfUse()}">&{'views.editUser.termsOfUse'}</a></li>
-                  <li><a href="@{Application.dataPolicy()}">&{'views.editUser.dataPolicy'}</a></li>
-                </ul>
-              </li>
+              #{if language == 'de'}
+                <li><a href="@{Application.impressum()}">&{'views.editUser.impressum'}</a>
+                  <ul>
+                    <li><a href="@{Application.termsOfUse()}">&{'views.editUser.termsOfUse'}</a></li>
+                    <li><a href="@{Application.dataPolicy()}">&{'views.editUser.dataPolicy'}</a></li>
+                  </ul>
+                </li>
+              #{/if}
             </ul>
           </span>
         </ul>

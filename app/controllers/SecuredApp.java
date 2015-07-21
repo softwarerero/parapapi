@@ -239,10 +239,9 @@ public class SecuredApp extends Controller {
     email.setFrom("ads@sun.com.py");
     email.addTo("ads@sun.com.py");
     email.setCharset("UTF-8");
-    email.setSubject("Ad published");
+    email.setSubject("New SUNCOM Ad: ") + ad.title;
     String msg = new StringBuilder("")
-      .append("\nTitle: " + ad.title)
-      .append("\nPosted at: " + ad.postedAt)
+      .append("Posted at: " + ad.postedAt)
       .append("\nPrice: " + ad.price)
       .append("\nCity: " + ad.city)
       .append("\nPhone: " + ad.phone)
@@ -259,6 +258,4 @@ public class SecuredApp extends Controller {
     email.setMsg(msg);
     Mail.send(email);
   }
-  
-
 }

@@ -4,10 +4,24 @@
 <head>
   <title>SUNCOM Ads! - #{get 'title' /}</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-language" content="de">
+  #{if language == 'de'}
+    <meta http-equiv="Content-language" content="de">
+    <meta name="description"
+          content="Kleinanzeigen in Paraguay, Kaufen, Verkaufen, Autos, Immobilien, Elektrogeräte, Kontakte, Asuncion"/>
+    <meta name="category" content="kleinanzeigen, asunción, paraguay, kaufen, verkaufen, gratis"/>
+  #{/if}
+  #{elseif language == 'en'}
+    <meta http-equiv="Content-language" content="en">
+    <meta name="description"
+          content="Clasified Ads in Paraguay, Buy, Sell, Cars, Real Estate, Electric Apliances, Contacts, Asuncion"/>
+    <meta name="category" content="clasified ads, asuncion, paraguay, buy, sell, cheap, gratis"/>
+  #{/elseif}
+  #{elseif language == 'es'}
+  <meta http-equiv="Content-language" content="es">
   <meta name="description"
-        content="Kleinanzeigen in Paraguay, Kaufen, Verkaufen, Autos, Immobilien, Elektrogeräte, Kontakte, Asuncion"/>
-  <meta name="category" content="kleinanzeigen, asunción, paraguay, kaufen, verkaufen, gratis"/>
+        content="Clasificados en Paraguay, Comprar, Vender, Autos, Inmuebles, Electronicos, Contactos, Asunción"/>
+  <meta name="category" content="clasificados, asunción, paraguay, comprar, vender, barato, gratis"/>
+  #{/elseif}
   <link rel="shortcut icon" type="image/png" href="@{'/public/images/bobble.png'}">
   #{greenscript.css 'main menu lightbox', output: 'all'/}
   #{greenscript.js 'jquery-1.4.2.min jquery.form lightbox', output: 'all'/}
@@ -76,14 +90,15 @@
 
 
 <div class="footer">
-  Copyright &#169; 2015 SUNCOM Systems
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&{'main.all'}: ${play.cache.Cache.get("count_all")}
-  &nbsp;&nbsp;&nbsp;de: ${play.cache.Cache.get("count_de")}
-  &nbsp;&nbsp;&nbsp;en: ${play.cache.Cache.get("count_en")}
-  &nbsp;&nbsp;&nbsp;es: ${play.cache.Cache.get("count_es")}
-  &nbsp;&nbsp;&nbsp; &{'your_language'}: ${play.i18n.Lang.get()}
-  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &{'Version'} ${play.configuration.getProperty("version")} 
+  <div class='copyright left'>Copyright &#169; 2015 SUNCOM Systems</div>
+  <span class='languages left'>
+  &{'main.all'}: ${play.cache.Cache.get("count_all")}
+  de: ${play.cache.Cache.get("count_de")}
+  en: ${play.cache.Cache.get("count_en")}
+  es: ${play.cache.Cache.get("count_es")}
+  &{'your_language'}: ${play.i18n.Lang.get()}    
+  </span>
+  <span class='version right'>&{'Version'} ${play.configuration.getProperty("version")}</span>
 </div>
 </body>
 </html>

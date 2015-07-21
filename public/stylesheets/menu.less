@@ -20,6 +20,7 @@ ul#nav {
   /*-moz-border-radius: 4px;*/
   /*border-radius: 4px;*/
   opacity: 0.98;
+  color: @color2;
 }
 
 //ul#nav > li > a {
@@ -87,14 +88,14 @@ ul#nav > li:hover > a {
 ul#nav > li > a {
   padding: 10px 15px;
   //  color: #777;
-  text-decoration: none;
+//  text-decoration: none;
   //  font-size: 12px;
   //  border-left: 1px solid #bababa;
   //  border-right: 1px solid #eee;
   display: block;
   line-height: 15px;
   //  margin-left: 0px;
-  color: #333;
+  color: @color1;
 
   -webkit-transition: all .2s ease;
   -moz-transition: all .2s ease;
@@ -129,6 +130,7 @@ ul#nav > li > ul {
   padding: 0;
   /*background: #cfcfcf;*/
   background: whiteSmoke;
+//  background-color: @color1;
   margin-top: 5px;
   width: 230px;
   /*border-radius: 0 0 4px 4px;*/
@@ -152,14 +154,16 @@ ul#nav > li > ul > li {
 }
 
 ul#nav > li > ul > li:hover {
-  background: #bbb;
-  background: @color1;
+//  background: #bbb;
+//  background: @color1;
   //  border-top: 1px solid #999;
   //  border-bottom: 1px solid #fff;
 }
 
 ul#nav > li > ul > li:hover a {
-  color: white;
+//  color: white;
+  color: @color1;
+  text-decoration: underline;
 }
 
 ul#nav > li > ul > li:first-child {
@@ -171,8 +175,8 @@ ul#nav > li > ul > li:last-child {
 }
 
 ul#nav > li > ul > li > a {
-  color: #777;
-  text-decoration: none;
+  color: @color1;
+//  color: #777;
   padding: 10px 20px 10px 15px;
   //  font-size: 12px;
   -webkit-transition: all .2s ease;

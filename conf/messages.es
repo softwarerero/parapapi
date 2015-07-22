@@ -1,10 +1,14 @@
 views.dateFormat=yyyy-MM-dd
 views.index.title.header=Anunciar gratis en Paraguay
 views.index.title.subheader=Registrate gratis para buscar avanzado y publicar.
+main.applicationName=Clasificados!
+main.titleFixed=SUNCOM Clasificados -  
 main.title=Clasificados en Paraguay
 main.all=todos
 advancedSearch.title=Buscar avanzado
 
+views.main.tools.home=Inicio
+views.main.tools.user=Usuario
 views.main.tools.login=Ingresar
 views.main.tools.logout=Salir
 views.main.tools.register=Registrar
@@ -12,6 +16,10 @@ views.main.tools.myAds=Mis Anuncios
 views.main.adsWritten=Publicaste %s anuncios hasta ahora
 views.main.noSearchCriteria=Por favor entre sus criterias para buscar
 views.main.moreSearchCriteria=Por favor entre más criterias
+views.main.header=  <meta name="description" \
+                          content="Clasificados en Paraguay, Comprar, Vender, Autos, Inmuebles, Electronicos, Contactos, Asunción"/>\
+                    <meta name="category" content="clasificados, asunción, paraguay, comprar, vender, barato, gratis"/>\
+
 
 views.renderAd.registerGratis1=Registrarse gratis
 views.renderAd.registerGratis2=para ver los datos de contacto.
@@ -126,7 +134,6 @@ asc=Ascendente
 desc=Descendente
 orderBy=Orden
 ascOrDesc=Orden asc-/descendente
-
 
 User.acceptConditions=
 User.nickname=Usario

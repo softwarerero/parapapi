@@ -1,10 +1,14 @@
+views.dateFormat=dd.MM.yyyy
 views.index.title.header=Publish Ads in Paraguay
 views.index.title.subheader=Clasified Ads for Paraguay in German, English or Spanish.
+main.applicationName=Ads!
+main.titleFixed=SUNCOM Ads -
 main.title=Clasified Ads in Paraguay
 main.all=all
 advancedSearch.title=Advanced Search
 
-views.dateFormat=dd.MM.yyyy
+views.main.tools.home=Home
+views.main.tools.user=User
 views.main.tools.login=Login
 views.main.tools.logout=Logout
 views.main.tools.register=Register
@@ -12,6 +16,9 @@ views.main.tools.myAds=My Ads
 views.main.adsWritten=You have written %s so far
 views.main.noSearchCriteria=Oops, please enter your search criteria!
 views.main.moreSearchCriteria=Please enter more criteria!
+views.main.header=    <meta name="description" \
+                            content="Clasified Ads in Paraguay, Buy, Sell, Cars, Real Estate, Electric Apliances, Contacts, Asuncion"/>\
+                      <meta name="category" content="clasified ads, asuncion, paraguay, buy, sell, cheap, gratis"/>
 
 views.renderAd.registerGratis1=Register gratis
 views.renderAd.registerGratis2=to see the contact information.
@@ -109,7 +116,6 @@ asc=Ascending
 desc=Descending
 orderBy=Sort Order
 ascOrDesc=Order ascending/descending
-
 
 User.acceptConditions=
 User.nickname=Username

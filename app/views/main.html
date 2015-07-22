@@ -1,27 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="de">
+<html lang="#{get 'language'/}">
 <head>
-  <title>SUNCOM Ads! - #{get 'title' /}</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  #{if language == 'de'}
-    <meta http-equiv="Content-language" content="de">
-    <meta name="description"
-          content="Kleinanzeigen in Paraguay, Kaufen, Verkaufen, Autos, Immobilien, Elektrogeräte, Kontakte, Asuncion"/>
-    <meta name="category" content="kleinanzeigen, asunción, paraguay, kaufen, verkaufen, gratis"/>
-  #{/if}
-  #{elseif language == 'en'}
-    <meta http-equiv="Content-language" content="en">
-    <meta name="description"
-          content="Clasified Ads in Paraguay, Buy, Sell, Cars, Real Estate, Electric Apliances, Contacts, Asuncion"/>
-    <meta name="category" content="clasified ads, asuncion, paraguay, buy, sell, cheap, gratis"/>
-  #{/elseif}
-  #{elseif language == 'es'}
-  <meta http-equiv="Content-language" content="es">
-  <meta name="description"
-        content="Clasificados en Paraguay, Comprar, Vender, Autos, Inmuebles, Electronicos, Contactos, Asunción"/>
-  <meta name="category" content="clasificados, asunción, paraguay, comprar, vender, barato, gratis"/>
-  #{/elseif}
+  <meta http-equiv="Content-language" content="#{get 'language'/}">
+  <title>&{'main.titleFixed'} #{get 'title'/}</title>
+  &{'views.main.header'}
   <link rel="shortcut icon" type="image/png" href="@{'/public/images/bobble.png'}">
   #{greenscript.css 'main menu lightbox', output: 'all'/}
   #{greenscript.js 'jquery-1.4.2.min jquery.form lightbox', output: 'all'/}
@@ -34,7 +18,7 @@
         <div>
           <a href="@{Application.index()}">
             <img src="@{'/public/images/suncom_logo200.png'}/">
-            <span>Ads!</span>
+            <span>&{'main.applicationName'}</span>
           </a>
         </div>
       </div>
@@ -42,9 +26,9 @@
         <ul id="tools">
           <span class="menubar">
             <ul id='nav'>
-              <li><a href="/">&{'Home'}</a></li>
+              <li><a href="/">&{'views.main.tools.home'}</a></li>
               #{if controllers.auth.Security.isConnected()}
-                <li><a href="@{Register.editUser()}">&{'User'}</a>
+                <li><a href="@{Register.editUser()}">&{'views.main.tools.user'}</a>
                   <ul>
                     <li><a href="@{Users.dashboard()}">&{'views.main.tools.myAds'}</a></li>
                     <li><a href="@{Secure.logout()}">&{'views.main.tools.logout'}</a></li>

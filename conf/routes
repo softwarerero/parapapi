@@ -5,6 +5,8 @@
 # Home page
 GET     /                                       Application.categories
 GET     /latestAds                              Application.latestAds
+
+GET     /once                              Application.once
 GET     /category/{id}                          Application.adList
 
 GET     /ad/{url}                               Application.adDetail

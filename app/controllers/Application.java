@@ -33,6 +33,15 @@ public class Application extends Controller {
   static public int pageSize = Integer.parseInt(Play.configuration.getProperty("pagesize"));
 
 
+  public static void once() {
+    String[] statements = {"ALTER TABLE ad ADD COLUMN `published` BOOLEAN"};
+    try {
+      DbHelper.executeSqls(statements);
+    } catch(Exception e) {
+      Logger.info(e.getMessage());
+    }
+  }
+
 //  @CacheFor("15mn")
   public static void categories() {
     String[] mainCategories = Category.main;
@@ -67,8 +76,6 @@ public class Application extends Controller {
     paginator.setPageSize(pageSize);
 		render("Application/adList.html", searchString, ads, paginator, noFound);
 	}
-
-
 
   public static void renderMaincategoryList(String category, String language) {
     String catType = "mainCategory";

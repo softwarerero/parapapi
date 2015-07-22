@@ -34,12 +34,12 @@ public class Application extends Controller {
 
 
 //  @CacheFor("15mn")
-  public static void index() {
+  public static void categories() {
     String[] mainCategories = Category.main;
     String language = Lang.get();
     Map<String, Object> categoryCountMap = UpdateCategoryCount.getCategoryCountMap("CategoryCountMap_" + language);
     Map mainSVGIcons = Category.mainSVGIcons;
-    render("Application/index.html", mainCategories, categoryCountMap, language, mainSVGIcons);
+    render("Application/categories.html", mainCategories, categoryCountMap, language, mainSVGIcons);
   }
 
 
@@ -50,7 +50,7 @@ public class Application extends Controller {
 		if(validation.hasErrors()) {
       params.flash(); // add http parameters to the flash scope
       validation.keep(); // keep the errors for the next request
-			index();
+      categories();
 		}
 
     SearchBuilder sb = new SearchBuilder();
@@ -58,7 +58,7 @@ public class Application extends Controller {
     if(null != searchString && !"".equals(searchString)) {
       sb.startExpression().like("title", searchString).or().like("content", searchString).endExpression();
     }
-    addLanguageExpression(sb);
+    addLanguageExpression(sb, true);
     sb.orderBy("id desc");
 
     List<Ad> ads = searchAds(sb);
@@ -81,10 +81,19 @@ public class Application extends Controller {
     renderAds(category, language, catType);
 	}
 
+  public static void latestAds(String language) {
+    renderAds(null, language, null);
+  }
+  
+
   private static void renderAds(String category, String language, String catType) {
     SearchBuilder sb = new SearchBuilder();
-    sb.startExpression().eq(catType, sb.quote(category)).endExpression();
-    addLanguageExpression(sb);
+    if(category != null) {
+      sb.startExpression().eq(catType, sb.quote(category)).endExpression();
+      addLanguageExpression(sb, true);
+    } else {
+      addLanguageExpression(sb, false);      
+    }
     sb.orderBy("id desc");
 
     List<Ad> ads = searchAds(sb);
@@ -109,14 +118,17 @@ public class Application extends Controller {
     if(validation.hasErrors()) {
       params.flash(); // add http parameters to the flash scope
       validation.keep(); // keep the errors for the next request
-      index();
+      categories();
     }
     return noFound;
   }
 
 
-  private static void addLanguageExpression(SearchBuilder sb) {
-    sb.and().eq("language", Ad.Language.valueOf(Lang.get()).ordinal());
+  private static void addLanguageExpression(SearchBuilder sb, Boolean and) {
+    if(and == true) {
+      sb.and();
+    }
+    sb.eq("language", Ad.Language.valueOf(Lang.get()).ordinal());
   }
 
 
@@ -149,7 +161,7 @@ public class Application extends Controller {
     if(null == ad) {
       validation.required(ad).message(Messages.get("validation.notFound", ad, url));
       validation.keep(); // keep the errors for the next request
-      Application.index();
+      Application.categories();
     }
 		render(ad);
 	}

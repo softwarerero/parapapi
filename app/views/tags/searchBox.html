@@ -1,0 +1,6 @@
+<form action="@{Application.search()}" method="GET" id="form1">
+  <input type="text" name="searchString" size="50" value="${searchString}"/>
+  <input type="submit" class="btn primary" value="&{'ParaPapi'}" />
+  <input id="advancedSearch" class="btn" type="button" onclick="location.href='@{SecuredApp.advancedSearch()}'" value="&{'AdvancedSearch'}" />
+  <input id="latestAds" class="btn right" type="button" onclick="location.href='@{Application.latestAds()}'" value="&{'latestAds'}" />
+</form>

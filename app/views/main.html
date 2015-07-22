@@ -16,7 +16,7 @@
     <div id="header">
       <div id="logo">
         <div>
-          <a href="@{Application.index()}">
+          <a href="@{Application.categories()}">
             <img src="@{'/public/images/suncom_logo200.png'}/">
             <span>&{'main.applicationName'}</span>
           </a>
@@ -31,6 +31,7 @@
                 <li><a href="@{Register.editUser()}">&{'views.main.tools.user'}</a>
                   <ul>
                     <li><a href="@{Users.dashboard()}">&{'views.main.tools.myAds'}</a></li>
+                    <li><a href="@{SecuredApp.createAd()}">&{'CreateAd'}</a></li>
                     <li><a href="@{Secure.logout()}">&{'views.main.tools.logout'}</a></li>
                   </ul>
                 </li>
@@ -76,7 +77,6 @@
 
 
 <div class="footer">
-  <div class='copyright left'>Copyright &#169; 2015 SUNCOM Systems</div>
   <span class='languages left'>
   &{'main.all'}: ${play.cache.Cache.get("count_all")}
   de: ${play.cache.Cache.get("count_de")}
@@ -84,6 +84,7 @@
   es: ${play.cache.Cache.get("count_es")}
   &{'your_language'}: ${play.i18n.Lang.get()}    
   </span>
+  <div class='copyright left'>Copyright &#169; 2015 SUNCOM Systems</div>
   <span class='version right'>&{'Version'} ${play.configuration.getProperty("version")}</span>
 </div>
 </body>

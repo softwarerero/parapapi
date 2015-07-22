@@ -120,7 +120,7 @@ public class Register extends CRUD {
     User user = User.find("byEmail", email).<User>first();
     if(null == user) {
       Logger.fatal("user confirmation failed: " + email);
-      Application.index();
+      Application.categories();
     }
     if(user.confirmationToken.equals(confirmationToken)) {
       Logger.info("activate user: " + user.id);
@@ -128,7 +128,7 @@ public class Register extends CRUD {
       user.save();
     } else {
       Logger.fatal("user confirmation failed (wrong token): " + email);
-      Application.index();
+      Application.categories();
     }
     Secure.login();
   }

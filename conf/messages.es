@@ -30,6 +30,7 @@ items_found=Encontrado
 nothing_found=Nada encontrado
 
 AdvancedSearch=Busqueda avanzada
+latestAds=Últimos Clasificados
 CreateAd=Publicar Anuncio
 Save=Guardar
 ParaPapi=Buscar

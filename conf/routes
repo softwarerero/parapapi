@@ -3,11 +3,11 @@
 # ~~~~
 
 # Home page
-GET     /                                       Application.index
-
+GET     /                                       Application.categories
+GET     /latestAds                              Application.latestAds
 GET     /category/{id}                          Application.adList
 
-GET     /ad/{url}                                Application.adDetail
+GET     /ad/{url}                               Application.adDetail
 
 GET     /captcha                                Application.captcha
 

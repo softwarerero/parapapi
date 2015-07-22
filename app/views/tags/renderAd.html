@@ -29,8 +29,6 @@
                 &{'mainCategory'}: &{_ad.mainCategory}
                 #{if null != _ad.subCategory} >> &{_ad.subCategory} #{/if}
                 <br/>
-                <!-- &{'NoOfVisits'}: ${_ad.noOfVisits}
-                &nbsp;|&nbsp;  -->
                 &{'handOver'}: &{_ad.handOver} >> &{_ad.offer}
             </div>
             <div style="width: 4%; float: left;">&nbsp;</div>
@@ -67,9 +65,6 @@
             }%
                 <li>
                   <img class="jslghtbx-thmb" src="@{Pictures.renderThumbnail72(_ad.id, i)}" alt="" data-jslghtbx="@{Pictures.renderPicture(_ad.id, i)}" data-jslghtbx-group="adgroup1">
-                    <!--<a href="@{Pictures.renderPicture(_ad.id, i)}">-->
-                        <!--<img src="@{Pictures.renderThumbnail72(_ad.id, i)}" />-->
-                    <!--</a>-->
                 </li>
             %{
                     }

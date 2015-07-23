@@ -10,7 +10,7 @@
         </div>
         <br/>
         <div class="ad-metadata">
-            <span class="ad-date">&{'Published'} ${_ad.postedAt.format("yyyy-MM-dd hh:mm")}</span>
+            <span class="ad-date">&{'Published'} ${_ad.postedAt.format("yyyy-MM-dd HH:mm")}</span>
             &nbsp;&nbsp;
             <span class="ad-price">#{if null != _ad.price}&{'Price'} ${_ad.price.doubleValue().formatCurrency(_ad.currency.name()).raw()}#{/if}</span>
         </div>

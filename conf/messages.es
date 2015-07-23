@@ -25,6 +25,7 @@ views.main.header=  <meta name="description" \
 views.renderAd.registerGratis1=Registrarse gratis
 views.renderAd.registerGratis2=para ver los datos de contacto.
 views.renderAd.where=Donde
+views.login.noUser=Si todavía no tenés una cuenta puedes abrirla <a href="%s">aquí</a>.
 
 no.javascript=Javascript es necesario
 items_found=Encontrado

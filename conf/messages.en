@@ -24,6 +24,7 @@ views.main.header=    <meta name="description" \
 views.renderAd.registerGratis1=Register gratis
 views.renderAd.registerGratis2=to see the contact information.
 views.renderAd.where=Where
+views.login.noUser=You can create a new user <a href="%s">here</a>.
 
 views.dateFormat=dd-MM-yyyy
 views.index.title.header=Classified Ads in and around Asunción, gratis

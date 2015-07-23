@@ -26,6 +26,7 @@ views.main.header=      <meta name="description" \
 views.renderAd.registerGratis1=Gratis registrieren
 views.renderAd.registerGratis2=um die Kontatkdaten zu sehen.
 views.renderAd.where=Wo
+views.login.noUser=<a href="%s">Hier</a> kann ein neuer Benutzer angelegt werden.
 
 message.delete.confirm.title=Aktion
 message.delete.confirm.text=Wirklich löschen?

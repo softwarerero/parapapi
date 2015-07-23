@@ -34,7 +34,7 @@ public class Application extends Controller {
 
 
   public static void once() {
-    String[] statements = {"ALTER TABLE ad ADD COLUMN `published` BOOLEAN"};
+    String[] statements = {"UPDATE ad SET published=true"};
     try {
       DbHelper.executeSqls(statements);
     } catch(Exception e) {
@@ -113,7 +113,8 @@ public class Application extends Controller {
 
 
   private static List<Ad> searchAds(SearchBuilder sb) {
-    String search = sb.getSearchString();
+//    String search = sb.getSearchString();
+    sb.and().eq("published", true);
     List<Ad> ads = sb.exec();
     return ads;
   }
@@ -137,7 +138,6 @@ public class Application extends Controller {
     }
     sb.eq("language", Ad.Language.valueOf(Lang.get()).ordinal());
   }
-
 
 //  //TODO example how to cache page fragments
 //  public static void index(Long id){

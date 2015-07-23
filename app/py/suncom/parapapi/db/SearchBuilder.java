@@ -2,6 +2,7 @@ package py.suncom.parapapi.db;
 
 import models.Ad;
 import play.templates.JavaExtensions;
+import play.Logger;
 
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
  */
 public class SearchBuilder {
   StringBuilder search = new StringBuilder();
+  StringBuilder order = new StringBuilder();
 
   public SearchBuilder like(String attr, String s) {
     search.append("lower(").append(attr).append(") like ");
@@ -27,6 +29,14 @@ public class SearchBuilder {
       s = escape((String) s);
     }
     search.append(attr).append("=").append(s);
+    return this;
+  }
+
+  public SearchBuilder neq(String attr, Object s) {
+    if(s instanceof String) {
+      s = escape((String) s);
+    }
+    search.append(attr).append("<>").append(s);
     return this;
   }
 
@@ -80,12 +90,12 @@ public class SearchBuilder {
   }
 
   public SearchBuilder orderBy(String orderBy) {
-    search.append(" order by " + orderBy);
+    order.append(" order by " + orderBy);
     return this;
   }
 
   public String getSearchString() {
-    return search.toString();
+    return search.toString() + order.toString();
   }
 
   public String escape(String s) {
@@ -97,6 +107,7 @@ public class SearchBuilder {
   }
 
   public List<Ad> exec() {
-    return Ad.find(search.toString()).fetch();
+    Logger.info(getSearchString());
+    return Ad.find(getSearchString()).fetch();
   }
 }

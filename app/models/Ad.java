@@ -56,6 +56,7 @@ public class Ad extends Model {
   public Integer year = 0;
   @OneToMany(mappedBy="ad", cascade= CascadeType.ALL) public List<Picture> pictures;
   public String url;
+  public Boolean published = Boolean.FALSE;
 
 
   public String getHtmlSecuredEmail() {

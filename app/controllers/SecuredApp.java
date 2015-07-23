@@ -183,6 +183,7 @@ public class SecuredApp extends Controller {
                             File picture4, File picture5) throws Exception {
 
     checkAdValidation(object);
+//    object.published = Boolean.FALSE;
     object.save();
 
     try {
@@ -202,6 +203,7 @@ public class SecuredApp extends Controller {
 //    Logger.info("saving ad: " + object.id + ", " + object.url);
 
     checkAdValidation(object);
+    Logger.info("Save: " + object.published);
     object.save();
     notifyByEmail(object);
 

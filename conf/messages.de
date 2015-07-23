@@ -14,6 +14,7 @@ views.main.tools.login=Anmelden
 views.main.tools.logout=Abmelden
 views.main.tools.register=Registrieren
 views.main.tools.myAds=Meine Anzeigen
+views.main.tools.faq=Fragen
 views.main.adsWritten=Du hast bisher %s Anzeigen publiziert
 views.main.noSearchCriteria=Bitte geben Sie Ihre Suchkriterien ein!
 views.main.moreSearchCriteria=Bitte geben Sie mehr Suchkriterien ein!

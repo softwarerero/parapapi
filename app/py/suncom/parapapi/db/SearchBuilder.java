@@ -107,7 +107,6 @@ public class SearchBuilder {
   }
 
   public List<Ad> exec() {
-    Logger.info(getSearchString());
     return Ad.find(getSearchString()).fetch();
   }
 }

@@ -222,6 +222,18 @@ public class Application extends Controller {
 //    respondStaticHtml(file);
     showDocument(file);
   }
+
+  public static void faq() {
+    String doc = "/public/documents/faq." + Lang.get() + ".html";
+    VirtualFile file = VirtualFile.fromRelativePath(doc);
+//    VirtualFile file = VirtualFile.fromRelativePath("/public/documents/faq.de.html");
+//    if("es".equals(Lang.get())) {
+//      file = VirtualFile.fromRelativePath("/public/documents/faq.es.html");
+//    }
+//    respondStaticHtml(file);
+    showDocument(file);
+  }
+  
   
 //  private static void respondStaticHtml(File file) throws FileNotFoundException {
 //    InputStream is = new FileInputStream(file);

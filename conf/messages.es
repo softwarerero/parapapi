@@ -13,6 +13,7 @@ views.main.tools.login=Ingresar
 views.main.tools.logout=Salir
 views.main.tools.register=Registrar
 views.main.tools.myAds=Mis Anuncios
+views.main.tools.faq=Preguntas frecuentes
 views.main.adsWritten=Publicaste %s anuncios hasta ahora
 views.main.noSearchCriteria=Por favor entre sus criterias para buscar
 views.main.moreSearchCriteria=Por favor entre más criterias

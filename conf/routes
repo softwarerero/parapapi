@@ -6,7 +6,7 @@
 GET     /                                       Application.categories
 GET     /latestAds                              Application.latestAds
 
-GET     /once                              Application.once
+#GET     /once                              Application.once
 GET     /category/{id}                          Application.adList
 
 GET     /ad/{url}                               Application.adDetail
@@ -15,9 +15,10 @@ GET     /captcha                                Application.captcha
 
 GET     /confirmRegistration/{email}/{confirmationToken} Register.confirmRegistration
 GET     /profiSearch                SecuredApp.advancedSearch
-GET     /termsOfUse                Application.termsOfUse
-GET     /dataPolicy                Application.dataPolicy
-GET     /impressum                Application.impressum
+GET     /termsOfUse                 Application.termsOfUse
+GET     /dataPolicy                 Application.dataPolicy
+GET     /impressum                  Application.impressum
+GET     /faq                        Application.faq
 
 GET     /mainCategories/categoriesAsJson     MainCategories.categoriesAsJson(format:'json')
 

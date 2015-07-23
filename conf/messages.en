@@ -13,6 +13,7 @@ views.main.tools.login=Login
 views.main.tools.logout=Logout
 views.main.tools.register=Register
 views.main.tools.myAds=My Ads
+views.main.tools.faq=FAQ
 views.main.adsWritten=You have written %s so far
 views.main.noSearchCriteria=Oops, please enter your search criteria!
 views.main.moreSearchCriteria=Please enter more criteria!

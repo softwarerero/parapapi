@@ -77,9 +77,9 @@
 <div class="footer">
   <span class='languages left'>
   &{'main.all'}: ${play.cache.Cache.get("count_all")}
-  de: ${play.cache.Cache.get("count_de")}
-  en: ${play.cache.Cache.get("count_en")}
-  es: ${play.cache.Cache.get("count_es")}
+  <a href="@{Application.switchLanguage('de')}">de</a>: ${play.cache.Cache.get("count_de")}
+  <a href="@{Application.switchLanguage('en')}">en</a>: ${play.cache.Cache.get("count_en")}
+  <a href="@{Application.switchLanguage('es')}">es</a>: ${play.cache.Cache.get("count_es")}
   &{'your_language'}: ${play.i18n.Lang.get()}    
   </span>
   <div class='copyright left'>Copyright &#169; 2015 SUNCOM Systems</div>

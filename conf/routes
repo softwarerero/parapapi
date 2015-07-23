@@ -20,6 +20,8 @@ GET     /dataPolicy                 Application.dataPolicy
 GET     /impressum                  Application.impressum
 GET     /faq                        Application.faq
 
+GET     /switchLanguage/{lang}      Application.switchLanguage
+
 GET     /mainCategories/categoriesAsJson     MainCategories.categoriesAsJson(format:'json')
 
 GET     /up0.9.2                DbUpdate.from0_9_1to0_9_2

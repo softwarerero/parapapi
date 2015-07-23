@@ -198,39 +198,26 @@ public class Application extends Controller {
 
 
   public static void termsOfUse() throws FileNotFoundException {
-  	VirtualFile file = VirtualFile.fromRelativePath("/public/documents/termsOfUse.de.html");
-    if("es".equals(Lang.get())) {
-      file = VirtualFile.fromRelativePath("/public/documents/termsOfUse.es.html");
-    }
+    String doc = "/public/documents/termsOfUse." + Lang.get() + ".html";
+    VirtualFile file = VirtualFile.fromRelativePath(doc);
     showDocument(file);
   }
 
   public static void dataPolicy() {
-    VirtualFile file = VirtualFile.fromRelativePath("/public/documents/dataPolicy.de.html");
-    if("es".equals(Lang.get())) {
-      file = VirtualFile.fromRelativePath("/public/documents/dataPolicy.es.html");
-    }
-//    respondStaticHtml(file);
+    String doc = "/public/documents/dataPolicy." + Lang.get() + ".html";
+    VirtualFile file = VirtualFile.fromRelativePath(doc);
     showDocument(file);
   }
 
   public static void impressum() {
-    VirtualFile file = VirtualFile.fromRelativePath("/public/documents/impressum.de.html");
-    if("es".equals(Lang.get())) {
-      file = VirtualFile.fromRelativePath("/public/documents/impressum.es.html");
-    }
-//    respondStaticHtml(file);
+    String doc = "/public/documents/impressum." + Lang.get() + ".html";
+    VirtualFile file = VirtualFile.fromRelativePath(doc);
     showDocument(file);
   }
 
   public static void faq() {
     String doc = "/public/documents/faq." + Lang.get() + ".html";
     VirtualFile file = VirtualFile.fromRelativePath(doc);
-//    VirtualFile file = VirtualFile.fromRelativePath("/public/documents/faq.de.html");
-//    if("es".equals(Lang.get())) {
-//      file = VirtualFile.fromRelativePath("/public/documents/faq.es.html");
-//    }
-//    respondStaticHtml(file);
     showDocument(file);
   }
   
@@ -259,5 +246,15 @@ public class Application extends Controller {
     DbHelper.backup();
 		String backupPathName = Play.configuration.getProperty("db.backup.path");
 		renderText("backup'ed to " + backupPathName);
+  }
+
+
+  public static void switchLanguage(String lang) {
+    Lang.change(lang);
+    renderAds(null, lang, null);
+  }
+  
+  private String getLanguage() {
+    return Lang.get();
   }
 }

@@ -33,6 +33,7 @@ nothing_found=Nada encontrado
 
 AdvancedSearch=Busqueda avanzada
 latestAds=Últimos Clasificados
+publishAd=Publicar
 CreateAd=Publicar Anuncio
 Save=Guardar
 ParaPapi=Buscar

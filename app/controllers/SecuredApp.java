@@ -235,6 +235,12 @@ public class SecuredApp extends Controller {
 //    https://www.googleapis.com/language/translate/v2?key=AIzaSyAO6JxIxKsHa8wBqXt924fPDNaAw8q-m28&q=flowers&source=en&target=fr&callback=handleResponse&prettyprint=true
 	}
 
+  public static void publishAd(Long id) {
+    Ad ad = Ad.findById(id);
+    ad.published = true;
+    ad.save();
+    Application.renderAds(null, null);
+  }
 
   private static void notifyByEmail(Ad ad) throws EmailException {
     SimpleEmail email = new SimpleEmail();

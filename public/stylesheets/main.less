@@ -178,78 +178,79 @@ noscript { font-family:Verdana; font-size:10px; font-weight:bold; color:red; wid
 .ad {
   margin-top: 10px;
   clear: both;
-}
 
-.ad .ad-thumb {
+  .ad-thumb {
     float: left;
     width: 50px;
-}
+  }
 
-.ad .ad-thumb img {
+  .ad-thumb img {
     border: none;
-}
+  }
 
-.ad .ad-teaser-data {
+  .ad-teaser-data {
     float: left;
     margin-left: 10px;
     display:block;
     line-height:22px;
-    //width:800px;
-}
+  }
 
-.ad .ad-title {
+  .ad-title {
     float: left;
-	width: 100%;
-}
+    width: 100%;
+  }
 
-.ad .ad-title a {
+  .ad-title a {
     font-size: 16px;
     font-weight: bold;
     color: @color2;
     text-decoration: none;
-}
+  }
 
-.ad .ad-metadata {
+  .ad-metadata {
+    width: 100%;
     font-size: 80%;
     color: #777;
+  }
+  .ad-actions {
+    float: right;
+    margin-top: 10px;
+  }
+  .ad-content {
+    clear: both;
+    position: relative;
+    background: @color1;
+    color: #fff;
+    padding: 10px;
+    margin: 20px 0 20px 0;
+    border-radius: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-box-shadow: 0 2px 0 #BBBBBB;
+  }
+
+  .about {
+    text-indent: -999em;
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #F0F3F7;
+    border-top: 0;
+    position: absolute;
+    top: -10px;
+    left: 24px;
+  }
+  
 }
+
 
 .ad-details {
   font-size: 80%;
   color: #555;
 }
 
-.ad .ad-content {
-  clear: both;
-  position: relative;
-  background: @color1;
-  color: #fff;
-  padding: 10px;
-  margin: 20px 0 20px 0;
-  border-radius: 5px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-box-shadow: 0 2px 0 #BBBBBB;
-}
-
-.ad .about {
-    text-indent: -999em;
-    display: block;
-    width: 0;
-    height: 0;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
-	border-bottom: 10px solid #F0F3F7;
-	border-top: 0;
-	position: absolute;
-	top: -10px;
-	left: 24px;
-}
-
-.actions {
-    float: right;
-    margin-top: 10px;
-}
 
 #createAction {
     float: right;

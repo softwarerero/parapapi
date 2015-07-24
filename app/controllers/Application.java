@@ -114,7 +114,9 @@ public class Application extends Controller {
 
   private static List<Ad> searchAds(SearchBuilder sb) {
 //    String search = sb.getSearchString();
-    sb.and().eq("published", true);
+    if(!Security.isAdmin()) {
+      sb.and().eq("published", true);
+    }
     List<Ad> ads = sb.exec();
     return ads;
   }

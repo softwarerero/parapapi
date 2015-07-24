@@ -5,21 +5,25 @@
         <a href="@{Application.adDetail(_ad.url)}"><img src="@{Pictures.renderThumbnail(_ad.id, 0)}" /></a>
     </div>
     <div class="ad-teaser-data" >
-        <div class="ad-title">
-            <a href="@{Application.adDetail(_ad.url)}">${_ad.title.substring(0,Math.min(_ad.title.length(), 80))}</a>
-        </div>
-        <br/>
-        <div class="ad-metadata">
-            <span class="ad-date">&{'Published'} ${_ad.postedAt.format("yyyy-MM-dd HH:mm")}</span>
-            &nbsp;&nbsp;
-            <span class="ad-price">#{if null != _ad.price}&{'Price'} ${_ad.price.doubleValue().formatCurrency2(_ad.currency.name()).raw()}#{/if}</span>
-        </div>
+      <div class="ad-title">
+        <a href="@{Application.adDetail(_ad.url)}">${_ad.title.substring(0,Math.min(_ad.title.length(), 80))}</a>
+      </div>
+      <br/>
+      <div class="ad-metadata">
+        <span class="ad-date">&{'Published'} ${_ad.postedAt.format("yyyy-MM-dd HH:mm")}</span>
+        &nbsp;&nbsp;
+        <span class="ad-price">#{if null != _ad.price}&{'Price'} ${_ad.price.doubleValue().formatCurrency2(_ad.currency.name()).raw()}#{/if}</span>
+      </div>
     </div>
-
     #{if controllers.auth.Security.isConnected() && (_ad.author.email.equals(controllers.auth.Security.connected())) }
-    <div class="actions">
+    <div class="ad-actions">
         <a href="@{SecuredApp.editAd(_ad.id)}" class="editAction" title="&{'edit'}"></a>
         <a href="@{SecuredApp.deleteAd(_ad.id)}" class="deleteAction" title="&{'delete'}"></a>
+        #{if controllers.auth.Security.isAdmin() }
+          #{if false == _ad.published }
+            <input id="publishAd" class="btn" type="button" onclick="location.href='@{SecuredApp.publishAd(_ad.id)}'" value="&{'publishAd'}" />
+          #{/if}
+        #{/if}
     </div>
     #{/if}
     #{if _as == 'full'}

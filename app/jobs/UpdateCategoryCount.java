@@ -47,7 +47,7 @@ public class UpdateCategoryCount extends Job {
   }
 
   private void count(Ad.Language lang, Statement st) throws SQLException {
-    String queryString = "select count(*) from Ad where language = " + lang.ordinal();
+    String queryString = "select count(*) from Ad where language=" + lang.ordinal() + " and published=true";
     ResultSet rs = st.executeQuery(queryString);
     rs.first();
     Cache.set("count_" + lang.name(), rs.getObject(1));
@@ -82,7 +82,9 @@ public class UpdateCategoryCount extends Job {
   }
 
   private void execQuery(Map categoryCountMap, Statement st, String categoryType, String having) throws SQLException {
-    String queryString = "select " + categoryType + ", count(id) from Ad group by " + categoryType;
+    String queryString = "select " + categoryType + ", count(id) from Ad ";
+    queryString += " where published=true";
+    queryString += " group by " + categoryType;
     if(null != having) {
       queryString += ", language having " + having;
     }
@@ -104,6 +106,4 @@ public class UpdateCategoryCount extends Job {
     cacheMonitor.add(1);
     return categoryCountMap;
   }
-
-
 }

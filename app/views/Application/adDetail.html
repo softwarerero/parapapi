@@ -15,8 +15,18 @@
 <script type="text/javascript">
     $(function() {
 //        $('#gallery a').lightBox();
-      var lightbox = new Lightbox();
-      lightbox.load();
+//      var lightbox = new Lightbox();
+//      lightbox.load();
+//      $(".adgroup1").colorbox({rel:'adgroup1'});
+      $('.ad-pictures').magnificPopup({
+          delegate: 'a', 
+          type:'image', 
+          gallery: {
+            enabled: true,
+            tCounter: '<span class="mfp-counter">%curr% / %total%</span>'
+          }
+          
+       });
     });
 </script>
 

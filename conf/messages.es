@@ -288,4 +288,3 @@ secure.logout=Usted salio del sistema
 # Next 7 lines were automatically added by i18n-extract on 2010-11-22 09:47:55
 your_language=Su idioma
 Version=Version
-

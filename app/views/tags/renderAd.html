@@ -57,19 +57,15 @@
             ${_ad.content.nl2br()}
         </div>
 
-    <div id="gallery" class="pictures">
+    <div id="gallery" class="ad-pictures">
         <ul>
-            %{
-                if(null != _ad.pictures) {
-                    for(int i = 0; i < _ad.pictures.size(); i++) {
-            }%
-                <li>
-                  <img class="jslghtbx-thmb" src="@{Pictures.renderThumbnail72(_ad.id, i)}" alt="" data-jslghtbx="@{Pictures.renderPicture(_ad.id, i)}" data-jslghtbx-group="adgroup1">
-                </li>
-            %{
-                    }
-                }
-            }%
+          #{list items:_ad.pictures, as: 'pic'}
+            <li>
+              <a href="@{Pictures.renderPicture(_ad.id, pic_index-1)}">
+                <img class="" src="@{Pictures.renderThumbnail72(_ad.id, pic_index-1)}">
+              </a>
+            </li>
+          #{/list}
         </ul>
     </div>
 

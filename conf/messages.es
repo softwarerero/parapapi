@@ -37,7 +37,7 @@ CreateAd=Publicar Anuncio
 Save=Guardar
 ParaPapi=Buscar
 
-# For use in JavaExtensions.since tag
+# For use in ParapapiExtensions.since tag
 since.seconds = hace %s segundos
 since.minutes = hace %s minutos
 since.hours   = hace %s horas

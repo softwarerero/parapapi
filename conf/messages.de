@@ -41,7 +41,7 @@ CreateAd=Anzeige aufgeben
 Save=Speichern
 ParaPapi=Suchen
 
-# For use in JavaExtensions.since tag
+# For use in ParapapiExtensions.since tag
 since.seconds = vor %s Sekunden
 since.minutes = vor %s Minuten
 since.hours   = vor %s Stunden

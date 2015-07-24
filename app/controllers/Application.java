@@ -14,6 +14,7 @@ import play.mvc.*;
 import java.io.*;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.util.*;
 
 import controllers.auth.Security;
@@ -26,7 +27,7 @@ import play.templates.TemplateLoader;
 import play.vfs.VirtualFile;
 import py.suncom.parapapi.db.DbHelper;
 import py.suncom.parapapi.db.SearchBuilder;
-
+import java.text.NumberFormat;
 
 public class Application extends Controller {
 
@@ -41,9 +42,20 @@ public class Application extends Controller {
       Logger.info(e.getMessage());
     }
   }
+  
 
 //  @CacheFor("15mn")
   public static void categories() {
+//    Number number = 1000000;
+//    String currencyCode = "PYG";
+//    Currency currency = Currency.getInstance(currencyCode);
+//    NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Lang.getLocale());
+//    numberFormat.setCurrency(currency);
+//    numberFormat.setMaximumFractionDigits(currency.getDefaultFractionDigits());
+//    String s = numberFormat.format(number);
+//    String s = numberFormat.format(number);
+//    Logger.info("s: " + s);
+    
     String[] mainCategories = Category.main;
     String language = Lang.get();
     Map<String, Object> categoryCountMap = UpdateCategoryCount.getCategoryCountMap("CategoryCountMap_" + language);

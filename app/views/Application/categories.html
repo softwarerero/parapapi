@@ -14,21 +14,3 @@
 <div id="categories" class="categories">
   #{renderCategories mainCategories: mainCategories, categoryCountMap: categoryCountMap, mainSVGIcons: mainSVGIcons/}
 </div>
-
-#{greenscript.js output:true}
-    var renderMaincategoryList = #{jsAction @Application.renderMaincategoryList(':cat, :german, :english, :spanish') /}
-
-    var mainCategoryChoosen = function(cat) {
-        $.get('@{Application.renderMaincategoryList()}', {category: cat}, function(data) {
-            document.write(data);
-            document.close();
-        });
-    };
-
-    var subCategoryChoosen = function(cat) {
-        $.get('@{Application.renderSubcategoryList()}', {category: cat}, function(data) {
-            document.write(data);
-            document.close();
-        });
-    };
-#{/greenscript.js}

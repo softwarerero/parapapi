@@ -77,26 +77,14 @@ public class Application extends Controller {
 		render("Application/adList.html", searchString, ads, paginator, noFound);
 	}
 
-  public static void renderMaincategoryList(String category, String language) {
-    String catType = "mainCategory";
-    renderAds(category, language, catType);
-	}
 
-
-  public static void renderSubcategoryList(String category, String language) {
-    String catType = "subCategory";
-    renderAds(category, language, catType);
-	}
-
-  public static void latestAds(String language) {
-    renderAds(null, language, null);
-  }
-  
-
-  private static void renderAds(String category, String language, String catType) {
+  public static void renderAds(String mainCategory, String subCategory) {
     SearchBuilder sb = new SearchBuilder();
-    if(category != null) {
-      sb.startExpression().eq(catType, sb.quote(category)).endExpression();
+    if(null != subCategory && !("_".equals(subCategory))) {
+      sb.eq("subCategory", sb.quote(subCategory));
+      addLanguageExpression(sb, true);
+    } else if(null != mainCategory) {
+      sb.eq("mainCategory", sb.quote(mainCategory));
       addLanguageExpression(sb, true);
     } else {
       addLanguageExpression(sb, false);      
@@ -251,7 +239,7 @@ public class Application extends Controller {
 
   public static void switchLanguage(String lang) {
     Lang.change(lang);
-    renderAds(null, lang, null);
+    renderAds(null, null);
   }
   
   private String getLanguage() {

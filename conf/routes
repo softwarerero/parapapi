@@ -4,10 +4,11 @@
 
 # Home page
 GET     /                                       Application.categories
-GET     /latestAds                              Application.latestAds
+GET     /cat/{mainCategory}/{subCategory}       Application.renderAds
+GET     /cat/{mainCategory}                     Application.renderAds
+GET     /ads                                    Application.renderAds
 
 #GET     /once                              Application.once
-GET     /category/{id}                          Application.adList
 
 GET     /ad/{url}                               Application.adDetail
 
@@ -19,6 +20,7 @@ GET     /termsOfUse                 Application.termsOfUse
 GET     /dataPolicy                 Application.dataPolicy
 GET     /impressum                  Application.impressum
 GET     /faq                        Application.faq
+GET     /bck                        Application.backup
 
 GET     /switchLanguage/{lang}      Application.switchLanguage
 

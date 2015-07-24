@@ -55,10 +55,10 @@ public class DbHelper {
 	public static String getDatePart() {
 		Calendar cal = new GregorianCalendar();
 		String datePart = String.valueOf(cal.get(Calendar.YEAR));
-		datePart += String.valueOf(cal.get(Calendar.MONTH));
-		datePart += String.valueOf(cal.get(Calendar.DATE));
+		datePart += "-" + String.valueOf(cal.get(Calendar.MONTH));
+		datePart += "-" + String.valueOf(cal.get(Calendar.DATE));
 		datePart += "_" + String.valueOf(cal.get(Calendar.HOUR_OF_DAY));
-		datePart += String.valueOf(cal.get(Calendar.MINUTE));
+		datePart += "-" + String.valueOf(cal.get(Calendar.MINUTE));
 		return datePart;
 	}
 

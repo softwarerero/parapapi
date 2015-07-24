@@ -2,10 +2,17 @@
     &nbsp;
 #{/if}
 
-
 <span class="category-child">
-    <a href="${_isChild ? 'javascript: subCategoryChoosen(\'' + _category + '\');' : 'javascript: mainCategoryChoosen(\'' + _category + '\');'}">
-        <span class="category-name">${play.i18n.Messages.get(_category.toString())}</span>
-    </a>
-    <span class="category-adCount"><sup>(${_categoryCountMap.get(_category)})</sup></span>
+    #{if null != _subCategory}
+      <a href="@{Application.renderAds(_mainCategory, _subCategory)}">
+        <span class="category-name">${play.i18n.Messages.get(_subCategory.toString())}</span>
+      </a>
+      <span class="category-adCount"><sup>(${_categoryCountMap.get(_subCategory)})</sup></span>
+    #{/if}
+    #{else}
+      <a href="@{Application.renderAds(_mainCategory)}">
+        <span class="category-name">${play.i18n.Messages.get(_mainCategory.toString())}</span>
+      </a>
+      <span class="category-adCount"><sup>(${_categoryCountMap.get(_mainCategory)})</sup></span>
+    #{/else}
 </span>

@@ -1,16 +1,16 @@
-#{list items: _mainCategories, as: 'category'}
+#{list items: _mainCategories, as: 'mainCategory'}
     <div class="category ${category_parity}">
         <span class="category-title">
 	        <svg class="svgIcon" version="1.0" id="mainCategoryIcon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
 	        	width="19px" height="19px" viewBox="0 0 100 75.758" enable-background="new 0 0 100 75.758" xml:space="preserve" fill="#FFA600">
-	        	${_mainSVGIcons[category].raw()}
+	        	${_mainSVGIcons[mainCategory].raw()}
 			</svg>
-            #{renderCategory category: category, categoryCountMap: _categoryCountMap/}
+            #{renderCategory mainCategory: mainCategory, categoryCountMap: _categoryCountMap/}
         </span>
         <span class="category-metadata">
             <span class="category-children">
-                #{list items: models.Category.getSubCategory(category), as: 'child'}
-                    #{renderCategory category: child, isChild: true, categoryCountMap: _categoryCountMap /}
+                #{list items: models.Category.getSubCategory(mainCategory), as: 'subCategory'}
+                    #{renderCategory mainCategory: mainCategory, subCategory: subCategory, categoryCountMap: _categoryCountMap /}
                 #{/list}
             </span>
         </span>

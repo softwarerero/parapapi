@@ -1,6 +1,6 @@
 SUNCOM Ads, the project formerly known as ParaPapi!
 
-## We use Play 1.3.1
+## We still use Play 1.3.1
 https://www.playframework.com/documentation/1.3.x/home
 
 ## Modules
